@@ -3,9 +3,66 @@
   height: 6rem
   color: $color-white
   padding-top: env(safe-area-inset-top)
+  position: relative
+  &:after
+    position: absolute
+    content: ''
+    display: block
+    left: 0
+    bottom: 0
+    width: 100%
+    height: 0.1rem
+    background-color: rgba(126, 163, 217, 0.4)
   &__loginPage
     width: 100%
     height: 100%
     display: flex
     justify-content: center
     align-items: center
+  
+  /* Account Page */
+  &__account
+    height: 100%
+    display: flex
+    align-items: center
+    padding: 0 0 0 2rem
+    &-login
+      width: 26rem
+    &-navigate
+      display: flex
+      align-items: center
+      flex-grow: 1
+      padding: 0 5rem
+      background-color: $color-white
+      color: $color-blue-dark
+      height: 100%
+      &_burger
+        display: block
+        width: 3.5rem
+        height: 2.4rem
+        position: relative
+        padding-left: 1.5rem
+        &:before, &:after
+          position: absolute
+          content: ''
+          top: 50%
+          transform: translateY(-50%)
+        &:after
+          display: none
+        &:before
+          display: block
+          left: -0.5rem
+          border: 0.6rem solid transparent
+          border-right: 0.8rem solid $color-blue-light
+        &-active
+          padding-left: 0
+          padding-right: 1.5rem
+          &:before
+            display: none
+          &:after
+            display: block
+            border: 0.6rem solid transparent
+            border-left: 0.8rem solid red
+            right: -0.5rem
+
+

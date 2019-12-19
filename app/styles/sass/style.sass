@@ -48,6 +48,16 @@ body
   &:active
     color: red
 
+.button
+  transition: 0.1s
+  &:hover
+    cursor: pointer
+    transform: scale(1.02)
+  &:focus
+    outline: none
+  &:active
+    transform: translateY(0.1rem)
+
 
 @import 'header'
 @import 'section'
