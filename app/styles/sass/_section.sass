@@ -141,6 +141,70 @@
       &_icon
         width: 68%
 
+  /* Account Page */
+  &__account
+    height: calc(100%-60px)
+    &-page
+      height: 100%
+      display: flex
+      position: relative
+    &-label
+      position: absolute
+      content: ''
+      // display: block
+      display: none
+      background-color: $color-blue-dark
+      width: 1.4rem
+      height: 3rem
+      top: 0.3rem
+      z-index: 1
+      &:hover
+        cursor: pointer
+    &-menu
+      height: 100%
+      width: 28rem
+      // width: 0
+      color: $color-white
+      background-color: $color-blue-dark
+      background-repeat: no-repeat
+      position: relative
+      &:after
+        position: absolute
+        content: ''
+        display: block
+        width: 100%
+        height: 35rem
+        background-image: url('../../assets/images/menu-sky-background.png')
+        background-repeat: no-repeat
+        background-size: contain
+        bottom: 0
+        pointer-events: none
+      &_item
+        width: 100%
+        height: 5rem
+        &-block
+          height: 100%
+          display: flex
+          align-items: center
+          padding: 0 0 0 2.5rem
+          position: relative
+          border-bottom: 0.1rem inset $color-black
+        &-image
+          width: 2.2rem
+          margin-right: 1.3rem
+          img
+            width: 100%
+            height: auto
+        &-title
+          +roboto_medium
+          font-size: 1.4rem
+
+    /* iframe */
+    &-frame
+      height: 100%
+      flex-grow: 1
+      frameborder: 0
+
 @media (max-width: 990px)
   .section
     &__login

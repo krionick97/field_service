@@ -50,13 +50,17 @@ body
 
 .button
   transition: 0.1s
+  img
+    transition: 0.1s
   &:hover
     cursor: pointer
-    transform: scale(1.02)
+    img
+      transform: scale(1.04)
   &:focus
     outline: none
   &:active
-    transform: translateY(0.1rem)
+    img
+      transform: scale(1)
 
 
 @import 'header'
