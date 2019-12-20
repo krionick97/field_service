@@ -161,13 +161,21 @@
       &:hover
         cursor: pointer
     &-menu
+      display: block
+      visibility: hidden
       height: 100%
-      width: 28rem
-      // width: 0
+      width: 0
       color: $color-white
       background-color: $color-blue-dark
       background-repeat: no-repeat
       position: relative
+      transition: 0.1s
+      pointer-events: none
+      &.active
+        // display: block
+        width: 28rem
+        visibility: visible
+        pointer-events: auto
       &:after
         position: absolute
         content: ''
@@ -182,6 +190,20 @@
       &_item
         width: 100%
         height: 5rem
+        &.active
+          position: relative
+          &:before
+            position: absolute
+            content: ''
+            display: block
+            top: 0
+            left: 0
+            height: 100%
+            width: 0.6rem
+            background-color: $color-blue-light
+            z-index: 2
+        &:hover
+          cursor: pointer
         &-block
           height: 100%
           display: flex
@@ -189,6 +211,20 @@
           padding: 0 0 0 2.5rem
           position: relative
           border-bottom: 0.1rem inset $color-black
+          z-index: 1
+          &:hover
+            .section__account-menu_item-bg
+              width: 100%
+        &-bg
+          position: absolute
+          display: block
+          height: 100%
+          width: 0
+          top: 0
+          left: 0
+          background-color: rgba($color-blue-item, 0.5)
+          transition: 0.2s
+          z-index: -1
         &-image
           width: 2.2rem
           margin-right: 1.3rem
