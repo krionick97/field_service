@@ -42,7 +42,7 @@
         width: 3.5rem
         height: 2.4rem
         position: relative
-        padding-left: 1.5rem
+        padding-right: 1.5rem
         margin-right: 3rem
         &:before, &:after
           position: absolute
@@ -50,32 +50,54 @@
           top: 50%
           transform: translateY(-50%)
         &:after
-          display: none
-        &:before
           display: block
-          left: -0.5rem
           border: 0.6rem solid transparent
-          border-right: 0.8rem solid $color-blue-light
+          border-left: 0.8rem solid $color-blue-light
+          right: -0.5rem
+        &:before
+          display: none
         &.active
-          padding-left: 0
-          padding-right: 1.5rem
+          padding-right: 0
+          padding-left: 1.5rem
           &:before
-            display: none
-          &:after
             display: block
             border: 0.6rem solid transparent
-            border-left: 0.8rem solid $color-blue-light
-            right: -0.5rem
+            border-right: 0.8rem solid $color-blue-light
+            left: -0.5rem
+          &:after
+            display: none
 
       &_leftBlock, &_rightBlock
         display: flex
         height: 100%
         align-items: center
+      &_leftBlock
+        flex-grow: 1
       &_search
         display: block
         width: 2.4rem
+        &-input
+          display: inline-block
+          width: 0
+          visibility: hidden
+          margin: 0 4rem 0 1rem
+          padding: 0 1.2rem
+          font-size: 1.8rem
+          box-sizing: border-box
+          height: 3rem
+          border-radius: 1.5rem
+          border: 0.1rem solid $color-blue-light
+          transition: 0.2s
+          pointer-events: none
+          &:focus
+            outline: none
+          &.active
+            width: auto
+            visibility: visible
+            flex-grow: 1
+            pointer-events: auto
       &_indicator
-        padding: 0 1rem
+        padding: 0 1.1rem
       &_marker
         height: 100%
         padding: 0 2rem
@@ -109,7 +131,7 @@
       &_settings
         width: 2.3rem
       &_question
-        width: 1.6rem
+        width: 1.8rem
       &_bell
         width: 2.1rem
       &_profile

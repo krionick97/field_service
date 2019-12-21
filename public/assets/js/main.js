@@ -5,6 +5,8 @@ const markerButtons = document.querySelectorAll('.header__account-navigate_marke
 const accountMenu = document.querySelector('.section__account-menu');
 const menuLabel = document.querySelector('#menu-label');
 const menuItems = document.querySelectorAll('.section__account-menu_item');
+const searchButton = document.querySelector('.header__account-navigate_search');
+const searchInput = document.querySelector('.header__account-navigate_search-input');
 
 /* Burger Arrow Click Arrows */
 burgerButton.addEventListener('click', function() {
@@ -27,7 +29,7 @@ for (let i = 0; i < markerButtons.length; i++) {
     }
   });
 }
-/* -------------------------------------------------------- */
+/* -------------------------------------------------- */
 
 /* Menu Item Button Clicking Active */
 for (let i = 0; i < menuItems.length; i++) {
@@ -41,28 +43,50 @@ for (let i = 0; i < menuItems.length; i++) {
     }
   });
 }
-/* ---------------------------------------------------------- */
+/* --------------------------------------------------- */
 
 /* Burger Button Menu Active */
 burgerButton.addEventListener('click', function() {
-  if (burgerButton.classList.contains('active')) { 
-    accountMenu.classList.add('active');
+  if (burgerButton.classList.contains('active')) {
+    accountMenu.classList.add('active-button');
     menuLabel.classList.remove('active');
+    for (let menuItem of menuItems) {
+      menuItem.classList.add('visible');
+    }
   }
-  else { 
-    accountMenu.classList.remove('active'); 
+  else {
+    accountMenu.classList.remove('active-button'); 
     menuLabel.classList.add('active');
+    for (let menuItem of menuItems) {
+      menuItem.classList.remove('visible');
+    }
   }
 });
-/* ---------------------------------------------------------- */
+/* ----------------------------------------------------- */
+
+/* Search Button Input Active */
+searchButton.addEventListener('click', function() {
+  if (!searchInput.classList.contains('active')) {
+    searchInput.classList.add('active');
+  }
+  else { searchInput.classList.remove('active'); }
+});
+
+/* ----------------------------------------------------- */
 
 /* Menu Label hover */
 menuLabel.addEventListener('mouseover', function() {
   accountMenu.classList.add('active');
+  for (let menuItem of menuItems) {
+    menuItem.classList.add('visible');
+  }
 });
 accountMenu.addEventListener('mouseleave', function() {
   if (!burgerButton.classList.contains('active')) {
-    accountMenu.classList.remove('active'); 
+    accountMenu.classList.remove('active');
+    for (let menuItem of menuItems) {
+      menuItem.classList.remove('visible');
+    }
   }
 });
-/* ---------------------------------------------------------- */
+/* ----------------------------------------------------- */
