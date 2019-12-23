@@ -35,3 +35,115 @@
       &_subtitle
         font-size: 2.4rem
 
+  /* Call List Controls */
+  &__controls
+    padding: 1.5rem 1rem 2rem
+    border-bottom: 0.1rem solid $color-callList-light
+    display: flex
+    justify-content: space-between
+    &-leftBlock, &-rightBlock
+      display: flex
+    &-item
+      display: flex
+      height: 4rem
+      font-size: 1.2rem
+      align-items: center
+      justify-content: center
+      border: 0.1rem solid $color-callList-light
+      border-radius: 2rem        
+      &:hover
+        cursor: pointer
+      &:nth-child(1), &:nth-child(2)
+        margin-right: 1.8rem
+
+    /* Mode */
+    &-mode
+      padding: 0 1.2rem
+      &_title
+        margin-right: 0.5rem
+        color: $color-callList-main
+      &_text
+        width: 6rem
+        margin-right: 2rem
+
+    /* Setting-list and Search */
+    &-setting, &-search
+      width: 4rem
+      justify-content: center
+      fill: $color-callList-main
+    &-setting svg
+        width: 1.9rem
+    &-search
+      margin-right: 1rem
+      svg
+        width: 2rem
+      &_input
+        border-radius: 2rem
+        width: 30rem
+        border: 0.1rem solid rgba($color-black, 0.5)
+        box-sizing: border-box
+        font-size: 2rem
+        padding: 0 1rem
+        +roboto_light
+        &:focus
+          outline: none
+    &-update
+      width: 4rem
+      margin-left: 2rem
+      svg
+        width: 2.3rem
+        fill: $color-callList-main
+        margin-left: 0.1rem
+
+    /* Period List */
+    &-period
+      border: none
+      &_text
+        text-align: end
+        display: inline-block
+        margin-right: 1rem
+      &:hover
+        cursor: pointer
+        text-decoration: underline
+    
+    /* Dating from/to */
+    &-dating
+      display: flex
+      height: 4rem
+      align-items: center
+      &:hover
+        cursor: pointer
+      &_text
+        font-size: 1.8rem
+        color: $color-callList-main
+        margin: 0 2rem
+      &_frame
+        display: flex
+        align-items: center
+        +roboto_medium
+        font-size: 1.4rem
+        border: 0.1rem solid $color-callList-light
+        padding: 0 1.5rem
+        height: 4rem
+        border-radius: 0.6rem
+        background-color: $color-callList-bg
+        position: relative
+        overflow: hidden
+        &:after
+          position: absolute
+          display: block
+          content: ''
+          background-color: $color-blue-light
+          width: 0.5rem
+          height: 100%
+          left: 0
+          top: 0
+      &_icon-1, &_icon-2
+        width: 1.4rem
+        margin-left: 1rem
+        svg
+          width: 100%
+          fill: $color-callList-main
+
+      
+
