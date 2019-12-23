@@ -1,0 +1,37 @@
+.callList
+  &__top
+    background-color: $color-white
+    position: relative
+    height: 12rem
+    display: flex
+    justify-content: space-between
+    border-bottom: 0.1rem solid $color-callList-light
+    &-title
+      position: absolute
+      +roboto_bold
+      font-size: 6.8rem
+      opacity: 0.2
+      color: $color-callList-light
+      top: 50%
+      transform: translateY(-50%)
+      left: 1rem
+      z-index: 1
+    &-item
+      padding: 0 2.5rem
+      display: flex
+      align-items: center
+      flex-grow: 1
+      justify-content: flex-end
+      z-index: 2
+      &:not(:last-child)
+        border-right: 0.1rem solid $color-callList-light
+      &_data h3, &_data p
+        display: block
+        text-align: end
+        color: $color-callList-main
+      &_number
+        +roboto_medium
+        font-size: 4.8rem
+      &_subtitle
+        font-size: 2.4rem
+
