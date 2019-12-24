@@ -41,6 +41,7 @@
     border-bottom: 0.1rem solid $color-callList-light
     display: flex
     justify-content: space-between
+    margin-bottom: 2rem
     &-leftBlock, &-rightBlock
       display: flex
     &-item
@@ -50,21 +51,65 @@
       align-items: center
       justify-content: center
       border: 0.1rem solid $color-callList-light
-      border-radius: 2rem        
+      border-radius: 2rem
+      position: relative
       &:hover
         cursor: pointer
       &:nth-child(1), &:nth-child(2)
         margin-right: 1.8rem
+    &-popup
+      display: block
+      position: absolute
+      top: 5.5rem
+      left: 0
+      background-color: $color-white
+      box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25)
+      font-size: 1.4rem
+      border-radius: 2rem
+      overflow: hidden
+      transition: 0.3s
+      opacity: 0
+      pointer-events: none
+      z-index: 1
+      &.visible
+        opacity: 1
+        pointer-events: auto
+
 
     /* Mode */
     &-mode
       padding: 0 1.2rem
+      &.open
+        background-color: $color-callList-bg
+        .callList__controls-mode_arrow
+          transform: rotate(180deg)
       &_title
         margin-right: 0.5rem
         color: $color-callList-main
       &_text
         width: 6rem
         margin-right: 2rem
+      &_arrow
+        transition: 0.3s
+      &_list
+        width: 15rem
+      &_item
+        padding: 0.8rem 1.4rem
+        &:hover
+          text-decoration: underline
+        &.selected
+          background-color: $color-callList-bg
+          position: relative
+          text-decoration: none
+          &:before
+            position: absolute
+            content: ''
+            display: block
+            background-color: $color-blue-light
+            width: 1rem
+            height: 100%
+            top: 0
+            left: 0
 
     /* Setting-list and Search */
     &-setting, &-search
