@@ -7,8 +7,14 @@ const settingItems = document.querySelectorAll('.callList__controls-setting_item
 const modeList = document.querySelector('.callList__controls-mode_list');
 const modeItems = document.querySelectorAll('.callList__controls-mode_item');
 const modeText = document.querySelector('.callList__controls-mode_text');
+const period = document.querySelector('.callList__controls-period');
+const periodList = document.querySelector('.callList__controls-period_list');
+const periodItems = document.querySelectorAll('.callList__controls-period_item');
+const periodText = document.querySelector('.callList__controls-period_text > span');
 const search_call = document.querySelector('.callList__controls-search');
 const searchInput_call = document.querySelector('.callList__controls-search_input');
+const controlsItems = document.querySelectorAll('.callList__controls-item');
+const popups = document.querySelectorAll('.callList__controls-popup');
 const tags = document.querySelectorAll('.callList__tags-block_tag');
 
 /* Mode clicking select */
@@ -89,3 +95,51 @@ tags.forEach(tag => {
   }
 });
 /* ----------------------------------------------------- */
+
+/* Perios clicking Item select */
+period.addEventListener('click', function() {
+  if (!period.classList.contains('open')) {
+    period.classList.add('open');
+    periodList.classList.add('visible');
+
+  } else {
+    period.classList.remove('open');
+    periodList.classList.remove('visible');
+  }
+});
+
+for (let i = 0; i < periodItems.length; i++) {
+  periodItems[i].addEventListener('click', function() {
+    if (!periodItems[i].classList.contains('selected')) { periodItems[i].classList.add('selected'); }
+    for (let j = i - 1; j >=0; j--) {
+      if (periodItems[j].classList.contains('selected')) { periodItems[j].classList.remove('selected'); }
+    }
+    for (let k = i + 1; k < periodItems.length; k++) {
+      if (periodItems[k].classList.contains('selected')) { periodItems[k].classList.remove('selected'); }
+    }
+    let itemText = periodItems[i].textContent;
+    periodText.textContent = itemText;
+  });
+}
+/* -------------------------------------------------------- */
+
+
+/* Clicking outside of popup to close and deselect */
+window.addEventListener('click', function(event) {
+  let target = event.target;
+  let controlItem = target.closest('.callList__controls-item');
+
+  if (controlItem) { return; }
+  else {
+    for (let controlsItem of controlsItems) {
+      if (controlsItem.classList.contains('open')) { controlsItem.classList.remove('open'); }
+    }
+    for (let popup of popups) {
+      if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
+    }
+    if (searchInput_call.classList.contains('active')) { searchInput_call.classList.remove('active'); }
+  }
+});
+
+/* -------------------------------------------------------- */
+
