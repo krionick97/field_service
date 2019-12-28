@@ -16,6 +16,11 @@ const searchInput_call = document.querySelector('.callList__controls-search_inpu
 const controlsItems = document.querySelectorAll('.callList__controls-item');
 const popups = document.querySelectorAll('.callList__controls-popup');
 const tags = document.querySelectorAll('.callList__tags-block_tag');
+const rowsNumber = document.querySelector('.callList__table-navigate_number > span');
+const rowsNumberRest = document.querySelector('.callList__table-navigate_rest > span:first-child');
+const rowsNumberList = document.querySelector('.callList__table-navigate_number-list');
+const rowsNumberItems = document.querySelectorAll('.callList__table-navigate_number-item');
+const rowsArrow = document.querySelector('.callList__table-navigate_arrow');
 
 /* Mode clicking select */
 mode.addEventListener('click', function() {
@@ -123,13 +128,42 @@ for (let i = 0; i < periodItems.length; i++) {
 }
 /* -------------------------------------------------------- */
 
+/* Clicking Table Navigate Arrow to show Number Arrows */
+rowsArrow.addEventListener('click', function() {
+  if (!rowsArrow.classList.contains('open') && !rowsNumberList.classList.contains('show')) {
+    rowsArrow.classList.add('open');
+    rowsNumberList.classList.add('show');
+  } else {
+    rowsArrow.classList.remove('open');
+    rowsNumberList.classList.remove('show');
+  }
+});
+
+for (let i = 0; i < rowsNumberItems.length; i++) {
+  rowsNumberItems[i].addEventListener('click', function() {
+    if (!rowsNumberItems[i].classList.contains('selected')) { rowsNumberItems[i].classList.add('selected'); }
+    for (let j = i - 1; j >=0; j--) {
+      if (rowsNumberItems[j].classList.contains('selected')) { rowsNumberItems[j].classList.remove('selected'); }
+    }
+    for (let k = i + 1; k < rowsNumberItems.length; k++) {
+      if (rowsNumberItems[k].classList.contains('selected')) { rowsNumberItems[k].classList.remove('selected'); }
+    }
+    let itemText = rowsNumberItems[i].textContent;
+    let restRows = +itemText + 1;
+    rowsNumber.textContent = itemText;
+    rowsNumberRest.textContent = restRows;
+  });
+}
+/* -------------------------------------------------------- */
 
 /* Clicking outside of popup to close and deselect */
 window.addEventListener('click', function(event) {
   let target = event.target;
   let controlItem = target.closest('.callList__controls-item');
+  let tableNumberBlock = target.closest('.callList__table-navigate_leftBlock');
 
-  if (controlItem) { return; }
+  /* For Controls Button */
+  if (controlItem) { return; /* console.log(controlItem); */ }
   else {
     for (let controlsItem of controlsItems) {
       if (controlsItem.classList.contains('open')) { controlsItem.classList.remove('open'); }
@@ -137,10 +171,23 @@ window.addEventListener('click', function(event) {
     for (let popup of popups) {
       if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
     }
+  }
+
+  /* For search-input */
+  if (target === searchInput_call) { return; }
+  else {
     if (searchInput_call.classList.contains('active')) { searchInput_call.classList.remove('active'); }
   }
-});
 
+  /* For popup rows number of the table */
+  if (tableNumberBlock) { return; /* console.log(tableNumberBlock); */ }
+  else {
+    if (rowsArrow.classList.contains('open') && rowsNumberList.classList.contains('show')) {
+      rowsArrow.classList.remove('open');
+      rowsNumberList.classList.remove('show');
+    }
+  }
+});
 /* -------------------------------------------------------- */
 
 

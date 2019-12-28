@@ -53,10 +53,13 @@ body
     color: red
 .controls-arrow
   width: 1.5rem
+  transition: 0.3s
   svg
     stroke: $color-black
     width: 100%
     height: auto
+  &:hover
+    cursor: pointer
 
 #absences-icon
   height: 2.5rem
@@ -81,4 +84,3 @@ body
 @import 'header'
 @import 'section'
 @import 'call-list'
-@import 'tags'
