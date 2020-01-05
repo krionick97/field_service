@@ -1,0 +1,25 @@
+mixin menu-item(title, imgSource, imgID)
+  // Menu Item
+  li.section__settings-menu_item
+    div.section__settings-menu_item-block
+      div.section__settings-menu_item-bg
+      div.section__settings-menu_item-image
+        img(src=imgSource, alt="Icon", isettings)
+      h3.section__settings-menu_item-title= title
+
+
+div.section__settings-menu
+  ul.section__settings-menu_list
+    +menu-item('Setting-menu', "assets/images/dashboard_icon.svg")
+    +menu-item('Schedule', "assets/images/schedule_icon.svg")
+    +menu-item('Booking', "assets/images/booking_icon.svg")
+    +menu-item('Calls', "assets/images/voice_icon.svg")
+    +menu-item('SMS', "assets/images/sms_icon.svg")
+    +menu-item('Clients', "assets/images/clients_icon.svg")
+    +menu-item('Appointments', "assets/images/appointments_icon.svg")
+    +menu-item('Jobs', "assets/images/jobs_icon.svg")
+    +menu-item('Estimates', "assets/images/estimates_icon.svg")
+    +menu-item('Invoices', "assets/images/invoice_icon.svg")
+    +menu-item('Payments', "assets/images/payments_icon.svg")
+    +menu-item('Absences', "assets/images/absences_icon.svg", 'absences-icon-3')
+    +menu-item('Tickets', "assets/images/tickets_icon.svg")

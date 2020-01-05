@@ -1,5 +1,3 @@
-'use strict'
-
 const mode = document.querySelector('.callList__controls-mode');
 const setting = document.querySelector('.callList__controls-setting');
 const settingList = document.querySelector('.callList__controls-setting_list');
@@ -23,69 +21,75 @@ const rowsNumberItems = document.querySelectorAll('.callList__table-navigate_num
 const rowsArrow = document.querySelector('.callList__table-navigate_arrow');
 
 /* Mode clicking select */
-mode.addEventListener('click', function() {
-  if (!mode.classList.contains('open')) {
-    mode.classList.add('open');
-    modeList.classList.add('visible');
-
-  } else {
-    mode.classList.remove('open');
-    modeList.classList.remove('visible');
-  }
-});
-
-for (let i = 0; i < modeItems.length; i++) {
-  modeItems[i].addEventListener('click', function() {
-    if (!modeItems[i].classList.contains('selected')) { modeItems[i].classList.add('selected'); }
-    for (let j = i - 1; j >=0; j--) {
-      if (modeItems[j].classList.contains('selected')) { modeItems[j].classList.remove('selected'); }
+if (mode) {
+  mode.addEventListener('click', function() {
+    if (!mode.classList.contains('open')) {
+      mode.classList.add('open');
+      modeList.classList.add('visible');
+  
+    } else {
+      mode.classList.remove('open');
+      modeList.classList.remove('visible');
     }
-    for (let k = i + 1; k < modeItems.length; k++) {
-      if (modeItems[k].classList.contains('selected')) { modeItems[k].classList.remove('selected'); }
-    }
-    let itemText = modeItems[i].textContent;
-    modeText.textContent = itemText;
   });
+  
+  for (let i = 0; i < modeItems.length; i++) {
+    modeItems[i].addEventListener('click', function() {
+      if (!modeItems[i].classList.contains('selected')) { modeItems[i].classList.add('selected'); }
+      for (let j = i - 1; j >=0; j--) {
+        if (modeItems[j].classList.contains('selected')) { modeItems[j].classList.remove('selected'); }
+      }
+      for (let k = i + 1; k < modeItems.length; k++) {
+        if (modeItems[k].classList.contains('selected')) { modeItems[k].classList.remove('selected'); }
+      }
+      let itemText = modeItems[i].textContent;
+      modeText.textContent = itemText;
+    });
+  }
 }
 /* -------------------------------------------------------- */
 
 /* Setting Clicking List Items */
-setting.addEventListener('click', function() {
-  if (!setting.classList.contains('open')) {
-    setting.classList.add('open');
-    settingList.classList.add('visible');
-
-  } else {
-    setting.classList.remove('open');
-    settingList.classList.remove('visible');
-  }
-});
-
-for (let i = 0; i < settingItems.length; i++) {
-  settingItems[i].addEventListener('click', function() {
-    if (!settingItems[i].classList.contains('selected')) { settingItems[i].classList.add('selected'); }
-    for (let j = i - 1; j >=0; j--) {
-      if (settingItems[j].classList.contains('selected')) { settingItems[j].classList.remove('selected'); }
-    }
-    for (let k = i + 1; k < settingItems.length; k++) {
-      if (settingItems[k].classList.contains('selected')) { settingItems[k].classList.remove('selected'); }
+if (setting) {
+  setting.addEventListener('click', function() {
+    if (!setting.classList.contains('open')) {
+      setting.classList.add('open');
+      settingList.classList.add('visible');
+  
+    } else {
+      setting.classList.remove('open');
+      settingList.classList.remove('visible');
     }
   });
+  
+  for (let i = 0; i < settingItems.length; i++) {
+    settingItems[i].addEventListener('click', function() {
+      if (!settingItems[i].classList.contains('selected')) { settingItems[i].classList.add('selected'); }
+      for (let j = i - 1; j >=0; j--) {
+        if (settingItems[j].classList.contains('selected')) { settingItems[j].classList.remove('selected'); }
+      }
+      for (let k = i + 1; k < settingItems.length; k++) {
+        if (settingItems[k].classList.contains('selected')) { settingItems[k].classList.remove('selected'); }
+      }
+    });
+  }
 }
 /* -------------------------------------------------------- */
 
 /* Search Button Click Input */
-search_call.addEventListener('click', function() {
-  if (!search_call.classList.contains('open')) {
-    search_call.classList.add('open');
-    searchInput_call.classList.add('active');
-
-  } else {
-    search_call.classList.remove('open');
-    searchInput_call.classList.remove('active');
-  }
-
-});
+if (search_call) {
+  search_call.addEventListener('click', function() {
+    if (!search_call.classList.contains('open')) {
+      search_call.classList.add('open');
+      searchInput_call.classList.add('active');
+  
+    } else {
+      search_call.classList.remove('open');
+      searchInput_call.classList.remove('active');
+    }
+  
+  });
+}
 /* -------------------------------------------------------- */
 
 /* Tags Click Selected */
@@ -102,57 +106,79 @@ tags.forEach(tag => {
 /* ----------------------------------------------------- */
 
 /* Perios clicking Item select */
-period.addEventListener('click', function() {
-  if (!period.classList.contains('open')) {
-    period.classList.add('open');
-    periodList.classList.add('visible');
-
-  } else {
-    period.classList.remove('open');
-    periodList.classList.remove('visible');
-  }
-});
-
-for (let i = 0; i < periodItems.length; i++) {
-  periodItems[i].addEventListener('click', function() {
-    if (!periodItems[i].classList.contains('selected')) { periodItems[i].classList.add('selected'); }
-    for (let j = i - 1; j >=0; j--) {
-      if (periodItems[j].classList.contains('selected')) { periodItems[j].classList.remove('selected'); }
+if (period) {
+  period.addEventListener('click', function() {
+    if (!period.classList.contains('open')) {
+      period.classList.add('open');
+      periodList.classList.add('visible');
+  
+    } else {
+      period.classList.remove('open');
+      periodList.classList.remove('visible');
     }
-    for (let k = i + 1; k < periodItems.length; k++) {
-      if (periodItems[k].classList.contains('selected')) { periodItems[k].classList.remove('selected'); }
-    }
-    let itemText = periodItems[i].textContent;
-    periodText.textContent = itemText;
   });
+  
+  for (let i = 0; i < periodItems.length; i++) {
+    periodItems[i].addEventListener('click', function() {
+      if (!periodItems[i].classList.contains('selected')) { periodItems[i].classList.add('selected'); }
+      for (let j = i - 1; j >=0; j--) {
+        if (periodItems[j].classList.contains('selected')) { periodItems[j].classList.remove('selected'); }
+      }
+      for (let k = i + 1; k < periodItems.length; k++) {
+        if (periodItems[k].classList.contains('selected')) { periodItems[k].classList.remove('selected'); }
+      }
+      let itemText = periodItems[i].textContent;
+      periodText.textContent = itemText;
+    });
+  }
 }
 /* -------------------------------------------------------- */
 
 /* Clicking Table Navigate Arrow to show Number Arrows */
-rowsArrow.addEventListener('click', function() {
-  if (!rowsArrow.classList.contains('open') && !rowsNumberList.classList.contains('show')) {
-    rowsArrow.classList.add('open');
-    rowsNumberList.classList.add('show');
-  } else {
-    rowsArrow.classList.remove('open');
-    rowsNumberList.classList.remove('show');
-  }
-});
-
-for (let i = 0; i < rowsNumberItems.length; i++) {
-  rowsNumberItems[i].addEventListener('click', function() {
-    if (!rowsNumberItems[i].classList.contains('selected')) { rowsNumberItems[i].classList.add('selected'); }
-    for (let j = i - 1; j >=0; j--) {
-      if (rowsNumberItems[j].classList.contains('selected')) { rowsNumberItems[j].classList.remove('selected'); }
+if (rowsArrow) {
+  rowsArrow.addEventListener('click', function() {
+    if (!rowsArrow.classList.contains('open') && !rowsNumberList.classList.contains('show')) {
+      rowsArrow.classList.add('open');
+      rowsNumberList.classList.add('show');
+    } else {
+      rowsArrow.classList.remove('open');
+      rowsNumberList.classList.remove('show');
     }
-    for (let k = i + 1; k < rowsNumberItems.length; k++) {
-      if (rowsNumberItems[k].classList.contains('selected')) { rowsNumberItems[k].classList.remove('selected'); }
-    }
-    let itemText = rowsNumberItems[i].textContent;
-    let restRows = +itemText + 1;
-    rowsNumber.textContent = itemText;
-    rowsNumberRest.textContent = restRows;
   });
+  
+  for (let i = 0; i < rowsNumberItems.length; i++) {
+    rowsNumberItems[i].addEventListener('click', function() {
+      if (!rowsNumberItems[i].classList.contains('selected')) { 
+        rowsNumberItems[i].classList.add('selected');
+        if (rowsArrow.classList.contains('open') && rowsNumberList.classList.contains('show')) {
+            rowsArrow.classList.remove('open');
+            rowsNumberList.classList.remove('show');
+          }
+      }
+      for (let j = i - 1; j >=0; j--) {
+        if (rowsNumberItems[j].classList.contains('selected')) { 
+          rowsNumberItems[j].classList.remove('selected');
+          if (rowsArrow.classList.contains('open') && rowsNumberList.classList.contains('show')) {
+            rowsArrow.classList.remove('open');
+            rowsNumberList.classList.remove('show');
+          }
+        }
+      }
+      for (let k = i + 1; k < rowsNumberItems.length; k++) {
+        if (rowsNumberItems[k].classList.contains('selected')) { 
+          rowsNumberItems[k].classList.remove('selected');
+          if (rowsArrow.classList.contains('open') && rowsNumberList.classList.contains('show')) {
+            rowsArrow.classList.remove('open');
+            rowsNumberList.classList.remove('show');
+          }
+        }
+      }
+      let itemText = rowsNumberItems[i].textContent;
+      let restRows = +itemText + 1;
+      rowsNumber.textContent = itemText;
+      rowsNumberRest.textContent = restRows;
+    });
+  }
 }
 /* -------------------------------------------------------- */
 
@@ -174,17 +200,21 @@ window.addEventListener('click', function(event) {
   }
 
   /* For search-input */
-  if (target === searchInput_call) { return; }
-  else {
-    if (searchInput_call.classList.contains('active')) { searchInput_call.classList.remove('active'); }
+  if (searchInput_call) {
+    if (target === searchInput_call) { return; }
+    else {
+      if (searchInput_call.classList.contains('active')) { searchInput_call.classList.remove('active'); }
+    }
   }
 
   /* For popup rows number of the table */
-  if (tableNumberBlock) { return; /* console.log(tableNumberBlock); */ }
-  else {
-    if (rowsArrow.classList.contains('open') && rowsNumberList.classList.contains('show')) {
-      rowsArrow.classList.remove('open');
-      rowsNumberList.classList.remove('show');
+  if (rowsArrow) {
+    if (tableNumberBlock) { return; /* console.log(tableNumberBlock); */ }
+    else {
+      if (rowsArrow.classList.contains('open') && rowsNumberList.classList.contains('show')) {
+        rowsArrow.classList.remove('open');
+        rowsNumberList.classList.remove('show');
+      }
     }
   }
 });
@@ -196,10 +226,235 @@ window.addEventListener('click', function(event) {
 const burgerButton = document.querySelector('.header__account-navigate_burger');
 const markerButtons = document.querySelectorAll('.header__account-navigate_marker');
 const accountMenu = document.querySelector('.section__account-menu');
-const menuLabel = document.querySelector('#menu-label');
+const accountMenuList = document.querySelector('.section__account-menu_list');
+const menuLabel = document.querySelector('.menu-label');
 const menuItems = document.querySelectorAll('.section__account-menu_item');
 const searchButton = document.querySelector('.header__account-navigate_search');
 const searchInput = document.querySelector('.header__account-navigate_search-input');
+
+/* HTML-content for menu-item */
+// Account Menu-items
+function getAccountMenuItem(title, imgSource, imgID) {
+  let item = document.createElement('li');
+  item.classList.add('section__account-menu_item');
+  let itemHTML = `
+    <div class="section__account-menu_item-block">
+      <div class="section__account-menu_item-bg"></div>
+      <div class="section__account-menu_item-image"><img src="${imgSource}" id="${imgID}" alt="Icon" /></div>
+      <h3 class="section__account-menu_item-title">${title}</h3>
+    </div>
+  `;
+  item.insertAdjacentHTML('beforeend', itemHTML);
+  return item;
+}
+
+// Messenger Menu-items
+function getMessengerMenuItem(title, imgSource, imgID) {
+  let item = document.createElement('li');
+  item.classList.add('section__messenger-menu_item');
+  let itemHTML = `
+    <div class="section__messenger-menu_item-block">
+      <div class="section__messenger-menu_item-bg"></div>
+      <div class="section__messenger-menu_item-image"><img src="${imgSource}" id="${imgID}" alt="Icon" /></div>
+      <h3 class="section__messenger-menu_item-title">${title}</h3>
+    </div>
+  `;
+  item.insertAdjacentHTML('beforeend', itemHTML);
+  return item;
+}
+
+// Settings Menu-items
+function getSettingsMenuItem(title, imgSource, imgID) {
+  let item = document.createElement('li');
+  item.classList.add('section__settings-menu_item');
+  let itemHTML = `
+    <div class="section__settings-menu_item-block">
+      <div class="section__settings-menu_item-bg"></div>
+      <div class="section__settings-menu_item-image"><img src="${imgSource}" id="${imgID}" alt="Icon" /></div>
+      <h3 class="section__settings-menu_item-title">${title}</h3>
+    </div>
+  `;
+  item.insertAdjacentHTML('beforeend', itemHTML);
+  return item;
+}
+
+// Account menu-fragment
+function getAccountMenuFragment() {
+  let fragment = document.createDocumentFragment();
+  let arrData = [
+    {
+      title: 'Dashboard',
+      imgSource: 'assets/images/dashboard_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Schedule',
+      imgSource: 'assets/images/schedule_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Booking',
+      imgSource: 'assets/images/booking_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Calls',
+      imgSource: 'assets/images/voice_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'SMS',
+      imgSource: 'assets/images/sms_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Clients',
+      imgSource: 'assets/images/clients_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Appointments',
+      imgSource: 'assets/images/appointments_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Jobs',
+      imgSource: 'assets/images/jobs_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Estimates',
+      imgSource: 'assets/images/estimates_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Invoices',
+      imgSource: 'assets/images/invoice_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Payments',
+      imgSource: 'assets/images/payments_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Absences',
+      imgSource: 'assets/images/absences_icon.svg',
+      imgID: 'absences-icon-1'  
+    },
+    {
+      title: 'Tickets',
+      imgSource: 'assets/images/tickets_icon.svg',
+      imgID: ''  
+    }
+  ];
+
+  for (let dataItem of arrData) {
+    let accountMenuItem = getAccountMenuItem(dataItem.title, dataItem.imgSource, dataItem.imgID);
+    fragment.append(accountMenuItem);
+  }
+  return fragment;
+}
+
+// Messenger menu-fragment
+function getMessengerMenuFragment() {
+  let fragment = document.createDocumentFragment();
+  let arrData = [
+    {
+      title: 'Messenger',
+      imgSource: 'assets/images/dashboard_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Schedule',
+      imgSource: 'assets/images/schedule_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Booking',
+      imgSource: 'assets/images/booking_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Calls',
+      imgSource: 'assets/images/voice_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'SMS',
+      imgSource: 'assets/images/sms_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Clients',
+      imgSource: 'assets/images/clients_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Appointments',
+      imgSource: 'assets/images/appointments_icon.svg',
+      imgID: ''  
+    }
+  ];
+
+  for (let dataItem of arrData) {
+    let messengerMenuItem = getMessengerMenuItem(dataItem.title, dataItem.imgSource, dataItem.imgID);
+    fragment.append(messengerMenuItem);
+  }
+  return fragment;
+}
+
+// Settings menu-fragment
+function getSettingsMenuFragment() {
+  let fragment = document.createDocumentFragment();
+  let arrData = [
+    {
+      title: 'Settings',
+      imgSource: 'assets/images/dashboard_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Schedule',
+      imgSource: 'assets/images/schedule_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Booking',
+      imgSource: 'assets/images/booking_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Calls',
+      imgSource: 'assets/images/voice_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'SMS',
+      imgSource: 'assets/images/sms_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Clients',
+      imgSource: 'assets/images/clients_icon.svg',
+      imgID: ''  
+    },
+    {
+      title: 'Appointments',
+      imgSource: 'assets/images/appointments_icon.svg',
+      imgID: ''  
+    }
+  ];
+
+  for (let dataItem of arrData) {
+    let settingsMenuItem = getSettingsMenuItem(dataItem.title, dataItem.imgSource, dataItem.imgID);
+    fragment.append(settingsMenuItem);
+  }
+  return fragment;
+}
+
+
+
+/* -------------------------------- */
 
 /* Burger Arrow Click Arrows */
 if (burgerButton) {
@@ -213,21 +468,30 @@ if (burgerButton) {
 /* ------------------------------------------------- */
 
 /* Marker Buttons Clicking Active */
-for (let i = 0; i < markerButtons.length; i++) {
-  markerButtons[i].addEventListener('click', function() {
-    if (!markerButtons[i].classList.contains('active')) markerButtons[i].classList.add('active');
-    for (let j = i - 1; j >= 0; j--) {
-      if (markerButtons[j].classList.contains('active')) markerButtons[j].classList.remove('active');
-    }
-    for (let k = i + 1; k < markerButtons.length; k++) {
-      if (markerButtons[k].classList.contains('active')) markerButtons[k].classList.remove('active');
-    }
-  });
+if (markerButtons) {
+  for (let i = 0; i < markerButtons.length; i++) {
+    markerButtons[i].addEventListener('click', function() {
+      if (!markerButtons[i].classList.contains('active')) {
+        markerButtons[i].classList.add('active');
+      }
+      for (let j = i - 1; j >= 0; j--) {
+        if (markerButtons[j].classList.contains('active')) {
+          markerButtons[j].classList.remove('active');
+        }
+      }
+      for (let k = i + 1; k < markerButtons.length; k++) {
+        if (markerButtons[k].classList.contains('active')) {
+          markerButtons[k].classList.remove('active');
+        }
+      }
+    });
+  }
 }
 /* -------------------------------------------------- */
 
 /* Menu Item Button Clicking Active */
 for (let i = 0; i < menuItems.length; i++) {
+  if (!menuItems[i].classList.contains('active')) menuItems[0].classList.add('active')
   menuItems[i].addEventListener('click', function() {
     if (!menuItems[i].classList.contains('active')) menuItems[i].classList.add('active');
     for (let j = i - 1; j >=0; j--) {
