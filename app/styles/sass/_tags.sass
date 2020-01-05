@@ -1,0 +1,40 @@
+/* Tags */
+.callList__tags
+  padding: 0 1rem
+  +roboto_medium
+  font-size: 1.2rem
+  display: flex
+  align-items: center
+  &-title
+    color: $color-callList-main
+    margin-right: 1.5rem
+  &-block
+    display: flex
+    flex-wrap: wrap
+    &_tag
+      text-transform: uppercase
+      height: 2.2rem
+      border: 0.1rem solid $color-callList-light
+      border-radius: 1.7rem
+      padding: 1.2rem 2.7rem 0
+      &:not(:last-child)
+        margin-right: 0.7rem
+      &:hover
+        cursor: pointer
+      &.selected
+        position: relative
+        overflow: hidden
+        border: none
+        background-color: $color-callList-bg
+        &:before, &:after
+          position: absolute
+          display: block
+          content: ''
+          background-color: $color-blue-light
+          height: 100%
+          width: 1.7rem
+          top: 0
+        &:before
+          left: 0
+        &:after
+          right: 0
