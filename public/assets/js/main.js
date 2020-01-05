@@ -5,14 +5,8 @@ const settingItems = document.querySelectorAll('.callList__controls-setting_item
 const modeList = document.querySelector('.callList__controls-mode_list');
 const modeItems = document.querySelectorAll('.callList__controls-mode_item');
 const modeText = document.querySelector('.callList__controls-mode_text');
-const period = document.querySelector('.callList__controls-period');
-const periodList = document.querySelector('.callList__controls-period_list');
-const periodItems = document.querySelectorAll('.callList__controls-period_item');
-const periodText = document.querySelector('.callList__controls-period_text > span');
 const search_call = document.querySelector('.callList__controls-search');
 const searchInput_call = document.querySelector('.callList__controls-search_input');
-const controlsItems = document.querySelectorAll('.callList__controls-item');
-const popups = document.querySelectorAll('.callList__controls-popup');
 const tags = document.querySelectorAll('.callList__tags-block_tag');
 const rowsNumber = document.querySelector('.callList__table-navigate_number > span');
 const rowsNumberRest = document.querySelector('.callList__table-navigate_rest > span:first-child');
@@ -104,6 +98,7 @@ tags.forEach(tag => {
   }
 });
 /* ----------------------------------------------------- */
+<<<<<<< HEAD
 
 /* Perios clicking Item select */
 if (period) {
@@ -221,6 +216,8 @@ window.addEventListener('click', function(event) {
 /* -------------------------------------------------------- */
 
 
+=======
+>>>>>>> parent of d278420... clicking outside
 'use strict'
 
 const burgerButton = document.querySelector('.header__account-navigate_burger');
