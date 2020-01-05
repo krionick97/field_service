@@ -35,6 +35,7 @@ for (let i = 0; i < markerButtons.length; i++) {
 
 /* Menu Item Button Clicking Active */
 for (let i = 0; i < menuItems.length; i++) {
+  if (!menuItems[i].classList.contains('active')) menuItems[0].classList.add('active');
   menuItems[i].addEventListener('click', function() {
     if (!menuItems[i].classList.contains('active')) menuItems[i].classList.add('active');
     for (let j = i - 1; j >=0; j--) {
