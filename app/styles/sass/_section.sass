@@ -62,6 +62,13 @@
         padding: 0 0 0 0.7rem
         &:focus
           outline: none
+      &_error
+        // display: none
+        text-align: center
+        font-size: 1.3rem
+        margin-bottom: 1rem
+        +roboto_light
+        color: red
       &_link
         margin: 0 auto 3.5rem
         display: block
@@ -246,10 +253,62 @@
           font-size: 1.4rem
 
     /* iframe */
-    &-frame
+    &_frame-block
       height: 100%
       flex-grow: 1
-      frameborder: 0
+      &.overframe
+        display: block
+        &:before
+          position: absolute
+          content: ''
+          display: block
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+          z-index: 5
+          background-color: rgba($color-black, 0.2)
+    &_frame
+      width: 100%
+      height: 100%
+
+
+@media (max-height: 790px)
+  .section
+    &__account
+      &-menu_list
+        height: 50rem
+        overflow-y: scroll
+        &::-webkit-scrollbar
+          width: 0.8rem
+          opacity: 0
+        &::-webkit-scrollbar-thumb
+          border-radius: 0.4rem
+          background-color: rgba($color-blue-light, 0.3)
+
+
+@media (max-height: 630px)
+  .section
+    &__account
+      &-menu_list
+        height: 40rem
+        overflow-y: scroll
+
+@media (max-width: 1420px)
+  .section
+    &__account
+      &-menu
+        &.active-button
+          width: 22rem
+        &:after
+          background-size: cover
+
+@media (max-width: 1120px)
+  .section
+    &__account
+      &-menu.active-button
+        width: 18rem
+
 
 @media (max-width: 990px)
   .section
@@ -263,6 +322,12 @@
         &:hover
           background-color: none
 
+@media (max-width: 1120px)
+  .section
+    &__account
+      &-label
+        &.active
+          display: none
 
 @media (max-width: 420px)
   .section
@@ -289,3 +354,4 @@
       &-block
         padding: 3rem 0
         max-height: 30rem
+

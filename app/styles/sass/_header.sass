@@ -22,7 +22,6 @@
   
   /* Account Page */
   &__account
-    height: 100%
     display: flex
     align-items: center
     padding: 0 0 0 2rem
@@ -67,12 +66,73 @@
           &:after
             display: none
 
+      &_popup, &_popup-list
+        // padding: 1.2rem 1.4rem
+        background-color: $color-white
+      &_popup
+        position: absolute
+        opacity: 0
+        pointer-events: none
+        bottom: -180%
+        right: 4rem
+        font-size: 1.6rem
+        z-index: 10
+        transition: 0.1s
+        box-shadow: 0.4rem 0.4rem 0.6rem rgba($color-black, 0.28)
+        &.visible
+          transition: 0.1s
+          opacity: 1
+          pointer-events: auto
+        &-item, &-subitem
+          padding: 1rem 1.2rem
+          display: flex
+          align-items: center
+          &:hover
+            cursor: pointer
+            background-color: rgba($color-callList-bg, 0.2)
+          &:active
+            color: red
+        // &-item:first-child
+        //   position: relative
+
+        &-list
+          width: 0
+          visibility: hidden
+          position: absolute
+          top: 0
+          right: 101%
+          box-shadow: 0.2rem 0.4rem 0.6rem rgba($color-black, 0.14)
+          pointer-events: none
+          &.visible
+            transition: 0.1s
+            width: auto
+            visibility: visible
+            pointer-events: auto
+        &-icon
+          width: 3.2rem !important
+          height: 3.2rem !important
+          margin-right: 1.6rem
+        &-subitem
+          &.selected
+            position: relative
+            background-color: $color-callList-bg
+            &:before
+              position: absolute
+              content: ''
+              background-color: $color-blue-light
+              height: 100%
+              width: 0.5rem
+              top: 0
+              left: 0
+
       &_leftBlock, &_rightBlock
         display: flex
         height: 100%
         align-items: center
       &_leftBlock
         flex-grow: 1
+      &_rightBlock
+        position: relative
       &_search
         display: block
         width: 2.4rem
@@ -80,7 +140,7 @@
           display: inline-block
           width: 0
           visibility: hidden
-          margin: 0 1rem
+          margin: 0 0.5rem 0 1rem
           padding: 0 1.2rem
           font-size: 1.8rem
           box-sizing: border-box
@@ -95,6 +155,28 @@
             width: 25rem
             visibility: visible
             // flex-grow: 1
+            pointer-events: auto
+        &-submit
+          background-color: $color-blue-item
+          color: $color-white
+          border: none
+          font-size: 1.4rem
+          border-radius: 0.5rem
+          padding: 0.8rem 1.1rem 0.7rem 1rem
+          border-radius: 1.5rem
+          transition: 0.1s
+          opacity: 0
+          pointer-events: none
+          transition: 0.1s
+          &:hover
+            transform: scale(1.04)
+          &:active
+            transform: scale(1)
+          &:focus
+            outline: none
+          &.active
+            transition: 0.1s
+            opacity: 1
             pointer-events: auto
       &_indicator
         padding: 0 1.1rem
@@ -149,7 +231,35 @@
         width: 3rem
         margin-bottom: 0.5rem
 
+@media (max-width: 1420px)
+  .header
+    &__account
+      &-login
+        width: 20rem
+      &-navigate
+        padding: 0 2.2rem
 
+@media (max-width: 1120px)
+  .header
+    height: auto
+    padding: 0
+    &__account
+      width: 100%
+      // display: block
+      flex-direction: column
+      &-login
+        margin: 1rem 0
+      &-navigate
+        // transform: translate(0, 0)
+        padding: 0
+        // justify-content: flex-start
+        // flex-grow: 0
+        height: 6rem
+        width: 100%
+        &_leftBlock
+          flex-grow: 0
+          margin-left: 1rem
+        &_question, &_bell, &_phonecall
+          display: none
 
-
-
+    // max-width 720px

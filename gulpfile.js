@@ -90,7 +90,7 @@ gulp.task('img', function() {
 /* JavaScript task */
 gulp.task('script', function() {
   return gulp.src('app/js/*.js')
-  .pipe(gulpPlugin.concat('main.js'))
+  // .pipe(gulpPlugin.concat('main.js'))
   .pipe(gulp.dest('public/assets/js/'))
   .pipe(browserSync.reload({
     stream: true
