@@ -43,6 +43,8 @@
         position: relative
         padding-right: 1.5rem
         margin-right: 3rem
+        &.mobile
+          display: none
         &:before, &:after
           position: absolute
           content: ''
@@ -180,6 +182,8 @@
             pointer-events: auto
       &_indicator
         padding: 0 1.1rem
+        &-mobile
+          display: none
       &_marker
         height: 100%
         padding: 0 2rem
@@ -245,15 +249,12 @@
     padding: 0
     &__account
       width: 100%
-      // display: block
       flex-direction: column
       &-login
         margin: 1rem 0
+        width: 17.4rem
       &-navigate
-        // transform: translate(0, 0)
         padding: 0
-        // justify-content: flex-start
-        // flex-grow: 0
         height: 6rem
         width: 100%
         &_leftBlock
@@ -261,5 +262,53 @@
           margin-left: 1rem
         &_question, &_bell, &_phonecall
           display: none
+        &_popup
+          bottom: -440%
+          right: 0.5rem
+        &_indicator            
+          &-mobile
+            display: flex
+            div img
+              height: 100%
+              padding: 0 0 0 0.5rem
 
-    // max-width 720px
+@media (max-width: 720px)
+  .header
+    &__account
+      height: 6rem
+      &.mobile-visible
+        transition: 0.1s
+        height: 12rem
+      &-navigate
+        background: none
+        &.mobile-visible
+          background: $color-white  
+        &_burger
+          display: none
+          &.mobile
+            display: block
+            top: 1.6rem
+            position: absolute
+            margin-right: 0
+        &_popup
+          top: 6.2rem
+          bottom: auto
+        &_leftBlock, &_rightBlock
+          position: static
+        &_profile
+          position: absolute
+          top: 1.1rem
+          right: 0
+          width: 3.2rem
+          height: 3.2rem
+          border-radius: 1.6rem
+          background-color: $color-grey
+          border: 0.1rem solid $color-grey
+        &_marker:nth-child(3)
+          margin-right: 0
+        &_search, &_search-form, &_marker
+          display: none
+        &_search.mobile-visible, &_search-form.mobile-visible, &_marker.mobile-visible
+          display: block
+
+

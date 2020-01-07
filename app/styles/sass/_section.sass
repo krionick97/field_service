@@ -181,6 +181,8 @@
       top: 0
       left: 0
       z-index: 2
+      &.mobile-visible
+        width: 100% !important
       &.active
         width: 28rem
         visibility: visible
@@ -256,6 +258,11 @@
     &_frame-block
       height: 100%
       flex-grow: 1
+      &.menu-visible
+        transition: 0.1s
+        flex-grow: 0
+        width: 0
+        height: 0
       &.overframe
         display: block
         &:before
@@ -298,17 +305,10 @@
   .section
     &__account
       &-menu
-        &.active-button
+        &.active, &.active-button
           width: 22rem
         &:after
           background-size: cover
-
-@media (max-width: 1120px)
-  .section
-    &__account
-      &-menu.active-button
-        width: 18rem
-
 
 @media (max-width: 990px)
   .section
@@ -325,9 +325,11 @@
 @media (max-width: 1120px)
   .section
     &__account
-      &-label
-        &.active
-          display: none
+      &-menu.active-button
+        width: 18rem
+      // &-label
+      //   &.active
+      //     display: none
 
 @media (max-width: 420px)
   .section

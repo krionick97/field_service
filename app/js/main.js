@@ -1,13 +1,17 @@
 'use strict'
 
 const burgerButton = document.querySelector('.header__account-navigate_burger');
+const burgerButtonMobile = document.querySelector('.header__account-navigate_burger.mobile');
 const markerButtons = document.querySelectorAll('.header__account-navigate_marker');
 const accountMenu = document.querySelector('.section__account-menu');
 const menuLabel = document.querySelector('#menu-label');
 const menuItems = document.querySelectorAll('.section__account-menu_item');
 const searchButton = document.querySelector('.header__account-navigate_search');
+const searchForm = document.querySelector('.header__account-navigate_search-form');
 const searchInput = document.querySelector('.header__account-navigate_search-input');
 const searchSubmit = document.querySelector('.header__account-navigate_search-submit');
+const accountNavigate = document.querySelector('.header__account-navigate');
+const accountHeader = document.querySelector('.header__account');
 
 const popup = document.querySelector('.header__account-navigate_popup');
 const popupAccounts = document.querySelector('.header__account-navigate_popup-item:first-child');
@@ -17,17 +21,6 @@ const profile = document.querySelector('.header__account-navigate_profile');
 const popupLogout = document.querySelector('.header__account-navigate_popup-item:nth-child(2)');
 const frameBlock = document.querySelector('.section__account_frame-block');
 
-
-/* Burger Arrow Click Arrows */
-if (burgerButton) {
-  burgerButton.addEventListener('click', function() {
-    if (burgerButton.classList.contains('active')) {
-      burgerButton.classList.remove('active');
-    }
-    else { burgerButton.classList.add('active'); }
-  });
-}
-/* ------------------------------------------------- */
 
 /* Marker Buttons Clicking Active */
 for (let i = 0; i < markerButtons.length; i++) {
@@ -62,6 +55,11 @@ for (let i = 0; i < menuItems.length; i++) {
 if (burgerButton) {
   burgerButton.addEventListener('click', function() {
     if (burgerButton.classList.contains('active')) {
+      burgerButton.classList.remove('active');
+    }
+    else { burgerButton.classList.add('active'); }
+
+    if (burgerButton.classList.contains('active')) {
       accountMenu.classList.add('active-button');
       menuLabel.classList.remove('active');
       for (let menuItem of menuItems) {
@@ -78,6 +76,56 @@ if (burgerButton) {
   });
 }
 /* ----------------------------------------------------- */
+
+/* Burger Button-mobile Menu and Bar Active */
+if (burgerButtonMobile) {
+  burgerButtonMobile.addEventListener('click', function() {
+    if (burgerButtonMobile.classList.contains('active')) {
+      burgerButtonMobile.classList.remove('active');
+    }
+    else { burgerButtonMobile.classList.add('active'); }
+
+    if (burgerButtonMobile.classList.contains('active')) {
+      accountMenu.classList.add('active-button');
+      menuLabel.classList.remove('active');
+      for (let menuItem of menuItems) {
+        menuItem.classList.add('visible');
+      }
+    }
+    else {
+      accountMenu.classList.remove('active-button'); 
+      menuLabel.classList.add('active');
+      for (let menuItem of menuItems) {
+        menuItem.classList.remove('visible');
+      }
+    }
+    if (!searchButton.classList.contains('mobile-visible')
+        && !searchForm.classList.contains('mobile-visible')
+        && !accountNavigate.classList.contains('mobile-visible')
+        && !accountHeader.classList.contains('mobile-visible')
+        && !accountMenu.classList.contains('mobile-visible')) {
+      searchButton.classList.add('mobile-visible');
+      searchForm.classList.add('mobile-visible');
+      accountNavigate.classList.add('mobile-visible');
+      accountHeader.classList.add('mobile-visible');
+      accountMenu.classList.add('mobile-visible');
+    } else {
+      searchButton.classList.remove('mobile-visible');
+      searchForm.classList.remove('mobile-visible');
+      accountNavigate.classList.remove('mobile-visible');
+      accountHeader.classList.remove('mobile-visible');
+      accountMenu.classList.remove('mobile-visible');
+    }
+    if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
+    else { frameBlock.classList.remove('menu-visible'); }
+
+    for (let markerButton of markerButtons) {
+      if (!markerButton.classList.contains('mobile-visible')) { markerButton.classList.add('mobile-visible'); }
+      else { markerButton.classList.remove('mobile-visible'); }
+    }
+  });
+}
+/* ---------------------------------------------------- */
 
 /* Search Button Input Active */
 if (searchButton) {
@@ -97,26 +145,63 @@ if (searchButton) {
     }
   });
 }
-
 /* ----------------------------------------------------- */
 
-/* Menu Label hover */
-if (menuLabel) {
-  menuLabel.addEventListener('mouseover', function() {
-    accountMenu.classList.add('active');
-    for (let menuItem of menuItems) {
-      menuItem.classList.add('visible');
+/* Screen Width updating */
+setInterval(function() {
+  if (document.body.clientWidth <= 1121) {
+    if (menuLabel.classList.contains('active')) { menuLabel.classList.remove('active'); }
+  } else {
+    if (!menuLabel.classList.contains('active')) { menuLabel.classList.add('active'); }
+  }
+
+  if (document.body.clientWidth >= 721) {
+    if (searchButton.classList.contains('mobile-visible')
+        && searchForm.classList.contains('mobile-visible')
+        && accountNavigate.classList.contains('mobile-visible')
+        && accountHeader.classList.contains('mobile-visible')
+        && accountMenu.classList.contains('mobile-visible')) {
+      searchButton.classList.remove('mobile-visible');
+      searchForm.classList.remove('mobile-visible');
+      accountNavigate.classList.remove('mobile-visible');
+      accountHeader.classList.remove('mobile-visible');
+      accountMenu.classList.remove('mobile-visible');
+    } 
+    // else {
+    //   searchButton.classList.remove('mobile-visible');
+    //   searchForm.classList.remove('mobile-visible');
+    //   accountNavigate.classList.remove('mobile-visible');
+    //   accountHeader.classList.remove('mobile-visible');
+    //   accountMenu.classList.remove('mobile-visible');
+    // }
+    if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
+    // else { frameBlock.classList.remove('menu-visible'); }
+  
+    for (let markerButton of markerButtons) {
+      if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
+      // else { markerButton.classList.remove('mobile-visible'); }
     }
-  });
-  accountMenu.addEventListener('mouseleave', function() {
-    if (!burgerButton.classList.contains('active')) {
-      accountMenu.classList.remove('active');
+  }
+  
+  /* Menu Label hover */
+  if (menuLabel) {
+    menuLabel.addEventListener('mouseover', function() {
+      accountMenu.classList.add('active');
       for (let menuItem of menuItems) {
-        menuItem.classList.remove('visible');
+        menuItem.classList.add('visible');
       }
-    }
-  });
-}
+    });
+  
+    accountMenu.addEventListener('mouseleave', function() {
+      if (!burgerButton.classList.contains('active') && menuLabel.classList.contains('active')) {
+        accountMenu.classList.remove('active');
+        for (let menuItem of menuItems) {
+          menuItem.classList.remove('visible');
+        }
+      }
+    });
+  }
+}, 100);
 /* ----------------------------------------------------- */
 
 /* Accounts-item hover and list in popup */
@@ -175,5 +260,7 @@ window.addEventListener('click', function(event) {
     if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
   }
 });
-/* -------------------------------------------------------- */
 }
+/* -------------------------------------------------------- */
+
+
