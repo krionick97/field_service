@@ -17,8 +17,8 @@ const popup = document.querySelector('.header__account-navigate_popup');
 const popupAccounts = document.querySelector('.header__account-navigate_popup-item:first-child');
 const popupAccountsList = document.querySelector('.header__account-navigate_popup-list');
 const popupAccountsItems = document.querySelectorAll('.header__account-navigate_popup-subitem');
+const popupLogout = document.querySelector('.header__account-navigate_popup-logout');
 const profile = document.querySelector('.header__account-navigate_profile');
-const popupLogout = document.querySelector('.header__account-navigate_popup-item:nth-child(2)');
 const frameBlock = document.querySelector('.section__account_frame-block');
 
 
@@ -40,7 +40,7 @@ for (let i = 0; i < markerButtons.length; i++) {
 for (let i = 0; i < menuItems.length; i++) {
   if (!menuItems[i].classList.contains('active')) menuItems[0].classList.add('active');
   menuItems[i].addEventListener('click', function() {
-    if (!menuItems[i].classList.contains('active')) menuItems[i].classList.add('active');
+    if (!menuItems[i].classList.contains('active')) { menuItems[i].classList.add('active'); }
     for (let j = i - 1; j >=0; j--) {
       if (menuItems[j].classList.contains('active')) menuItems[j].classList.remove('active');
     }
@@ -50,6 +50,7 @@ for (let i = 0; i < menuItems.length; i++) {
   });
 }
 /* --------------------------------------------------- */
+
 
 /* Burger Button Menu Active */
 if (burgerButton) {
@@ -124,28 +125,40 @@ if (burgerButtonMobile) {
       else { markerButton.classList.remove('mobile-visible'); }
     }
   });
+
 }
 /* ---------------------------------------------------- */
 
-/* Search Button Input Active */
-if (searchButton) {
-  searchButton.addEventListener('click', function() {
-    if (!searchInput.classList.contains('active') && !searchSubmit.classList.contains('active')) {
-      searchInput.classList.add('active');
-      searchSubmit.classList.add('active');
-    }
-    else { 
-      searchInput.classList.remove('active');
-      searchSubmit.classList.remove('active');
+/* Clicking item of mobile-menu and close it */
+menuItems.forEach(menuItem => {
+  menuItem.addEventListener('click', function() {
+    if (accountMenu.classList.contains('mobile-visible')
+        && accountHeader.classList.contains('mobile-visible')
+        && accountMenu.classList.contains('active-button')) {
+      if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
+      if (accountHeader.classList.contains('mobile-visible')) { accountHeader.classList.remove('mobile-visible'); }
+      if (accountMenu.classList.contains('mobile-visible')) { accountMenu.classList.remove('mobile-visible'); }
+      if (searchForm.classList.contains('mobile-visible')) { searchForm.classList.remove('mobile-visible'); }
+      if (searchButton.classList.contains('mobile-visible')) { searchButton.classList.remove('mobile-visible'); }
+      if (accountNavigate.classList.contains('mobile-visible')) { accountNavigate.classList.remove('mobile-visible'); }
+      if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
+      if (accountMenu.classList.contains('active-button')) { accountMenu.classList.remove('active-button'); }
+      if (accountNavigate.classList.contains('mobile-visible')) { accountNavigate.classList.remove('mobile-visible'); }
+
+      for (let menuItem of menuItems) {
+        if (menuItem.classList.contains('visible')) { setTimeout(() => { menuItem.classList.remove('visible'); }, 500); }
+      }
+      for (let markerButton of markerButtons) {
+        if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
+      }
     }
   });
-  searchSubmit.addEventListener('click', function(event) {
-    if (searchInput.value === '') {
-      event.preventDefault();
-    }
-  });
-}
-/* ----------------------------------------------------- */
+});
+/* ---------------------------------------------------- */
+
+
+
+
 
 /* Screen Width updating */
 setInterval(function() {
@@ -154,6 +167,34 @@ setInterval(function() {
   } else {
     if (!menuLabel.classList.contains('active')) { menuLabel.classList.add('active'); }
   }
+
+  /* Search Button Input Active */
+  if (searchButton) {
+    searchButton.addEventListener('click', function() {
+      if (!searchInput.classList.contains('active') && !searchSubmit.classList.contains('active')) {
+        searchInput.classList.add('active');
+        searchSubmit.classList.add('active');
+      }
+      else { 
+        searchInput.classList.remove('active');
+        searchSubmit.classList.remove('active');
+      }
+    });
+    searchSubmit.addEventListener('click', function(event) {
+      if (searchInput.value === '') {
+        event.preventDefault();
+      }
+    });
+
+    if (document.body.clientWidth <= 561 && searchInput.classList.contains('active') && searchSubmit.classList.contains('active')) {
+      if (!searchForm.classList.contains('mobile-mini')) { searchForm.classList.add('mobile-mini'); }
+      if (!accountMenu.classList.contains('search-mini')) { accountMenu.classList.add('search-mini'); }
+    } else {
+      if (searchForm.classList.contains('mobile-mini')) { searchForm.classList.remove('mobile-mini'); }
+      if (accountMenu.classList.contains('search-mini')) { accountMenu.classList.remove('search-mini'); }
+    }
+  }
+  /* ----------------------------------------------------- */
 
   if (document.body.clientWidth >= 721) {
     if (searchButton.classList.contains('mobile-visible')
@@ -201,24 +242,39 @@ setInterval(function() {
       }
     });
   }
+  
+  /* Accounts-item hover and list in popup */
+  popupAccounts.addEventListener('mouseover', function() {
+    if (document.body.clientWidth >= 1121) {
+      if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+    }
+  });
+  popupAccountsList.addEventListener('mouseleave', function() {
+    if (document.body.clientWidth >= 1121) {
+      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+    }
+  });
+  popup.addEventListener('mouseleave', function() {
+    if (document.body.clientWidth >= 1121) {
+      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+    }
+  });
+  popupLogout.addEventListener('mouseover', function() {
+    if (document.body.clientWidth >= 1121) {
+      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+    }
+  });
+  
 }, 100);
 /* ----------------------------------------------------- */
 
-/* Accounts-item hover and list in popup */
-if (popup && popupAccounts && popupAccountsList && popupAccountsItems) {
-  popupAccounts.addEventListener('mouseover', function() {
-    if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
-  });
-  popupAccountsList.addEventListener('mouseleave', function() {
-    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-  });
-  popup.addEventListener('mouseleave', function() {
-    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-  });
-  popupLogout.addEventListener('mouseover', function() {
-    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-  });
-/* ---------------------------------------------------- */
+/* Accounts-clicking and listing of account-list */
+popupAccounts.addEventListener('click', function() {
+  if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+  else { popupAccountsList.classList.remove('visible'); }
+});
+/* ------------------------------------------------------ */
+
 
 /* Popup Accounts-tem Clicking Select */
 for (let i = 0; i < popupAccountsItems.length; i++) {
@@ -258,9 +314,9 @@ window.addEventListener('click', function(event) {
   else {
     if (popup.classList.contains('visible')) popup.classList.remove('visible');
     if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
   }
 });
-}
 /* -------------------------------------------------------- */
 
 

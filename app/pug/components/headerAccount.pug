@@ -18,7 +18,7 @@ header.header.header__account
           img(src="assets/images/search_icon.svg", alt="Search")
         form(action="#").header__account-navigate_search-form
           input(type="search" id="account_search-input" name="account_search-input" aria-label="Search through site content").header__account-navigate_search-input
-          input(type="submit" id="account_search-submit" name="account_search-submit" value="OK").header__account-navigate_search-submit
+          input(type="submit" id="account_search-submit" name="account_search-submit" value="").header__account-navigate_search-submit
       div.header__account-navigate_rightBlock
         div.button.header__account-navigate_marker.active.header__account-navigate_main
           img(src="assets/images/mini-logo_icon.svg", alt="Main_marker")
@@ -51,7 +51,7 @@ header.header.header__account
             div.header__account-navigate_popup-icon
               img(src="assets/images/bell_icon.svg", alt="Account")
             span Notifications
-          div.header__account-navigate_popup-item
+          div.header__account-navigate_popup-item.header__account-navigate_popup-logout
             div.header__account-navigate_popup-icon
               img(src="assets/images/logout_icon.svg", alt="Account")
             span Log Out

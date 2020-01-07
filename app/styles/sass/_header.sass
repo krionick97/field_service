@@ -69,7 +69,6 @@
             display: none
 
       &_popup, &_popup-list
-        // padding: 1.2rem 1.4rem
         background-color: $color-white
       &_popup
         position: absolute
@@ -92,10 +91,6 @@
           &:hover
             cursor: pointer
             background-color: rgba($color-callList-bg, 0.2)
-          &:active
-            color: red
-        // &-item:first-child
-        //   position: relative
 
         &-list
           width: 0
@@ -138,12 +133,14 @@
       &_search
         display: block
         width: 2.4rem
+        &-form
+          position: relative
         &-input
           display: inline-block
           width: 0
           visibility: hidden
           margin: 0 0.5rem 0 1rem
-          padding: 0 1.2rem
+          padding: 0 4rem 0 1.2rem
           font-size: 1.8rem
           box-sizing: border-box
           height: 3rem
@@ -154,9 +151,8 @@
           &:focus
             outline: none
           &.active
-            width: 25rem
+            width: 29rem
             visibility: visible
-            // flex-grow: 1
             pointer-events: auto
         &-submit
           background-color: $color-blue-item
@@ -164,16 +160,26 @@
           border: none
           font-size: 1.4rem
           border-radius: 0.5rem
-          padding: 0.8rem 1.1rem 0.7rem 1rem
-          border-radius: 1.5rem
+          width: 4rem
+          height: 3rem
+          border-top-right-radius: 1.5rem
+          border-top-left-radius: 0
+          border-bottom-right-radius: 1.5rem
+          border-bottom-left-radius: 0
           transition: 0.1s
           opacity: 0
           pointer-events: none
           transition: 0.1s
+          position: absolute
+          left: 26rem
+          background-image: url('../../assets/images/search-2_icon.svg')
+          background-repeat: no-repeat
+          background-size: 1.8rem
+          background-position: center
           &:hover
-            transform: scale(1.04)
+            cursor: pointer
           &:active
-            transform: scale(1)
+            background-size: 1.9rem
           &:focus
             outline: none
           &.active
@@ -265,6 +271,8 @@
         &_popup
           bottom: -440%
           right: 0.5rem
+          &.visible
+            transition: 0
         &_indicator            
           &-mobile
             display: flex
@@ -290,6 +298,16 @@
             top: 1.6rem
             position: absolute
             margin-right: 0
+            &.active
+              margin-right: 1.5rem
+              margin-left: 0
+              padding-left: 0
+            &:before, &:after
+              display: none
+        &_marker
+          &.active
+            &:after
+              background-color: $color-blue-light
         &_popup
           top: 6.2rem
           bottom: auto
@@ -310,5 +328,23 @@
           display: none
         &_search.mobile-visible, &_search-form.mobile-visible, &_marker.mobile-visible
           display: block
+
+@media (max-width: 560px)
+  .header
+    &__account
+      &-navigate
+        &_search
+          &-form
+            &.mobile-mini
+              position: absolute
+              z-index: 2
+              padding: 1.1rem 0 0.9rem
+              top: 12rem
+              width: 100%
+              left: 0
+              background: $color-white
+              // input:first-child
+              //   width: auto
+
 
 

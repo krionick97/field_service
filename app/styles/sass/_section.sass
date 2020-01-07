@@ -181,6 +181,8 @@
       top: 0
       left: 0
       z-index: 2
+      &.search-mini
+        margin-top: 5.4rem
       &.mobile-visible
         width: 100% !important
       &.active
@@ -310,6 +312,13 @@
         &:after
           background-size: cover
 
+@media (max-width: 1120px)
+  .section
+    &__account
+      &-menu
+        &.active-button
+          transition: none
+
 @media (max-width: 990px)
   .section
     &__login
@@ -327,9 +336,6 @@
     &__account
       &-menu.active-button
         width: 18rem
-      // &-label
-      //   &.active
-      //     display: none
 
 @media (max-width: 420px)
   .section
