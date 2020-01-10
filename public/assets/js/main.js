@@ -33,31 +33,41 @@ setInterval(function() {
   }
 
 
-  if (document.body.clientWidth >= 821 && searchButton) {
+  if (document.body.clientWidth >= 721 && searchButton) {
     if (searchButton.classList.contains('mobile-visible')
         && searchForm.classList.contains('mobile-visible')
         && accountNavigate.classList.contains('mobile-visible')
-        && accountHeader.classList.contains('mobile-visible')
-        && accountMenu.classList.contains('mobile-visible')) {
+        && accountHeader.classList.contains('mobile-visible')) {
       searchButton.classList.remove('mobile-visible');
       searchForm.classList.remove('mobile-visible');
       accountNavigate.classList.remove('mobile-visible');
       accountHeader.classList.remove('mobile-visible');
+    }
+    if (accountMenu.classList.contains('active-button') && accountMenu.classList.contains('mobile-visible')) {
       accountMenu.classList.remove('mobile-visible');
-    } 
-    // else {
-    //   searchButton.classList.remove('mobile-visible');
-    //   searchForm.classList.remove('mobile-visible');
-    //   accountNavigate.classList.remove('mobile-visible');
-    //   accountHeader.classList.remove('mobile-visible');
-    //   accountMenu.classList.remove('mobile-visible');
-    // }
+      if (!burgerButton.classList.contains('active')) { burgerButton.classList.add('active'); }
+      if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
+    }
+
     if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
-    // else { frameBlock.classList.remove('menu-visible'); }
   
     for (let markerButton of markerButtons) {
       if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
-      // else { markerButton.classList.remove('mobile-visible'); }
+    }
+  }
+  if (document.body.clientWidth < 721 && searchButton) {
+    if (accountMenu.classList.contains('active-button')) {
+      if (!accountMenu.classList.contains('mobile-visible')) { accountMenu.classList.add('mobile-visible'); }
+      if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
+      if (!burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.add('active'); }
+      if (!accountNavigate.classList.contains('mobile-visible')) { accountNavigate.classList.add('mobile-visible'); }
+      if (!accountHeader.classList.contains('mobile-visible')) { accountHeader.classList.add('mobile-visible'); }
+      if (!searchButton.classList.contains('mobile-visible')) { searchButton.classList.add('mobile-visible'); }
+      if (!searchForm.classList.contains('mobile-visible')) { searchForm.classList.add('mobile-visible'); }
+      if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
+      for (let markerButton of markerButtons) {
+        if (!markerButton.classList.contains('mobile-visible')) { markerButton.classList.add('mobile-visible'); }
+      }
     }
   }
   
@@ -105,11 +115,6 @@ setInterval(function() {
     });
 
   }
-
-  // if (document.body.clientWidth < 721) {
-  //   if (!burgerButton.classList.contains('mobile')) { burgerButton.classList.contains('mobile'); }
-  //   else { burgerButton.classList.remove('mobile'); }
-  // }
 
   if (document.body.clientWidth <= 561 && searchForm
     && searchInput.classList.contains('active')
