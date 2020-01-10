@@ -14,12 +14,116 @@ const accountNavigate = document.querySelector('.header__account-navigate');
 const accountHeader = document.querySelector('.header__account');
 
 const popup = document.querySelector('.header__account-navigate_popup');
+const popupItems = document.querySelectorAll('.header__account-navigate_popup-item:not(:first-child)');
 const popupAccounts = document.querySelector('.header__account-navigate_popup-item:first-child');
+const popupIndicators = document.querySelectorAll('.header__account-navigate_indicator-mobile');
 const popupAccountsList = document.querySelector('.header__account-navigate_popup-list');
 const popupAccountsItems = document.querySelectorAll('.header__account-navigate_popup-subitem');
 const popupLogout = document.querySelector('.header__account-navigate_popup-logout');
 const profile = document.querySelector('.header__account-navigate_profile');
 const frameBlock = document.querySelector('.section__account_frame-block');
+
+
+/* Screen Width updating */
+setInterval(function() {
+  if (document.body.clientWidth <= 1121 && menuLabel) {
+    if (menuLabel.classList.contains('active')) { menuLabel.classList.remove('active'); }
+  } else {
+    if (menuLabel && !menuLabel.classList.contains('active')) { menuLabel.classList.add('active'); }
+  }
+
+
+  if (document.body.clientWidth >= 821 && searchButton) {
+    if (searchButton.classList.contains('mobile-visible')
+        && searchForm.classList.contains('mobile-visible')
+        && accountNavigate.classList.contains('mobile-visible')
+        && accountHeader.classList.contains('mobile-visible')
+        && accountMenu.classList.contains('mobile-visible')) {
+      searchButton.classList.remove('mobile-visible');
+      searchForm.classList.remove('mobile-visible');
+      accountNavigate.classList.remove('mobile-visible');
+      accountHeader.classList.remove('mobile-visible');
+      accountMenu.classList.remove('mobile-visible');
+    } 
+    // else {
+    //   searchButton.classList.remove('mobile-visible');
+    //   searchForm.classList.remove('mobile-visible');
+    //   accountNavigate.classList.remove('mobile-visible');
+    //   accountHeader.classList.remove('mobile-visible');
+    //   accountMenu.classList.remove('mobile-visible');
+    // }
+    if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
+    // else { frameBlock.classList.remove('menu-visible'); }
+  
+    for (let markerButton of markerButtons) {
+      if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
+      // else { markerButton.classList.remove('mobile-visible'); }
+    }
+  }
+  
+  /* Menu Label hover */
+  if (menuLabel) {
+    menuLabel.addEventListener('mouseover', function() {
+      accountMenu.classList.add('active');
+      for (let menuItem of menuItems) {
+        menuItem.classList.add('visible');
+      }
+    });
+  
+    accountMenu.addEventListener('mouseleave', function() {
+      if (!burgerButton.classList.contains('active') && menuLabel.classList.contains('active')) {
+        accountMenu.classList.remove('active');
+        for (let menuItem of menuItems) {
+          menuItem.classList.remove('visible');
+        }
+      }
+    });
+  }
+  
+
+  /* Accounts-item hover and list in popup */
+  if (popup) {
+    popupAccounts.addEventListener('mouseover', function() {
+      if (document.body.clientWidth >= 1121) {
+        if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+      }
+    });
+    popupAccountsList.addEventListener('mouseleave', function() {
+      if (document.body.clientWidth >= 1121) {
+        if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+      }
+    });
+    popup.addEventListener('mouseleave', function() {
+      if (document.body.clientWidth >= 1121) {
+        if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+      }
+    });
+    popupLogout.addEventListener('mouseover', function() {
+      if (document.body.clientWidth >= 1121) {
+        if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+      }
+    });
+
+  }
+
+  // if (document.body.clientWidth < 721) {
+  //   if (!burgerButton.classList.contains('mobile')) { burgerButton.classList.contains('mobile'); }
+  //   else { burgerButton.classList.remove('mobile'); }
+  // }
+
+  if (document.body.clientWidth <= 561 && searchForm
+    && searchInput.classList.contains('active')
+    && searchSubmit.classList.contains('active')) {
+  if (!searchForm.classList.contains('mobile-mini')) { searchForm.classList.add('mobile-mini'); }
+  if (!accountMenu.classList.contains('search-mini')) { accountMenu.classList.add('search-mini'); }
+} else {
+  if (searchForm && searchForm.classList.contains('mobile-mini')) { searchForm.classList.remove('mobile-mini'); }
+  if (accountMenu && accountMenu.classList.contains('search-mini')) { accountMenu.classList.remove('search-mini'); }
+}
+
+  
+}, 100);
+/* ----------------------------------------------------- */
 
 
 /* Marker Buttons Clicking Active */
@@ -81,10 +185,10 @@ if (burgerButton) {
 /* Burger Button-mobile Menu and Bar Active */
 if (burgerButtonMobile) {
   burgerButtonMobile.addEventListener('click', function() {
-    if (burgerButtonMobile.classList.contains('active')) {
-      burgerButtonMobile.classList.remove('active');
+    if (!burgerButtonMobile.classList.contains('active')) {
+      burgerButtonMobile.classList.add('active');
     }
-    else { burgerButtonMobile.classList.add('active'); }
+    else { burgerButtonMobile.classList.remove('active'); }
 
     if (burgerButtonMobile.classList.contains('active')) {
       accountMenu.classList.add('active-button');
@@ -156,152 +260,117 @@ menuItems.forEach(menuItem => {
 });
 /* ---------------------------------------------------- */
 
-
-
-
-
-/* Screen Width updating */
-setInterval(function() {
-  if (document.body.clientWidth <= 1121) {
-    if (menuLabel.classList.contains('active')) { menuLabel.classList.remove('active'); }
-  } else {
-    if (!menuLabel.classList.contains('active')) { menuLabel.classList.add('active'); }
-  }
-
-  /* Search Button Input Active */
-  if (searchButton) {
-    searchButton.addEventListener('click', function() {
-      if (!searchInput.classList.contains('active') && !searchSubmit.classList.contains('active')) {
-        searchInput.classList.add('active');
-        searchSubmit.classList.add('active');
-      }
-      else { 
-        searchInput.classList.remove('active');
-        searchSubmit.classList.remove('active');
-      }
-    });
-    searchSubmit.addEventListener('click', function(event) {
-      if (searchInput.value === '') {
-        event.preventDefault();
-      }
-    });
-
-    if (document.body.clientWidth <= 561 && searchInput.classList.contains('active') && searchSubmit.classList.contains('active')) {
-      if (!searchForm.classList.contains('mobile-mini')) { searchForm.classList.add('mobile-mini'); }
-      if (!accountMenu.classList.contains('search-mini')) { accountMenu.classList.add('search-mini'); }
-    } else {
-      if (searchForm.classList.contains('mobile-mini')) { searchForm.classList.remove('mobile-mini'); }
-      if (accountMenu.classList.contains('search-mini')) { accountMenu.classList.remove('search-mini'); }
+/* Search Button Input Active */
+if (searchButton) {
+  searchButton.addEventListener('click', function() {
+    if (!searchInput.classList.contains('active') && !searchSubmit.classList.contains('active')) {
+      searchInput.classList.add('active');
+      searchSubmit.classList.add('active');
     }
-  }
-  /* ----------------------------------------------------- */
-
-  if (document.body.clientWidth >= 721) {
-    if (searchButton.classList.contains('mobile-visible')
-        && searchForm.classList.contains('mobile-visible')
-        && accountNavigate.classList.contains('mobile-visible')
-        && accountHeader.classList.contains('mobile-visible')
-        && accountMenu.classList.contains('mobile-visible')) {
-      searchButton.classList.remove('mobile-visible');
-      searchForm.classList.remove('mobile-visible');
-      accountNavigate.classList.remove('mobile-visible');
-      accountHeader.classList.remove('mobile-visible');
-      accountMenu.classList.remove('mobile-visible');
-    } 
-    // else {
-    //   searchButton.classList.remove('mobile-visible');
-    //   searchForm.classList.remove('mobile-visible');
-    //   accountNavigate.classList.remove('mobile-visible');
-    //   accountHeader.classList.remove('mobile-visible');
-    //   accountMenu.classList.remove('mobile-visible');
-    // }
-    if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
-    // else { frameBlock.classList.remove('menu-visible'); }
-  
-    for (let markerButton of markerButtons) {
-      if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
-      // else { markerButton.classList.remove('mobile-visible'); }
-    }
-  }
-  
-  /* Menu Label hover */
-  if (menuLabel) {
-    menuLabel.addEventListener('mouseover', function() {
-      accountMenu.classList.add('active');
-      for (let menuItem of menuItems) {
-        menuItem.classList.add('visible');
-      }
-    });
-  
-    accountMenu.addEventListener('mouseleave', function() {
-      if (!burgerButton.classList.contains('active') && menuLabel.classList.contains('active')) {
-        accountMenu.classList.remove('active');
-        for (let menuItem of menuItems) {
-          menuItem.classList.remove('visible');
-        }
-      }
-    });
-  }
-  
-  /* Accounts-item hover and list in popup */
-  popupAccounts.addEventListener('mouseover', function() {
-    if (document.body.clientWidth >= 1121) {
-      if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+    else { 
+      searchInput.classList.remove('active');
+      searchSubmit.classList.remove('active');
     }
   });
-  popupAccountsList.addEventListener('mouseleave', function() {
-    if (document.body.clientWidth >= 1121) {
-      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+  searchSubmit.addEventListener('click', function(event) {
+    if (searchInput.value === '') {
+      event.preventDefault();
     }
   });
-  popup.addEventListener('mouseleave', function() {
-    if (document.body.clientWidth >= 1121) {
-      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-    }
-  });
-  popupLogout.addEventListener('mouseover', function() {
-    if (document.body.clientWidth >= 1121) {
-      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-    }
-  });
-  
-}, 100);
+
+}
 /* ----------------------------------------------------- */
 
-/* Accounts-clicking and listing of account-list */
-popupAccounts.addEventListener('click', function() {
-  if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
-  else { popupAccountsList.classList.remove('visible'); }
-});
-/* ------------------------------------------------------ */
-
-
-/* Popup Accounts-tem Clicking Select */
-for (let i = 0; i < popupAccountsItems.length; i++) {
-  if (!popupAccountsItems[i].classList.contains('selected')) popupAccountsItems[0].classList.add('selected');
-  popupAccountsItems[i].addEventListener('click', function() {
-    if (!popupAccountsItems[i].classList.contains('selected')) popupAccountsItems[i].classList.add('selected');
-    for (let j = i - 1; j >= 0; j--) {
-      if (popupAccountsItems[j].classList.contains('selected')) popupAccountsItems[j].classList.remove('selected');
-    }
-    for (let k = i + 1; k < menuItems.length; k++) {
-      if (popupAccountsItems[k].classList.contains('selected')) popupAccountsItems[k].classList.remove('selected');
-    }
+if (popup && popupAccounts) {
+  /* Accounts-clicking and listing of account-list */
+  popupAccounts.addEventListener('click', function() {
+    if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+    for (let popupIndicator of popupIndicators) {
+      if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
+    }  
   });
+  for (let popupItem of popupItems) {
+    popupItem.addEventListener('click', function() {
+      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+    });
+  }
+
+  /* Logout and popup-clos */
+  popupLogout.addEventListener('click', function() {
+    if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+    for (let popupIndicator of popupIndicators) {
+      if (popupIndicator.classList.contains('selected')) { popupIndicator.classList.remove('selected'); }
+    }
+    if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
+  });
+  /* ------------------------------------------------------ */
+  
+  /* Header item-indicators selecting */
+  for (let i = 0; i < menuItems.length; i++) {
+    if (!menuItems[i].classList.contains('active')) menuItems[0].classList.add('active');
+    menuItems[i].addEventListener('click', function() {
+      if (!menuItems[i].classList.contains('active')) { menuItems[i].classList.add('active'); }
+      for (let j = i - 1; j >=0; j--) {
+        if (menuItems[j].classList.contains('active')) menuItems[j].classList.remove('active');
+      }
+      for (let k = i + 1; k < menuItems.length; k++) {
+        if (menuItems[k].classList.contains('active')) menuItems[k].classList.remove('active')
+      }
+    });
+  }
+  /* --------------------------------------------------- */
+
+  
+  /* Popup Accounts-item Clicking Select */
+  for (let i = 0; i < popupIndicators.length; i++) {
+    popupIndicators[i].addEventListener('click', function() {
+      if (!popupIndicators[i].classList.contains('selected')) popupIndicators[i].classList.add('selected');
+      for (let j = i - 1; j >= 0; j--) {
+        if (popupIndicators[j].classList.contains('selected')) popupIndicators[j].classList.remove('selected');
+      }
+      for (let k = i + 1; k < popupIndicators.length; k++) {
+        if (popupIndicators[k].classList.contains('selected')) popupIndicators[k].classList.remove('selected');
+      }
+    });
+  }
+
+  /* Accounts subitems Clicking Select */
+  for (let i = 0; i < popupAccountsItems.length; i++) {
+    if (!popupAccountsItems[i].classList.contains('selected')) popupAccountsItems[0].classList.add('selected');
+    popupAccountsItems[i].addEventListener('click', function() {
+      for (let popupIndicator of popupIndicators) {
+        if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
+      }  
+      if (!popupAccountsItems[i].classList.contains('selected')) popupAccountsItems[i].classList.add('selected');
+      for (let j = i - 1; j >= 0; j--) {
+        if (popupAccountsItems[j].classList.contains('selected')) popupAccountsItems[j].classList.remove('selected');
+      }
+      for (let k = i + 1; k < popupAccountsItems.length; k++) {
+        if (popupAccountsItems[k].classList.contains('selected')) popupAccountsItems[k].classList.remove('selected');
+      }
+    });
+  }
 }
 /* --------------------------------------------------- */
 
 /* Profile Clicking popup-call */
-profile.addEventListener('click', function() {
-  if (!popup.classList.contains('visible')) { popup.classList.add('visible'); }
-  else { 
-    popup.classList.remove('visible'); 
-  }
-  if (!frameBlock.classList.contains('overframe')) { frameBlock.classList.add('overframe'); }
-  else {
-    frameBlock.classList.remove('overframe');
-  }
-});
+if (profile) {
+  profile.addEventListener('click', function() {
+    if (!popup.classList.contains('visible')) { popup.classList.add('visible'); }
+    else { 
+      popup.classList.remove('visible'); 
+      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+    }
+    if (!frameBlock.classList.contains('overframe')) { frameBlock.classList.add('overframe'); }
+    else {
+      frameBlock.classList.remove('overframe');
+    }
+    for (let popupIndicator of popupIndicators) {
+      if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
+    }
+  });
+}
 /* ------------------------------------------------- */
 
 /* Clicking outside of popup to close and deselect */

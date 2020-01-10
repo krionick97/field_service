@@ -88,6 +88,10 @@
           padding: 1rem 1.2rem
           display: flex
           align-items: center
+          span
+            -moz-user-select: none
+            -khtml-user-select: none
+            user-select: none
           &:hover
             cursor: pointer
             background-color: rgba($color-callList-bg, 0.2)
@@ -109,7 +113,16 @@
           width: 3.2rem !important
           height: 3.2rem !important
           margin-right: 1.6rem
+          img
+            -moz-user-select: none
+            -khtml-user-select: none
+            user-select: none
         &-subitem
+          span
+            max-width: 16rem
+            text-overflow: ellipsis
+            overflow: hidden
+            white-space: nowrap
           &.selected
             position: relative
             background-color: $color-callList-bg
@@ -140,7 +153,7 @@
           width: 0
           visibility: hidden
           margin: 0 0.5rem 0 1rem
-          padding: 0 4rem 0 1.2rem
+          padding: 0 4.8rem 0 1.2rem
           font-size: 1.8rem
           box-sizing: border-box
           height: 3rem
@@ -176,6 +189,8 @@
           background-repeat: no-repeat
           background-size: 1.8rem
           background-position: center
+          &::ms-clear
+            display: block
           &:hover
             cursor: pointer
           &:active
@@ -251,9 +266,9 @@
 
 @media (max-width: 1120px)
   .header
-    height: auto
     padding: 0
     &__account
+      height: auto
       width: 100%
       flex-direction: column
       &-login
@@ -271,14 +286,19 @@
         &_popup
           bottom: -440%
           right: 0.5rem
+          &-item, &-subitem
+            &:hover
+              background-color: none
           &.visible
             transition: 0
         &_indicator            
           &-mobile
             display: flex
+            &.selected
+              background-color: $color-callList-bg
             div img
               height: 100%
-              padding: 0 0 0 0.5rem
+              padding: 0
 
 @media (max-width: 720px)
   .header
@@ -286,11 +306,12 @@
       height: 6rem
       &.mobile-visible
         transition: 0.1s
-        height: 12rem
+        height: 11rem
       &-navigate
         background: none
         &.mobile-visible
-          background: $color-white  
+          background: $color-white
+          height: 4rem
         &_burger
           display: none
           &.mobile
@@ -305,6 +326,12 @@
             &:before, &:after
               display: none
         &_marker
+          &.mobile-visible
+            padding: 0 1.7rem
+            img
+              height: 56%
+              width: 100%
+              margin-top: 1rem
           &.active
             &:after
               background-color: $color-blue-light
@@ -333,18 +360,34 @@
   .header
     &__account
       &-navigate
+        &_popup
+          &-subitem span
+            max-width: 11rem
         &_search
           &-form
             &.mobile-mini
               position: absolute
               z-index: 2
               padding: 1.1rem 0 0.9rem
-              top: 12rem
+              top: 11rem
               width: 100%
               left: 0
               background: $color-white
-              // input:first-child
-              //   width: auto
+              input:first-child
+                width: 95%
+              input:last-child
+                left: auto
+                right: 0.6rem
+
+@media (max-width: 365px)
+  .header
+    &__account
+      &-navigate
+        &_popup
+          &-subitem
+            span
+              max-width: 7.5rem
+
 
 
 

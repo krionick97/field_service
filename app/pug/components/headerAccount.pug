@@ -17,7 +17,7 @@ header.header.header__account
         div.button.header__account-navigate_search
           img(src="assets/images/search_icon.svg", alt="Search")
         form(action="#").header__account-navigate_search-form
-          input(type="search" id="account_search-input" name="account_search-input" aria-label="Search through site content").header__account-navigate_search-input
+          input(type="search" id="account_search-input" autocomplete="off" aria-autocomplete="both" name="account_search-input" aria-label="Search through site content").header__account-navigate_search-input
           input(type="submit" id="account_search-submit" name="account_search-submit" value="").header__account-navigate_search-submit
       div.header__account-navigate_rightBlock
         div.button.header__account-navigate_marker.active.header__account-navigate_main
@@ -36,20 +36,20 @@ header.header.header__account
 
         div.header__account-navigate_popup
           div.header__account-navigate_popup-item
-            div.section__accounts-link_image.header__account-navigate_popup-icon
-              img(src="assets/images/business-account_icon.svg", alt="Account").section__accounts-link_img.section__accounts-link_icon
+            div.header__account-navigate_popup-icon
+              img(src="assets/images/accounts_icon.svg", alt="Accounts")
             span Accounts
           div.header__account-navigate_popup-item.header__account-navigate_indicator-mobile
             div.header__account-navigate_popup-icon
-              img(src="assets/images/phonecall-1_icon.svg", alt="Account")
+              img(src="assets/images/phonecall-mobile_icon.svg", alt="Account")
             span Phone
           div.header__account-navigate_popup-item.header__account-navigate_indicator-mobile
             div.header__account-navigate_popup-icon
-              img(src="assets/images/question_icon.svg", alt="Account")
+              img(src="assets/images/support-mobile_icon.svg", alt="Account")
             span Support
           div.header__account-navigate_popup-item.header__account-navigate_indicator-mobile
             div.header__account-navigate_popup-icon
-              img(src="assets/images/bell_icon.svg", alt="Account")
+              img(src="assets/images/bell-mobile_icon.svg", alt="Account")
             span Notifications
           div.header__account-navigate_popup-item.header__account-navigate_popup-logout
             div.header__account-navigate_popup-icon
@@ -59,7 +59,7 @@ header.header.header__account
             div.header__account-navigate_popup-subitem
               div.section__accounts-link_image.header__account-navigate_popup-icon
                 img(src="assets/images/business-account_icon.svg", alt="Account").section__accounts-link_img.section__accounts-link_icon
-              span Account_1
+              span Texas Appliance Repair
             div.header__account-navigate_popup-subitem
               div.section__accounts-link_image.header__account-navigate_popup-icon
                 img(src="assets/images/business-account_icon.svg", alt="Account").section__accounts-link_img.section__accounts-link_icon
