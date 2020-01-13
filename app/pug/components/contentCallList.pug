@@ -56,7 +56,7 @@ div.frameContent.callList
           <path d="M19.1186 17.2581L15.1033 13.2428C15.9666 12.0397 16.4813 10.6217 16.5907 9.14499C16.7002 7.66823 16.4002 6.18991 15.7238 4.87264C15.0473 3.55537 14.0206 2.45021 12.7567 1.67875C11.4927 0.907283 10.0404 0.49941 8.55962 0.500001C6.42394 0.501027 4.37602 1.34988 2.86586 2.86004C1.3557 4.3702 0.506847 6.41812 0.505821 8.5538C0.503839 10.0352 0.910858 11.4883 1.68203 12.7532C2.45319 14.018 3.55857 15.0453 4.87635 15.722C6.19412 16.3988 7.67314 16.6985 9.15041 16.5883C10.6277 16.4781 12.0458 15.9622 13.2486 15.0975L17.2639 19.1167C17.5104 19.3631 17.8447 19.5016 18.1932 19.5016C18.5418 19.5016 18.876 19.3631 19.1225 19.1167C19.369 18.8702 19.5074 18.5359 19.5074 18.1874C19.5074 17.8388 19.369 17.5046 19.1225 17.2581H19.1186ZM4.72245 12.3948C3.83666 11.5074 3.28593 10.3402 3.16406 9.09228C3.0422 7.84431 3.35673 6.5927 4.05409 5.55061C4.75144 4.50852 5.7885 3.74041 6.98861 3.37711C8.18872 3.01381 9.47767 3.07779 10.6359 3.55815C11.7941 4.0385 12.75 4.90553 13.3408 6.01156C13.9315 7.11758 14.1205 8.39419 13.8757 9.62395C13.6308 10.8537 12.9672 11.9606 11.9979 12.756C11.0286 13.5514 9.81352 13.9862 8.55962 13.9862C7.84659 13.9878 7.14032 13.8479 6.48169 13.5748C5.82305 13.3016 5.22511 12.9006 4.72245 12.3948V12.3948Z"/>
         </svg>
       input(type="search" id="call-list-search" name="call-list-search" aria-label="Search through site content").callList__controls-search_input
-    
+  
     // Right block
     div.callList__controls-rightBlock
       div.callList__controls-item.callList__controls-period
@@ -75,13 +75,13 @@ div.frameContent.callList
           div.callList__controls-popup_item.callList__controls-period_item This week (Sun - today)
           div.callList__controls-popup_item.callList__controls-period_item This week (Mon - today)
           div.callList__controls-popup_item.callList__controls-period_item Last 7 days
-          div.callList__controls-popup_item.callList__controls-period_item Last 7 days (Sun - Sat)
-          div.callList__controls-popup_item.callList__controls-period_item Last 7 days (Mon - Sat)
+          div.callList__controls-popup_item.callList__controls-period_item Last week (Sun - Sat)
+          div.callList__controls-popup_item.callList__controls-period_item Last week (Mon - Sat)
           div.callList__controls-popup_item.callList__controls-period_item Last business week (Mon - Fri)
           div.callList__controls-popup_item.callList__controls-period_item Last 14 days
           div.callList__controls-popup_item.callList__controls-period_item This month
-          div.callList__controls-popup_item.callList__controls-period_item Last 30 days
           div.callList__controls-popup_item.callList__controls-period_item Last month
+          div.callList__controls-popup_item.callList__controls-period_item Last 30 days
 
 
       div.callList__controls-dating
@@ -104,6 +104,68 @@ div.frameContent.callList
                 <path d="M10.7548 10.541H7.67847V13.8006H10.7548V10.541Z" />
               </svg>
 
+        div.callList__controls-popup.callList__controls-dating_calendar
+          div.callList__controls-dating_calendar-month
+            span January 2020
+            div.callList__controls-dating_calendar-control.callList__controls-dating_calendar-prevArr
+              <svg viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.22396 1L1.22742 6.07275L6.22396 11.1455" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            div.callList__controls-dating_calendar-control.callList__controls-dating_calendar-nextArr
+              <svg viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.22396 1L1.22742 6.07275L6.22396 11.1455" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          table.callList__controls-dating_calendar-table
+            tr.callList__controls-dating_calendar-rowWeek
+              td S
+              td M
+              td T
+              td W
+              td T
+              td F
+              td S
+            tr.callList__controls-dating_calendar-rowDays
+              td
+              td
+              td 1
+              td 2
+              td 3
+              td 4
+              td 5
+            tr.callList__controls-dating_calendar-rowDays
+              td 6
+              td 7
+              td 8
+              td 9
+              td 10
+              td 11
+              td 12
+            tr.callList__controls-dating_calendar-rowDays
+              td 13
+              td 14
+              td 15
+              td 16
+              td 17
+              td 18
+              td 19
+            tr.callList__controls-dating_calendar-rowDays
+              td 20
+              td 21
+              td 22
+              td 23
+              td 24
+              td 25
+              td 26
+            tr.callList__controls-dating_calendar-rowDays
+              td 27
+              td 28
+              td 29
+              td 30
+              td 31
+              td 
+              td 
+
+
       div.callList__controls-item.callList__controls-update
         <svg viewBox="0 0 24 21" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M7.57019 3.59214C9.01588 3.09399 10.5829 3.07069 12.0428 3.52564C13.5026 3.9806 14.779 4.89001 15.6857 6.12127C16.5924 7.35254 17.0821 8.84126 17.0834 10.3704C17.0834 10.3974 17.0843 10.4243 17.086 10.4509H13.5087L18.3334 15.2526L23.1581 10.4509H19.5807C19.5825 10.4236 19.5834 10.3961 19.5834 10.3683C19.5817 8.30647 18.9214 6.29907 17.6987 4.63882C16.4761 2.97858 14.7551 1.75232 12.7866 1.13886C10.8181 0.525398 8.70511 0.556814 6.75574 1.22853C4.80636 1.90024 3.12254 3.17712 1.9498 4.87298C0.777058 6.56884 0.176729 8.59499 0.236347 10.656C0.295966 12.717 1.01242 14.705 2.28123 16.3303C3.55004 17.9555 5.30485 19.1329 7.2898 19.6908C9.27474 20.2487 11.386 20.1579 13.3157 19.4317C13.9619 19.1886 14.2885 18.4677 14.0454 17.8216C13.8022 17.1754 13.0813 16.8488 12.4352 17.0919C11.0041 17.6305 9.43832 17.6978 7.96626 17.2841C6.49419 16.8703 5.19279 15.9971 4.25182 14.7918C3.31085 13.5865 2.77952 12.1122 2.7353 10.5837C2.69109 9.05523 3.1363 7.5526 4.00603 6.29493C4.87575 5.03725 6.1245 4.09029 7.57019 3.59214Z" />
@@ -118,20 +180,23 @@ div.frameContent.callList
       div.callList__tags-block_tag Tag_N
       div.callList__tags-block_tag Tag_N
       div.callList__tags-block_tag Tag_N
+      div.callList__tags-block_tag Tag_N
+      div.callList__tags-block_tag Tag_N
+
 
   div.callList__table-block
     // Navigate Block
     div.callList__table-navigate
       div.callList__table-navigate_leftBlock
         div.callList__table-navigate_text Show rows:
-        div.callList__table-navigate_number
-          span 500
-          div.callList__table-navigate_number-list
+        div#navigate.callList__table-navigate_number
+          div#navigate-number-up 500
+          div#navigate-numberList-up.callList__table-navigate_number-list
             div.callList__table-navigate_number-item 50
             div.callList__table-navigate_number-item 100
             div.callList__table-navigate_number-item 250
             div.callList__table-navigate_number-item.selected 500
-        div.controls-arrow.callList__table-navigate_arrow
+        div#navigate-arrow-up.controls-arrow.callList__table-navigate_arrow
           <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -165,17 +230,55 @@ div.frameContent.callList
     div.callList__table
       table
         tr
-          th Source
-            div.controls-arrow.callList__table-source_arrow
-              <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-          th Ads Group
-          th Area
-          th Total Calls
-          th Completed
-          th Unanswered
-          th Avg Duration
+          th 
+            div 
+              p Source
+              div.controls-arrow.callList__table-source_arrow
+                <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          th
+            div 
+              p Ads Group
+              div.controls-arrow.callList__table-source_arrow.open
+                <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          th
+            div 
+              p Area
+              div.controls-arrow.callList__table-source_arrow
+                <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          th
+            div 
+              p Total Calls
+              div.controls-arrow.callList__table-source_arrow
+                <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          th
+            div 
+              p Completed
+              div.controls-arrow.callList__table-source_arrow
+                <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          th
+            div 
+              p Unanswered
+              div.controls-arrow.callList__table-source_arrow
+                <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          th
+            div 
+              p Avg Duration
+              div.controls-arrow.callList__table-source_arrow
+                <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
         tr
           td Row_text
           td Row_text
@@ -224,3 +327,47 @@ div.frameContent.callList
           td Row_text
           td Row_text
           td Row_text
+
+        // Navigate Block
+    
+    // Navigate Block Down
+    div.callList__table-navigate
+      div.callList__table-navigate_leftBlock
+        div.callList__table-navigate_text Show rows:
+        div.callList__table-navigate_number
+          div#navigate-number-down 500
+          div#navigate-numberList-down.callList__table-navigate_number-list
+            div.callList__table-navigate_number-item 50
+            div.callList__table-navigate_number-item 100
+            div.callList__table-navigate_number-item 250
+            div.callList__table-navigate_number-item.selected 500
+        div#navigate-arrow-down.controls-arrow.callList__table-navigate_arrow
+          <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L6 5.28571L11 1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        div.callList__table-navigate_rest
+          span 501
+          span —1,000 of 2,000
+      div.callList__table-navigate_rightBlock
+        div.callList__table-navigate_controls
+          // navigate control
+          div.callList__table-navigate_control.callList__table-navigate_prev.inactive
+            <svg viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.60912 1L3.61258 6.07275L8.60912 11.1455M1 1V11.1455" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          // navigate control
+          div.callList__table-navigate_control.callList__table-navigate_left
+            <svg viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.22396 1L1.22742 6.07275L6.22396 11.1455" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          // navigate control
+          div.callList__table-navigate_control.callList__table-navigate_right
+            <svg viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.868389 11.1455L5.86493 6.07276L0.868388 1.00002" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          // navigate control
+          div.callList__table-navigate_control.callList__table-navigate_next
+            <svg viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.50935 11.1458L6.50589 6.07301L1.50935 1.00026M9.11847 11.1458L9.11847 1.00026" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+

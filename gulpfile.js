@@ -68,6 +68,21 @@ gulp.task('sass', function() {
           stream: true
         }));
 });
+gulp.task('sass-iframe', function() {
+  return gulp.src('app/styles/sass/style-iframe.sass')
+        .pipe(gulpPlugin.sourcemaps.init())
+        .pipe(gulpPlugin.sass({}))
+        .pipe(gulpPlugin.autoprefixer({}))
+        .on("error", gulpPlugin.notify.onError({
+          message: "Error: <%= error.message %>",
+          title: "Error in style"
+        }))
+        .pipe(gulpPlugin.sourcemaps.write())
+        .pipe(gulp.dest('public/assets/css/'))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
+});
 
 /* Fonts task */
 gulp.task('fonts', function() {
@@ -111,6 +126,7 @@ gulp.task('watch', function() {
   gulp.watch('app/pug/**/*.pug', gulp.series('pug'));
   gulp.watch('app/styles/*.css', gulp.series('css'));
   gulp.watch('app/styles/sass/*.sass', gulp.series('sass'));
+  gulp.watch('app/styles/sass/*.sass', gulp.series('sass-iframe'));
   gulp.watch('app/js/*.js', gulp.series('script'));
   gulp.watch('public/*.html', gulp.series('HTMLValidator'));
   // gulp.watch('app/data/*.json', gulp.series('json'));
@@ -118,6 +134,6 @@ gulp.task('watch', function() {
 
 /* Default task */
 gulp.task('default', gulp.series(
-  gulp.parallel('pug', 'fonts', 'sass', 'img', 'css', 'script'),
+  gulp.parallel('pug', 'fonts', 'sass', 'sass-iframe', 'img', 'css', 'script'),
   gulp.parallel('watch', 'serve', 'HTMLValidator'),
 ));

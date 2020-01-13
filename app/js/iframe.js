@@ -16,11 +16,19 @@ const searchInput_call = document.querySelector('.callList__controls-search_inpu
 const controlsItems = document.querySelectorAll('.callList__controls-item');
 const popups = document.querySelectorAll('.callList__controls-popup');
 const tags = document.querySelectorAll('.callList__tags-block_tag');
-const rowsNumber = document.querySelector('.callList__table-navigate_number > span');
 const rowsNumberRest = document.querySelector('.callList__table-navigate_rest > span:first-child');
-const rowsNumberList = document.querySelector('.callList__table-navigate_number-list');
+const rowsNumberList = document.querySelector('#navigate-numberList-up');
+const rowsNumberListDown = document.querySelector('#navigate-numberList-down');
 const rowsNumberItems = document.querySelectorAll('.callList__table-navigate_number-item');
-const rowsArrow = document.querySelector('.callList__table-navigate_arrow');
+const rowsNumber = document.querySelector('#navigate-number-up');
+const rowsArrow = document.querySelector('#navigate-arrow-up');
+const rowsNumberDown = document.querySelector('#navigate-number-down');
+const rowsArrowDown = document.querySelector('#navigate-arrow-down');
+const monthRowLeft = document.querySelector('.callList__controls-dating_calendar-month:before');
+
+const datingControls = document.querySelector('.callList__controls-dating');
+const datingCalendar = document.querySelector('.callList__controls-dating_calendar');
+const monthDays = document.querySelectorAll('.callList__controls-dating_calendar-rowDays td');
 
 /* Mode clicking select */
 mode.addEventListener('click', function() {
@@ -129,13 +137,50 @@ for (let i = 0; i < periodItems.length; i++) {
 /* -------------------------------------------------------- */
 
 /* Clicking Table Navigate Arrow to show Number Arrows */
+rowsNumber.addEventListener('click', function() {
+  if (!rowsArrow.classList.contains('open') && !rowsNumberList.classList.contains('show')) {
+    rowsArrow.classList.add('open');
+    rowsNumberList.classList.add('show');
+    rowsArrowDown.classList.remove('open');
+    rowsNumberListDown.classList.remove('show');
+  } else {
+    rowsArrow.classList.remove('open');
+    rowsNumberList.classList.remove('show');
+  }
+});
+
 rowsArrow.addEventListener('click', function() {
   if (!rowsArrow.classList.contains('open') && !rowsNumberList.classList.contains('show')) {
     rowsArrow.classList.add('open');
     rowsNumberList.classList.add('show');
+    rowsArrowDown.classList.remove('open');
+    rowsNumberListDown.classList.remove('show');
   } else {
     rowsArrow.classList.remove('open');
     rowsNumberList.classList.remove('show');
+  }
+});
+
+rowsNumberDown.addEventListener('click', function() {
+  if (!rowsArrowDown.classList.contains('open') && !rowsNumberListDown.classList.contains('show')) {
+    rowsArrowDown.classList.add('open');
+    rowsNumberListDown.classList.add('show');
+    rowsArrow.classList.remove('open');
+    rowsNumberList.classList.remove('show');
+  } else {
+    rowsArrowDown.classList.remove('open');
+    rowsNumberListDown.classList.remove('show');
+  }
+});
+rowsArrowDown.addEventListener('click', function() {
+  if (!rowsArrowDown.classList.contains('open') && !rowsNumberListDown.classList.contains('show')) {
+    rowsArrowDown.classList.add('open');
+    rowsNumberListDown.classList.add('show');
+    rowsArrow.classList.remove('open');
+    rowsNumberList.classList.remove('show');
+  } else {
+    rowsArrowDown.classList.remove('open');
+    rowsNumberListDown.classList.remove('show');
   }
 });
 
@@ -149,9 +194,29 @@ for (let i = 0; i < rowsNumberItems.length; i++) {
       if (rowsNumberItems[k].classList.contains('selected')) { rowsNumberItems[k].classList.remove('selected'); }
     }
     let itemText = rowsNumberItems[i].textContent;
-    let restRows = +itemText + 1;
     rowsNumber.textContent = itemText;
-    rowsNumberRest.textContent = restRows;
+    rowsNumberDown.textContent = itemText;
+    rowsArrow.classList.remove('open');
+    rowsNumberList.classList.remove('show');
+    rowsArrowDown.classList.remove('open');
+    rowsNumberListDown.classList.remove('show');
+  });
+}
+/* -------------------------------------------------------- */
+
+/* Calendar visible clicking */
+datingControls.addEventListener('click', function() {
+  if (!datingCalendar.classList.contains('visible')) { datingCalendar.classList.add('visible'); }
+  // else { datingCalendar.classList.remove('visible'); }
+});
+/* --------------------------------------------------------- */
+
+/* Days clicking select */
+for (let i = 0; i < monthDays.length; i++) {
+  monthDays[i].addEventListener('click', function() {
+    if (monthDays[i].textContent === '') { return; }
+    if (!monthDays[i].classList.contains('selected')) { monthDays[i].classList.add('selected'); }
+    else { monthDays[i].classList.remove('selected'); }
   });
 }
 /* -------------------------------------------------------- */
@@ -161,9 +226,12 @@ window.addEventListener('click', function(event) {
   let target = event.target;
   let controlItem = target.closest('.callList__controls-item');
   let tableNumberBlock = target.closest('.callList__table-navigate_leftBlock');
+  let datingControls = target.closest('.callList__controls-dating');
+
+  if (datingControls) { return; }
 
   /* For Controls Button */
-  if (controlItem) { return; /* console.log(controlItem); */ }
+  if (controlItem) { return; }
   else {
     for (let controlsItem of controlsItems) {
       if (controlsItem.classList.contains('open')) { controlsItem.classList.remove('open'); }
@@ -180,11 +248,15 @@ window.addEventListener('click', function(event) {
   }
 
   /* For popup rows number of the table */
-  if (tableNumberBlock) { return; /* console.log(tableNumberBlock); */ }
+  if (tableNumberBlock) { return; }
   else {
     if (rowsArrow.classList.contains('open') && rowsNumberList.classList.contains('show')) {
       rowsArrow.classList.remove('open');
       rowsNumberList.classList.remove('show');
+    }
+    if (rowsArrowDown.classList.contains('open') && rowsNumberListDown.classList.contains('show')) {
+      rowsArrowDown.classList.remove('open');
+      rowsNumberListDown.classList.remove('show');
     }
   }
 });
