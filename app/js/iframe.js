@@ -3,6 +3,10 @@
 const mode = document.querySelector('.callList__controls-mode');
 const setting = document.querySelector('.callList__controls-setting');
 const settingList = document.querySelector('.callList__controls-setting_list');
+const settingList_1 = document.querySelector('.callList__controls-setting_list-1');
+const settingList_2 = document.querySelector('.callList__controls-setting_list-2');
+const settingItems_1 = document.querySelectorAll('.callList__controls-setting_list-1 .callList__controls-setting_item');
+const settingItems_2 = document.querySelectorAll('.callList__controls-setting_list-2 .callList__controls-setting_item');
 const settingItems = document.querySelectorAll('.callList__controls-setting_item');
 const modeList = document.querySelector('.callList__controls-mode_list');
 const modeItems = document.querySelectorAll('.callList__controls-mode_item');
@@ -14,6 +18,8 @@ const periodText = document.querySelector('.callList__controls-period_text > spa
 const search_call = document.querySelector('.callList__controls-search');
 const searchInput_call = document.querySelector('.callList__controls-search_input');
 const controlsItems = document.querySelectorAll('.callList__controls-item');
+const controls = document.querySelector('.callList__controls');
+const controlsLeftBlock = document.querySelector('.callList__controls-leftBlock');
 const popups = document.querySelectorAll('.callList__controls-popup');
 const tags = document.querySelectorAll('.callList__tags-block_tag');
 const rowsNumberRest = document.querySelector('.callList__table-navigate_rest > span:first-child');
@@ -25,10 +31,14 @@ const rowsArrow = document.querySelector('#navigate-arrow-up');
 const rowsNumberDown = document.querySelector('#navigate-number-down');
 const rowsArrowDown = document.querySelector('#navigate-arrow-down');
 const monthRowLeft = document.querySelector('.callList__controls-dating_calendar-month:before');
+const tagsBlock = document.querySelector('.callList__tags');
+const callList = document.querySelector('.callList');
+const tableBlock = document.querySelector('.callList__table-block');
 
 const datingControls = document.querySelector('.callList__controls-dating');
 const datingCalendar = document.querySelector('.callList__controls-dating_calendar');
 const monthDays = document.querySelectorAll('.callList__controls-dating_calendar-rowDays td');
+
 
 /* Mode clicking select */
 mode.addEventListener('click', function() {
@@ -63,20 +73,42 @@ setting.addEventListener('click', function() {
     setting.classList.add('open');
     settingList.classList.add('visible');
 
-  } else {
+  } 
+  else {
     setting.classList.remove('open');
     settingList.classList.remove('visible');
   }
 });
 
-for (let i = 0; i < settingItems.length; i++) {
-  settingItems[i].addEventListener('click', function() {
-    if (!settingItems[i].classList.contains('selected')) { settingItems[i].classList.add('selected'); }
-    for (let j = i - 1; j >=0; j--) {
-      if (settingItems[j].classList.contains('selected')) { settingItems[j].classList.remove('selected'); }
+for (let settingItem of settingItems) {
+  settingItem.addEventListener('click', function() {
+    if (setting.classList.contains('open') && settingList.classList.contains('visible')) {
+      setting.classList.remove('open');
+      settingList.classList.remove('visible');  
     }
-    for (let k = i + 1; k < settingItems.length; k++) {
-      if (settingItems[k].classList.contains('selected')) { settingItems[k].classList.remove('selected'); }
+  });
+}
+
+for (let i = 0; i < settingItems_1.length; i++) {
+  settingItems_1[i].addEventListener('click', function() {
+    if (!settingItems_1[i].classList.contains('selected')) { settingItems_1[i].classList.add('selected'); }
+    for (let j = i - 1; j >=0; j--) {
+      if (settingItems_1[j].classList.contains('selected')) { settingItems_1[j].classList.remove('selected'); }
+    }
+    for (let k = i + 1; k < settingItems_1.length; k++) {
+      if (settingItems_1[k].classList.contains('selected')) { settingItems_1[k].classList.remove('selected'); }
+    }
+  });
+}
+
+for (let i = 0; i < settingItems_2.length; i++) {
+  settingItems_2[i].addEventListener('click', function() {
+    if (!settingItems_2[i].classList.contains('selected')) { settingItems_2[i].classList.add('selected'); }
+    for (let j = i - 1; j >=0; j--) {
+      if (settingItems_2[j].classList.contains('selected')) { settingItems_2[j].classList.remove('selected'); }
+    }
+    for (let k = i + 1; k < settingItems_2.length; k++) {
+      if (settingItems_2[k].classList.contains('selected')) { settingItems_2[k].classList.remove('selected'); }
     }
   });
 }
@@ -87,10 +119,12 @@ search_call.addEventListener('click', function() {
   if (!search_call.classList.contains('open')) {
     search_call.classList.add('open');
     searchInput_call.classList.add('active');
+    controls.classList.add('tablet');
 
   } else {
     search_call.classList.remove('open');
     searchInput_call.classList.remove('active');
+    controls.classList.remove('tablet');
   }
 
 });
@@ -109,7 +143,7 @@ tags.forEach(tag => {
 });
 /* ----------------------------------------------------- */
 
-/* Perios clicking Item select */
+/* Period clicking Item select */
 period.addEventListener('click', function() {
   if (!period.classList.contains('open')) {
     period.classList.add('open');
@@ -227,7 +261,8 @@ window.addEventListener('click', function(event) {
   let controlItem = target.closest('.callList__controls-item');
   let tableNumberBlock = target.closest('.callList__table-navigate_leftBlock');
   let datingControls = target.closest('.callList__controls-dating');
-
+  let searchInput = target.closest('.callList__controls-search_input');
+  
   if (datingControls) { return; }
 
   /* For Controls Button */
@@ -238,6 +273,10 @@ window.addEventListener('click', function(event) {
     }
     for (let popup of popups) {
       if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
+    }
+    if (searchInput) { return; }
+    else {
+      if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
     }
   }
 
@@ -261,3 +300,13 @@ window.addEventListener('click', function(event) {
   }
 });
 /* -------------------------------------------------------- */
+
+/* Screen Width control */
+// setInterval(function() {
+//   if (document.body.clientWidth < 825) {
+//     // tagsBlock.remove();
+//     controlsLeftBlock.append(tagsBlock);
+//   } else {
+//     tableBlock.before(tagsBlock);
+//   }
+// }, 100);

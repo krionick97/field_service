@@ -1,0 +1,57 @@
+mixin cellItem(title, text)
+  // Cell item
+  div.callList__tableMobile_cell-item
+    div.callList__tableMobile_cell-title= title
+      span :
+    div.callList__tableMobile_cell-text= text
+
+div.callList__tableMobile
+  // Sort mobile
+  div.callList__tableMobile_sort
+    div.callList__tableMobile_sort-title Sort:
+    div.callList__tableMobile_sort-method Source
+
+  div.callList__tableMobile_cell
+    div.callList__tableMobile_cell-part
+      +cellItem('Ads Group', 'Tax_HOU_GA')
+      +cellItem('Source', 'Google Ads')
+      +cellItem('Area', 'Houston, TX')
+    div.callList__tableMobile_cell-part
+      +cellItem('Total Calls', '58')
+      +cellItem('Source', '34')
+    div.callList__tableMobile_cell-part
+      +cellItem('Unaswered', '24')
+      +cellItem('Avg Duration', '2:34')
+  div.callList__tableMobile_cell
+    div.callList__tableMobile_cell-part
+      +cellItem('Ads Group', 'Tax_HOU_GA')
+      +cellItem('Source', 'Google Ads')
+      +cellItem('Area', 'Houston, TX')
+    div.callList__tableMobile_cell-part
+      +cellItem('Total Calls', '58')
+      +cellItem('Source', '34')
+    div.callList__tableMobile_cell-part
+      +cellItem('Unaswered', '24')
+      +cellItem('Avg Duration', '2:34')
+  div.callList__tableMobile_cell
+    div.callList__tableMobile_cell-part
+      +cellItem('Ads Group', 'Tax_HOU_GA')
+      +cellItem('Source', 'Google Ads')
+      +cellItem('Area', 'Houston, TX')
+    div.callList__tableMobile_cell-part
+      +cellItem('Total Calls', '58')
+      +cellItem('Source', '34')
+    div.callList__tableMobile_cell-part
+      +cellItem('Unaswered', '24')
+      +cellItem('Avg Duration', '2:34')
+  div.callList__tableMobile_cell
+    div.callList__tableMobile_cell-part
+      +cellItem('Ads Group', 'Tax_HOU_GA')
+      +cellItem('Source', 'Google Ads')
+      +cellItem('Area', 'Houston, TX')
+    div.callList__tableMobile_cell-part
+      +cellItem('Total Calls', '58')
+      +cellItem('Source', '34')
+    div.callList__tableMobile_cell-part
+      +cellItem('Unaswered', '24')
+      +cellItem('Avg Duration', '2:34')
