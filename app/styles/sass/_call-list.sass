@@ -12,6 +12,7 @@
       flex-grow: 1
       justify-content: flex-end
       z-index: 2
+      box-sizing: border-box
       user-select: none
       &:not(:last-child)
         border-right: 0.1rem solid $color-callList-light
@@ -131,10 +132,15 @@
           border-bottom: 0.15rem solid $color-callList-light
     &-search
       margin-right: 1rem
-      svg
-        width: 2rem
-      span
+      &_arrow
         display: none
+      &_data
+        display: flex
+        align-items: center
+        svg
+          width: 2rem
+        span
+          display: none
       // &_form
         // height: 4.2rem
       &_input
@@ -502,7 +508,7 @@
         transition: 0.1s
         transform: rotate(180deg)
 
-  // Table Mobile
+  /* Table Mobile */
   &__tableMobile
     display: none
     margin: 2rem 0
@@ -532,7 +538,6 @@
       &-title
         margin-right: 0.5rem
 
-
 @media (max-width: 1278px)
   .callList
     &__table
@@ -557,7 +562,24 @@
 
 @media (max-width: 825px)
   .callList
+    &__controls
+      &.tablet
+        padding-bottom: 0
+    &__table
+      &-navigate
+        &_rightBlock
+          justify-content: flex-end
     &__top-item
+      width: 25%
+      justify-content: center
+      &_data
+        height: 8rem
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        // align-items: center
+        h3, p
+          text-align: center
       &_number
         font-size: 3.6rem
       &_subtitle
@@ -568,8 +590,6 @@
       flex-direction: column
       &-item
         border: none
-        // width: 50%
-        // border-bottom: 0.1rem solid red
         justify-content: space-between
         border-radius: 0
         box-sizing: border-box
@@ -579,10 +599,14 @@
         flex-wrap: wrap
         margin-bottom: 2rem
         position: relative
+        &.mobile
+          padding-bottom: 6rem
+          border-bottom: 0.3rem solid $color-callList-main
       &-rightBlock
-        padding: 1rem 0
-        border-top: 0.1rem solid $color-callList-light
+        padding: 1rem 1.2rem
         border-bottom: 0.1rem solid $color-callList-light
+        justify-content: space-between
+        position: relative
 
       &-mode
         padding: 0 1rem
@@ -591,11 +615,12 @@
         border-bottom: 0.1rem solid $color-callList-light
         position: static
         &_list
-          top: 8rem
+          box-sizing: border-box
+          border-top: 0.3rem solid $color-callList-main
+          top: 4rem
           border-radius: 0
           width: 100%
       &-setting, &-search
-        justify-content: flex-start
         padding: 0 1rem
         width: 50%
       &-setting
@@ -603,7 +628,9 @@
         justify-content: space-between
         position: static
         &_list
-          top: 8rem
+          box-sizing: border-box
+          border-top: 0.3rem solid $color-callList-main
+          top: 4rem
           border-radius: 0
           width: 100%
         &_icon
@@ -615,16 +642,48 @@
       &-search
         border-right: 0.1rem solid $color-callList-light
         border-bottom: 0.1rem solid $color-callList-light
-        svg
-          margin-right: 0.6rem
-        span
+        &_arrow
           display: block
+        &_data
+          svg
+            margin-right: 0.6rem
+          span
+            display: block
       &-search_input
+        display: block
+        position: absolute
+        z-index: 2
+        top: 9rem
+        left: 1rem
+      &-update
+        justify-content: center
+        border: 0.1rem solid $color-callList-light
+        border-radius: 2rem
+      &-period
         position: static
+        &_text
+          text-align: start
+        &_list
+          top: 6.1rem
+          left: 0
+          transform: translateX(0)
+          border-radius: 0
+          width: 100%
+      &-dating
+        &_text
+          margin: 0 1rem
+        &_frame
+          padding: 0 1rem
+          &:after
+            display: none
+        &_date-1, &_date-2
+          // font-size: 1.2rem
+          +roboto_regular
     &__tags
       display: none
       &-mobile
-        display: block
+        display: flex
+        align-items: center
         width: 50%
         box-sizing: border-box
         border-bottom: 0.1rem solid $color-callList-light
@@ -632,11 +691,12 @@
         padding: 0 1rem
         height: 4rem
         margin: 0
+        position: static
       &-title
         +roboto_regular
         font-size: 1.4rem
         color: $color-black
-        margin: 0.8rem 0 0
+        margin: 0
         display: flex
         align-items: center
         div
@@ -646,8 +706,60 @@
           margin-right: 0.98rem
           color: #8391AD
       &-block
-        padding: 0
-        display: none
+        &_tag-mobile
+          padding: 0.9rem 2.7rem 0 2.7rem
+        &_mobile
+          padding: 0
+          display: none
+          border-radius: 0
+          background-color: $color-bg-main
+          border-top: 0.3rem solid $color-callList-main
+          position: absolute
+          top: 8rem
+          left: 0
+          width: calc(100% - 20px)
+          padding: 1.2rem 1rem
+          z-index: 2
+          &.visible
+            display: flex
 
+
+@media (max-width: 550px)
+  .callList
+    &__top
+      height: 8rem
+      &-item
+        padding: 0 1rem
+        // height: 5rem
+        &_data
+          height: 6rem
+        &_number
+          font-size: 2.6rem
+        &_subtitle
+          font-size: 1.4rem
+    &__tableMobile
+      &_cell
+        // flex-direction: column
+        flex-wrap: wrap
+        &-part
+          &:not(:last-child)
+            margin-bottom: 0.7rem
+
+@media (max-width: 450px)
+  .callList
+    &__controls
+      &-rightBlock
+        flex-wrap: wrap
+        justify-content: center
+
+
+// @media (max-width: 420px)
+//   .callList
+//     &__top
+//       &-item
+//         &_number
+//           font-size: 2.4rem
+//         &_subtitle
+//           font-size: 1.5rem
 
 

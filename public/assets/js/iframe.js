@@ -22,7 +22,10 @@ const controls = document.querySelector('.callList__controls');
 const controlsLeftBlock = document.querySelector('.callList__controls-leftBlock');
 const popups = document.querySelectorAll('.callList__controls-popup');
 const tags = document.querySelectorAll('.callList__tags-block_tag');
+const tagsBlock = document.querySelector('.callList__tags');
 const rowsNumberRest = document.querySelector('.callList__table-navigate_rest > span:first-child');
+const tagsMobile = document.querySelector('.callList__tags-mobile');
+const tagsMobileBlock = document.querySelector('.callList__tags-block_mobile');
 const rowsNumberList = document.querySelector('#navigate-numberList-up');
 const rowsNumberListDown = document.querySelector('#navigate-numberList-down');
 const rowsNumberItems = document.querySelectorAll('.callList__table-navigate_number-item');
@@ -31,7 +34,6 @@ const rowsArrow = document.querySelector('#navigate-arrow-up');
 const rowsNumberDown = document.querySelector('#navigate-number-down');
 const rowsArrowDown = document.querySelector('#navigate-arrow-down');
 const monthRowLeft = document.querySelector('.callList__controls-dating_calendar-month:before');
-const tagsBlock = document.querySelector('.callList__tags');
 const callList = document.querySelector('.callList');
 const tableBlock = document.querySelector('.callList__table-block');
 
@@ -45,6 +47,28 @@ mode.addEventListener('click', function() {
   if (!mode.classList.contains('open')) {
     mode.classList.add('open');
     modeList.classList.add('visible');
+
+    /* Conditions to close other control-item elements */
+    if (setting.classList.contains('open') && settingList.classList.contains('visible')) {
+      setting.classList.remove('open');
+      settingList.classList.remove('visible');
+    }
+    if (search_call.classList.contains('open') && searchInput_call.classList.contains('active')) {
+      search_call.classList.remove('open');
+      searchInput_call.classList.remove('active')
+    }
+    if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
+    if (controlsLeftBlock.classList.contains('mobile')) { controlsLeftBlock.classList.remove('mobile'); }
+    if (tagsMobile.classList.contains('open') && tagsMobileBlock.classList.contains('visible')) {
+      tagsMobile.classList.remove('open');
+      tagsMobileBlock.classList.remove('visible');
+    }
+    if (period.classList.contains('open') && periodList.classList.contains('visible')) {
+      period.classList.remove('open');
+      periodList.classList.remove('visible');
+    }
+    if (datingCalendar.classList.contains('visible')) { datingCalendar.classList.remove('visible'); }
+    /* ----- */
 
   } else {
     mode.classList.remove('open');
@@ -73,6 +97,28 @@ setting.addEventListener('click', function() {
     setting.classList.add('open');
     settingList.classList.add('visible');
 
+    /* Conditions to close other control-item elements */
+    if (mode.classList.contains('open') && settingList.classList.contains('visible')) {
+      mode.classList.remove('open');
+      modeList.classList.remove('visible');
+    }
+    if (search_call.classList.contains('open') && searchInput_call.classList.contains('active')) {
+      search_call.classList.remove('open');
+      searchInput_call.classList.remove('active')
+    }
+    if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
+    if (controlsLeftBlock.classList.contains('mobile')) { controlsLeftBlock.classList.remove('mobile'); }
+    if (tagsMobile.classList.contains('open') && tagsMobileBlock.classList.contains('visible')) {
+      tagsMobile.classList.remove('open');
+      tagsMobileBlock.classList.remove('visible');
+    }
+    if (period.classList.contains('open') && periodList.classList.contains('visible')) {
+      period.classList.remove('open');
+      periodList.classList.remove('visible');
+    }
+    if (datingCalendar.classList.contains('visible')) { datingCalendar.classList.remove('visible'); }
+    /* ----- */
+
   } 
   else {
     setting.classList.remove('open');
@@ -83,8 +129,8 @@ setting.addEventListener('click', function() {
 for (let settingItem of settingItems) {
   settingItem.addEventListener('click', function() {
     if (setting.classList.contains('open') && settingList.classList.contains('visible')) {
-      setting.classList.remove('open');
-      settingList.classList.remove('visible');  
+      !setting.classList.remove('open');
+      !settingList.classList.remove('visible');  
     }
   });
 }
@@ -119,16 +165,49 @@ search_call.addEventListener('click', function() {
   if (!search_call.classList.contains('open')) {
     search_call.classList.add('open');
     searchInput_call.classList.add('active');
+    // searchInput_call.classList.add('mobile');
     controls.classList.add('tablet');
+    controlsLeftBlock.classList.add('mobile');
+
+    /* Conditions to close other control-item elements */
+    if (mode.classList.contains('open') && settingList.classList.contains('visible')) {
+      mode.classList.remove('open');
+      modeList.classList.remove('visible');
+    }
+    if (setting.classList.contains('open') && settingList.classList.contains('visible')) {
+      setting.classList.remove('open');
+      settingList.classList.remove('visible');
+    }
+    // if (search_call.classList.contains('open') && searchInput_call.classList.contains('active')) {
+    //   search_call.classList.remove('open');
+    //   searchInput_call.classList.remove('active')
+    // }
+    // if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
+    // if (controlsLeftBlock.classList.contains('mobile')) { controlsLeftBlock.classList.remove('mobile'); }
+    if (tagsMobile.classList.contains('open') && tagsMobileBlock.classList.contains('visible')) {
+      tagsMobile.classList.remove('open');
+      tagsMobileBlock.classList.remove('visible');
+    }
+    if (period.classList.contains('open') && periodList.classList.contains('visible')) {
+      period.classList.remove('open');
+      periodList.classList.remove('visible');
+    }
+    if (datingCalendar.classList.contains('visible')) { datingCalendar.classList.remove('visible'); }
+    /* ----- */
+
 
   } else {
     search_call.classList.remove('open');
     searchInput_call.classList.remove('active');
+    searchInput_call.classList.remove('mobile');
     controls.classList.remove('tablet');
+    controlsLeftBlock.classList.remove('mobile');
   }
 
 });
 /* -------------------------------------------------------- */
+
+
 
 /* Tags Click Selected */
 tags.forEach(tag => {
@@ -143,11 +222,88 @@ tags.forEach(tag => {
 });
 /* ----------------------------------------------------- */
 
+/* Tags-mobile Click Open */
+tagsMobile.addEventListener('click', function() {
+  if (!tagsMobile.classList.contains('open') && !tagsMobileBlock.classList.contains('visible')) {
+    tagsMobile.classList.add('open');
+    tagsMobileBlock.classList.add('visible');
+
+    /* Conditions to close other control-item elements */
+    if (mode.classList.contains('open') && settingList.classList.contains('visible')) {
+      mode.classList.remove('open');
+      modeList.classList.remove('visible');
+    }
+    if (setting.classList.contains('open') && settingList.classList.contains('visible')) {
+      setting.classList.remove('open');
+      settingList.classList.remove('visible');
+    }
+    if (search_call.classList.contains('open') && searchInput_call.classList.contains('active')) {
+      search_call.classList.remove('open');
+      searchInput_call.classList.remove('active')
+    }
+    if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
+    if (controlsLeftBlock.classList.contains('mobile')) { controlsLeftBlock.classList.remove('mobile'); }
+    // if (tagsMobile.classList.contains('open') && tagsMobileBlock.classList.contains('visible')) {
+    //   tagsMobile.classList.remove('open');
+    //   tagsMobileBlock.classList.remove('visible');
+    // }
+    if (period.classList.contains('open') && periodList.classList.contains('visible')) {
+      period.classList.remove('open');
+      periodList.classList.remove('visible');
+    }
+    if (datingCalendar.classList.contains('visible')) { datingCalendar.classList.remove('visible'); }
+    /* ----- */
+
+  } else {
+    tagsMobile.classList.remove('open');
+    tagsMobileBlock.classList.remove('visible');
+  }
+
+});
+/* -------------------------------------------------------- */
+
+/* Prevent close tags-mobile block by clicking a tag */
+for (let tag of tags) {
+  tag.addEventListener('click', function() {
+    if (tagsMobile.classList.contains('open') && tagsMobileBlock.classList.contains('visible')) {
+      !tagsMobile.classList.remove('open');
+      !tagsMobileBlock.classList.remove('visible');
+    }
+  });
+}
+/* -------------------------------------------------------- */
+
 /* Period clicking Item select */
 period.addEventListener('click', function() {
   if (!period.classList.contains('open')) {
     period.classList.add('open');
     periodList.classList.add('visible');
+
+    /* Conditions to close other control-item elements */
+    if (mode.classList.contains('open') && settingList.classList.contains('visible')) {
+      mode.classList.remove('open');
+      modeList.classList.remove('visible');
+    }
+    if (setting.classList.contains('open') && settingList.classList.contains('visible')) {
+      setting.classList.remove('open');
+      settingList.classList.remove('visible');
+    }
+    if (search_call.classList.contains('open') && searchInput_call.classList.contains('active')) {
+      search_call.classList.remove('open');
+      searchInput_call.classList.remove('active')
+    }
+    if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
+    if (controlsLeftBlock.classList.contains('mobile')) { controlsLeftBlock.classList.remove('mobile'); }
+    if (tagsMobile.classList.contains('open') && tagsMobileBlock.classList.contains('visible')) {
+      tagsMobile.classList.remove('open');
+      tagsMobileBlock.classList.remove('visible');
+    }
+    // if (period.classList.contains('open') && periodList.classList.contains('visible')) {
+    //   period.classList.remove('open');
+    //   periodList.classList.remove('visible');
+    // }
+    if (datingCalendar.classList.contains('visible')) { datingCalendar.classList.remove('visible'); }
+    /* ----- */
 
   } else {
     period.classList.remove('open');
@@ -169,6 +325,7 @@ for (let i = 0; i < periodItems.length; i++) {
   });
 }
 /* -------------------------------------------------------- */
+
 
 /* Clicking Table Navigate Arrow to show Number Arrows */
 rowsNumber.addEventListener('click', function() {
@@ -240,8 +397,35 @@ for (let i = 0; i < rowsNumberItems.length; i++) {
 
 /* Calendar visible clicking */
 datingControls.addEventListener('click', function() {
-  if (!datingCalendar.classList.contains('visible')) { datingCalendar.classList.add('visible'); }
-  // else { datingCalendar.classList.remove('visible'); }
+  if (!datingCalendar.classList.contains('visible')) {
+    datingCalendar.classList.add('visible');
+
+    /* Conditions to close other control-item elements */
+    if (mode.classList.contains('open') && settingList.classList.contains('visible')) {
+      mode.classList.remove('open');
+      modeList.classList.remove('visible');
+    }
+    if (setting.classList.contains('open') && settingList.classList.contains('visible')) {
+      setting.classList.remove('open');
+      settingList.classList.remove('visible');
+    }
+    if (search_call.classList.contains('open') && searchInput_call.classList.contains('active')) {
+      search_call.classList.remove('open');
+      searchInput_call.classList.remove('active')
+    }
+    if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
+    if (controlsLeftBlock.classList.contains('mobile')) { controlsLeftBlock.classList.remove('mobile'); }
+    if (tagsMobile.classList.contains('open') && tagsMobileBlock.classList.contains('visible')) {
+      tagsMobile.classList.remove('open');
+      tagsMobileBlock.classList.remove('visible');
+    }
+    if (period.classList.contains('open') && periodList.classList.contains('visible')) {
+      period.classList.remove('open');
+      periodList.classList.remove('visible');
+    }
+    // if (datingCalendar.classList.contains('visible')) { datingCalendar.classList.remove('visible'); }
+    /* ----- */
+  }
 });
 /* --------------------------------------------------------- */
 
@@ -261,9 +445,12 @@ window.addEventListener('click', function(event) {
   let controlItem = target.closest('.callList__controls-item');
   let tableNumberBlock = target.closest('.callList__table-navigate_leftBlock');
   let datingControls = target.closest('.callList__controls-dating');
+  let searchControl = target.closest('.callList__controls-search');
   let searchInput = target.closest('.callList__controls-search_input');
+  // let tagsMobileBlock = target.closest('.callList__tags-block_mobile');
   
   if (datingControls) { return; }
+
 
   /* For Controls Button */
   if (controlItem) { return; }
@@ -277,6 +464,7 @@ window.addEventListener('click', function(event) {
     if (searchInput) { return; }
     else {
       if (controls.classList.contains('tablet')) { controls.classList.remove('tablet'); }
+      if (controlsLeftBlock.classList.contains('mobile')) { controlsLeftBlock.classList.remove('mobile'); }
     }
   }
 
@@ -298,15 +486,6 @@ window.addEventListener('click', function(event) {
       rowsNumberListDown.classList.remove('show');
     }
   }
+
 });
 /* -------------------------------------------------------- */
-
-/* Screen Width control */
-// setInterval(function() {
-//   if (document.body.clientWidth < 825) {
-//     // tagsBlock.remove();
-//     controlsLeftBlock.append(tagsBlock);
-//   } else {
-//     tableBlock.before(tagsBlock);
-//   }
-// }, 100);
