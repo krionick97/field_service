@@ -27,13 +27,28 @@ header.header.header__account
         div.button.header__account-navigate_marker.header__account-navigate_settings
           img(src="assets/images/settings_icon.svg", alt="Settings_marker")
         div.button.header__account-navigate_indicator.header__account-navigate_question
-          img(src="assets/images/question_icon.svg", alt="FAQ")
+          //- img(src="assets/images/question_icon.svg", alt="FAQ")
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.17 53.37">
+            <defs>
+              <style>.cls-1</style>
+            </defs>
+            <title>quetion_icon</title><g id="Layer_22" data-name="Layer 22">
+            <g id="Question"><path class="cls-1" d="M10.48,38.34q0-5,1.81-7.55A26.7,26.7,0,0,1,18.76,25a11.72,11.72,0,0,0,3.81-3.76A9.59,9.59,0,0,0,24,16a7,7,0,0,0-1.63-4.84,5.9,5.9,0,0,0-4.62-1.81,5.78,5.78,0,0,0-4,1.48A5.88,5.88,0,0,0,12,15.28H.07L0,15.07Q-.11,7.55,4.79,3.78T17.71,0q8.6,0,13.53,4.34T36.17,16a14.05,14.05,0,0,1-2.69,8.31,19.11,19.11,0,0,1-6.85,6,8.3,8.3,0,0,0-3.13,3.27,11.49,11.49,0,0,0-.81,4.75Zm12.18,15H10.52V43.61H22.66Z"/></g></g>
+          </svg>
         div.button.header__account-navigate_indicator.header__account-navigate_bell
-          img(src="assets/images/bell_icon.svg", alt="Bell")
+          //- img(src="assets/images/bell_icon.svg", alt="Bell")
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.52 53.47">
+            <defs><style>.cls-1{fill:#001331;}</style></defs>
+            <title>bell_icon</title>
+            <g id="Layer_21" data-name="Layer 21">
+              <g id="Bell"><path class="cls-1" d="M13.37,47.56H29.14c0,2.66-3.53,5.91-7.89,5.91S13.37,50.23,13.37,47.56Z"/>
+              <path class="cls-1" d="M41.6,41.9h0A13.45,13.45,0,0,1,37.26,32V21.82A16,16,0,0,0,27.14,6.93V6a6,6,0,0,0-5.78-6,5.89,5.89,0,0,0-6,5.89v1A16,16,0,0,0,5.26,21.82V32A13.45,13.45,0,0,1,.92,41.89h0a2.46,2.46,0,0,0,1.54,4.37h37.6A2.46,2.46,0,0,0,41.6,41.9Z"/></g></g>
+          </svg>
         div.button.header__account-navigate_indicator.header__account-navigate_profile
         div.button.header__account-navigate_indicator.header__account-navigate_phonecall
           img(src="assets/images/phonecall-1_icon.svg", alt="Phonecall")
 
+        // Profile popup
         div.header__account-navigate_popup
           div.header__account-navigate_popup-item
             div.header__account-navigate_popup-icon
@@ -41,19 +56,19 @@ header.header.header__account
             span Accounts
           div.header__account-navigate_popup-item.header__account-navigate_indicator-mobile
             div.header__account-navigate_popup-icon
-              img(src="assets/images/phonecall-mobile_icon.svg", alt="Account")
+              img(src="assets/images/phonecall-mobile_icon.svg", alt="Phone")
             span Phone
           div.header__account-navigate_popup-item.header__account-navigate_indicator-mobile
             div.header__account-navigate_popup-icon
-              img(src="assets/images/support-mobile_icon.svg", alt="Account")
+              img(src="assets/images/support-mobile_icon.svg", alt="Support")
             span Support
           div.header__account-navigate_popup-item.header__account-navigate_indicator-mobile
             div.header__account-navigate_popup-icon
-              img(src="assets/images/bell-mobile_icon.svg", alt="Account")
+              img(src="assets/images/bell-mobile_icon.svg", alt="Notifications")
             span Notifications
           div.header__account-navigate_popup-item.header__account-navigate_popup-logout
             div.header__account-navigate_popup-icon
-              img(src="assets/images/logout_icon.svg", alt="Account")
+              img(src="assets/images/logout_icon.svg", alt="LogOut")
             span Log Out
           div.header__account-navigate_popup-list
             div.header__account-navigate_popup-subitem
@@ -69,8 +84,8 @@ header.header.header__account
                 img(src="assets/images/business-account_icon.svg", alt="Account").section__accounts-link_img.section__accounts-link_icon
               span Account_3
 
-
-
+        // Notification popup
+        include notices
 
 
 

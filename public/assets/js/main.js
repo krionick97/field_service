@@ -16,10 +16,13 @@ const accountHeader = document.querySelector('.header__account');
 const popup = document.querySelector('.header__account-navigate_popup');
 const popupItems = document.querySelectorAll('.header__account-navigate_popup-item:not(:first-child)');
 const popupAccounts = document.querySelector('.header__account-navigate_popup-item:first-child');
+const navigateIndicators = document.querySelectorAll('.header__account-navigate_indicator');
 const popupIndicators = document.querySelectorAll('.header__account-navigate_indicator-mobile');
 const popupAccountsList = document.querySelector('.header__account-navigate_popup-list');
 const popupAccountsItems = document.querySelectorAll('.header__account-navigate_popup-subitem');
 const popupLogout = document.querySelector('.header__account-navigate_popup-logout');
+const popupNotices = document.querySelector('.header__account-navigate_notices');
+const noticesControl = document.querySelector('.header__account-navigate_bell'); // Bell icon
 const profile = document.querySelector('.header__account-navigate_profile');
 const frameBlock = document.querySelector('.section__account_frame-block');
 
@@ -279,6 +282,55 @@ if (searchButton) {
 }
 /* ----------------------------------------------------- */
 
+/* Navigate-indicators active by clicking */
+if (navigateIndicators) {
+  for (let navigateIndicator of navigateIndicators) {
+    navigateIndicator.addEventListener('click', function() {
+      navigateIndicator.classList.toggle('active');
+    });
+  }
+}
+/* -------------------------------------------------- */
+
+
+/* Profile Clicking popup-call */
+if (profile) {
+  profile.addEventListener('click', function() {
+    if (profile.classList.contains('active')) {
+      if (!popup.classList.contains('visible')) { popup.classList.add('visible') };
+      if (!frameBlock.classList.contains('overframe')) { frameBlock.classList.add('overframe'); }
+      if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
+      if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
+      if (noticesControl.classList.contains('active')) { noticesControl.classList.remove('active'); }
+    }
+    else { 
+      if (popup.classList.contains('visible')) { popup.classList.remove('visible') };
+      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+      if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
+    }
+    for (let popupIndicator of popupIndicators) {
+      if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
+    }
+  });
+}
+/* ------------------------------------------------- */
+
+/* Accounts-item hover and list in popup */
+if (popup) {
+  popupAccounts.addEventListener('mouseover', function() {
+    if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+  });
+  popupAccountsList.addEventListener('mouseleave', function() {
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+  });
+  popup.addEventListener('mouseleave', function() {
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+  });
+  popupLogout.addEventListener('mouseover', function() {
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+  });
+}
+
 if (popup && popupAccounts) {
   /* Accounts-clicking and listing of account-list */
   popupAccounts.addEventListener('click', function() {
@@ -352,55 +404,50 @@ if (popup && popupAccounts) {
 }
 /* --------------------------------------------------- */
 
-/* Accounts-item hover and list in popup */
-if (popup) {
-  popupAccounts.addEventListener('mouseover', function() {
-    if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
-  });
-  popupAccountsList.addEventListener('mouseleave', function() {
-    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-  });
-  popup.addEventListener('mouseleave', function() {
-    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-  });
-  popupLogout.addEventListener('mouseover', function() {
-    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-  });
-}
-
-
-/* Profile Clicking popup-call */
-if (profile) {
-  profile.addEventListener('click', function() {
-    if (!popup.classList.contains('visible')) { popup.classList.add('visible'); }
-    else { 
-      popup.classList.remove('visible'); 
-      if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-    }
-    if (!frameBlock.classList.contains('overframe')) { frameBlock.classList.add('overframe'); }
-    else {
-      frameBlock.classList.remove('overframe');
-    }
-    for (let popupIndicator of popupIndicators) {
-      if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
+/* Notices-popup by clicking the bell-control */
+if(popupNotices) {
+  noticesControl.addEventListener('click', function() {
+    if (noticesControl.classList.contains('active')) {
+      if (!popupNotices.classList.contains('visible')) { popupNotices.classList.add('visible'); }
+      if (!frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.add('overframe-notices'); }
+      if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
+      if (profile.classList.contains('active')) { profile.classList.remove('active'); }
+      if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
+    } else {
+      if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
+      if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
     }
   });
 }
-/* ------------------------------------------------- */
+/* --------------------------------------------------- */
+
 
 /* Clicking outside of popup to close and deselect */
 window.addEventListener('click', function(event) {
   let target = event.target;
-  let controlItem = target.closest('.header__account-navigate_popup');
+  let profileClosest = target.closest('.header__account-navigate_profile');
+  let popupClosest = target.closest('.header__account-navigate_popup');
+  let noticesClosest = target.closest('.header__account-navigate_bell');
+  let popupNoticesClosest = target.closest('.header__account-navigate_notices');
   
-  if (target === profile) { return; }
-  if (controlItem) { return; }
+  if (profileClosest) { return; }
+  if (popupClosest) { return; }
   else {
+    if (profile.classList.contains('active')) profile.classList.remove('active');
     if (popup.classList.contains('visible')) popup.classList.remove('visible');
     if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
     if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
   }
+
+  if (noticesClosest) { return; }
+  if (popupNoticesClosest) { return; }
+  else {
+    if (noticesControl.classList.contains('active')) { noticesControl.classList.remove('active'); }
+    if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
+    if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
+  }
 });
+
 /* -------------------------------------------------------- */
 
 

@@ -1,3 +1,6 @@
+@mixin box-shadow($opacity)
+  box-shadow: 0.4rem 0.4rem 0.6rem rgba($color-black, $opacity)
+
 .header
   background-color: $color-blue-dark
   height: 6rem
@@ -80,7 +83,7 @@
         font-size: 1.6rem
         z-index: 10
         transition: 0.1s
-        box-shadow: 0.4rem 0.4rem 0.6rem rgba($color-black, 0.28)
+        @include box-shadow(0.28)
         &.visible
           transition: 0.1s
           opacity: 1
@@ -103,7 +106,7 @@
           position: absolute
           top: 0
           right: 101%
-          box-shadow: 0.2rem 0.4rem 0.6rem rgba($color-black, 0.14)
+          @include box-shadow(0.14)
           pointer-events: none
           &.visible
             transition: 0.1s
@@ -135,6 +138,91 @@
               width: 0.5rem
               top: 0
               left: 0
+
+
+      /* Notices */
+      &_notices
+        opacity: 0
+        pointer-events: none
+        position: absolute
+        top: 6.1rem
+        right: 11rem
+        background-color: $color-white
+        z-index: 6
+        width: 26rem
+        font-size: 1.2rem
+        box-sizing: border-box
+        border: 0.1rem solid $color-grey
+        @include box-shadow(0.28)
+        transition-duration: 0.1s
+        transition-property: opacity
+        &.visible
+          transition-duration: 0.1s
+          transition-property: opacity
+          opacity: 1
+          pointer-events: auto
+        &-beeper
+          position: relative
+          &:before
+            position: absolute
+            display: block
+            content: ''
+            width: 2rem
+            height: 2rem
+            background-color: $color-white
+            // z-index: -1
+            top: -1.1rem
+            right: 1.6rem
+            box-sizing: border-box
+            border-top: 0.1rem solid $color-grey
+            border-left: 0.1rem solid $color-grey
+            transform: rotate(45deg)
+        &-header
+          padding: 1rem
+          border-bottom: 0.1rem solid $color-grey
+          display: flex
+          align-items: center
+          justify-content: space-between
+          user-select: none
+        &-title
+          +roboto_medium
+          font-size: 1.4rem
+        &-readAll
+          color: $color-blue-light
+          &:hover
+            cursor: pointer
+            text-decoration: underline
+        &-block
+          // padding: 1rem
+        &-item
+          display: flex
+          align-items: center
+          padding: 1rem
+          box-sizing: border-box
+          &:not(:last-child)
+            border-bottom: 0.1rem solid $color-grey
+        &-img
+          margin-right: 1rem
+          width: 4rem
+          user-select: none
+          img
+            width: 100%
+        &-date
+          display: flex
+          align-items: center
+        &-text
+          margin-bottom: 0.7rem
+          display: inline-block
+          max-width: 18rem
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+        &-type
+          width: 1.3rem
+          margin-right: 0.5rem
+          user-select: none
+          img
+            width: 100%
 
       &_leftBlock, &_rightBlock
         display: flex
@@ -240,8 +328,14 @@
         width: 2.3rem
       &_question
         width: 1.8rem
+        &.active
+          svg .cls-1
+            fill: $color-blue-light
       &_bell
         width: 2.1rem
+        &.active
+          svg .cls-1
+            fill: $color-blue-light
       &_profile
         display: block
         padding: 0
