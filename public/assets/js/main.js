@@ -14,15 +14,16 @@ const accountNavigate = document.querySelector('.header__account-navigate');
 const accountHeader = document.querySelector('.header__account');
 
 const popup = document.querySelector('.header__account-navigate_popup');
-const popupItems = document.querySelectorAll('.header__account-navigate_popup-item:not(:first-child)');
-const popupAccounts = document.querySelector('.header__account-navigate_popup-item:first-child');
+const popupItems = document.querySelectorAll('.header__account-navigate_popup-item:not(:nth-child(1)):not(:nth-child(2))');
+const popupAccounts = document.querySelector('.header__account-navigate_popup-accounts');
 const navigateIndicators = document.querySelectorAll('.header__account-navigate_indicator');
 const popupIndicators = document.querySelectorAll('.header__account-navigate_indicator-mobile');
 const popupAccountsList = document.querySelector('.header__account-navigate_popup-list');
 const popupAccountsItems = document.querySelectorAll('.header__account-navigate_popup-subitem');
 const popupLogout = document.querySelector('.header__account-navigate_popup-logout');
 const popupNotices = document.querySelector('.header__account-navigate_notices');
-const noticesControl = document.querySelector('.header__account-navigate_bell'); // Bell icon
+const noticesControl = document.querySelector('.header__account-navigate_bell'); // Bell navigate-item
+const noticesControlMobile = document.querySelector('.header__account-navigate_bell-mobile'); // Bell-mobile navigate-item 
 const profile = document.querySelector('.header__account-navigate_profile');
 const frameBlock = document.querySelector('.section__account_frame-block');
 
@@ -347,6 +348,7 @@ if (popup && popupAccounts) {
 
   /* Logout and popup-clos */
   popupLogout.addEventListener('click', function() {
+    if (profile.classList.contains('active')) { profile.classList.remove('active'); }
     if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
     if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
     for (let popupIndicator of popupIndicators) {
@@ -375,12 +377,25 @@ if (popup && popupAccounts) {
   /* Popup Accounts-item Clicking Select */
   for (let i = 0; i < popupIndicators.length; i++) {
     popupIndicators[i].addEventListener('click', function() {
-      if (!popupIndicators[i].classList.contains('selected')) popupIndicators[i].classList.add('selected');
+      if (!popupIndicators[i].classList.contains('selected') && !popupIndicators[i].classList.contains('active')) {
+        popupIndicators[i].classList.add('selected');
+        popupIndicators[i].classList.add('active');
+      }
+      else {
+        popupIndicators[i].classList.remove('selected');
+        popupIndicators[i].classList.remove('active');
+      }
       for (let j = i - 1; j >= 0; j--) {
-        if (popupIndicators[j].classList.contains('selected')) popupIndicators[j].classList.remove('selected');
+        if (popupIndicators[j].classList.contains('selected') && popupIndicators[j].classList.contains('active')) {
+          popupIndicators[j].classList.remove('selected');
+          popupIndicators[j].classList.remove('active');
+        }
       }
       for (let k = i + 1; k < popupIndicators.length; k++) {
-        if (popupIndicators[k].classList.contains('selected')) popupIndicators[k].classList.remove('selected');
+        if (popupIndicators[k].classList.contains('selected') && popupIndicators[k].classList.contains('active')) {
+          popupIndicators[k].classList.remove('selected');
+          popupIndicators[k].classList.remove('active');
+        }
       }
     });
   }
@@ -419,6 +434,20 @@ if(popupNotices) {
     }
   });
 }
+if (noticesControlMobile) {
+  noticesControlMobile.addEventListener('click', function() {
+    if (noticesControlMobile.classList.contains('active')) {
+      if (!popupNotices.classList.contains('visible')) { popupNotices.classList.add('visible'); }
+      if (!frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.add('overframe-notices'); }
+      if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
+      if (profile.classList.contains('active')) { profile.classList.remove('active'); }
+      if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
+    } else {
+      if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
+      if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
+    }
+  });
+}
 /* --------------------------------------------------- */
 
 
@@ -433,8 +462,8 @@ window.addEventListener('click', function(event) {
   if (profileClosest) { return; }
   if (popupClosest) { return; }
   else {
-    if (profile.classList.contains('active')) profile.classList.remove('active');
-    if (popup.classList.contains('visible')) popup.classList.remove('visible');
+    if (profile.classList.contains('active')) { profile.classList.remove('active'); }
+    if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
     if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
     if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
   }
@@ -447,7 +476,6 @@ window.addEventListener('click', function(event) {
     if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
   }
 });
-
 /* -------------------------------------------------------- */
 
 
