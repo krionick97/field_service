@@ -1,3 +1,4 @@
+
 .callList
   &__top
     background-color: $color-white
@@ -574,14 +575,15 @@
       justify-content: center
       &_data
         height: 8rem
-        display: flex
-        flex-direction: column
-        justify-content: space-between
+        // display: flex
+        // flex-direction: column
+        // justify-content: space-between
         // align-items: center
         h3, p
           text-align: center
       &_number
         font-size: 3.6rem
+        margin-bottom: 0.5rem
       &_subtitle
         font-size: 2rem
     &__controls
@@ -593,11 +595,12 @@
         justify-content: space-between
         border-radius: 0
         box-sizing: border-box
+        // padding: 0 2rem !important
         &:nth-child(1), &:nth-child(2), &:nth-child(3)
           margin: 0
       &-leftBlock
         flex-wrap: wrap
-        margin-bottom: 2rem
+        margin-bottom: 0
         position: relative
         &.mobile
           padding-bottom: 6rem
@@ -606,10 +609,12 @@
         padding: 1rem 1.2rem
         border-bottom: 0.1rem solid $color-callList-light
         justify-content: space-between
+        align-items: center
         position: relative
 
+      &-mode, &-setting, &-search
+        padding: 0 2rem
       &-mode
-        padding: 0 1rem
         width: 50%
         border-right: 0.1rem solid $color-callList-light
         border-bottom: 0.1rem solid $color-callList-light
@@ -621,7 +626,6 @@
           border-radius: 0
           width: 100%
       &-setting, &-search
-        padding: 0 1rem
         width: 50%
       &-setting
         border-bottom: 0.1rem solid $color-callList-light
@@ -670,6 +674,7 @@
           border-radius: 0
           width: 100%
       &-dating
+        margin: 1rem 1rem
         &_text
           margin: 0 1rem
         &_frame
@@ -688,7 +693,7 @@
         box-sizing: border-box
         border-bottom: 0.1rem solid $color-callList-light
         border-radius: 0
-        padding: 0 1rem
+        padding: 0 2rem
         height: 4rem
         margin: 0
         position: static
@@ -751,15 +756,28 @@
       &-rightBlock
         flex-wrap: wrap
         justify-content: center
+        position: relative
+      &-dating
+        position: static
+        &_calendar
+          top: 101%
+    &__table
+      &-navigate
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &_arrow
+          margin: 0 0.8rem
+        &_text
+          margin-right: 0.5rem
+          font-size: 1.3rem
+        &_leftBlock
+          position: static
+          // display: block
+        &_rightBlock
+          position: static
+          display: block
+          max-width: 7rem
 
-
-// @media (max-width: 420px)
-//   .callList
-//     &__top
-//       &-item
-//         &_number
-//           font-size: 2.4rem
-//         &_subtitle
-//           font-size: 1.5rem
 
 

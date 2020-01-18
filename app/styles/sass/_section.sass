@@ -172,7 +172,7 @@
         cursor: pointer
     &-menu
       display: block
-      height: 100%
+      height: calc(100% - 60px)
       width: 0
       color: $color-white
       background-color: $color-blue-dark
@@ -184,10 +184,6 @@
       top: 0
       left: 0
       z-index: 2
-      &.search-mini
-        margin-top: 5rem
-      &.mobile-visible
-        width: 100% !important
       &.active
         width: 28rem
         visibility: visible
@@ -261,13 +257,8 @@
 
     /* iframe */
     &_frame-block
-      height: 100%
+      height: calc(100% - 60px)
       flex-grow: 1
-      &.menu-visible
-        transition: 0.1s
-        flex-grow: 0
-        width: 0
-        height: 0
       &.overframe
         display: block
         &:before
@@ -284,7 +275,6 @@
       width: 100%
       height: 100%
 
-
 @media (max-height: 840px)
   .section
     &__account
@@ -297,6 +287,15 @@
         &::-webkit-scrollbar-thumb
           border-radius: 0.4rem
           background-color: rgba($color-blue-light, 0.3)
+
+@media (max-width: 720px)
+  .section
+    &__account
+      &-menu
+        &.active-button.mobile-visible
+          width: 100% !important
+
+
 
 
 @media (max-height: 630px)
@@ -315,7 +314,7 @@
   .section
     &__account
       &-menu_list
-        height: 24rem
+        height: 20rem
 
 @media (max-width: 1420px)
   .section
@@ -330,8 +329,12 @@
   .section
     &__account
       &-menu
+        height: calc(100% - 118px)
         &.active-button
           transition: none
+      &-label.active
+        display: none
+      &_frame-block
 
 @media (max-width: 720px)
   .section
@@ -360,6 +363,22 @@
     &__account
       &-menu.active-button
         width: 18rem
+
+@media (max-width: 560px)
+  .section
+    &__account
+      &-menu.search-mini
+        margin-top: 5rem
+
+@media (max-width: 720px)
+  .section
+    &__account
+      &_frame-block
+        &.menu-visible
+          transition: 0.1s
+          flex-grow: 0
+          width: 0
+          height: 0
 
 @media (max-width: 420px)
   .section

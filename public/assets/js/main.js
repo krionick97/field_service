@@ -24,112 +24,75 @@ const profile = document.querySelector('.header__account-navigate_profile');
 const frameBlock = document.querySelector('.section__account_frame-block');
 
 
-/* Screen Width updating */
-setInterval(function() {
-  if (document.body.clientWidth <= 1121 && menuLabel) {
-    if (menuLabel.classList.contains('active')) { menuLabel.classList.remove('active'); }
-  } else {
-    if (menuLabel && !menuLabel.classList.contains('active')) { menuLabel.classList.add('active'); }
-  }
+// /* Screen Width updating */
+// setInterval(function() {
 
 
-  if (document.body.clientWidth >= 721 && searchButton) {
-    if (searchButton.classList.contains('mobile-visible')
-        && searchForm.classList.contains('mobile-visible')
-        && accountNavigate.classList.contains('mobile-visible')
-        && accountHeader.classList.contains('mobile-visible')) {
-      searchButton.classList.remove('mobile-visible');
-      searchForm.classList.remove('mobile-visible');
-      accountNavigate.classList.remove('mobile-visible');
-      accountHeader.classList.remove('mobile-visible');
-    }
-    if (accountMenu.classList.contains('active-button') && accountMenu.classList.contains('mobile-visible')) {
-      accountMenu.classList.remove('mobile-visible');
-      if (!burgerButton.classList.contains('active')) { burgerButton.classList.add('active'); }
-      if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
-    }
+//   if (document.body.clientWidth >= 721 && searchButton) {
+//     if (searchButton.classList.contains('mobile-visible')
+//         && searchForm.classList.contains('mobile-visible')
+//         && accountNavigate.classList.contains('mobile-visible')
+//         && accountHeader.classList.contains('mobile-visible')) {
+//       searchButton.classList.remove('mobile-visible');
+//       searchForm.classList.remove('mobile-visible');
+//       accountNavigate.classList.remove('mobile-visible');
+//       accountHeader.classList.remove('mobile-visible');
+//     }
+//     if (accountMenu.classList.contains('active-button') && accountMenu.classList.contains('mobile-visible')) {
+//       accountMenu.classList.remove('mobile-visible');
+//       if (!burgerButton.classList.contains('active')) { burgerButton.classList.add('active'); }
+//       if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
+//     }
 
-    if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
+//     if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
   
-    for (let markerButton of markerButtons) {
-      if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
-    }
-  }
-  if (document.body.clientWidth < 721 && searchButton) {
-    if (accountMenu.classList.contains('active-button')) {
-      if (!accountMenu.classList.contains('mobile-visible')) { accountMenu.classList.add('mobile-visible'); }
-      if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
-      if (!burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.add('active'); }
-      if (!accountNavigate.classList.contains('mobile-visible')) { accountNavigate.classList.add('mobile-visible'); }
-      if (!accountHeader.classList.contains('mobile-visible')) { accountHeader.classList.add('mobile-visible'); }
-      if (!searchButton.classList.contains('mobile-visible')) { searchButton.classList.add('mobile-visible'); }
-      if (!searchForm.classList.contains('mobile-visible')) { searchForm.classList.add('mobile-visible'); }
-      if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
-      for (let markerButton of markerButtons) {
-        if (!markerButton.classList.contains('mobile-visible')) { markerButton.classList.add('mobile-visible'); }
-      }
-    }
-  }
-  
-  /* Menu Label hover */
-  if (menuLabel) {
-    menuLabel.addEventListener('mouseover', function() {
-      accountMenu.classList.add('active');
-      for (let menuItem of menuItems) {
-        menuItem.classList.add('visible');
-      }
-    });
-  
-    accountMenu.addEventListener('mouseleave', function() {
-      if (!burgerButton.classList.contains('active') && menuLabel.classList.contains('active')) {
-        accountMenu.classList.remove('active');
-        for (let menuItem of menuItems) {
-          menuItem.classList.remove('visible');
-        }
-      }
-    });
-  }
-  
+//     for (let markerButton of markerButtons) {
+//       if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
+//     }
+//   }
+//   if (document.body.clientWidth < 721 && searchButton) {
+//     if (accountMenu.classList.contains('active-button')) {
+//       if (!accountMenu.classList.contains('mobile-visible')) { accountMenu.classList.add('mobile-visible'); }
+//       if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
+//       if (!burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.add('active'); }
+//       if (!accountNavigate.classList.contains('mobile-visible')) { accountNavigate.classList.add('mobile-visible'); }
+//       if (!accountHeader.classList.contains('mobile-visible')) { accountHeader.classList.add('mobile-visible'); }
+//       if (!searchButton.classList.contains('mobile-visible')) { searchButton.classList.add('mobile-visible'); }
+//       if (!searchForm.classList.contains('mobile-visible')) { searchForm.classList.add('mobile-visible'); }
+//       if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
+//       for (let markerButton of markerButtons) {
+//         if (!markerButton.classList.contains('mobile-visible')) { markerButton.classList.add('mobile-visible'); }
+//       }
+//     }
+//   }  
 
-  /* Accounts-item hover and list in popup */
-  if (popup) {
-    popupAccounts.addEventListener('mouseover', function() {
-      if (document.body.clientWidth >= 1121) {
-        if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
-      }
-    });
-    popupAccountsList.addEventListener('mouseleave', function() {
-      if (document.body.clientWidth >= 1121) {
-        if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-      }
-    });
-    popup.addEventListener('mouseleave', function() {
-      if (document.body.clientWidth >= 1121) {
-        if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-      }
-    });
-    popupLogout.addEventListener('mouseover', function() {
-      if (document.body.clientWidth >= 1121) {
-        if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
-      }
-    });
+//   }
 
-  }
-
-  if (document.body.clientWidth <= 561 && searchForm
-    && searchInput.classList.contains('active')
-    && searchSubmit.classList.contains('active')) {
-  if (!searchForm.classList.contains('mobile-mini')) { searchForm.classList.add('mobile-mini'); }
-  if (!accountMenu.classList.contains('search-mini')) { accountMenu.classList.add('search-mini'); }
-} else {
-  if (searchForm && searchForm.classList.contains('mobile-mini')) { searchForm.classList.remove('mobile-mini'); }
-  if (accountMenu && accountMenu.classList.contains('search-mini')) { accountMenu.classList.remove('search-mini'); }
-}
 
   
-}, 100);
+// }, 100);
 /* ----------------------------------------------------- */
 
+
+/* Menu Label hover */
+if (menuLabel) {
+  menuLabel.addEventListener('mouseover', function() {
+    accountMenu.classList.add('active');
+    for (let menuItem of menuItems) {
+      menuItem.classList.add('visible');
+    }
+  });
+
+  accountMenu.addEventListener('mouseleave', function() {
+    if (!burgerButton.classList.contains('active') && menuLabel.classList.contains('active')) {
+      accountMenu.classList.remove('active');
+      for (let menuItem of menuItems) {
+        menuItem.classList.remove('visible');
+      }
+    }
+  });
+}
+/* ---------------------------------------------------- */
 
 /* Marker Buttons Clicking Active */
 for (let i = 0; i < markerButtons.length; i++) {
@@ -160,44 +123,18 @@ for (let i = 0; i < menuItems.length; i++) {
 }
 /* --------------------------------------------------- */
 
-
 /* Burger Button Menu Active */
 if (burgerButton) {
   burgerButton.addEventListener('click', function() {
-    if (burgerButton.classList.contains('active')) {
-      burgerButton.classList.remove('active');
-    }
+    if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
     else { burgerButton.classList.add('active'); }
-
-    if (burgerButton.classList.contains('active')) {
-      accountMenu.classList.add('active-button');
-      menuLabel.classList.remove('active');
-      for (let menuItem of menuItems) {
-        menuItem.classList.add('visible');
-      }
-    }
-    else {
-      accountMenu.classList.remove('active-button'); 
-      menuLabel.classList.add('active');
-      for (let menuItem of menuItems) {
-        menuItem.classList.remove('visible');
-      }
-    }
-  });
-}
-/* ----------------------------------------------------- */
-
-/* Burger Button-mobile Menu and Bar Active */
-if (burgerButtonMobile) {
-  burgerButtonMobile.addEventListener('click', function() {
-    if (!burgerButtonMobile.classList.contains('active')) {
-      burgerButtonMobile.classList.add('active');
-    }
+    if (!burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.add('active'); }
     else { burgerButtonMobile.classList.remove('active'); }
 
-    if (burgerButtonMobile.classList.contains('active')) {
+    if (burgerButton.classList.contains('active')) {
       accountMenu.classList.add('active-button');
       menuLabel.classList.remove('active');
+      frameBlock.classList.add('menu-visible');
       for (let menuItem of menuItems) {
         menuItem.classList.add('visible');
       }
@@ -205,6 +142,7 @@ if (burgerButtonMobile) {
     else {
       accountMenu.classList.remove('active-button'); 
       menuLabel.classList.add('active');
+      frameBlock.classList.remove('menu-visible');
       for (let menuItem of menuItems) {
         menuItem.classList.remove('visible');
       }
@@ -226,15 +164,66 @@ if (burgerButtonMobile) {
       accountHeader.classList.remove('mobile-visible');
       accountMenu.classList.remove('mobile-visible');
     }
-    if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
-    else { frameBlock.classList.remove('menu-visible'); }
+    if (!searchForm.classList.contains('mobile-mini')) { searchForm.classList.add('mobile-mini'); }
 
     for (let markerButton of markerButtons) {
       if (!markerButton.classList.contains('mobile-visible')) { markerButton.classList.add('mobile-visible'); }
       else { markerButton.classList.remove('mobile-visible'); }
     }
   });
+}
+/* ----------------------------------------------------- */
 
+/* Burger Button-mobile Menu and Bar Active */
+if (burgerButtonMobile) {
+  burgerButtonMobile.addEventListener('click', function() {
+    if (!burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.add('active'); }
+    else { burgerButtonMobile.classList.remove('active'); }
+    if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
+    else { burgerButton.classList.add('active'); }
+
+    if (burgerButtonMobile.classList.contains('active')) {
+      accountMenu.classList.add('active-button');
+      menuLabel.classList.remove('active');
+      frameBlock.classList.add('menu-visible');
+
+      for (let menuItem of menuItems) {
+        menuItem.classList.add('visible');
+      }
+    }
+    else {
+      accountMenu.classList.remove('active-button'); 
+      menuLabel.classList.add('active');
+      frameBlock.classList.remove('menu-visible');
+      for (let menuItem of menuItems) {
+        menuItem.classList.remove('visible');
+      }
+    }
+
+    if (!searchButton.classList.contains('mobile-visible')
+        && !searchForm.classList.contains('mobile-visible')
+        && !accountNavigate.classList.contains('mobile-visible')
+        && !accountHeader.classList.contains('mobile-visible')
+        && !accountMenu.classList.contains('mobile-visible')) {
+      searchButton.classList.add('mobile-visible');
+      searchForm.classList.add('mobile-visible');
+      accountNavigate.classList.add('mobile-visible');
+      accountHeader.classList.add('mobile-visible');
+      accountMenu.classList.add('mobile-visible');
+    } else {
+      searchButton.classList.remove('mobile-visible');
+      searchForm.classList.remove('mobile-visible');
+      accountNavigate.classList.remove('mobile-visible');
+      accountHeader.classList.remove('mobile-visible');
+      accountMenu.classList.remove('mobile-visible');
+    }
+    if (!searchForm.classList.contains('mobile-mini')) { searchForm.classList.add('mobile-mini'); }
+
+    for (let markerButton of markerButtons) {
+      if (!markerButton.classList.contains('mobile-visible')) { markerButton.classList.add('mobile-visible'); }
+      else { markerButton.classList.remove('mobile-visible'); }
+    }
+  });  
 }
 /* ---------------------------------------------------- */
 
@@ -268,13 +257,17 @@ menuItems.forEach(menuItem => {
 /* Search Button Input Active */
 if (searchButton) {
   searchButton.addEventListener('click', function() {
-    if (!searchInput.classList.contains('active') && !searchSubmit.classList.contains('active')) {
+    if (!searchInput.classList.contains('active')
+        && !searchSubmit.classList.contains('active')
+        && !accountMenu.classList.contains('search-mini')) {
       searchInput.classList.add('active');
       searchSubmit.classList.add('active');
+      accountMenu.classList.add('search-mini');
     }
     else { 
       searchInput.classList.remove('active');
       searchSubmit.classList.remove('active');
+      accountMenu.classList.remove('search-mini');
     }
   });
   searchSubmit.addEventListener('click', function(event) {
@@ -358,6 +351,23 @@ if (popup && popupAccounts) {
   }
 }
 /* --------------------------------------------------- */
+
+/* Accounts-item hover and list in popup */
+if (popup) {
+  popupAccounts.addEventListener('mouseover', function() {
+    if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+  });
+  popupAccountsList.addEventListener('mouseleave', function() {
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+  });
+  popup.addEventListener('mouseleave', function() {
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+  });
+  popupLogout.addEventListener('mouseover', function() {
+    if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
+  });
+}
+
 
 /* Profile Clicking popup-call */
 if (profile) {
