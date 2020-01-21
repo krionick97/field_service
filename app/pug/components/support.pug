@@ -1,0 +1,15 @@
+mixin support-item(text)
+  // Support Item
+  div.header__account-navigate_support-item
+    div.header__account-navigate_support-text= text
+
+
+div.header__account-navigate_support
+  div.header__account-navigate_support-beeper
+    div.header__account-navigate_support-beeper_fill
+  div.header__account-navigate_support-header
+    div.header__account-navigate_support-title Support
+  div.header__account-navigate_support-block
+    +support-item('F.A.Q.')
+    +support-item('Tickets')
+    +support-item('Contacts')

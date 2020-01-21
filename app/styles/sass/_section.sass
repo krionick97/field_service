@@ -6,7 +6,7 @@
     &-page
       display: block
       width: 100%
-      height: calc(100% - 60px)
+      height: 100%
       position: relative
       &:before
         display: block
@@ -102,6 +102,21 @@
         &:active
           transform: scale(1)
 
+  /* Recovery page */
+  &__recovery
+    &-form
+      &_type
+        flex-direction: column
+        align-items: center
+        padding: 0 2rem
+        margin-bottom: 3rem
+      &_label
+        text-align: center
+        width: auto
+        margin: 0 0 1rem
+      &_input
+        width: 85%
+
   /* Selecting of Account Page */
   &__accounts
     &-block
@@ -153,7 +168,6 @@
 
   /* Account Page */
   &__account
-    height: calc(100%-60px)
     &-page
       height: 100%
       display: flex
@@ -293,6 +307,9 @@
 @media (max-width: 720px)
   .section
     &__account
+      &-page
+        &.hidden
+          display: none
       &-menu
         &.active-button.mobile-visible
           width: 100% !important
@@ -336,7 +353,7 @@
           transition: none
       &-label.active
         display: none
-      &_frame-block
+      // &_frame-block
 
 @media (max-width: 720px)
   .section

@@ -1,0 +1,15 @@
+div.section.section__login-page.section__recovery-page
+  div.section__login-block.section__recovery-block
+    form(action="#").section__login-form.section__recovery-form
+      h3.section__login-form_title.section__recovery-form_title Reset Password
+      div.section__login-form_type.section__recovery-form_type
+        label(for="recovery-email").section__login-form_label.section__recovery-form_label Enter your Email and we will send the link:
+        input(type="email", name="form-email", placeholder="Your email")#recovery-email.section__login-form_input.section__recovery-form_input
+      //- div.section__login-form_type
+      //-   label(for="form-password").section__login-form_label Password:
+      //-   input(type="password", name="form-password", placeholder="Your password")#form-password.section__login-form_input
+      //- div.section__login-form_error
+      //-   p Incorrect password or e-mail
+      //- div.section__login-form_link
+      //-   a(href="#") Forgot password?
+      input(type="submit", value="Submit").dark-button.section__login-form_submit.section__recovery-form_submit
