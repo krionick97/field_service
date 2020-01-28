@@ -1,6 +1,18 @@
 @mixin box-shadow($opacity)
   box-shadow: 0.4rem 0.4rem 0.6rem rgba($color-black, $opacity)
 
+@mixin navigate-visible
+  &.visible
+    transition-duration: 0.1s
+    transition-property: opacity
+    opacity: 1
+    pointer-events: auto
+
+@mixin navigate-active
+  &.active
+    svg .cls-1
+      fill: $color-blue-light
+
 @mixin beeper($top, $right, $deg)
   &-beeper
     position: relative
@@ -36,6 +48,29 @@
   &::-webkit-scrollbar-track-piece 
     background: transparent
 
+@mixin attention-icon($display, $top, $bottom, $left, $right)
+  &.active
+    display: block
+    position: relative
+    &:after
+      position: absolute
+      display: $display
+      content: '!'
+      z-index: 10
+      +roboto-medium
+      color: $color-white
+      text-align: center
+      font-size: 1.4rem
+      padding: 0.1rem 0 0
+      width: 1.6rem
+      height: 1.5rem
+      border-radius: 0.8rem
+      background-color: red
+      top: $top
+      bottom: $bottom
+      left: $left
+      right: $right
+
 
 .header
   background-color: $color-blue-dark
@@ -51,7 +86,7 @@
     bottom: 0
     width: 100%
     height: 0.1rem
-    background-color: rgba(126, 163, 217, 0.4)
+    background-color: $color-blue-border
   &__loginPage
     width: 100%
     height: 100%
@@ -285,9 +320,6 @@
           padding: 1rem
           border-bottom: 0.1rem solid $color-grey
           user-select: none
-        // &-block
-        //   max-height: 40rem
-        //   @include custom-scroll
         &-title
           +roboto_medium
           font-size: 1.4rem
@@ -296,6 +328,11 @@
             text-decoration: underline
             cursor: pointer
 
+        /* Tickets support-item */
+        &-tickets
+          .attention-tickets
+            display: none
+            @include attention-icon(block, -0.8rem, auto, 8rem, auto)
 
 
       &_leftBlock, &_rightBlock
@@ -379,7 +416,7 @@
         img
           margin-top: 1.6rem
         &.active
-          background-color: rgba($color-grey, 0.3)
+          background-color: rgba($color-grey, 0.15)
           position: relative
           &:after
             position: absolute
@@ -402,14 +439,27 @@
         width: 2.3rem
       &_question
         width: 1.8rem
-        &.active
-          svg .cls-1
-            fill: $color-blue-light
+        @include navigate-active
+        // &.active
+        //   svg .cls-1
+        //     fill: $color-blue-light
+        &-attention
+          display: none
+          @include attention-icon(block, -0.3rem, auto, auto, -0.9rem)
+          &_mobile
+            display: none
       &_bell
         width: 2.1rem
-        &.active
-          svg .cls-1
-            fill: $color-blue-light
+        @include navigate-active
+        // &.active
+        //   svg .cls-1
+        //     fill: $color-blue-light
+        &-attention
+          display: none
+          @include attention-icon(block, -0.3rem, auto, auto, -0.6rem)
+          &_mobile
+            display: none
+
       &_profile
         display: block
         padding: 0
@@ -424,6 +474,17 @@
       &_phonecall
         width: 3rem
         margin-bottom: 0.5rem
+        svg .cls-2
+          fill: none
+          stroke: red
+          stroke-linecap: round
+          stroke-linejoin: round
+          stroke-width: 2px
+        @include navigate-active
+        // &.active
+        //   svg .cls-1
+        //     fill: $color-blue-light
+
 
 @media (max-width: 1420px)
   .header
@@ -452,6 +513,22 @@
           margin-left: 1rem
         &_question, &_bell, &_phonecall
           display: none
+        &_profile
+          &-attention
+            @include attention-icon(block, -0.5rem, auto, 2.6rem, auto)
+        &_bell
+          &-attention
+            @include attention-icon(none, -0.3rem, auto, auto, -0.6rem)
+            &_mobile
+              @include attention-icon(block, auto, 0.2rem, 2rem, right)
+          &_mobile
+            display: none
+        &_question
+          &-attention
+            @include attention-icon(none, -0.3rem, auto, auto, -0.9rem)
+            &_mobile
+              @include attention-icon(block, auto, 0.2rem, 2rem, auto)
+
         &_popup
           bottom: -440%
           right: 0.5rem
@@ -546,6 +623,8 @@
           border-radius: 1.6rem
           background-color: $color-grey
           border: 0.1rem solid $color-grey
+          &-attention
+            @include attention-icon(block, -0.5rem, auto, 2.2rem, auto)
         &_marker:nth-child(3)
           margin-right: 0
         &_search, &_search-form, &_marker

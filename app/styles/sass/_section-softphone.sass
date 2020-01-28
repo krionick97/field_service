@@ -1,0 +1,291 @@
+.section
+  &__account
+    &_softphone
+      display: none
+      // width: 0
+      box-sizing: border-box
+      height: calc(100% - 61px)
+      background-color: $color-white
+      // transition: 0.1s
+      // opacity: 0
+      transition-property: display
+      transition-delay: 0.2s
+      &.active
+        display: block
+        transition-property: display
+        transition-delay: 0.2s
+        // opacity: 1
+        // transition: 0.1s
+        width: 28rem
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4), -2px 3px 8px rgba(0, 0, 0, 0.25)
+        border:
+          top: 0.3rem solid $color-blue-border
+          left: 0.3rem solid $color-blue-border
+
+      &-top
+        display: flex
+        box-sizing: border-box
+        border-bottom: 0.1rem solid $color-blue-border
+        margin-bottom: 1rem
+
+      /* Tap Item */
+      &-tap
+        padding: 0.6rem 0
+        box-sizing: border-box
+        width: 25%
+        user-select: none
+        &:not(:last-child)
+          border-right: 0.02rem solid rgba($color-black, 0.3)
+        &:hover
+          cursor: pointer
+          svg
+            transition: 0.1s
+            transform: scale(1.08)
+        &.selected
+          position: relative
+          background-color: rgba($color-grey, 0.15)
+          &:after
+            position: absolute
+            display: block
+            content: ''
+            bottom: -0.1rem
+            width: 100%
+            height: 0.4rem
+            background-color: $color-blue-light
+          svg
+            transform: scale(1)
+        &_icon
+          height: 1.5rem
+          display: flex
+          justify-content: center
+          margin-bottom: 0.7rem
+          svg
+            height: 100%
+            width: auto
+        &_title
+          text-align: center
+          font-size: 1.2rem
+          +roboto_medium
+      &-home, &-dial, &-calls
+        .section__account_softphone-tap_icon svg path
+          fill: $color-blue-light
+      &-contacts
+        .section__account_softphone-tap_icon svg path
+          stroke: $color-blue-light
+
+      /* Control */
+      &-control
+        padding: 0 0.8rem
+        margin-bottom: 3rem
+        &_block
+          display: flex
+          align-items: center
+          justify-content: space-between
+          &:first-child
+            margin-bottom: 2rem
+        &_status
+          position: relative
+        &_presence
+          display: flex
+          user-select: none
+          &:hover
+            cursor: pointer
+          &-symbol
+            display: block
+            width: 2.5rem
+            height: 2.5rem
+            margin-right: 1rem
+          &-title
+            +roboto_light
+            font-size: 1rem
+            color: $color-grey
+          &-block
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            height: 2.5rem
+          &-text
+            display: flex
+            p
+              font-size: 1.2rem
+              margin-right: 0.5rem
+          &-arrow
+            display: block
+            width: 0
+            height: 0
+            margin: 0.4rem 0 0
+            border-left: 0.6rem solid transparent
+            border-right: 0.6rem solid transparent
+            border-top: 0.6rem solid $color-grey
+            transition: 0.2s
+            &.rotate
+              transform: rotate(180deg)
+              transition: 0.2s
+              margin: 0.2rem 0 0
+
+        /* Control-popup */
+        &_popup
+          background-color: $color-white
+          border-top-right-radius: 0.5rem
+          border-bottom-right-radius: 0.5rem
+          position: absolute
+          width: 15rem
+          top: 120%
+          left: -0.8rem
+          opacity: 0
+          transition: 0.1s
+          pointer-events: none
+          overflow: hidden
+          z-index: 3
+          @include box-shadow(0.1)
+          @include navigate-visible
+          &-item
+            padding: 1rem 1rem
+            display: flex
+            align-items: center
+            user-select: none
+            &:hover
+              cursor: pointer
+              background-color: rgba($color-blue-light, 0.2)
+            &.selected
+              background-color: rgba($color-grey, 0.23)
+          &-icon
+            width: 2.5rem
+            height: 2.5rem
+            margin-right: 1rem
+            svg
+              width: 100%
+          &-title
+            font-size: 1.2rem
+
+        &_quit
+          width: 1.7rem
+          margin-right: 1rem
+          svg
+            width: 100%
+            height: auto
+          &:hover
+            transition: 0.1s
+            cursor: pointer
+            transform: scale(1.1)
+            width: 1.7rem
+          &:active
+            transform: scale(1)
+
+        /* Headphones */
+        &_headphones
+          display: flex
+          align-items: center
+          &-icon
+            width: 1.9rem
+            height: auto
+            margin-right: 0.8rem
+            svg
+              width: 100%
+          &-arrow
+            display: block
+            width: 0
+            height: 0
+            margin: 0.4rem 0 0
+            border-left: 0.6rem solid transparent
+            border-right: 0.6rem solid transparent
+            border-top: 0.6rem solid $color-grey
+            transition: 0.2s
+
+        /* Volume Range */
+        &_volume
+          display: flex
+          align-items: center
+          &-container
+            width: 15.8rem
+            height: 0.16rem
+            border-radius: 0.08rem
+            position: relative
+            margin: 0 0.6rem
+          &-input
+            margin: 0
+            box-sizing: border-box
+            width: 100%
+            height: 100%
+            display: block
+            -webkit-appearance: none
+            background-color: $color-grey
+            outline: none
+            &::-webkit-slider-thumb
+              -webkit-appearance: none
+              width: 1.6rem
+              height: 1.6rem
+              border-radius: 0.8rem
+              cursor: pointer
+              background-color: #F5EEEE
+              outline: none
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
+              transform: translateX(0)
+          &-bar
+            position: absolute
+            display: block
+            left: 0
+            top: 0
+            width: 100%
+            height: 0.16rem
+            overflow: hidden
+            border-radius: 0.08rem
+          &-fill
+            display: block
+            width: 50%
+            height: 100%
+            background-color: $color-blue-light
+
+      /* Content */
+      &-content
+        height: calc(100% - 154.6px)
+        overflow: hidden
+        overflow-y: scroll
+        @include custom-scroll
+
+        /* Content-item */
+        &_item
+          display: none
+          &.active
+            display: block
+
+        /* Calls */
+        &_calls
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25)
+          // @include box-shadow(0.28)
+          &-item
+            display: flex
+            align-items: center
+            padding: 1rem 0.8rem
+            box-sizing: border-box
+            user-select: none
+            &:not(:last-child)
+              border-bottom: 0.05rem solid $color-grey
+          &-data
+            // display: flex
+          &-symbol
+            display: none
+            margin-right: 1rem
+            width: 1.4rem
+            &.active
+              display: inline-block
+          &-contact
+            font-size: 1.2rem
+            div, p
+              display: inline-block
+              line-height: 1.2
+            span
+              &:not(:last-child)
+                margin-right: 0.5rem
+          &-name
+            margin-right: 0.5rem
+          &-contIcon
+            display: none !important
+            &.visible
+              transform: translateY(0.1rem)
+              display: inline-block !important
+              margin-right: 0.4rem
+          
+
+
+

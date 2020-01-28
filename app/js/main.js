@@ -31,7 +31,22 @@ const supportControl = document.querySelector('.header__account-navigate_questio
 const supportControlMobile = document.querySelector('.header__account-navigate_question-mobile'); // Suppot-mobile navigate-item
 const supportItems = document.querySelectorAll('.header__account-navigate_support-item'); // Suppot-mobile navigate-item
 const profile = document.querySelector('.header__account-navigate_profile');
+const phonecall = document.querySelector('.header__account-navigate_phonecall');
+const phonecallMobile = document.querySelector('.header__account-navigate_phonecall-mobile');
+const softphoneMenu = document.querySelector('.section__account_softphone');
+const softphoneTapItems = document.querySelectorAll('.section__account_softphone-tap');
+const softphoneQuit = document.querySelector('.section__account_softphone-control_quit');
+const softphoneContentItems = document.querySelectorAll('.section__account_softphone-content_item');
 const frameBlock = document.querySelector('.section__account_frame-block');
+const controlStatus = document.querySelector('.section__account_softphone-control_status');
+const statusPresence = document.querySelector('.section__account_softphone-control_presence');
+const statusTitle = document.querySelector('.section__account_softphone-control_presence-text p');
+const statusPopup = document.querySelector('.section__account_softphone-control_status-popup');
+const statusArrow = document.querySelector('.section__account_softphone-control_presence-arrow');
+const statusPopupItems = document.querySelectorAll('.section__account_softphone-control_popup-item');
+const statusSymbol = document.querySelector('.section__account_softphone-control_presence-symbol');
+const volumeSlider = document.querySelector('#volumeSlider');
+const volumeFill = document.querySelector('.section__account_softphone-control_volume-fill');
 
 
 /* Screen Width updating */
@@ -238,7 +253,7 @@ if (burgerButtonMobile) {
 for (let i = 0; i < menuItems.length; i++) {
   if (!menuItems[i].classList.contains('active')) menuItems[0].classList.add('active');
   menuItems[i].addEventListener('click', function() {
-    if (screen.width < 721 && accountMenu.classList.contains('active-button')) {
+    if (document.body.clientWidth < 721 && accountMenu.classList.contains('active-button')) {
       if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
       if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
       if (accountHeader.classList.contains('mobile-visible')) { accountHeader.classList.remove('mobile-visible'); }
@@ -346,16 +361,20 @@ if (profile) {
     else { 
       if (popup.classList.contains('visible')) { popup.classList.remove('visible') };
       if (popup.classList.contains('mobile-mini')) { popup.classList.remove('mobile-mini') };
-      if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
+      if (popupSupport.classList.contains('visible')) {popupSupport.classList.remove('visible'); }
       if (supportControl.classList.contains('active')) { supportControl.classList.remove('active'); }
       if (noticesControl.classList.contains('active')) { noticesControl.classList.remove('active'); }
-      if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
+      if (popupNotices.classList.contains('visible')) {popupNotices.classList.remove('visible'); }
       if (popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.remove('visible'); }
       if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
-      if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
       if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
+      if (popupNotices.classList.contains('visible')) {}
       if (accountHeader.classList.contains('height')) { accountHeader.classList.remove('height'); }
       if (accountPage.classList.contains('hidden')) { accountPage.classList.remove('hidden'); }
+      if (!burgerButtonMobile.contains('active')) {
+        if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
+      }
+      // if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
     }
     for (let popupIndicator of popupIndicators) {
       if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
@@ -413,6 +432,7 @@ if (popup && popupAccounts) {
     if (accountHeader.classList.contains('height')) { accountHeader.classList.remove('height'); }
     if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
     if (accountPage.classList.contains('hidden')) { accountPage.classList.remove('hidden'); }
+
     for (let noticesItem of noticesItems) {
       if (noticesItem.classList.contains('selected')) { noticesItem.classList.remove('selected'); }
     }
@@ -498,6 +518,7 @@ if(popupNotices) {
       if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
       if (!noticesControlMobile.classList.contains('active')) { noticesControlMobile.classList.add('active'); }
       if (!noticesControlMobile.classList.contains('selected')) { noticesControlMobile.classList.add('selected'); }
+      if (!accountHeader.classList.contains('height')) { accountHeader.classList.add('height'); }
     } else {
       if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
       if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
@@ -505,6 +526,10 @@ if(popupNotices) {
       if (noticesControlMobile.classList.contains('selected')) { noticesControlMobile.classList.remove('selected'); }
       if (accountHeader.classList.contains('height')) { accountHeader.classList.remove('height'); }
       if (accountPage.classList.contains('hidden')) { accountPage.classList.remove('hidden'); }
+    }
+
+    if (document.body.clientWidth < 721 && noticesControl.classList.contains('active')) {
+      if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
     }
   });
 }
@@ -557,6 +582,7 @@ if (popupSupport) {
       if (!frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.add('overframe-notices'); }
       if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
       if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
+      if (!accountHeader.classList.contains('height')) { accountHeader.classList.add('height'); }
       
     } else {
       if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
@@ -566,6 +592,11 @@ if (popupSupport) {
       if (accountHeader.classList.contains('height')) { accountHeader.classList.remove('height'); }
       if (accountPage.classList.contains('hidden')) { accountPage.classList.remove('hidden'); }
     }
+
+    if (document.body.clientWidth < 721 && supportControl.classList.contains('active')) {
+      if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
+    }
+
   });
 }
 if (supportControlMobile) {
@@ -577,7 +608,7 @@ if (supportControlMobile) {
       if (!accountHeader.classList.contains('height')) { accountHeader.classList.add('height'); }
       if (!popup.classList.contains('mobile-mini')) { popup.classList.add('mobile-mini') };
       if (!accountPage.classList.contains('hidden')) { accountPage.classList.add('hidden'); }
-      frameBlock.classList.add('menu-visible');
+      if (!accountHeader.classList.contains('height')) { accountHeader.classList.add('height'); }
     } else {
       if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
       if (supportControl.classList.contains('active')) { supportControl.classList.remove('active'); }
@@ -599,6 +630,107 @@ if (supportItems) {
       }
     });
   }
+}
+/* --------------------------------------------------- */
+
+/* Phonecall click */
+if (phonecall) {
+  phonecall.addEventListener('click', function() {
+    if (!softphoneMenu.classList.contains('active')) {
+      softphoneMenu.classList.add('active');
+      if (!phonecallMobile.classList.contains('active')) { phonecallMobile.classList.add('active'); }
+      if (!phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.add('selected'); }
+    } else {
+      softphoneMenu.classList.remove('active');
+      if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
+      if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }
+    }
+  });
+  // phonecallMobile.addEventListener('click', function() {
+  //   if (!softphoneMenu.classList.contains('active')) {
+  //     softphoneMenu.classList.add('active');
+  //     if (!phonecall.classList.contains('active')) { phonecall.classList.add('active'); }
+  //     if (!phonecall.classList.contains('selected')) { phonecall.classList.add('selected'); }
+  //   } else {
+  //     softphoneMenu.classList.remove('active');
+  //     if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
+  //     if (phonecall.classList.contains('selected')) { phonecall.classList.remove('selected'); }
+  //   }
+  // });
+}
+/* ---------------------------------------------------- */
+
+/* Softphone Tap-items clicking */
+if (softphoneMenu) {
+  for (let i = 0; i < softphoneTapItems.length; i++) {
+    if (!softphoneTapItems[i].classList.contains('selected')) { softphoneTapItems[0].classList.add('selected'); }
+    if (!softphoneContentItems[i].classList.contains('active')) { softphoneContentItems[0].classList.add('active'); }
+    softphoneTapItems[i].addEventListener('click', function() {
+       /* Selected tap */
+      if (!softphoneTapItems[i].classList.contains('selected')) {
+        softphoneTapItems[i].classList.add('selected');
+        if (!softphoneContentItems[i].classList.contains('active')) { softphoneContentItems[i].classList.add('active'); }
+      }
+      for (let j = i - 1; j >= 0; j--) {
+        if (softphoneTapItems[j].classList.contains('selected')) { softphoneTapItems[j].classList.remove('selected'); }
+        if (softphoneContentItems[j].classList.contains('active')) { softphoneContentItems[j].classList.remove('active'); }
+      }
+      for (let k = i + 1; k < softphoneTapItems.length; k++) {
+        if (softphoneTapItems[k].classList.contains('selected')) { softphoneTapItems[k].classList.remove('selected'); }
+        if (softphoneContentItems[k].classList.contains('active')) { softphoneContentItems[k].classList.remove('active'); }
+      }
+      /* ----------- */
+
+    });
+  }
+}
+/* ---------------------------------------------------- */
+
+/* Presence status clickinkg */
+if (controlStatus) {
+  statusPresence.addEventListener('click', function() {
+    if (!statusPopup.classList.contains('visible')) {
+      statusPopup.classList.add('visible');
+      if (!statusArrow.classList.contains('rotate')) { statusArrow.classList.add('rotate'); }
+    }
+    else {
+      statusPopup.classList.remove('visible');
+      if (statusArrow.classList.contains('rotate')) { statusArrow.classList.remove('rotate'); }
+    }
+  });
+
+  for (let i = 0; i < statusPopupItems.length; i++) {
+    statusPopupItems[i].addEventListener('click', function() {
+      if (!statusPopupItems[i].classList.contains('selected')) {
+        statusPopupItems[i].classList.add('selected');
+        for (let j = i - 1; j >= 0; j--) {
+          if (statusPopupItems[j].classList.contains('selected')) { statusPopupItems[j].classList.remove('selected'); }
+        }
+        for (let k = i + 1; k < statusPopupItems.length; k++) {
+          if (statusPopupItems[k].classList.contains('selected')) { statusPopupItems[k].classList.remove('selected'); }
+        }
+      }
+      if (statusPopup.classList.contains('visible')) { statusPopup.classList.remove('visible'); }
+      if (statusArrow.classList.contains('rotate')) { statusArrow.classList.remove('rotate'); }
+    });
+  }
+  statusPopupItems.forEach(statusPopupItem => {
+    statusPopupItem.addEventListener('click', function() {
+      let icon = statusPopupItem.querySelector('.section__account_softphone-control_popup-icon svg');
+      let iconClone = icon.cloneNode(true);
+      let statusSymbolSVG = statusSymbol.querySelector('svg');
+      let statusItemTitle = statusPopupItem.querySelector('.section__account_softphone-control_popup-title').textContent;
+      if (statusSymbolSVG) { statusSymbolSVG.remove(); }
+      statusSymbol.append(iconClone);
+      statusTitle.textContent = statusItemTitle;
+    });
+  });
+  softphoneQuit.addEventListener('click', function() {
+    if (softphoneMenu.classList.contains('active')) { softphoneMenu.classList.remove('active'); }
+    if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
+    if (statusPopup.classList.contains('visible')) { statusPopup.classList.remove('visible'); }
+    if (statusArrow.classList.contains('rotate')) { statusArrow.classList.remove('rotate'); }
+  });
 }
 /* --------------------------------------------------- */
 
@@ -669,4 +801,12 @@ window.addEventListener('click', function(event) {
 });
 /* -------------------------------------------------------- */
 
-
+/* Filling color when we pulling the thumb in Slider-bar-volume */
+function setBarVolume() {
+  volumeSlider.oninput = function() {
+    // console.log(this.value);
+    volumeFill.style.width = `${this.value}%`;
+  }
+}
+setBarVolume();
+/* -------------------------------------------------------- */

@@ -1,6 +1,7 @@
-mixin support-item(text)
+mixin support-item(text, personal_class, attention_name, attention_active)
   // Support Item
-  div.header__account-navigate_support-item
+  div.header__account-navigate_support-item(class=personal_class)
+    div.attention-item(class=attention_name, class=attention_active)
     div.header__account-navigate_support-text= text
 
 
@@ -11,5 +12,5 @@ div.header__account-navigate_support
     div.header__account-navigate_support-title Support
   div.header__account-navigate_support-block
     +support-item('F.A.Q.')
-    +support-item('Tickets')
+    +support-item('Tickets', 'header__account-navigate_support-tickets', 'attention-tickets', 'active')
     +support-item('Contacts')
