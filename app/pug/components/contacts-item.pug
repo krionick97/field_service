@@ -1,0 +1,25 @@
+mixin contact-item(name, surname, number)
+  // Contact Item
+  div.section__account_softphone-content_contacts-item
+    div.section__account_softphone-content_contacts-name
+      span= name
+      span= surname
+    div.section__account_softphone-content_contacts-number= number
+
+div.section__account_softphone-content_contacts-search
+  div.section__account_softphone-content_contacts-icon
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.32812 9.96094C4.20312 10.8359 5.26562 11.2734 6.51562 11.2734C7.76562 11.2734 8.82812 10.8359 9.70312 9.96094C10.5781 9.08594 11.0156 8.02344 11.0156 6.77344C11.0156 5.52344 10.5781 4.46094 9.70312 3.58594C8.82812 2.71094 7.76562 2.27344 6.51562 2.27344C5.26562 2.27344 4.20312 2.71094 3.32812 3.58594C2.45312 4.46094 2.01562 5.52344 2.01562 6.77344C2.01562 8.02344 2.45312 9.08594 3.32812 9.96094ZM12.5156 11.2734L17.4844 16.2422L15.9844 17.7422L11.0156 12.7734V11.9766L10.7344 11.6953C9.54688 12.7266 8.14062 13.2422 6.51562 13.2422C4.70312 13.2422 3.15625 12.6172 1.875 11.3672C0.625 10.1172 0 8.58594 0 6.77344C0 4.96094 0.625 3.42969 1.875 2.17969C3.15625 0.898438 4.70312 0.257812 6.51562 0.257812C8.32812 0.257812 9.85938 0.898438 11.1094 2.17969C12.3594 3.42969 12.9844 4.96094 12.9844 6.77344C12.9844 8.39844 12.4688 9.80469 11.4375 10.9922L11.7188 11.2734H12.5156Z" fill="#8E8E93"/>
+    </svg>
+  input#contacts-search(type="search", name="contacts-search" placeholder="Search contacts").section__account_softphone-content_contacts-input
+div.section__account_softphone-content_contacts-list
+  +contact-item('Bill', 'Anderson', '+1(234)567-89-00')
+  +contact-item('Aaron', 'Milton', '+1(234)567-89-00')
+  +contact-item('Reid', 'Alex', '+1(234)567-89-00')
+  +contact-item('Will', 'Baarda', '+1(234)567-89-00')
+  +contact-item('Bruce', 'Ballard', '+1(234)567-89-00')
+  +contact-item('Pauline', 'Banister', '+1(234)567-89-00')
+  +contact-item('Michael', 'Barlow', '+1(234)567-89-00')
+  +contact-item('John', 'Ryder', '+1(234)567-89-00')
+
+

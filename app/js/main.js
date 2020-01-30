@@ -380,6 +380,12 @@ if (profile) {
       if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
       if (popupIndicator.classList.contains('active')) popupIndicator.classList.remove('active');
     }
+
+    /* (ВАЖНО!!) в случае надобности переместить в блок else  */
+    if (softphoneMenu.classList.contains('active')) { softphoneMenu.classList.remove('active'); }
+    if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
+    if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
+    if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }  
   });
 }
 /* ------------------------------------------------- */
@@ -432,6 +438,11 @@ if (popup && popupAccounts) {
     if (accountHeader.classList.contains('height')) { accountHeader.classList.remove('height'); }
     if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
     if (accountPage.classList.contains('hidden')) { accountPage.classList.remove('hidden'); }
+    if (softphoneMenu.classList.contains('active')) { softphoneMenu.classList.remove('active'); }
+    if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
+    if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
+    if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }
+
 
     for (let noticesItem of noticesItems) {
       if (noticesItem.classList.contains('selected')) { noticesItem.classList.remove('selected'); }
@@ -633,6 +644,7 @@ if (supportItems) {
 }
 /* --------------------------------------------------- */
 
+
 /* Phonecall click */
 if (phonecall) {
   phonecall.addEventListener('click', function() {
@@ -646,17 +658,19 @@ if (phonecall) {
       if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }
     }
   });
-  // phonecallMobile.addEventListener('click', function() {
-  //   if (!softphoneMenu.classList.contains('active')) {
-  //     softphoneMenu.classList.add('active');
-  //     if (!phonecall.classList.contains('active')) { phonecall.classList.add('active'); }
-  //     if (!phonecall.classList.contains('selected')) { phonecall.classList.add('selected'); }
-  //   } else {
-  //     softphoneMenu.classList.remove('active');
-  //     if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
-  //     if (phonecall.classList.contains('selected')) { phonecall.classList.remove('selected'); }
-  //   }
-  // });
+  phonecallMobile.addEventListener('click', function() {
+    if (!softphoneMenu.classList.contains('active')) {
+      softphoneMenu.classList.add('active');
+      if (!phonecall.classList.contains('active')) { phonecall.classList.add('active'); }
+      if (!phonecallMobile.classList.contains('active')) { phonecallMobile.classList.add('active'); }
+      if (!phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.add('selected'); }
+    } else {
+      softphoneMenu.classList.remove('active');
+      if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
+      if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
+      if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }
+    }
+  });
 }
 /* ---------------------------------------------------- */
 
@@ -801,12 +815,16 @@ window.addEventListener('click', function(event) {
 });
 /* -------------------------------------------------------- */
 
+
 /* Filling color when we pulling the thumb in Slider-bar-volume */
 function setBarVolume() {
   volumeSlider.oninput = function() {
-    // console.log(this.value);
     volumeFill.style.width = `${this.value}%`;
   }
 }
 setBarVolume();
 /* -------------------------------------------------------- */
+
+
+
+
