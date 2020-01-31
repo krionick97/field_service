@@ -50,6 +50,8 @@ const volumeFill = document.querySelector('.section__account_softphone-control_v
 const homeInfoButtons = document.querySelectorAll('.section__account_softphone-content_home-item_button-info');
 const homeInfoBlocks = document.querySelectorAll('.section__account_softphone-content_home-item_infoblock');
 const homeActiveMicrophone = document.querySelector('.section__account_softphone-content_home-item_actionButtons-microphone');
+const actionButton = document.querySelector('.section__account_softphone-content_home-item_actionButtons-actions');
+const actionMenu = document.querySelector('.section__account_softphone-content_home-item_actions-menu');
 const homeActionsBlacklist = document.querySelector('.section__account_softphone-content_home-item_actions-blacklist');
 const actionComment = document.querySelector('.section__account_softphone-content_home-item_actions-comment');
 const actionCommentAdd = document.querySelector('.section__account_softphone-content_home-item_actions-comment > div:first-child');
@@ -871,8 +873,18 @@ homeActionsBlacklist.addEventListener('click', function() {
 });
 /* ------------------------------------------------------ */
 
-/* Add Comment */
+/* Action-button to open action-menu */
+actionButton.addEventListener('click', function() {
+  actionButton.classList.toggle('open');
+  if (actionButton.classList.contains('open')) {
+    if (actionMenu.classList.contains('inactive')) { actionMenu.classList.remove('inactive'); }
+  } else {
+    if (!actionMenu.classList.contains('inactive')) { actionMenu.classList.add('inactive'); }
+  }
+});
+/* ------------------------------------------------------ */
 
+/* Add Comment */
 actionCommentForm.addEventListener('click', function(event) {
   event.preventDefault();
 });
