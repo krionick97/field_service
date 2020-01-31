@@ -47,6 +47,13 @@ const statusPopupItems = document.querySelectorAll('.section__account_softphone-
 const statusSymbol = document.querySelector('.section__account_softphone-control_presence-symbol');
 const volumeSlider = document.querySelector('#volumeSlider');
 const volumeFill = document.querySelector('.section__account_softphone-control_volume-fill');
+const homeInfoButtons = document.querySelectorAll('.section__account_softphone-content_home-item_button-info');
+const homeInfoBlocks = document.querySelectorAll('.section__account_softphone-content_home-item_infoblock');
+const homeActiveMicrophone = document.querySelector('.section__account_softphone-content_home-item_actionButtons-microphone');
+const homeActionsBlacklist = document.querySelector('.section__account_softphone-content_home-item_actions-blacklist');
+const actionComment = document.querySelector('.section__account_softphone-content_home-item_actions-comment');
+const actionCommentAdd = document.querySelector('.section__account_softphone-content_home-item_actions-comment > div:first-child');
+const actionCommentForm = document.querySelector('.section__account_softphone-content_home-item_actions-comment_inputBlock > form');
 
 
 /* Screen Width updating */
@@ -748,6 +755,17 @@ if (controlStatus) {
 }
 /* --------------------------------------------------- */
 
+/* Home Info Button clicking and home-info blocks appeareance */
+// const homeInfoButtons
+// const homeInfoBlocks
+for (let i = 0; i < homeInfoButtons.length; i++) {
+  homeInfoButtons[i].addEventListener('click', function() {
+    if (homeInfoButtons[i].classList.contains('inactive')) { return; }
+    else { homeInfoBlocks[i].classList.toggle('inactive'); }
+  });
+}
+
+/* -------------------------------------------------- */
 
 /* Clicking outside of popup to close and deselect */
 window.addEventListener('click', function(event) {
@@ -824,6 +842,51 @@ function setBarVolume() {
 }
 setBarVolume();
 /* -------------------------------------------------------- */
+
+
+/* Home-tap Active-call Microphone clicing on-off */
+homeActiveMicrophone.addEventListener('click', function() {
+  homeActiveMicrophone.classList.toggle('off');
+  const iconON = homeActiveMicrophone.querySelector('svg:first-child');
+  const iconOFF = homeActiveMicrophone.querySelector('svg:last-child');
+  if (homeActiveMicrophone.classList.contains('off')) {
+    if (!iconON.classList.contains('inactive')) { iconON.classList.add('inactive'); }
+    if (iconOFF.classList.contains('inactive')) { iconOFF.classList.remove('inactive'); }
+  } else {
+    if (iconON.classList.contains('inactive')) { iconON.classList.remove('inactive'); }
+    if (!iconOFF.classList.contains('inactive')) { iconOFF.classList.add('inactive'); }
+  }
+});
+/* ------------------------------------------------------- */
+
+/* Mark Blacklist in Acitons-menu */
+homeActionsBlacklist.addEventListener('click', function() {
+  homeActionsBlacklist.classList.toggle('marked');
+  const mark = homeActionsBlacklist.querySelector('svg');
+  if (homeActionsBlacklist.classList.contains('marked')) {
+    if (mark.classList.contains('inactive')) { mark.classList.remove('inactive'); }
+  } else {
+    if (!mark.classList.contains('inactive')) { mark.classList.add('inactive'); }
+  }
+});
+/* ------------------------------------------------------ */
+
+/* Add Comment */
+
+actionCommentForm.addEventListener('click', function(event) {
+  event.preventDefault();
+});
+
+
+actionCommentAdd.addEventListener('click', function() {
+  actionComment.classList.toggle('open');
+  if (actionComment.classList.contains('open')) {
+    if (actionCommentForm.classList.contains('inactive')) { actionCommentForm.classList.remove('inactive'); }
+  } else {
+    if (!actionCommentForm.classList.contains('inactive')) { actionCommentForm.classList.add('inactive'); }
+  }
+});
+/* ------------------------------------------------------ */
 
 
 

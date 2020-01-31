@@ -1,4 +1,194 @@
+mixin info-item-appointment(text)
+  // Item infoblock Appointment
+  div.section__account_softphone-content_home-item_infoblock-item.section__account_softphone-content_home-item_infoblock-appointment
+    div.section__account_softphone-content_home-item_infoblock-item_icon
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2.39319H1V13.5H13V2.39319Z" stroke="#6093DE" stroke-miterlimit="10"/>
+        <path d="M9.77197 0.5V4.77864" stroke="#6093DE" stroke-miterlimit="10"/>
+        <path d="M4.35449 0.5V4.77864" stroke="#6093DE" stroke-miterlimit="10"/>
+        <path d="M4.42627 8.32103L6.37564 10.2689L9.57395 7.07993" stroke="#6093DE" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    div.section__account_softphone-content_home-item_infoblock-item_text= text
+
+mixin info-item-incoming(text)
+  // Item infoblock Incoming
+  div.section__account_softphone-content_home-item_infoblock-item.section__account_softphone-content_home-item_infoblock-incoming
+    div.section__account_softphone-content_home-item_infoblock-item_icon
+      <svg viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.46387 4.5H11.4639M11.4639 4.5L7.8275 1.77273M11.4639 4.5L7.8275 7.22727" stroke="#01B41F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    div.section__account_softphone-content_home-item_infoblock-item_text= text
+
+mixin info-item-outgoing(text)
+  // Item infoblock Outgoing
+  div.section__account_softphone-content_home-item_infoblock-item.section__account_softphone-content_home-item_infoblock-outgoing
+    div.section__account_softphone-content_home-item_infoblock-item_icon
+      <svg viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.4644 4L1.46436 4M1.46436 4L5.10072 6.72727M1.46436 4L5.10072 1.27273" stroke="#2C7FFA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    div.section__account_softphone-content_home-item_infoblock-item_text= text
+
+mixin info-item-cont(text)
+  // Item infoblock Cont
+  div.section__account_softphone-content_home-item_infoblock-item.section__account_softphone-content_home-item_infoblock-cont
+    div.section__account_softphone-content_home-item_infoblock-item_icon
+      <svg viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.57265 1.7H8.97436V0.5H7.77778V1.7H2.99145V0.5H1.79487V1.7H1.19658C0.53547 1.7 0 2.237 0 2.9V11.3C0 11.963 0.53547 12.5 1.19658 12.5H9.57265C10.2338 12.5 10.7692 11.963 10.7692 11.3V2.9C10.7692 2.237 10.2338 1.7 9.57265 1.7ZM5.38462 3.5C6.37479 3.5 7.17949 4.307 7.17949 5.3C7.17949 6.296 6.37479 7.1 5.38462 7.1C4.39444 7.1 3.58974 6.296 3.58974 5.3C3.58974 4.307 4.39444 3.5 5.38462 3.5ZM8.97436 10.7H1.79487V10.1C1.79487 8.9 4.18804 8.24 5.38462 8.24C6.5812 8.24 8.97436 8.9 8.97436 10.1V10.7Z" fill="#8E8E93"/>
+      </svg>
+    div.section__account_softphone-content_home-item_infoblock-item_text= text
+
+mixin info-item-missed(text)
+  // Item infoblock Missed
+  div.section__account_softphone-content_home-item_infoblock-item.section__account_softphone-content_home-item_infoblock-missed
+    div.section__account_softphone-content_home-item_infoblock-item_icon
+      <svg viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.46387 4.5H11.4639M11.4639 4.5L7.8275 1.77273M11.4639 4.5L7.8275 7.22727" stroke="#FF0000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    div.section__account_softphone-content_home-item_infoblock-item_text= text
+
+mixin info-item-denied(text)
+  // Item infoblock Denied
+  div.section__account_softphone-content_home-item_infoblock-item.section__account_softphone-content_home-item_infoblock-denied
+    div.section__account_softphone-content_home-item_infoblock-item_icon
+      <svg viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.4829 4.73077L10.4829 4.73077M1.48291 4.73077L5.48291 7.73077M1.48291 4.73077L5.48291 1.73077M1.48291 4.73077L7.48291 4.73077" stroke="#2C7FFA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.2085 2.23083L7.77588 7.23077" stroke="#FF0000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    div.section__account_softphone-content_home-item_infoblock-item_text= text
+
+mixin info-item-prohib(text)
+  // Item infoblock Prohib
+  div.section__account_softphone-content_home-item_infoblock-item.section__account_softphone-content_home-item_infoblock-prohib
+    div.section__account_softphone-content_home-item_infoblock-item_icon
+      <svg viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.48291 4.269L3.48291 4.269M12.4829 4.269L8.48291 1.269M12.4829 4.269L8.48291 7.269M12.4829 4.269L6.48291 4.269" stroke="#FF0000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.75732 6.76894L6.18994 1.769" stroke="#2C7FFA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    div.section__account_softphone-content_home-item_infoblock-item_text= text
+
+
+
+
+
 div.section__account_softphone-content_home-block
+  // Actve-call Item
+  div.section__account_softphone-content_home-item.section__account_softphone-content_home-activeCall
+    div.section__account_softphone-content_home-item_top
+      //- <svg viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      //-   <path d="M2 0V12M8 0V12" stroke="#FFFFFF" stroke-width="3"/>
+      //- </svg>
+      div Active Call
+      div.section__account_softphone-content_home-item_time
+        p Active time
+        p 00:00:46
+
+    div.section__account_softphone-content_home-item_data
+      div.section__account_softphone-content_home-item_text
+        div.section__account_softphone-content_home-item_client-name
+          div.section__account_softphone-content_calls-contIcon.visible
+            <svg viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.57265 1.7H8.97436V0.5H7.77778V1.7H2.99145V0.5H1.79487V1.7H1.19658C0.53547 1.7 0 2.237 0 2.9V11.3C0 11.963 0.53547 12.5 1.19658 12.5H9.57265C10.2338 12.5 10.7692 11.963 10.7692 11.3V2.9C10.7692 2.237 10.2338 1.7 9.57265 1.7ZM5.38462 3.5C6.37479 3.5 7.17949 4.307 7.17949 5.3C7.17949 6.296 6.37479 7.1 5.38462 7.1C4.39444 7.1 3.58974 6.296 3.58974 5.3C3.58974 4.307 4.39444 3.5 5.38462 3.5ZM8.97436 10.7H1.79487V10.1C1.79487 8.9 4.18804 8.24 5.38462 8.24C6.5812 8.24 8.97436 8.9 8.97436 10.1V10.7Z" fill="#FFFFFF"/>
+            </svg>
+          p John Ryder
+
+        div.section__account_softphone-content_home-item_client-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_client-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#FFFFFF"/>
+            </svg>
+          p Los Angeles, CA
+      div.section__account_softphone-content_home-item_text
+        div.section__account_softphone-content_home-item_operator-name TexasGoogleAds
+        div.section__account_softphone-content_home-item_operator-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_operator-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#FFFFFF"/>
+            </svg>
+          p Houston, TX
+    
+    div.section__account_softphone-content_home-item_actionButtons
+      div.section__account_softphone-content_home-item_actionButtons-block
+        div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-info
+          p i
+        div.section__account_softphone-content_home-item_actionButtons-button.section__account_softphone-content_home-item_actionButtons-pause
+          <svg viewBox="0 0 54 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="53" height="23" rx="11.5" stroke="#6093DE"/>
+            <path d="M24 6V18M30 6V18" stroke="#6093DE" stroke-width="2.6"/>
+          </svg>
+        div.section__account_softphone-content_home-item_actionButtons-button.section__account_softphone-content_home-item_actionButtons-forward
+          <svg viewBox="0 0 54 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="53" height="23" rx="11.5" stroke="#6093DE"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M34.5239 11.8999L27.5835 6V8.4316H20V15.3682H27.5835V17.7997L34.5239 11.8999Z" fill="#6093DE"/>
+          </svg>
+        div.section__account_softphone-content_home-item_actionButtons-button.section__account_softphone-content_home-item_actionButtons-actions
+          <svg width="54" height="24" viewBox="0 0 54 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="53" height="23" rx="11.5" stroke="#6093DE"/>
+            <circle cx="20" cy="12" r="2.5" fill="#6093DE"/>
+            <circle cx="27" cy="12" r="2.5" fill="#6093DE"/>
+            <circle cx="34" cy="12" r="2.5" fill="#6093DE"/>
+          </svg>
+      div.section__account_softphone-content_home-item_actionButtons-block
+        div.section__account_softphone-content_home-item_actionButtons-microphone
+          <svg viewBox="0 0 92 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="91" height="29" rx="14.5" stroke="#6093DE"/>
+            <path d="M49.696 14.4619C49.696 16.503 48.0414 18.1576 46.0003 18.1576M46.0003 18.1576C43.9593 18.1576 42.3047 16.503 42.3047 14.4619M46.0003 18.1576V23.3315" stroke="#6093DE" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="43.4004" y="7" width="5.20001" height="9.75002" rx="2.6" fill="#6093DE"/>
+          </svg>
+          <svg class="inactive" viewBox="0 0 92 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="91" height="29" rx="14.5" stroke="#6093DE"/>
+            <path d="M51 8.24261L41 18.2426" stroke="#6093DE" stroke-linecap="round" stroke-linejoin="round"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M42.6364 15.1922C42.5231 14.859 42.4616 14.5019 42.4616 14.1305C42.4616 13.9096 42.2825 13.7305 42.0616 13.7305C41.8407 13.7305 41.6616 13.9096 41.6616 14.1305C41.6616 14.7284 41.7897 15.2964 42.02 15.8085L42.6364 15.1922ZM43.2713 17.3856C43.8612 17.8368 44.5772 18.1312 45.3573 18.2068V23C45.3573 23.2209 45.5364 23.4 45.7573 23.4C45.9782 23.4 46.1573 23.2209 46.1573 23V18.2068C48.2315 18.0058 49.8529 16.2575 49.8529 14.1305C49.8529 13.9096 49.6738 13.7305 49.4529 13.7305C49.232 13.7305 49.0529 13.9096 49.0529 14.1305C49.0529 15.9506 47.5774 17.4261 45.7573 17.4261C45.0436 17.4261 44.3828 17.1992 43.8433 16.8137L43.2713 17.3856Z" fill="#8E8E93"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M48.3572 9.47103V9.26852C48.3572 7.83258 47.1932 6.66852 45.7572 6.66852C44.3213 6.66852 43.1572 7.83258 43.1572 9.26852V13.8185C43.1572 14.0772 43.195 14.3271 43.2654 14.5629L48.3572 9.47103ZM44.5401 16.1166C44.9032 16.3094 45.3175 16.4185 45.7572 16.4185C47.1932 16.4185 48.3572 15.2545 48.3572 13.8185V12.2995L44.5401 16.1166Z" fill="#8E8E93"/>
+          </svg>
+        div.section__account_softphone-content_home-item_actionButtons-phoneDown
+          <svg viewBox="0 0 123 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="123" height="30" rx="15" fill="#FF0000"/>
+            <path d="M52.4718 18.3574C53.2383 18.3008 53.9797 18.0744 54.6426 17.6944C55.3054 17.3145 55.873 16.7906 56.3044 16.1606C57.1013 15.222 56.5871 13.3018 56.5871 13.3018C56.5871 13.3018 57.3293 12.7013 60.321 12.2856C62.3037 12.122 64.292 12.6656 65.9346 13.8205C66.1379 14.8833 66.4748 15.9183 66.9374 16.9006C67.4801 17.743 68.3084 18.3635 69.2667 18.6454C70.2251 18.9274 71.2476 18.8515 72.1422 18.432C74.8924 17.3821 74.8879 15.3129 74.8879 15.3129C73.067 13.2916 70.8445 11.6723 68.3672 10.5619C65.8899 9.45138 63.214 8.87495 60.5161 8.87059C57.9908 8.8113 55.5022 9.39179 53.282 10.558C51.0618 11.7242 49.1823 13.4383 47.8183 15.5406C48.2726 16.0845 48.7748 16.5868 49.3188 17.0411C50.1724 17.8597 51.2989 18.33 52.4718 18.3574V18.3574Z" fill="white"/>
+          </svg>
+
+    // Actions-menu
+    div.section__account_softphone-content_home-item_actions-menu
+      div.section__account_softphone-content_home-item_actions-list
+        // Action-menu item
+        div.section__account_softphone-content_home-item_actions-item
+          p Make an Appointment
+        // Action-menu item
+        div.section__account_softphone-content_home-item_actions-item
+          p Reschedule an Appointment
+        // Action-menu item
+        div.section__account_softphone-content_home-item_actions-item
+          p Make a Ticket
+        // Action-menu item
+        div.section__account_softphone-content_home-item_actions-item.section__account_softphone-content_home-item_actions-blacklist
+          p Mark for Blacklist
+          <svg class="inactive" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.47363 3.1397L4.76789 6.23687L9.52626 1.76318" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        div.section__account_softphone-content_home-item_actions-item.section__account_softphone-content_home-item_actions-comment
+          div Add a comment
+          div.section__account_softphone-content_home-item_actions-comment_inputBlock
+            form(action="#" onSubmit="false").section__account_softphone-content_home-item_actions-comment_form.inactive
+              div.section__account_softphone-content_home-item_actions-comment_tags
+                label(for="comment-tags").section__account_softphone-content_home-item_actions-comment_label tags:
+                input(type="text" name="comment-tags" id="comment-tags").section__account_softphone-content_home-item_actions-comment_input
+              div.section__account_softphone-content_home-item_actions-comment_text
+                textarea(name="comment-text" id="comment-text").section__account_softphone-content_home-item_actions-comment_textarea
+                input(type="submit", value="Save").section__account_softphone-content_home-item_actions-comment_submit
+
+
+    // Infoblock
+    div.section__account_softphone-content_home-item_infoblock.inactive
+      +info-item-appointment('1/23/2020 9:46am - #3456SDE-A001 - 01/26/2020 5:00pm-7:00pm - HOU, TX - Sam')
+      +info-item-incoming('01/20/2020 3:58pm')
+      +info-item-outgoing('01/18/2020 4:24pm')
+      +info-item-cont('John Ryder, Los Angeles, CA')
+      +info-item-missed('01/18/2020 2:32pm')
+      +info-item-denied('01/17/2020 3:24pm')
+      +info-item-prohib('01/17/2020 2:16pm')
+
+  // Incoming-call Item
   div.section__account_softphone-content_home-item.section__account_softphone-content_home-incomingCall
     div.section__account_softphone-content_home-item_icon
       <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,11 +206,163 @@ div.section__account_softphone-content_home-block
             </svg>
           p Unknown
 
-        div.section__account_softphone-content_home-item_client-tel
+        div.section__account_softphone-content_home-item_client-tel +1(234)567-89-00
         div.section__account_softphone-content_home-item_client-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#8E8E93"/>
+            </svg>
+          p Los Angeles, CA
       div.section__account_softphone-content_home-item_text
-        div.section__account_softphone-content_home-item_operator-name
-        div.section__account_softphone-content_home-item_operator-tel
+        div.section__account_softphone-content_home-item_operator-name TexasGoogleAds
+        div.section__account_softphone-content_home-item_operator-tel +1(234)567-89-00
         div.section__account_softphone-content_home-item_operator-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#8E8E93"/>
+            </svg>
+          p Houston, TX
+    
+    div.section__account_softphone-content_home-item_buttons
+      div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-info.inactive
+        p i
+      div.section__account_softphone-content_home-item_button-callsBlock
+        div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-takeCall
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
+          </svg>
+        div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-rejectCall
+          <svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
+          </svg>
+
+    div.section__account_softphone-content_home-item_infoblock.inactive
+      +info-item-appointment('Unknown')
+      +info-item-incoming('Unknown')
+      +info-item-outgoing('Unknown')
+      +info-item-cont('Unknown')
+      +info-item-missed('Unknown')
+      +info-item-denied('Unknown')
+      +info-item-prohib('Unknown')
+
+  // Incoming-call Item
+  div.section__account_softphone-content_home-item.section__account_softphone-content_home-incomingCall
+    div.section__account_softphone-content_home-item_icon
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.0581 9.98846C10.7011 9.68756 10.2814 9.46926 9.82914 9.34935C9.37691 9.22943 8.90352 9.2109 8.4432 9.29508C7.6906 9.35514 7.08083 10.387 7.08083 10.387C7.08083 10.387 6.49852 10.327 5.02079 9.23502C4.08999 8.46398 3.46345 7.3907 3.25191 6.20492C3.62472 5.66825 3.92745 5.08669 4.15283 4.47422C4.28281 3.88709 4.19267 3.273 3.89934 2.74725C3.60601 2.2215 3.12966 1.82024 2.55974 1.61882C0.911709 0.898148 0.0162808 1.77715 0.0162808 1.77715C-0.0706017 3.40579 0.190971 5.03424 0.783743 6.55505C1.37651 8.07586 2.28701 9.45447 3.45517 10.5999C4.52463 11.6955 5.85563 12.5043 7.32425 12.9511C8.79288 13.3978 10.3514 13.468 11.8546 13.155C11.8935 12.7319 11.8935 12.3061 11.8546 11.883C11.8394 11.1741 11.5549 10.4973 11.0581 9.98846Z" fill="#6093DE"/>
+        <path d="M11.9301 2.20938L6.49542 6.62121M6.49542 6.62121L9.47881 6.13135M6.49542 6.62121L7.58803 3.8022" stroke="#6093DE" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      p Incoming Call
+
+    div.section__account_softphone-content_home-item_data
+      div.section__account_softphone-content_home-item_text
+        div.section__account_softphone-content_home-item_client-name
+          div.section__account_softphone-content_calls-contIcon.visible
+            <svg viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.57265 1.7H8.97436V0.5H7.77778V1.7H2.99145V0.5H1.79487V1.7H1.19658C0.53547 1.7 0 2.237 0 2.9V11.3C0 11.963 0.53547 12.5 1.19658 12.5H9.57265C10.2338 12.5 10.7692 11.963 10.7692 11.3V2.9C10.7692 2.237 10.2338 1.7 9.57265 1.7ZM5.38462 3.5C6.37479 3.5 7.17949 4.307 7.17949 5.3C7.17949 6.296 6.37479 7.1 5.38462 7.1C4.39444 7.1 3.58974 6.296 3.58974 5.3C3.58974 4.307 4.39444 3.5 5.38462 3.5ZM8.97436 10.7H1.79487V10.1C1.79487 8.9 4.18804 8.24 5.38462 8.24C6.5812 8.24 8.97436 8.9 8.97436 10.1V10.7Z" fill="#8E8E93"/>
+            </svg>
+          p John Ryder
+
+        div.section__account_softphone-content_home-item_client-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_client-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#8E8E93"/>
+            </svg>
+          p Los Angeles, CA
+      div.section__account_softphone-content_home-item_text
+        div.section__account_softphone-content_home-item_operator-name TexasGoogleAds
+        div.section__account_softphone-content_home-item_operator-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_operator-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#8E8E93"/>
+            </svg>
+          p Houston, TX
+    
+    div.section__account_softphone-content_home-item_buttons
+      div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-info
+        p i
+      div.section__account_softphone-content_home-item_button-callsBlock
+        div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-takeCall
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
+          </svg>
+        div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-rejectCall
+          <svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
+          </svg>
+
+    div.section__account_softphone-content_home-item_infoblock.inactive
+      +info-item-appointment('1/23/2020 9:46am - #3456SDE-A001 - 01/26/2020 5:00pm-7:00pm - HOU, TX - Sam')
+      +info-item-incoming('01/20/2020 3:58pm')
+      +info-item-outgoing('01/18/2020 4:24pm')
+      +info-item-cont('John Ryder, Los Angeles, CA')
+      +info-item-missed('01/18/2020 2:32pm')
+      +info-item-denied('01/17/2020 3:24pm')
+      +info-item-prohib('01/17/2020 2:16pm')
+
+  // On-hold Item
+  div.section__account_softphone-content_home-item.section__account_softphone-content_home-onhold
+    div.section__account_softphone-content_home-item_icon
+      <svg viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 0V12M8 0V12" stroke="#6093DE" stroke-width="3"/>
+      </svg>
+      p On Hold
+      <svg viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 3H11M11 3L6.65217 1M11 3L6.65217 5" stroke="#8E8E93" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      p by Mike
+
+    div.section__account_softphone-content_home-item_data
+      div.section__account_softphone-content_home-item_text
+        div.section__account_softphone-content_home-item_client-name
+          div.section__account_softphone-content_calls-contIcon.visible
+            <svg viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.57265 1.7H8.97436V0.5H7.77778V1.7H2.99145V0.5H1.79487V1.7H1.19658C0.53547 1.7 0 2.237 0 2.9V11.3C0 11.963 0.53547 12.5 1.19658 12.5H9.57265C10.2338 12.5 10.7692 11.963 10.7692 11.3V2.9C10.7692 2.237 10.2338 1.7 9.57265 1.7ZM5.38462 3.5C6.37479 3.5 7.17949 4.307 7.17949 5.3C7.17949 6.296 6.37479 7.1 5.38462 7.1C4.39444 7.1 3.58974 6.296 3.58974 5.3C3.58974 4.307 4.39444 3.5 5.38462 3.5ZM8.97436 10.7H1.79487V10.1C1.79487 8.9 4.18804 8.24 5.38462 8.24C6.5812 8.24 8.97436 8.9 8.97436 10.1V10.7Z" fill="#8E8E93"/>
+            </svg>
+          p John Ryder
+
+        div.section__account_softphone-content_home-item_client-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_client-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#8E8E93"/>
+            </svg>
+          p Los Angeles, CA
+      div.section__account_softphone-content_home-item_text
+        div.section__account_softphone-content_home-item_operator-name TexasGoogleAds
+        div.section__account_softphone-content_home-item_operator-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_operator-location
+          div.section__account_softphone-content_home-item_location-icon
+            <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#8E8E93"/>
+            </svg>
+          p Houston, TX
+    
+    div.section__account_softphone-content_home-item_buttons
+      div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-info
+        p i
+      div.section__account_softphone-content_home-item_button-callsBlock
+        div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-takeCall
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
+          </svg>
+        div.section__account_softphone-content_home-item_button.section__account_softphone-content_home-item_button-rejectCall
+          <svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
+          </svg>
+
+    div.section__account_softphone-content_home-item_infoblock.inactive
+      +info-item-appointment('1/23/2020 9:46am - #3456SDE-A001 - 01/26/2020 5:00pm-7:00pm - HOU, TX - Sam')
+      +info-item-incoming('01/20/2020 3:58pm')
+      +info-item-outgoing('01/18/2020 4:24pm')
+      +info-item-cont('John Ryder, Los Angeles, CA')
+      +info-item-missed('01/18/2020 2:32pm')
+      +info-item-denied('01/17/2020 3:24pm')
+      +info-item-prohib('01/17/2020 2:16pm')
+
+
+
 
 
