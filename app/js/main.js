@@ -54,8 +54,10 @@ const actionButton = document.querySelector('.section__account_softphone-content
 const actionMenu = document.querySelector('.section__account_softphone-content_home-item_actions-menu');
 const homeActionsBlacklist = document.querySelector('.section__account_softphone-content_home-item_actions-blacklist');
 const actionComment = document.querySelector('.section__account_softphone-content_home-item_actions-comment');
-const actionCommentAdd = document.querySelector('.section__account_softphone-content_home-item_actions-comment > div:first-child');
+const actionCommentAdd = document.querySelector('.section__account_softphone-content_home-item_actions-comment > p');
 const actionCommentForm = document.querySelector('.section__account_softphone-content_home-item_actions-comment_inputBlock > form');
+const dialInput = document.querySelector('#dial-input');
+const diaKeys = document.querySelectorAll('.section__account_softphone-content_dial-key');
 
 
 /* Screen Width updating */
@@ -391,10 +393,10 @@ if (profile) {
     }
 
     /* (ВАЖНО!!) в случае надобности переместить в блок else  */
-    if (softphoneMenu.classList.contains('active')) { softphoneMenu.classList.remove('active'); }
-    if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
-    if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
-    if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }  
+    // if (softphoneMenu.classList.contains('active')) { softphoneMenu.classList.remove('active'); }
+    // if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
+    // if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
+    // if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }  
   });
 }
 /* ------------------------------------------------- */
@@ -440,6 +442,7 @@ if (popup && popupAccounts) {
       if (popupIndicator.classList.contains('selected')) { popupIndicator.classList.remove('selected'); }
       if (popupIndicator.classList.contains('active')) { popupIndicator.classList.remove('active'); }
     }
+
     if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
     if (supportControl.classList.contains('active')) { supportControl.classList.remove('active'); }
     if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
@@ -508,7 +511,7 @@ if (popup && popupAccounts) {
     popupAccountsItems[i].addEventListener('click', function() {
       for (let popupIndicator of popupIndicators) {
         if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
-      }  
+      }
       if (!popupAccountsItems[i].classList.contains('selected')) popupAccountsItems[i].classList.add('selected');
       for (let j = i - 1; j >= 0; j--) {
         if (popupAccountsItems[j].classList.contains('selected')) popupAccountsItems[j].classList.remove('selected');
@@ -598,12 +601,12 @@ if (popupSupport) {
       if (!supportControlMobile.classList.contains('active')) { supportControlMobile.classList.add('active'); }
       if (profile.classList.contains('active')) { profile.classList.remove('active'); }
       if (noticesControl.classList.contains('active')) { noticesControl.classList.remove('active'); }
-      
+
       if (!frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.add('overframe-notices'); }
       if (popup.classList.contains('visible')) { popup.classList.remove('visible'); }
       if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
       if (!accountHeader.classList.contains('height')) { accountHeader.classList.add('height'); }
-      
+
     } else {
       if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
       if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
@@ -635,7 +638,6 @@ if (supportControlMobile) {
       if (accountHeader.classList.contains('height')) { accountHeader.classList.remove('height'); }
       if (accountPage.classList.contains('hidden')) { accountPage.classList.remove('hidden'); }
     }
-  
   });
 }
 if (supportItems) {
@@ -673,12 +675,22 @@ if (phonecall) {
       if (!phonecall.classList.contains('active')) { phonecall.classList.add('active'); }
       if (!phonecallMobile.classList.contains('active')) { phonecallMobile.classList.add('active'); }
       if (!phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.add('selected'); }
-    } else {
-      softphoneMenu.classList.remove('active');
-      if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
-      if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
-      if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }
-    }
+      if (popup.classList.contains('visible')) { popup.classList.remove('visible') };
+      if (popup.classList.contains('mobile-mini')) { popup.classList.remove('mobile-mini') };
+      if (profile.classList.contains('active')) { profile.classList.remove('active'); }
+      if (frameBlock.classList.contains('overframe')) { frameBlock.classList.remove('overframe'); }
+      if (frameBlock.classList.contains('overframe-notices')) { frameBlock.classList.remove('overframe-notices'); }
+      if (popupNotices.classList.contains('visible')) { popupNotices.classList.remove('visible'); }
+      if (noticesControl.classList.contains('active')) { noticesControl.classList.remove('active'); }
+      if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
+      if (supportControl.classList.contains('active')) { supportControl.classList.remove('active'); }
+    } 
+    // else {
+    //   softphoneMenu.classList.remove('active');
+    //   if (phonecall.classList.contains('active')) { phonecall.classList.remove('active'); }
+    //   if (phonecallMobile.classList.contains('active')) { phonecallMobile.classList.remove('active'); }
+    //   if (phonecallMobile.classList.contains('selected')) { phonecallMobile.classList.remove('selected'); }
+    // }
   });
 }
 /* ---------------------------------------------------- */
@@ -778,6 +790,7 @@ window.addEventListener('click', function(event) {
   let popupNoticesClosest = target.closest('.header__account-navigate_notices');
   let supportClosest = target.closest('.header__account-navigate_question');
   let popupSupportClosest = target.closest('.header__account-navigate_support');
+  let statusControlClosest = target.closest('.section__account_softphone-control_status');
 
   if (profileClosest) { return; }
   if (noticesClosest) { return; }
@@ -832,12 +845,19 @@ window.addEventListener('click', function(event) {
       if (supportItem.classList.contains('selected')) { supportItem.classList.remove('selected'); }
     }
   }
+
+  if (statusControlClosest) { return; }
+  else {
+    if (statusPopup.classList.contains('visible')) { statusPopup.classList.remove('visible'); }
+    if (statusArrow.classList.contains('rotate')) { statusArrow.classList.remove('rotate'); }
+  }
 });
 /* -------------------------------------------------------- */
 
 
 /* Filling color when we pulling the thumb in Slider-bar-volume */
 function setBarVolume() {
+  volumeFill.style.width = `${volumeSlider.value}%`;
   volumeSlider.oninput = function() {
     volumeFill.style.width = `${this.value}%`;
   }
@@ -899,6 +919,14 @@ actionCommentAdd.addEventListener('click', function() {
   }
 });
 /* ------------------------------------------------------ */
+
+
+diaKeys.forEach(dialKey => {
+  dialKey.addEventListener('click', function() {
+    let number = dialKey.querySelector('p:first-child');
+    dialInput.value = number.textContent;
+  });
+});
 
 
 

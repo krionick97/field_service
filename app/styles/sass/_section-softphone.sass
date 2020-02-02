@@ -1,3 +1,18 @@
+@mixin arrow-list
+  display: block
+  width: 0
+  height: 0
+  margin: 0.4rem 0 0
+  border-left: 0.6rem solid transparent
+  border-right: 0.6rem solid transparent
+  border-top: 0.6rem solid $color-grey
+  transition: 0.2s
+  &.rotate
+    transform: rotate(180deg)
+    transition: 0.2s
+    margin: 0.2rem 0 0
+
+
 .section
   &__account
     &_softphone
@@ -10,6 +25,7 @@
       // opacity: 0
       transition-property: display
       transition-delay: 0.2s
+      z-index: 5
       &.active
         display: block
         transition-property: display
@@ -109,18 +125,19 @@
               font-size: 1.2rem
               margin-right: 0.5rem
           &-arrow
-            display: block
-            width: 0
-            height: 0
-            margin: 0.4rem 0 0
-            border-left: 0.6rem solid transparent
-            border-right: 0.6rem solid transparent
-            border-top: 0.6rem solid $color-grey
-            transition: 0.2s
-            &.rotate
-              transform: rotate(180deg)
-              transition: 0.2s
-              margin: 0.2rem 0 0
+            @include arrow-list
+            // display: block
+            // width: 0
+            // height: 0
+            // margin: 0.4rem 0 0
+            // border-left: 0.6rem solid transparent
+            // border-right: 0.6rem solid transparent
+            // border-top: 0.6rem solid $color-grey
+            // transition: 0.2s
+            // &.rotate
+            //   transform: rotate(180deg)
+            //   transition: 0.2s
+            //   margin: 0.2rem 0 0
 
         /* Control-popup */
         &_popup
@@ -214,6 +231,8 @@
             left: 0
             background: none
             outline: none
+            &:hover
+              cursor: pointer
             &:active, &:focus
               outline: none
             &::-webkit-slider-thumb
@@ -275,6 +294,10 @@
             user-select: none
             &:not(:last-child)
               border-bottom: 0.05rem solid $color-grey
+            &:hover
+              cursor: pointer
+            &:active
+              background-color: $color-callList-bg
           &-symbol
             display: none
             margin-right: 1rem
@@ -337,12 +360,18 @@
             box-sizing: border-box
             border-bottom: 0.1rem solid $color-grey
             user-select: none
+            &:hover
+              cursor: pointer
+            &:active
+              background-color: $color-callList-bg
           &-name
             margin-right: 1rem
+            max-width: 11rem
+            overflow: hidden
+            white-space: nowrap
+            text-overflow: ellipsis
             span:first-child
               margin-right: 0.4rem
-            span:last-child
-              +roboto_medium
           &-number
             color: $color-blue-light
 
@@ -408,6 +437,8 @@
               svg
                 width: 100%
                 height: 100%
+              &.inactive
+                display: none
             &_client
               &-name, &-tel, &-location
                 line-height: 1.2
@@ -420,6 +451,12 @@
                 font-size: 1.2rem
               &-tel
                 color: $color-blue-light
+            &_client-name, &_client-tel, &_client-location, &_operator-name, &_operator-tel, &_operator-location
+              p
+                white-space: nowrap
+                max-width: 9.8rem
+                overflow: hidden
+                text-overflow: ellipsis
 
             &_actions
               &-menu
@@ -437,6 +474,8 @@
                 p
                   font-size: 1.2rem
                   user-select: none
+                  &:hover
+                    text-decoration: underline
                 &:hover
                   cursor: pointer
                 &:active
@@ -469,13 +508,23 @@
                   border: 0.5px solid rgba(0, 0, 0, 0.2)
                   box-sizing: border-box
                   box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.25)
-                  border-radius: 5px
+                  border-radius: 0.5rem
                   width: 100%
                 &_input
-                  padding-left: 3.2rem
+                  padding: 0.5rem 0 0.5rem 3.3rem
                 &_textarea
-                  resize: none
                   height: 10rem
+                  padding: 0.2rem 0.2rem
+                  box-sizing: border-box
+                  overflow: hidden
+                  textarea
+                    outline: none
+                    resize: none
+                    width: calc(100% - 6px)
+                    height: calc(100% - 27px)
+                    border: none
+                    background: none
+
                 &_tags
                   position: relative
                   margin-bottom: 0.6rem
@@ -483,24 +532,37 @@
                   position: absolute
                   color: $color-grey
                   font-size: 1.2rem
-                  top: 0.3rem
-                  left: 0.3rem
+                  top: 50%
+                  transform: translateY(-50%)
+                  left: 0.4rem
                 &_text
                   position: relative
+                  overflow: hidden
                 &_submit
                   position: absolute
                   right: 0.4rem
-                  bottom: 0.4rem
+                  bottom: 0.8rem
                   border: none
                   outline: none
                   background: none
+                  // border-bottom-left-radius: 0.5rem
+                  // border-bottom-right-radius: 0.5rem
+                  // width: 100%
                   color: $color-blue-light
                   font-size: 1.4rem
                   z-index: 3
+                  transition: 0.1s
                   &:hover
                     cursor: pointer
-                
-                  
+                  &:active
+                    transform: translateY(0.1rem)
+                  &.inactive
+                    color: $color-grey
+                    +roboto_light
+                    &:hover
+                      cursor: default
+                    &:active
+                      transform: translateY(0)
 
             /* Buttons */
             &_buttons
@@ -512,6 +574,7 @@
               transition: 0.1s
               &:hover
                 cursor: pointer
+                transform: scale(1.01)
               &:focus
                 outline: none
               &:active
@@ -527,11 +590,15 @@
                 align-items: center
                 border-radius: 1.05rem
                 border: 0.1rem solid $color-blue-light
+                transition: 0.1s
+                &:hover
+                  transform: scale(1.01)
                 &.inactive
                   color: $color-grey-2
                   border-color: $color-grey-2
                   &:hover
                     cursor: default
+                    transform: scale(1)
                   &:active
                     transform: translateY(0)
               &-callsBlock
@@ -576,6 +643,7 @@
                 transition: 0.1s
                 &:hover
                   cursor: pointer
+                  transform: scale(1.01)
                 &:focus
                   outline: none
                 &:active
@@ -590,6 +658,7 @@
                 transition: 0.1s
                 &:hover
                   cursor: pointer
+                  transform: scale(1.01)
                 &:focus
                   outline: none
                 &:active
@@ -615,8 +684,13 @@
               &-item
                 padding: 1rem 0.8rem 1rem 1.4rem
                 box-sizing: border-box
+                user-select: none
                 &:not(:last-child)
                   border-bottom: 0.1rem solid $color-grey
+                &:hover
+                  cursor: pointer
+                &:active
+                  background-color: $color-callList-bg
                 &.inactive
                   display: none
                 &_icon
@@ -670,6 +744,160 @@
               border-color: $color-white
             .section__account_softphone-content_home-item_infoblock
               margin-top: 0
+
+        /* Dial block */
+        &_dial
+          height: 100%
+          box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25)
+          &-block
+            height: 100%
+            padding: 1.2rem 0 0
+            overflow: hidden
+            overflow-y: scroll
+            @include custom-scroll
+          &-input
+            padding: 0 1.4rem 0 2rem
+            margin-bottom: 0.8rem
+            position: relative
+            input
+              font-size: 2.4rem
+              +roboto_medium
+              outline: none
+              width: 20.6rem
+              border: none
+          &-backspace
+            position: absolute
+            right: 1.4rem
+            user-select: none
+            top: 50%
+            transform: translateY(-50%)
+          &-backspaceIcon
+            width: 2.4rem
+            height: 1.8rem
+            svg
+              width: 100%
+              height: 100%
+          &-contact
+            padding: 0 2rem
+            margin-bottom: 1rem
+            display: flex
+            align-items: center
+            user-select: none
+          &-contIcon
+            width: 1.4rem
+            height: 1.6rem
+            margin-right: 0.4rem
+            transform: translateY(-0.1rem)
+            svg
+              width: 100%
+              height: 100%
+          &-contName
+            font-size: 1.2rem
+          &-account
+            padding: 1rem 1.4rem 1rem 2rem
+            box-sizing: border-box
+            font-size: 1.2rem
+            user-select: none
+            border:
+              top: 0.1rem solid $color-grey-2 
+              bottom: 0.1rem solid $color-grey-2
+          &-accBlock
+            display: flex
+            // position: relative
+          &-accFrom
+            margin-right: 0.7rem
+            +roboto_medium
+            color: $color-blue-light
+          &-accSelect
+            display: flex
+            width: 18rem
+            justify-content: space-between
+            &:hover
+              cursor: pointer
+          &-accName
+            max-width: 5.7rem
+            overflow: hidden
+            white-space: nowrap
+            text-overflow: ellipsis
+          &-accNumber
+            color: $color-blue-light
+          &-accList
+            margin: 0.6rem 0 0 3rem
+            width: 17.7rem
+            border-radius: 0.4rem
+            @include box-shadow(0.1)
+          &-accListItem
+            display: flex
+            justify-content: space-between
+            padding: 1rem 0.8rem
+            width: calc(100% - 1.6rem)
+            &:not(:last-child)
+              border-bottom: 0.05rem solid $color-blue-border
+            &:hover
+              cursor: pointer
+            &:active
+              background-color: rgba($color-grey, 0.15)
+          &-accArrow
+            @include arrow-list
+            transform: translateY(-0.1rem)
+          &-keyboard
+            padding: 2rem 0
+            margin: 0 auto
+            max-width: 20rem
+          &-keys
+            display: flex
+            justify-content: space-around
+            margin-bottom: 1.6rem
+          &-key
+            user-select: none
+            text-align: center
+            padding: 0.4rem 0 0
+            width: 6rem
+            height: 5.6rem
+            border-radius: 3rem
+            overflow: hidden
+            &:not(:last-child)
+              margin-bottom: 1rem
+            &:hover
+              cursor: pointer
+            &:active
+              background-color: rgba($color-grey, 0.15)
+          &-keyStar, &-keyCell
+            padding: 1.5rem 0 0
+            height: 4.5rem
+            p
+              font-size: 2.2rem !important
+          &-digit
+            +roboto_light
+            color: $color-blue-light
+            font-size: 3.2rem
+          &-letters
+            +roboto_medium
+            font-size: 1.4rem
+            color: $color-grey
+            text-transform: uppercase
+          &-phoneCall
+            transition: 0.1s
+            outline: none
+            user-select: none
+            display: flex
+            justify-content: center
+            &:active
+              transform: translateY(0.1rem)
+          &-phoneCallIcon
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 4.5rem
+            height: 4.5rem
+            border-radius: 2.25rem
+            background-color: $color-green
+            &:hover
+              cursor: pointer
+              transform: scale(1.01)
+            svg
+              width: 2rem
+              height: 2rem
 
 
 

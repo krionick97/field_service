@@ -68,8 +68,6 @@ mixin info-item-prohib(text)
 
 
 
-
-
 div.section__account_softphone-content_home-block
   // Actve-call Item
   div.section__account_softphone-content_home-item.section__account_softphone-content_home-activeCall
@@ -91,16 +89,19 @@ div.section__account_softphone-content_home-block
             </svg>
           p John Ryder
 
-        div.section__account_softphone-content_home-item_client-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_client-tel
+          p +1(234)567-89-00
         div.section__account_softphone-content_home-item_client-location
           div.section__account_softphone-content_home-item_location-icon
             <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48207 7.99999C2.48207 7.99999 4.96414 4.22583 4.96414 2.85502C4.96414 1.48422 3.85288 0.372955 2.48207 0.372955C1.11126 0.372955 0 1.48422 0 2.85502C0 4.22583 2.48207 7.99999 2.48207 7.99999ZM2.48211 4.06569C3.15074 4.06569 3.69278 3.52366 3.69278 2.85502C3.69278 2.18639 3.15074 1.64435 2.48211 1.64435C1.81347 1.64435 1.27144 2.18639 1.27144 2.85502C1.27144 3.52366 1.81347 4.06569 2.48211 4.06569Z" fill="#FFFFFF"/>
             </svg>
-          p Los Angeles, CA
+          p Los Angeles
       div.section__account_softphone-content_home-item_text
-        div.section__account_softphone-content_home-item_operator-name TexasGoogleAds
-        div.section__account_softphone-content_home-item_operator-tel +1(234)567-89-00
+        div.section__account_softphone-content_home-item_operator-name
+          p TexasGoogleAds
+        div.section__account_softphone-content_home-item_operator-tel
+          p +1(234)567-89-00
         div.section__account_softphone-content_home-item_operator-location
           div.section__account_softphone-content_home-item_location-icon
             <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +138,7 @@ div.section__account_softphone-content_home-block
             <rect x="43.4004" y="7" width="5.20001" height="9.75002" rx="2.6" fill="#6093DE"/>
           </svg>
           <svg class="inactive" viewBox="0 0 92 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.5" y="0.5" width="91" height="29" rx="14.5" stroke="#6093DE"/>
+            <rect x="0.5" y="0.5" width="91" height="29" rx="14.5" fill="#E7E9EC" stroke="#C2C2C4"/>
             <path d="M51 8.24261L41 18.2426" stroke="#6093DE" stroke-linecap="round" stroke-linejoin="round"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M42.6364 15.1922C42.5231 14.859 42.4616 14.5019 42.4616 14.1305C42.4616 13.9096 42.2825 13.7305 42.0616 13.7305C41.8407 13.7305 41.6616 13.9096 41.6616 14.1305C41.6616 14.7284 41.7897 15.2964 42.02 15.8085L42.6364 15.1922ZM43.2713 17.3856C43.8612 17.8368 44.5772 18.1312 45.3573 18.2068V23C45.3573 23.2209 45.5364 23.4 45.7573 23.4C45.9782 23.4 46.1573 23.2209 46.1573 23V18.2068C48.2315 18.0058 49.8529 16.2575 49.8529 14.1305C49.8529 13.9096 49.6738 13.7305 49.4529 13.7305C49.232 13.7305 49.0529 13.9096 49.0529 14.1305C49.0529 15.9506 47.5774 17.4261 45.7573 17.4261C45.0436 17.4261 44.3828 17.1992 43.8433 16.8137L43.2713 17.3856Z" fill="#8E8E93"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M48.3572 9.47103V9.26852C48.3572 7.83258 47.1932 6.66852 45.7572 6.66852C44.3213 6.66852 43.1572 7.83258 43.1572 9.26852V13.8185C43.1572 14.0772 43.195 14.3271 43.2654 14.5629L48.3572 9.47103ZM44.5401 16.1166C44.9032 16.3094 45.3175 16.4185 45.7572 16.4185C47.1932 16.4185 48.3572 15.2545 48.3572 13.8185V12.2995L44.5401 16.1166Z" fill="#8E8E93"/>
@@ -167,14 +168,15 @@ div.section__account_softphone-content_home-block
             <path d="M1.47363 3.1397L4.76789 6.23687L9.52626 1.76318" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         div.section__account_softphone-content_home-item_actions-item.section__account_softphone-content_home-item_actions-comment
-          div Add a comment
+          p Add a Comment
           div.section__account_softphone-content_home-item_actions-comment_inputBlock
             form(action="#" onSubmit="false").section__account_softphone-content_home-item_actions-comment_form.inactive
               div.section__account_softphone-content_home-item_actions-comment_tags
                 label(for="comment-tags").section__account_softphone-content_home-item_actions-comment_label tags:
                 input(type="text" name="comment-tags" id="comment-tags").section__account_softphone-content_home-item_actions-comment_input
               div.section__account_softphone-content_home-item_actions-comment_text
-                textarea(name="comment-text" id="comment-text").section__account_softphone-content_home-item_actions-comment_textarea
+                div.section__account_softphone-content_home-item_actions-comment_textarea
+                  textarea(name="comment-text" id="comment-text")
                 input(type="submit", value="Save").section__account_softphone-content_home-item_actions-comment_submit
 
 
