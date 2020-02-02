@@ -56,7 +56,14 @@ const homeActionsBlacklist = document.querySelector('.section__account_softphone
 const actionComment = document.querySelector('.section__account_softphone-content_home-item_actions-comment');
 const actionCommentAdd = document.querySelector('.section__account_softphone-content_home-item_actions-comment > p');
 const actionCommentForm = document.querySelector('.section__account_softphone-content_home-item_actions-comment_inputBlock > form');
+const dialAccountSelect = document.querySelector('.section__account_softphone-content_dial-accSelect');
+const dialAccountArrow = document.querySelector('.section__account_softphone-content_dial-accArrow');
+const dialAccountsList = document.querySelector('.section__account_softphone-content_dial-accList');
+const dialAccountsItems = document.querySelectorAll('.section__account_softphone-content_dial-accListItem');
 const dialInput = document.querySelector('#dial-input');
+const dialInputBackspace = document.querySelector('.section__account_softphone-content_dial-backspace');
+const dialInputFragment = document.querySelector('.section__account_softphone-content_dial-fragment');
+const dialInputFragmentSet = document.querySelector('.section__account_softphone-content_dial-fragment_set');
 const diaKeys = document.querySelectorAll('.section__account_softphone-content_dial-key');
 
 
@@ -920,14 +927,70 @@ actionCommentAdd.addEventListener('click', function() {
 });
 /* ------------------------------------------------------ */
 
-
-diaKeys.forEach(dialKey => {
-  dialKey.addEventListener('click', function() {
-    let number = dialKey.querySelector('p:first-child');
-    dialInput.value = number.textContent;
-  });
+/* Dial Account list clicking */
+dialAccountSelect.addEventListener('click', function() {
+  dialAccountSelect.classList.toggle('open');
+  if (dialAccountSelect.classList.contains('open')) {
+    if (!dialAccountsList.classList.contains('active')) { dialAccountsList.classList.add('active'); }
+    if (!dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.add('rotate'); }
+  } else {
+    if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
+    if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
+  }
 });
 
+dialAccountsItems.forEach(dialAccountItem => {
+  dialAccountItem.addEventListener('click', function() {
+    let accountName = dialAccountSelect.querySelector('p:first-child');
+    let accountNumber = dialAccountSelect.querySelector('p:nth-child(2)');
+    let itemName = dialAccountItem.querySelector('p:first-child');
+    let itemNumber = dialAccountItem.querySelector('p:last-child');
+    accountName.textContent = itemName.textContent;
+    accountNumber.textContent = itemNumber.textContent;
+    if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
+    if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
+    if (dialAccountSelect.classList.contains('open')) { dialAccountSelect.classList.remove('open'); }
+  });
+});
+/* ------------------------------------------------------ */
 
+diaKeys.forEach(dialKey => {
+  let number = dialKey.querySelector('p:first-child');
+  let letters = dialKey.querySelector('p:last-child');
+  if (number.textContent != '' && number.textContent != '0') {
+    dialKey.addEventListener('click', function() {
+      dialInputFragment.insertAdjacentText('beforeend', number.textContent);
+      dialInput.value = dialInputFragment.textContent;
+    });
+  }
+  if (number.textContent === '' && number.textContent != '0') {
+    dialKey.addEventListener('click', function() {
+      dialInputFragment.insertAdjacentText('beforeend', letters.textContent);
+      dialInput.value = dialInputFragment.textContent;
+    });
+  }
+  if (number.textContent === '0') {
+    let timeFunc;
+    dialKey.addEventListener('mousedown', function() {
+      timeFunc = setTimeout(function() {
+        dialInputFragmentSet.textContent = letters.textContent;
+        dialInputFragment.insertAdjacentText('beforeend', dialInputFragmentSet.textContent);
+        dialInput.value = dialInputFragment.textContent;
+      }, 600);
+    });
+    dialKey.addEventListener('mouseup', function() {
+      clearTimeout(timeFunc);
+      if (dialInputFragmentSet.textContent != '') { dialInputFragmentSet.textContent = ''; }
+      else {
+        dialInputFragment.insertAdjacentText('beforeend', number.textContent);
+        dialInput.value = dialInputFragment.textContent;  
+      }
+    });
+  }
+});
 
-
+dialInputBackspace.addEventListener('click', function() {
+  dialInputFragmentSet.textContent = '';
+  dialInputFragment.textContent = '';
+  dialInput.value = '';
+});

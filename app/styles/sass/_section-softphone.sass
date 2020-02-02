@@ -771,6 +771,11 @@
             user-select: none
             top: 50%
             transform: translateY(-50%)
+            &:active
+              div svg path
+                fill: $color-blue-light
+          &-fragment, &-fragment_set
+            display: none
           &-backspaceIcon
             width: 2.4rem
             height: 1.8rem
@@ -783,6 +788,8 @@
             display: flex
             align-items: center
             user-select: none
+            &.inactive
+              display: none
           &-contIcon
             width: 1.4rem
             height: 1.6rem
@@ -803,7 +810,6 @@
               bottom: 0.1rem solid $color-grey-2
           &-accBlock
             display: flex
-            // position: relative
           &-accFrom
             margin-right: 0.7rem
             +roboto_medium
@@ -822,10 +828,13 @@
           &-accNumber
             color: $color-blue-light
           &-accList
+            display: none
             margin: 0.6rem 0 0 3rem
             width: 17.7rem
             border-radius: 0.4rem
             @include box-shadow(0.1)
+            &.active
+              display: block
           &-accListItem
             display: flex
             justify-content: space-between
@@ -836,6 +845,8 @@
             &:hover
               cursor: pointer
             &:active
+              background-color: rgba($color-grey, 0.15)
+            &.selected
               background-color: rgba($color-grey, 0.15)
           &-accArrow
             @include arrow-list
