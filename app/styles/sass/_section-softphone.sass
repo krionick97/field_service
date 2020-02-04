@@ -801,6 +801,7 @@
           &-contName
             font-size: 1.2rem
           &-account
+            position: relative
             padding: 1rem 1.4rem 1rem 2rem
             box-sizing: border-box
             font-size: 1.2rem
@@ -829,9 +830,14 @@
             color: $color-blue-light
           &-accList
             display: none
+            position: absolute
             margin: 0.6rem 0 0 3rem
-            width: 17.7rem
+            background-color: $color-white
+            width: 18rem
+            max-height: 10rem
+            overflow-y: scroll
             border-radius: 0.4rem
+            @include custom-scroll
             @include box-shadow(0.1)
             &.active
               display: block
@@ -910,6 +916,12 @@
               width: 2rem
               height: 2rem
 
+@media (max-width: 720px)
+  .section
+    &__account
+      &_softphone
+        &.active
+          width: 100%
 
 
 
