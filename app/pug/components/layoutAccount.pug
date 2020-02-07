@@ -2,15 +2,20 @@
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(name="apple-mobile-web-app-capable" content="yes")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="format-detection" content="telephone=no")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    //- meta(http-equiv="x-rim-auto-match" content="none")
     link(rel="stylesheet", href="assets/css/reset.css")
-    link(rel="stylesheet", href="assets/css/style.css?=15")
+    link(rel="apple-touch-icon" href="assets/images/icon_for_iphone.png")
     link(rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon")
+    link(rel="stylesheet", href="assets/css/style.css?ver=55")
     title FieldService
   body
     include headerAccount
     block content
 
     //- Scripts
-    script(src="assets/js/main.js?v=51")
+    script(src="assets/js/main.js?ver=55")

@@ -27,6 +27,7 @@
       transition-delay: 0.2s
       z-index: 5
       &.active
+        overflow: hidden
         display: block
         transition-property: display
         transition-delay: 0.2s
@@ -280,9 +281,10 @@
 
         /* Calls */
         &_calls
+          height: 100%
           box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25)
           &-list
-            max-height: 50rem
+            height: 100%
             overflow: hidden
             overflow-y: scroll
             @include custom-scroll
@@ -296,8 +298,6 @@
               border-bottom: 0.05rem solid $color-grey
             &:hover
               cursor: pointer
-            &:active
-              background-color: $color-callList-bg
           &-symbol
             display: none
             margin-right: 1rem
@@ -322,7 +322,7 @@
 
         /* Search contacts */
         &_contacts
-          overflow: hidden
+          height: 100%
           &-search
             padding: 0 0.8rem
             margin-bottom: 3rem
@@ -350,8 +350,9 @@
             width: 100%
             box-sizing: border-box
           &-list
+            overflow: hidden
             overflow-y: scroll
-            max-height: 42rem
+            height: calc(100% - 68px)
             @include custom-scroll
           &-item
             padding: 1rem 0.8rem 1rem 2.8rem 
@@ -410,7 +411,7 @@
               position: relative
               display: flex
               justify-content: space-between
-              margin-bottom: 2rem
+              margin-bottom: 2.2rem
               &:after
                 position: absolute
                 content: ''
@@ -458,13 +459,13 @@
                 overflow: hidden
                 text-overflow: ellipsis
 
-            &_actions
-              &-menu
+            &_actions, &_actionsComplet
+              &-menu, &-menuComplet
                 border-top: 0.2rem solid $color-blue-border
                 background-color: $color-white
                 &.inactive
                   display: none
-              &-list
+              &-list, &-listComplet
                 width: 100%
                 height: 100%
               &-item
@@ -478,9 +479,9 @@
                     text-decoration: underline
                 &:hover
                   cursor: pointer
-                &:active
-                  background-color: $color-callList-bg
-              &-blacklist
+                // &:active
+                //   background-color: $color-callList-bg
+              &-blacklist, &-blacklistComplet
                 display: flex
                 align-items: center
                 justify-content: space-between
@@ -489,7 +490,7 @@
                   height: 0.8rem
                   &.inactive
                     display: none
-              &-comment
+              &-comment, &-commentComplet
                 div
                   font-size: 1.2rem
                   user-select: none
@@ -545,9 +546,6 @@
                   border: none
                   outline: none
                   background: none
-                  // border-bottom-left-radius: 0.5rem
-                  // border-bottom-right-radius: 0.5rem
-                  // width: 100%
                   color: $color-blue-light
                   font-size: 1.4rem
                   z-index: 3
@@ -569,6 +567,8 @@
               padding: 0 1.4rem
               display: flex
               align-items: center
+              position: relative
+              height: 3.7rem
             &_button
               user-select: none
               transition: 0.1s
@@ -605,7 +605,10 @@
                 display: flex
                 width: 10rem
                 justify-content: space-between
-                margin-left: 4.5rem
+                // margin-left: 4.5rem
+                position: absolute
+                left: 50%
+                transform: translateX(-50%)
               &-takeCall
                 display: flex
               &-takeCall, &-rejectCall
@@ -689,8 +692,8 @@
                   border-bottom: 0.1rem solid $color-grey
                 &:hover
                   cursor: pointer
-                &:active
-                  background-color: $color-callList-bg
+                // &:active
+                //   background-color: $color-callList-bg
                 &.inactive
                   display: none
                 &_icon
@@ -745,15 +748,83 @@
             .section__account_softphone-content_home-item_infoblock
               margin-top: 0
 
+          &-completCall
+            position: relative
+            &.inactive
+              display: none
+            &_close
+              position: absolute
+              top: 1.2rem
+              right: 1.2rem
+              z-index: 3
+              user-select: none
+              display: flex
+              align-items: flex-end
+              transition: 0.1s
+              p
+                +roboto_medium
+                font-size: 1.2rem
+                align-self: flex-end
+                margin: 0
+              &:hover
+                cursor: pointer
+                transform: scale(1.01)
+              &:active
+                transform: translateY(0.04rem)
+            &_closeIcon
+              width: 1.2rem
+              height: 1.2rem
+              margin-right: 0.5rem
+              transform: translateY(-0.1rem)
+              svg
+                width: 100%
+                height: 100%
+            &_record
+              width: 100%
+              // &-play
+              //   user-select: none
+              //   transition: 0.1s
+              //   &:hover
+              //     cursor: pointer
+              //     transform: scale(1.01)
+              //   &:active
+              //     transform: translateY(0.1rem)
+              // &-playIcon
+              //   width: 2.4rem
+              //   height: 2.4rem
+              //   svg
+              //     width: 100%
+              //     height: 100%
+              //     &.inactive
+              //       display: none
+              &-audioRange
+                height: 6rem
+                width: 100%
+                audio
+                  width: 100%
+                  &:focus
+                    outline: none
+                  &:hover
+                    cursor: pointer
+            .section__account_softphone-content_home-item_icon svg
+              transform: translateY(0.3rem)
+              width: 1.8rem
+              height: 1.6rem
+            .section__account_softphone-content_home-item_actionButtons
+              padding: 2rem 1.4rem 0.5rem
+            .section__account_softphone-content_home-item_infoblock
+              margin-top: 0
+
         /* Dial block */
         &_dial
           height: 100%
           box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25)
           &-block
-            height: 100%
+            height: calc(100% - 12px)
             padding: 1.2rem 0 0
             overflow: hidden
             overflow-y: scroll
+            overflow-x: hidden
             @include custom-scroll
           &-input
             padding: 0 1.4rem 0 2rem
@@ -766,7 +837,12 @@
               width: 20.6rem
               border: none
           &-backspace
+            display: flex
+            justify-content: flex-end
+            align-items: center
             position: absolute
+            height: 3.5rem
+            width: 4rem
             right: 1.4rem
             user-select: none
             top: 50%
@@ -922,7 +998,14 @@
       &_softphone
         &.active
           width: 100%
+        &-content
+          &_home
+            &-item
+              &_actionButtons
+                &-block
+                  margin: 0 auto
+                  max-width: 26.5rem
 
 
-
+ 
 
