@@ -171,7 +171,6 @@
       height: 100%
       display: flex
       position: relative
-      // overflow: hidden
     &-label
       position: absolute
       content: ''
@@ -187,7 +186,8 @@
     &-menu
       display: block
       width: 0
-      height: calc(100% - 60px)
+      // height: calc(100% - 61px)
+      height: 100%
       color: #ADB5BD
       background-color: $color-blue-dark
       background-repeat: no-repeat
@@ -221,6 +221,7 @@
         pointer-events: none
       &_list
         height: 100%
+        // margin-bottom: 8rem
         overflow: hidden
         overflow-y: scroll
         &::-webkit-scrollbar
@@ -279,6 +280,8 @@
         &-title
           +roboto_medium
           font-size: 1.4rem
+        &:last-child
+          margin-bottom: 6rem
 
     /* iframe */
     &_frame-block
@@ -390,7 +393,7 @@
   .section
     &__account
       &-menu
-        height: calc(100% - 112px)
+        height: calc(100% - 110px)
         &.active-button
           transition: none
       &-label.active
@@ -430,6 +433,7 @@
     &__account
       &-menu.search-mini
         margin-top: 5rem
+        height: calc(100% - 160px)
 
 @media (max-width: 720px)
   .section

@@ -54,6 +54,7 @@ const actionButton = document.querySelector('.section__account_softphone-content
 const actionButtonComplet = document.querySelector('.section__account_softphone-content_home-item_actionButtons-actionsComplet');
 const actionMenu = document.querySelector('.section__account_softphone-content_home-item_actions-menu');
 const actionMenuComplet = document.querySelector('.section__account_softphone-content_home-item_actions-menuComplet');
+const homeBlock = document.querySelector('.section__account_softphone-content_home-block');
 const homeActionsBlacklist = document.querySelector('.section__account_softphone-content_home-item_actions-blacklist');
 const homeActionsBlacklistComplet = document.querySelector('.section__account_softphone-content_home-item_actions-blacklistComplet');
 const actionComment = document.querySelector('.section__account_softphone-content_home-item_actions-comment');
@@ -62,6 +63,7 @@ const actionCommentAdd = document.querySelector('.section__account_softphone-con
 const actionCommentAddComplet = document.querySelector('.section__account_softphone-content_home-item_actions-commentComplet > p');
 const actionCommentForm = document.querySelector('.section__account_softphone-content_home-item_actions-comment_inputBlock > form');
 const actionCommentFormComplet = document.querySelector('.section__account_softphone-content_home-item_actions-comment_inputBlockComplet > form');
+const dialAccountBlock = document.querySelector('.section__account_softphone-content_dial-block');
 const dialAccountSelect = document.querySelector('.section__account_softphone-content_dial-accSelect');
 const dialAccountArrow = document.querySelector('.section__account_softphone-content_dial-accArrow');
 const dialAccounts = document.querySelector('.section__account_softphone-content_dial-account');
@@ -70,7 +72,9 @@ const dialAccountsItems = document.querySelectorAll('.section__account_softphone
 const dialInput = document.querySelector('#dial-input');
 const dialInputBackspace = document.querySelector('.section__account_softphone-content_dial-backspace');
 const dialKeys = document.querySelectorAll('.section__account_softphone-content_dial-key');
+const callItemsList = document.querySelector('.section__account_softphone-content_calls-list');
 const callItems = document.querySelectorAll('.section__account_softphone-content_calls-item');
+const contactsItemsList = document.querySelector('.section__account_softphone-content_contacts-list');
 const infoblockItems = document.querySelectorAll('.section__account_softphone-content_home-item_infoblock-item');
 const homeActionMenuItems = document.querySelectorAll('.section__account_softphone-content_home-item_actions-item');
 
@@ -714,6 +718,10 @@ function softPhoneActive() {
     if (noticesControl.classList.contains('active')) { noticesControl.classList.remove('active'); }
     if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
     if (supportControl.classList.contains('active')) { supportControl.classList.remove('active'); }
+    dialAccountBlock.scrollTo(0, 0);
+    callItemsList.scrollTo(0, 0);
+    homeBlock.scrollTo(0, 0);
+    contactsItemsList.scrollTo(0, 0);
     // if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
     // if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
     // if (searchButton.classList.contains('mobile-visible')
@@ -779,6 +787,10 @@ function softPhoneActiveMobile() {
     }
     if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
     if (burgerButtonMobile.classList.contains('active')) {burgerButtonMobile.classList.remove('active'); }
+    dialAccountBlock.scrollTo(0, 0);
+    callItemsList.scrollTo(0, 0);
+    homeBlock.scrollTo(0, 0);
+    contactsItemsList.scrollTo(0, 0);
   } 
   else {
     softphoneMenu.classList.remove('active');
