@@ -880,6 +880,10 @@ if (softphoneMenu) {
        /* Selected tap */
       if (!softphoneTapItems[i].classList.contains('selected')) {
         softphoneTapItems[i].classList.add('selected');
+        dialAccountBlock.scrollTo(0, 0);
+        callItemsList.scrollTo(0, 0);
+        homeBlock.scrollTo(0, 0);
+        contactsItemsList.scrollTo(0, 0);    
         if (!softphoneContentItems[i].classList.contains('active')) { softphoneContentItems[i].classList.add('active'); }
       }
       for (let j = i - 1; j >= 0; j--) {
