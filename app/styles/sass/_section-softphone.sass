@@ -781,23 +781,103 @@
                 height: 100%
             &_record
               width: 100%
-              // &-play
-              //   user-select: none
-              //   transition: 0.1s
-              //   &:hover
-              //     cursor: pointer
-              //     transform: scale(1.01)
-              //   &:active
-              //     transform: translateY(0.1rem)
-              // &-playIcon
-              //   width: 2.4rem
-              //   height: 2.4rem
-              //   svg
-              //     width: 100%
-              //     height: 100%
-              //     &.inactive
-              //       display: none
+              display: flex
+              justify-content: space-between
+              // position: relative
+              &:after
+                position: absolute
+                content: ''
+                display: block
+                z-index: 0
+                width: 100%
+                left: 0
+                height: 3.6rem
+                // top: 50%
+                transform: translateY(-0.58rem)
+                background-color: rgba($color-black, 0.5)
+
+              &-play
+                user-select: none
+                transition: 0.1s
+                width: 2.5rem
+                z-index: 2
+                &:hover
+                  cursor: pointer
+                  transform: scale(1.05)
+                &:active
+                  // transform: translateY(0.1rem)
+                  transform: scale(1)
+              &-playIcon
+                width: 2.4rem
+                height: 2.4rem
+                margin-left: 0.2rem 
+                svg
+                  width: 100%
+                  height: 100%
+                  &.inactive
+                    display: none
+              &-range
+                display: flex
+                align-items: center
+                padding: 0 0.3rem
+              &-timing
+                +roboto_light
+                font-size: 1.1rem
+                color: $color-white
+                z-index: 2
+                &.timeRest
+                  color: rgba($color-white, 0.7)
+              &-container
+                width: 9.5rem
+                height: 0.16rem
+                margin: 0 0.5rem
+                z-index: 2
+                position: relative
+                input
+                  position: absolute
+                  margin: 0
+                  box-sizing: border-box
+                  width: 100%
+                  height: 100%
+                  display: block
+                  -webkit-appearance: none
+                  z-index: 2
+                  top: 0
+                  left: 0
+                  background: none
+                  // outline: none
+                  &:hover
+                    cursor: pointer
+                  &:active, &:focus
+                    outline: none
+                  &::-webkit-slider-thumb
+                    -webkit-appearance: none
+                    width: 1.4rem
+                    height: 1.4rem
+                    border-radius: 0.7rem
+                    cursor: pointer
+                    background-color: #F5EEEE
+                    outline: none
+                    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
+                    transform: translateX(0)
+                  &::-moz-focus-outer
+                    border: 0
+              &-bar
+                position: absolute
+                // left: 0
+                width: 100%
+                height: 100%
+                display: block
+                background-color: rgba($color-white, 0.4)
+              &-fill
+                height: 100%
+                width: 50%
+                display: block
+                background-color: $color-white
+
+
               &-audioRange
+                display: none
                 height: 6rem
                 width: 100%
                 audio
@@ -810,8 +890,6 @@
               transform: translateY(0.3rem)
               width: 1.8rem
               height: 1.6rem
-            .section__account_softphone-content_home-item_actionButtons
-              padding: 2rem 1.4rem 0.5rem
             .section__account_softphone-content_home-item_infoblock
               margin-top: 0
 
@@ -1005,6 +1083,25 @@
                 &-block
                   margin: 0 auto
                   max-width: 26.5rem
+              &_buttons
+                height: 5rem
+              &_button
+                &-callsBlock
+                  width: 13rem
+                &-takeCall, &-rejectCall
+                  width: 5rem
+                  height: 5rem
+                  border-radius: 2.5rem
+                  svg
+                    width: 2rem
+                    height: 2rem
+            &-completCall
+              &_record
+                &-container
+                  width: 13.5rem
+                  input
+                    &:hover
+                      cursor: default
 
 
  

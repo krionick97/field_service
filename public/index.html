@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="assets/images/icon_for_iphone.png"/>
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style.css?ver=009"/>
+    <link rel="stylesheet" href="assets/css/style.css?ver=024"/>
     <title>FieldService</title>
   </head>
   <body>
@@ -779,9 +779,27 @@
                   </div>
                   <div class="section__account_softphone-content_home-item_actionButtons-block">
                     <div class="section__account_softphone-content_home-completCall_record">
+                      <div class="section__account_softphone-content_home-completCall_record-play">
+                        <div class="section__account_softphone-content_home-completCall_record-playIcon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="#FFFFFF"/>
+<path d="M9 16V8L17 12L9 16Z" fill="#FFFFFF"/>
+</svg>
+<svg class="inactive" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="#FFFFFF"/>
+<path d="M9 7V17M15 7V17" stroke="#FFFFFF" stroke-width="2.6"/>
+</svg>
+                        </div>
+                      </div>
+                      <div class="section__account_softphone-content_home-completCall_record-range">
+                        <div class="section__account_softphone-content_home-completCall_record-timing timeNow">00:00:00</div>
+                        <div class="section__account_softphone-content_home-completCall_record-container"><span class="section__account_softphone-content_home-completCall_record-bar"><span class="section__account_softphone-content_home-completCall_record-fill"></span></span>
+                          <input type="range" name="audio-range" id="audio-range" autocomplete="off" min="0" max="100" value="0" data-value="0"/>
+                        </div>
+                        <div class="section__account_softphone-content_home-completCall_record-timing timeRest">00:00:00</div>
+                      </div>
                       <div class="section__account_softphone-content_home-completCall_record-audioRange">
                         <audio controls="controls">
-                          <source src="horse.mp3" type="audio/mpeg"/>
+                          <source src="#" type="audio/mpeg"/>
                         </audio>
                       </div>
                     </div>
@@ -935,7 +953,7 @@
                     <p>i</p>
                   </div>
                   <div class="section__account_softphone-content_home-item_button-callsBlock">
-                    <div class="section__account_softphone-content_home-item_button section__account_softphone-content_home-item_button-takeCall"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="section__account_softphone-content_home-item_button section__account_softphone-content_home-item_button-takeCall"><svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
 </svg>
                     </div>
@@ -1052,7 +1070,7 @@
                     <p>i</p>
                   </div>
                   <div class="section__account_softphone-content_home-item_button-callsBlock">
-                    <div class="section__account_softphone-content_home-item_button section__account_softphone-content_home-item_button-takeCall"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="section__account_softphone-content_home-item_button section__account_softphone-content_home-item_button-takeCall"><svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
 </svg>
                     </div>
@@ -1171,7 +1189,7 @@
                     <p>i</p>
                   </div>
                   <div class="section__account_softphone-content_home-item_button-callsBlock">
-                    <div class="section__account_softphone-content_home-item_button section__account_softphone-content_home-item_button-takeCall"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="section__account_softphone-content_home-item_button section__account_softphone-content_home-item_button-takeCall"><svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.8883 12.0262C14.4077 11.6254 13.8426 11.3347 13.2337 11.1749C12.6248 11.0152 11.9875 10.9905 11.3677 11.1027C10.3544 11.1826 9.53344 12.5571 9.53344 12.5571C9.53344 12.5571 8.74944 12.4771 6.75986 11.0227C5.50666 9.99564 4.66309 8.56607 4.37828 6.98664C4.88022 6.2718 5.28781 5.49718 5.59126 4.68138C5.76626 3.89935 5.6449 3.0814 5.24997 2.38111C4.85504 1.68082 4.2137 1.14636 3.44636 0.87807C1.2275 -0.0818487 0.02192 1.08896 0.02192 1.08896C-0.0950562 3.25827 0.257119 5.42732 1.05521 7.453C1.8533 9.47868 3.07917 11.315 4.65194 12.8407C6.09184 14.3 7.88386 15.3773 9.86118 15.9723C11.8385 16.5674 13.9368 16.6609 15.9607 16.244C16.0131 15.6804 16.0131 15.1133 15.9607 14.5496C15.9403 13.6055 15.5571 12.7039 14.8883 12.0262Z" fill="white"/>
 </svg>
                     </div>
@@ -1667,6 +1685,6 @@
         </div>
       </div>
     </div>
-    <script src="assets/js/main.js?ver=009"></script>
+    <script src="assets/js/main.js?ver=024"></script>
   </body>
 </html>

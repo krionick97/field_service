@@ -77,53 +77,13 @@ const callItems = document.querySelectorAll('.section__account_softphone-content
 const contactsItemsList = document.querySelector('.section__account_softphone-content_contacts-list');
 const infoblockItems = document.querySelectorAll('.section__account_softphone-content_home-item_infoblock-item');
 const homeActionMenuItems = document.querySelectorAll('.section__account_softphone-content_home-item_actions-item');
+const completePlayRecordButton = document.querySelector('.section__account_softphone-content_home-completCall_record-play');
+const recordInputRange = document.querySelector('#audio-range');
+const recordFill = document.querySelector('.section__account_softphone-content_home-completCall_record-fill');
+const recordTimeNow = document.querySelector('.section__account_softphone-content_home-completCall_record-timing.timeNow');
+const recordTimeRest = document.querySelector('.section__account_softphone-content_home-completCall_record-timing.timeRest');
 
 const callingFlag = document.querySelector('.section__account_callingFlag');
-
-/* Screen Width updating */
-// setInterval(function() {
-
-//   if (document.body.clientWidth >= 721 && searchButton) {
-//     if (searchButton.classList.contains('mobile-visible')
-//         && searchForm.classList.contains('mobile-visible')
-//         && accountNavigate.classList.contains('mobile-visible')
-//         && accountHeader.classList.contains('mobile-visible')) {
-//       searchButton.classList.remove('mobile-visible');
-//       searchForm.classList.remove('mobile-visible');
-//       accountNavigate.classList.remove('mobile-visible');
-//       accountHeader.classList.remove('mobile-visible');
-//     }
-//     if (accountMenu.classList.contains('active-button') && accountMenu.classList.contains('mobile-visible')) {
-//       accountMenu.classList.remove('mobile-visible');
-//       if (!burgerButton.classList.contains('active')) { burgerButton.classList.add('active'); }
-//       if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
-//     }
-
-//     if (frameBlock.classList.contains('menu-visible')) { frameBlock.classList.remove('menu-visible'); }
-  
-//     for (let markerButton of markerButtons) {
-//       if (markerButton.classList.contains('mobile-visible')) { markerButton.classList.remove('mobile-visible'); }
-//     }
-//   }
-//   if (document.body.clientWidth < 721 && searchButton) {
-//     if (accountMenu.classList.contains('active-button')) {
-//       if (!accountMenu.classList.contains('mobile-visible')) { accountMenu.classList.add('mobile-visible'); }
-//       if (burgerButton.classList.contains('active')) { burgerButton.classList.remove('active'); }
-//       if (!burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.add('active'); }
-//       if (!accountNavigate.classList.contains('mobile-visible')) { accountNavigate.classList.add('mobile-visible'); }
-//       if (!accountHeader.classList.contains('mobile-visible')) { accountHeader.classList.add('mobile-visible'); }
-//       if (!searchButton.classList.contains('mobile-visible')) { searchButton.classList.add('mobile-visible'); }
-//       if (!searchForm.classList.contains('mobile-visible')) { searchForm.classList.add('mobile-visible'); }
-//       if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
-//       for (let markerButton of markerButtons) {
-//         if (!markerButton.classList.contains('mobile-visible')) { markerButton.classList.add('mobile-visible'); }
-//       }
-//     }
-//   }  
-//   }
-
-// }, 100);
-/* ----------------------------------------------------- */
 
 
 /* Menu Label hover */
@@ -1243,26 +1203,56 @@ activeClicking(homeActionMenuItems);
 /* --------------------------------------------------- */
 
 /* Play-record button in complete-item */
-// completePlayRecordButton.addEventListener('click', function() {
-//   if (!completePlayRecordButton.classList.contains('play')) {
-//     completePlayRecordButton.classList.add('play');
-//     if (completePlayRecordButton.classList.contains('pause')) { completePlayRecordButton.classList.remove('pause'); }
-//   }
-//   else {
-//     completePlayRecordButton.classList.remove('play');
-//     completePlayRecordButton.classList.add('pause');
-//   }
+completePlayRecordButton.addEventListener('click', function() {
+  if (!completePlayRecordButton.classList.contains('play')) {
+    completePlayRecordButton.classList.add('play');
+    if (completePlayRecordButton.classList.contains('pause')) { completePlayRecordButton.classList.remove('pause'); }
+  }
+  else {
+    completePlayRecordButton.classList.remove('play');
+    completePlayRecordButton.classList.add('pause');
+  }
 
-//   let playButton = completePlayRecordButton.querySelector('div > svg:first-child');
-//   let pauseButton = completePlayRecordButton.querySelector('div > svg:last-child');
-//   if (completePlayRecordButton.classList.contains('pause')) {
-//     if (!pauseButton.classList.contains('inactive')) { pauseButton.classList.add('inactive'); }
-//     if (playButton.classList.contains('inactive')) { playButton.classList.remove('inactive'); }
-//   } else {
-//     if (pauseButton.classList.contains('inactive')) { pauseButton.classList.remove('inactive'); }
-//     if (!playButton.classList.contains('inactive')) { playButton.classList.add('inactive'); }
-//   }
-// });
+  let playButton = completePlayRecordButton.querySelector('div > svg:first-child');
+  let pauseButton = completePlayRecordButton.querySelector('div > svg:last-child');
+  if (completePlayRecordButton.classList.contains('pause')) {
+    if (!pauseButton.classList.contains('inactive')) { pauseButton.classList.add('inactive'); }
+    if (playButton.classList.contains('inactive')) { playButton.classList.remove('inactive'); }
+  } else {
+    if (pauseButton.classList.contains('inactive')) { pauseButton.classList.remove('inactive'); }
+    if (!playButton.classList.contains('inactive')) { playButton.classList.add('inactive'); }
+  }
+});
+
+let recordDuration = 300; // seconds, duration of audio-file
+function setRecordAudioBar() {
+  recordFill.style.width = `${recordInputRange.value}%`;
+  recordInputRange.oninput = function() {
+    recordFill.style.width = `${this.value}%`;
+    this.dataset.value = this.value;
+    let timeNow = recordDuration * this.value * 0.01;
+    let timeRest = recordDuration - timeNow;
+    let hoursNow = Math.floor(timeNow / 3600);
+    timeNow %= 3600;
+    let minutesNow = Math.floor(timeNow / 60);
+    let secondsNow = timeNow % 60;
+    hoursNow = String(hoursNow).padStart(2, '0');
+    minutesNow = String(minutesNow).padStart(2, '0');
+    secondsNow = String(secondsNow).padStart(2, '0');
+
+    let hoursRest = Math.floor(timeRest / 3600);
+    timeRest %= 3600;
+    let minutesRest = Math.floor(timeRest / 60);
+    let secondsRest = timeRest % 60;
+    hoursRest = String(hoursRest).padStart(2, '0');
+    minutesRest = String(minutesRest).padStart(2, '0');
+    secondsRest = String(secondsRest).padStart(2, '0');
+
+    recordTimeNow.textContent = `${hoursNow}:${minutesNow}:${secondsNow}`;
+    recordTimeRest.textContent = `-${hoursRest}:${minutesRest}:${secondsRest}`;
+  }
+}
+setRecordAudioBar();
 /* ---------------------------------------------------- */
 
 
@@ -1278,7 +1268,6 @@ function getOpenDialTap() {
 /* ----- */
 
 
-
 /* Open Softphone by callig-flag */
 callingFlag.addEventListener('click', function() {
   softPhoneActiveMobile();
@@ -1288,4 +1277,5 @@ callingFlag.addEventListener('click', function() {
     if (softphoneTapItems[i].classList.contains('selected')) { softphoneTapItems[i].classList.remove('selected'); }
   }
 });
+
 
