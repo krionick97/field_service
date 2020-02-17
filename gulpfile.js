@@ -2,27 +2,27 @@
 
 const gulp = require('gulp');
 const gulpPlugin = require('gulp-load-plugins')();
-const htmlValidator = require('gulp-w3c-html-validator');
+// const htmlValidator = require('gulp-w3c-html-validator');
 const browserSync = require('browser-sync').create();
-const through2 = require('through2');
+// const through2 = require('through2');
 
 /* Plugin for W3C HTML validation */
-const task = {
-  validateHtml: () => {
-     const handleFile = (file, encoding, callback) => {
-        callback(null, file);
-        if (!file.w3cjs.success)
-           throw Error('HTML validation error(s) found');
-        };
-     return gulp.src('public/*.html')
-        .pipe(htmlValidator())
-        .pipe(through2.obj(handleFile))
-        .pipe(browserSync.reload({
-          stream: true
-        }));
-     }
-  };
-gulp.task('HTMLValidator', task.validateHtml);
+// const task = {
+//   validateHtml: () => {
+//      const handleFile = (file, encoding, callback) => {
+//         callback(null, file);
+//         if (!file.w3cjs.success)
+//            throw Error('HTML validation error(s) found');
+//         };
+//      return gulp.src('public/*.html')
+//         .pipe(htmlValidator())
+//         .pipe(through2.obj(handleFile))
+//         .pipe(browserSync.reload({
+//           stream: true
+//         }));
+//      }
+//   };
+// gulp.task('HTMLValidator', task.validateHtml);
 
 /* Plugin for start browser */
 gulp.task('serve', function() {
@@ -83,6 +83,21 @@ gulp.task('sass-iframe', function() {
           stream: true
         }));
 });
+gulp.task('sass-booking', function() {
+  return gulp.src('app/styles/sass/style-booking.sass')
+        .pipe(gulpPlugin.sourcemaps.init())
+        .pipe(gulpPlugin.sass({}))
+        .pipe(gulpPlugin.autoprefixer({}))
+        .on("error", gulpPlugin.notify.onError({
+          message: "Error: <%= error.message %>",
+          title: "Error in style"
+        }))
+        .pipe(gulpPlugin.sourcemaps.write())
+        .pipe(gulp.dest('public/assets/css/'))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
+});
 
 /* Fonts task */
 gulp.task('fonts', function() {
@@ -127,13 +142,14 @@ gulp.task('watch', function() {
   gulp.watch('app/styles/*.css', gulp.series('css'));
   gulp.watch('app/styles/sass/*.sass', gulp.series('sass'));
   gulp.watch('app/styles/sass/*.sass', gulp.series('sass-iframe'));
+  gulp.watch('app/styles/sass/*.sass', gulp.series('sass-booking'));
   gulp.watch('app/js/*.js', gulp.series('script'));
-  gulp.watch('public/*.html', gulp.series('HTMLValidator'));
+  // gulp.watch('public/*.html', gulp.series('HTMLValidator'));
   // gulp.watch('app/data/*.json', gulp.series('json'));
 });
 
 /* Default task */
 gulp.task('default', gulp.series(
-  gulp.parallel('pug', 'fonts', 'sass', 'sass-iframe', 'img', 'css', 'script'),
-  gulp.parallel('watch', 'serve', 'HTMLValidator'),
+  gulp.parallel('pug', 'fonts', 'sass', 'sass-iframe', 'sass-booking', 'img', 'css', 'script'),
+  gulp.parallel('watch', 'serve')
 ));
