@@ -41,3 +41,80 @@
     transform: rotate(180deg)
     transition: 0.1s
 
+.btn
+  border: 0.1rem solid $color-blue-light
+  border-radius: 0.5rem
+  box-sizing: border-box
+  color: $color-blue-light
+  font-size: 1.6rem
+  background-color: transparent
+  outline: none
+  transition: 0.1s
+  &:hover
+    cursor: pointer
+    transform: scale(1.01)
+  &:active
+    transform: scale(1)
+  &-marking
+    width: 2.9rem
+    height: 2.9rem
+    border-radius: 1.45rem
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-left: 1.5rem
+    svg
+      display: none
+    &.attention
+      background-color: $color-red
+      svg:first-child
+        display: block
+        width: 0.3rem
+        height: 1.5rem
+    &.unsaved, &.saved
+      svg:last-child
+        display: block
+        width: 1.7rem
+        height: 1.1rem
+    &.unsaved
+      background-color: $color-data-yellow
+    &.saved
+      background-color: $color-green
+
+.checkbox
+  display: block
+  width: 2.1rem
+  height: 2.1rem
+  border-radius: 1.05rem
+  box-sizing: border-box
+  border: 0.1rem solid $color-blue-light
+  position: relative
+  &:after
+    position: absolute
+    content: ''
+    display: none
+    width: 1.2rem
+    height: 1.2rem
+    border-radius: 0.6rem
+    background-color: $color-blue-light
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.checkbox
+  order: -1
+  position: relative
+.input-radio
+  position: absolute
+  opacity: 0
+  z-index: 2
+  width: 2.1rem
+  height: 2.1rem
+  &:hover
+    cursor: pointer
+#radio-type-1:checked + .checkbox
+  &:after
+    display: block
+#radio-number-1:checked + .checkbox
+  &:after
+    display: block

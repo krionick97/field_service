@@ -7,7 +7,7 @@
       margin-bottom: 1.6rem
   &-left
     display: none
-    margin-right: 3rem
+    // margin-right: 3rem
     transition: 0.1s
     &.collapse
       opacity: 0
@@ -16,12 +16,21 @@
     &.active
       display: block
   &-right
-    margin-left: 3rem
+    // margin-left: 3rem
   &-center
     padding: 0.5rem 0 0
-    div:first-child
+    margin: 0 3rem
+    &_upper-block
       display: flex
+      margin-bottom: 3rem
+    &_second-block
+      display: flex
+      justify-content: space-between
+      align-items: center
+      margin-bottom: 3rem
   &-callInfo
     margin-left: 2rem
     flex-grow: 1
+  &-type
+    margin-bottom: 3rem
 

@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style-booking.css?v=09"/>
+    <link rel="stylesheet" href="assets/css/style-booking.css?v=006"/>
     <title>Booking</title>
   </head>
   <body>
@@ -19,12 +19,12 @@
           <div class="block-address">
             <div class="block-address_text data-border">
               <p>text</p>
-              <div class="arrow-list"></div>
+              <div class="arrow-list block-address_arrow"></div>
             </div>
-            <div class="block-address_list">
-              <div class="block-address_item">1234 Florida Rt, Fort Mayers, 34354 FL</div>
-              <div class="block-address_item">Address_1</div>
-              <div class="block-address_item">Address_2</div>
+            <div class="block-list block-address_list">
+              <div class="block-list_item block-address_item">1234 Florida Rt, Fort Mayers, 34354 FL</div>
+              <div class="block-list_item block-address_item">Address_1</div>
+              <div class="block-list_item block-address_item">Address_2</div>
             </div>
           </div>
           <div class="block-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14268.274546089124!2d-81.88672024389766!3d26.614246625837634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db41b541a87ca1%3A0xb25b25fe95027f76!2zMTIzNCBGbG9yaWRhIEF2ZSwgRm9ydCBNeWVycywgRkwgMzM5MDEsINCh0KjQkA!5e0!3m2!1sru!2sru!4v1581884786460!5m2!1sru!2sru" allowfullscreen=""></iframe></div>
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="content-center booking-center">
-        <div>
+        <div class="booking-center_upper-block">
           <div class="arr-button"><svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M16.5 7.51754V9.48246L4.33626 9.48246L9.90351 15.0965L8.5 16.5L0.5 8.5L8.5 0.5L9.90351 1.90351L4.33626 7.51754L16.5 7.51754Z" fill="#FFFFFF"/>
 </svg>
@@ -75,7 +75,7 @@
                 <div class="call-fromAction_list">
                   <div class="call-fromAction_list-item"></div>
                   <div class="call-fromAction_list-item"> 
-                    <p>Outgoing Call - From: (712) 343-3344 TexaxGoogleAds - To: (712) 341-8898 Robert May - Dispatcher: Mike jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</p>
+                    <p>Outgoing Call - From: (712) 343-3344 TexaxGoogleAds - To: (712) 341-8898 Robert May - Dispatcher: Mike</p>
                   </div>
                   <div class="call-fromAction_list-item">Other</div>
                 </div>
@@ -108,10 +108,193 @@
             </div>
           </div>
         </div>
+        <div class="call-type booking-type">
+          <div class="call-variant">
+            <div class="call-variant_buttons">
+              <button class="btn call-variant_btn">Service Call</button>
+              <button class="btn call-variant_btn">Follow Up</button>
+              <button class="btn call-variant_btn">Recall</button>
+            </div>
+            <div class="call-terminal">
+              <p>Check Zip-code</p>
+              <p>Choose or create New Contact</p>
+              <p>Choose phone for service SMS or mark without service SMS</p>
+              <p>Choose phone for service SMS or mark without service SMS</p>
+            </div>
+          </div>
+          <div class="call-variant_search collapse">
+            <div class="call-variant_search-form">
+              <input class="data-border call-variant_search-input" type="text"/>
+              <input class="btn call-variant_search-button" type="submit" value="Search"/>
+            </div>
+            <div class="call-variant_search-type">
+              <div class="call-variant_search-type_data">
+                <p class="call-variant_search-type_id">Job#3224GFS - Mike Sanders (345) 678-5433</p>
+                <div class="call-variant_search-type_product"> 
+                  <p>Residental - Washer GE (1245 Plant Rd, Houston, TX 77004)</p>
+                  <p>Service Call - 02/07/20 9:00am-11:00am - Mike</p>
+                  <p>Follow Up - 02/08/20 3:00pm-5:00pm - Mike</p>
+                </div>
+                <div class="call-variant_search-type_product"> 
+                  <p>Residental - Refrigerator Samsung (1245 Plant Rd, Houston, TX 77004)</p>
+                  <p>Service Call - 02/07/20 9:00am-11:00am - Mike</p>
+                  <p>Follow Up - 02/08/20 3:00pm-5:00pm - Mike</p>
+                </div>
+              </div>
+              <div class="call-variant_search-type_radiobtn">
+                <div class="radio">
+                  <input class="input-radio" type="radio" name="radio-type-1" id="radio-type-1"/>
+                  <label class="checkbox" for="radio-type-1"></label>
+                </div>
+              </div>
+            </div>
+            <div class="call-variant_search-type">
+              <div class="call-variant_search-type_data">
+                <p class="call-variant_search-type_id">Job#3224GFS - Mike Sanders (345) 678-5433</p>
+                <div class="call-variant_search-type_product"> 
+                  <p>Residental - Washer GE (1245 Plant Rd, Houston, TX 77004)</p>
+                  <p>Service Call - 02/07/20 9:00am-11:00am - Mike</p>
+                  <p>Follow Up - 02/08/20 3:00pm-5:00pm - Mike</p>
+                </div>
+                <div class="call-variant_search-type_product"> 
+                  <p>Residental - Refrigerator Samsung (1245 Plant Rd, Houston, TX 77004)</p>
+                  <p>Service Call - 02/07/20 9:00am-11:00am - Mike</p>
+                  <p>Follow Up - 02/08/20 3:00pm-5:00pm - Mike</p>
+                </div>
+              </div>
+              <div class="call-variant_search-type_radiobtn">
+                <div class="radio">
+                  <input class="input-radio" type="radio" name="radio-type-1" id="radio-type-1"/>
+                  <label class="checkbox" for="radio-type-1"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="booking-center_second-block">
+          <div class="call-zipCode">
+            <div class="block-content">
+              <div class="block-content-title">
+                <div class="block-title">Zip Code</div>
+                <div class="btn-marking attention"><svg viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.56286 9.84218H0.471429L0.0342857 0H3L2.56286 9.84218ZM0 13.2874C0 12.9718 0.0371429 12.7065 0.111429 12.4916C0.191429 12.27 0.3 12.092 0.437143 11.9577C0.574286 11.8234 0.734286 11.726 0.917143 11.6655C1.1 11.6051 1.29714 11.5749 1.50857 11.5749C1.70857 11.5749 1.89714 11.6051 2.07429 11.6655C2.25714 11.726 2.41714 11.8234 2.55429 11.9577C2.69143 12.092 2.8 12.27 2.88 12.4916C2.96 12.7065 3 12.9718 3 13.2874C3 13.5897 2.96 13.8482 2.88 14.0631C2.8 14.278 2.69143 14.456 2.55429 14.597C2.41714 14.7381 2.25714 14.8388 2.07429 14.8993C1.89714 14.9664 1.70857 15 1.50857 15C1.29714 15 1.1 14.9664 0.917143 14.8993C0.734286 14.8388 0.574286 14.7381 0.437143 14.597C0.3 14.456 0.191429 14.278 0.111429 14.0631C0.0371429 13.8482 0 13.5897 0 13.2874Z" fill="white"/>
+</svg>
+<svg viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.75 4L7.25 9.5L15.25 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                </div>
+              </div>
+              <div class="call-zipCode_content">
+                <div class="call-zipCode_form">
+                  <input class="data-border call-zipCode_input" type="text"/>
+                  <input class="btn call-zipCode_btn" type="submit" value="Check"/>
+                </div>
+                <div class="call-zipCode_status">
+                  <p>Status:</p>
+                  <p>Out of Service Area</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="call-company">
+            <div class="block-content">
+              <div class="block-content-title">
+                <div class="block-title">Company Name</div>
+                <div class="btn-marking saved"><svg viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.56286 9.84218H0.471429L0.0342857 0H3L2.56286 9.84218ZM0 13.2874C0 12.9718 0.0371429 12.7065 0.111429 12.4916C0.191429 12.27 0.3 12.092 0.437143 11.9577C0.574286 11.8234 0.734286 11.726 0.917143 11.6655C1.1 11.6051 1.29714 11.5749 1.50857 11.5749C1.70857 11.5749 1.89714 11.6051 2.07429 11.6655C2.25714 11.726 2.41714 11.8234 2.55429 11.9577C2.69143 12.092 2.8 12.27 2.88 12.4916C2.96 12.7065 3 12.9718 3 13.2874C3 13.5897 2.96 13.8482 2.88 14.0631C2.8 14.278 2.69143 14.456 2.55429 14.597C2.41714 14.7381 2.25714 14.8388 2.07429 14.8993C1.89714 14.9664 1.70857 15 1.50857 15C1.29714 15 1.1 14.9664 0.917143 14.8993C0.734286 14.8388 0.574286 14.7381 0.437143 14.597C0.3 14.456 0.191429 14.278 0.111429 14.0631C0.0371429 13.8482 0 13.5897 0 13.2874Z" fill="white"/>
+</svg>
+<svg viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.75 4L7.25 9.5L15.25 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                </div>
+              </div>
+              <div class="call-company_name">
+                <p>Company:</p>
+                <div class="call-company_selector">
+                  <div class="data-border call-company_text">
+                    <p>Text</p>
+                  </div>
+                  <div class="arrow-list call-company_arrow"></div>
+                  <div class="block-list call-compamy_list">
+                    <div class="block-list_item call-company_list-item">
+                      <p>TexasGoogleAds</p>
+                    </div>
+                    <div class="block-list_item call-company_list-item">
+                      <p>Company_name_1</p>
+                    </div>
+                    <div class="block-list_item call-company_list-item">
+                      <p>Company_name_2</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="call-contact">
+          <div class="block-content">
+            <div class="block-content-title">
+              <div class="block-title">Company Name</div>
+              <div class="btn-marking saved"><svg viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.56286 9.84218H0.471429L0.0342857 0H3L2.56286 9.84218ZM0 13.2874C0 12.9718 0.0371429 12.7065 0.111429 12.4916C0.191429 12.27 0.3 12.092 0.437143 11.9577C0.574286 11.8234 0.734286 11.726 0.917143 11.6655C1.1 11.6051 1.29714 11.5749 1.50857 11.5749C1.70857 11.5749 1.89714 11.6051 2.07429 11.6655C2.25714 11.726 2.41714 11.8234 2.55429 11.9577C2.69143 12.092 2.8 12.27 2.88 12.4916C2.96 12.7065 3 12.9718 3 13.2874C3 13.5897 2.96 13.8482 2.88 14.0631C2.8 14.278 2.69143 14.456 2.55429 14.597C2.41714 14.7381 2.25714 14.8388 2.07429 14.8993C1.89714 14.9664 1.70857 15 1.50857 15C1.29714 15 1.1 14.9664 0.917143 14.8993C0.734286 14.8388 0.574286 14.7381 0.437143 14.597C0.3 14.456 0.191429 14.278 0.111429 14.0631C0.0371429 13.8482 0 13.5897 0 13.2874Z" fill="white"/>
+</svg>
+<svg viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.75 4L7.25 9.5L15.25 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+              </div>
+            </div>
+            <div class="call-contact_content">
+              <div class="call-contact_number">
+                <div class="call-contact_number-item">
+                  <div class="call-contact_number-name"><svg viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.6667 1.3H10V0H8.66667V1.3H3.33333V0H2V1.3H1.33333C0.596667 1.3 0 1.88175 0 2.6V11.7C0 12.4182 0.596667 13 1.33333 13H10.6667C11.4033 13 12 12.4182 12 11.7V2.6C12 1.88175 11.4033 1.3 10.6667 1.3ZM6 3.25C7.10333 3.25 8 4.12425 8 5.2C8 6.279 7.10333 7.15 6 7.15C4.89667 7.15 4 6.279 4 5.2C4 4.12425 4.89667 3.25 6 3.25ZM10 11.05H2V10.4C2 9.1 4.66667 8.385 6 8.385C7.33333 8.385 10 9.1 10 10.4V11.05Z" fill="#8E8E93"/>
+</svg>
+                    <p>Robert May</p>
+                    <p>(712) 343-3344</p>
+                  </div>
+                  <div class="call-contact_number-subtitle"><span>-&nbsp;</span><span>From Main Phone</span></div>
+                  <div class="call-contact_number-radiobtn">
+                    <div class="radio">
+                      <input class="input-radio" type="radio" name="radio-number-1" id="radio-number-1"/>
+                      <label class="checkbox" for="radio-number-1"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="call-contact_number-item">
+                  <div class="call-contact_number-name"><svg viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.6667 1.3H10V0H8.66667V1.3H3.33333V0H2V1.3H1.33333C0.596667 1.3 0 1.88175 0 2.6V11.7C0 12.4182 0.596667 13 1.33333 13H10.6667C11.4033 13 12 12.4182 12 11.7V2.6C12 1.88175 11.4033 1.3 10.6667 1.3ZM6 3.25C7.10333 3.25 8 4.12425 8 5.2C8 6.279 7.10333 7.15 6 7.15C4.89667 7.15 4 6.279 4 5.2C4 4.12425 4.89667 3.25 6 3.25ZM10 11.05H2V10.4C2 9.1 4.66667 8.385 6 8.385C7.33333 8.385 10 9.1 10 10.4V11.05Z" fill="#8E8E93"/>
+</svg>
+                    <p>Lincy May</p>
+                    <p>(712) 343-3564</p>
+                  </div>
+                  <div class="call-contact_number-subtitle"><span>-&nbsp;</span><span>From Additional Phone</span></div>
+                  <div class="call-contact_number-radiobtn">
+                    <div class="radio">
+                      <input class="input-radio" type="radio" name="radio-number-1" id="radio-number-1"/>
+                      <label class="checkbox" for="radio-number-1"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="call-contact_number-item">
+                  <div class="call-contact_number-name">
+                    <p>Create New Contact</p>
+                  </div>
+                  <div class="call-contact_number-subtitle"></div>
+                  <div class="call-contact_number-radiobtn">
+                    <div class="radio">
+                      <input class="input-radio" type="radio" name="radio-number-1" id="radio-number-1"/>
+                      <label class="checkbox" for="radio-number-1"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="content-right booking-right">Block-right</div>
     </div>
     <!-- Scripts-->
-    <script src="assets/js/booking.js?v=09"></script>
+    <script src="assets/js/booking.js?v=006"></script>
   </body>
 </html>

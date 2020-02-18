@@ -1,6 +1,8 @@
 const addressText = document.querySelector('.block-address_text');
 const addressList = document.querySelector('.block-address_list');
 const addressListItems = document.querySelectorAll('.block-address_item');
+const addressListArrow = document.querySelector('.block-address_arrow');
+
 const arrButton = document.querySelector('.arr-button');
 const bookingLeft = document.querySelector('.booking-left');
 
@@ -20,52 +22,108 @@ const callLeadSourceInput = document.querySelector('.call-leadSource_input');
 const callLeadSourceArrow = document.querySelector('.call-leadSource_arrow');
 const callLeadSourceClear = document.querySelector('.call-leadSource_clear');
 
+const appointmentTypeButtons = document.querySelectorAll('.call-variant_btn');
+const appointmentTypeSearchBlock = document.querySelector('.call-variant_search');
 
+const callCompanyNameText = document.querySelector('.call-company_text');
+const callCompanyNameList = document.querySelector('.call-compamy_list');
+const callCompanyNameListItems = document.querySelectorAll('.call-company_list-item');
+const callCompanyNameListArrow = document.querySelector('.call-company_arrow');
 
+/* List function to open-close */
+function listFunction(text, list, listIems, arrow) {
+  /* Event to show or to hide address-list by clicking on the adressText */
+  text.addEventListener('click', function() {
+    text.classList.toggle('open');
+    if (text.classList.contains('open')) {
+      getListToggle('visible', list, arrow);
+    } else {
+      getListToggle('hidden', list, arrow);
+    }
+  });
+  /* Event to choose the address in addressText by click the item in addressList */
+  listIems.forEach((listIem, index, array) => {
+    let mainText = text.querySelector('p');
+    if (!array[index].classList.contains('selected')) {
+      array[0].classList.add('selected');
+      mainText.textContent = array[0].textContent;
+    }
+    listIem.addEventListener('click', function() {
+      mainText.textContent = '';
+      mainText.textContent = listIem.textContent;
+      if (!listIem.classList.contains('selected')) { listIem.classList.add('selected'); }
+      if (text.classList.contains('open')) {
+        text.classList.remove('open'); 
+        getListToggle('hidden', list, arrow);
+      }
+      for (let j = index - 1; j >= 0; j--) {
+        if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
+      }
+      for (let k = index + 1; k < array.length; k++) {
+        if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
+      }
+    });
+  });
+  /* ----------------------------------------------------------------- */
+}
 /* function to show or to hide address-list and turn the arrow */
-function getAdressListToggle(variable) { // variable = visible, variable = hidden;
-  const arrow = addressText.querySelector('.arrow-list');
+function getListToggle(variable, list, arrow) { // variable = visible, variable = hidden;
   if (variable === 'visible') {
     if (!arrow.classList.contains('open')) { arrow.classList.add('open'); }
-    if (!addressList.classList.contains('visible')) { addressList.classList.add('visible'); }
+    if (!list.classList.contains('visible')) { list.classList.add('visible'); }
   }
   if (variable === 'hidden') {
     if (arrow.classList.contains('open')) { arrow.classList.remove('open'); }
-    if (addressList.classList.contains('visible')) { addressList.classList.remove('visible'); }
+    if (list.classList.contains('visible')) { list.classList.remove('visible'); }
   }
 }
-/* Event to show or to hide address-list by clicking on the adressText */
-addressText.addEventListener('click', function() {
-  addressText.classList.toggle('open');
-  if (addressText.classList.contains('open')) {
-    getAdressListToggle('visible');
-  } else {
-    getAdressListToggle('hidden');
-  }
-});
-/* Event to choose the address in addressText by click the item in addressList */
-addressListItems.forEach((addressListItem, index, array) => {
-  let mainText = addressText.querySelector('p');
-  if (!array[index].classList.contains('selected')) {
-    array[0].classList.add('selected');
-    mainText.textContent = array[0].textContent;
-  }
-  addressListItem.addEventListener('click', function() {
-    mainText.textContent = '';
-    mainText.textContent = addressListItem.textContent;
-    if (!addressListItem.classList.contains('selected')) { addressListItem.classList.add('selected'); }
-    if (addressText.classList.contains('open')) {
-      addressText.classList.remove('open'); 
-      getAdressListToggle('hidden');
-    }
-    for (let j = index - 1; j >= 0; j--) {
-      if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
-    }
-    for (let k = index + 1; k < array.length; k++) {
-      if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
-    }
-  });
-});
+listFunction(addressText, addressList, addressListItems, addressListArrow); // address List
+listFunction(callCompanyNameText, callCompanyNameList, callCompanyNameListItems, callCompanyNameListArrow); // company-names List
+
+/* function to show or to hide address-list and turn the arrow */
+// function getAdressListToggle(variable) { // variable = visible, variable = hidden;
+//   const arrow = addressText.querySelector('.arrow-list');
+//   if (variable === 'visible') {
+//     if (!arrow.classList.contains('open')) { arrow.classList.add('open'); }
+//     if (!addressList.classList.contains('visible')) { addressList.classList.add('visible'); }
+//   }
+//   if (variable === 'hidden') {
+//     if (arrow.classList.contains('open')) { arrow.classList.remove('open'); }
+//     if (addressList.classList.contains('visible')) { addressList.classList.remove('visible'); }
+//   }
+// }
+// /* Event to show or to hide address-list by clicking on the adressText */
+// addressText.addEventListener('click', function() {
+//   addressText.classList.toggle('open');
+//   if (addressText.classList.contains('open')) {
+//     getAdressListToggle('visible');
+//   } else {
+//     getAdressListToggle('hidden');
+//   }
+// });
+// /* Event to choose the address in addressText by click the item in addressList */
+// addressListItems.forEach((addressListItem, index, array) => {
+//   let mainText = addressText.querySelector('p');
+//   if (!array[index].classList.contains('selected')) {
+//     array[0].classList.add('selected');
+//     mainText.textContent = array[0].textContent;
+//   }
+//   addressListItem.addEventListener('click', function() {
+//     mainText.textContent = '';
+//     mainText.textContent = addressListItem.textContent;
+//     if (!addressListItem.classList.contains('selected')) { addressListItem.classList.add('selected'); }
+//     if (addressText.classList.contains('open')) {
+//       addressText.classList.remove('open'); 
+//       getAdressListToggle('hidden');
+//     }
+//     for (let j = index - 1; j >= 0; j--) {
+//       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
+//     }
+//     for (let k = index + 1; k < array.length; k++) {
+//       if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
+//     }
+//   });
+// });
 /* ----------------------------------------------------------------- */
 
 /* Event to active or inactive left-block with the map by clicking the arr-button */
@@ -82,7 +140,6 @@ arrButton.addEventListener('click', function() {
   arrButton.classList.toggle('inactive');
 });
 /* ----------------------------------------------------------------- */
-
 
 callFromActionArrow.addEventListener('click', function() {
   if (callFromActionInput.classList.contains('active')) {
@@ -205,6 +262,8 @@ window.addEventListener('click', function(event) {
   let target = event.target;
   let blockAddressClosest = target.closest('.block-address');
   let blockAddressListClosest = target.closest('.block-address_list');
+  let callCompanyNameClosest = target.closest('.call-company_selector');
+  let callCompanyNameListClosest = target.closest('.call-compamy_list');
   let callFromAcitonClosest = target.closest('.call-fromAction');
   let callLeadSourceClosest = target.closest('.call-leadSource');
 
@@ -213,7 +272,15 @@ window.addEventListener('click', function(event) {
     if (blockAddressClosest) { return; }
     if (addressText.classList.contains('open')) {
       addressText.classList.remove('open'); 
-      getAdressListToggle('hidden');
+      getListToggle('hidden', addressList, addressListArrow);
+    }
+  }
+  if (callCompanyNameListClosest) { return; }
+  else {
+    if (callCompanyNameClosest) { return; }
+    if (callCompanyNameText.classList.contains('open')) {
+      callCompanyNameText.classList.remove('open'); 
+      getListToggle('hidden', callCompanyNameList, callCompanyNameListArrow);
     }
   }
 
@@ -229,6 +296,44 @@ window.addEventListener('click', function(event) {
   }
 });
 /* --------------------------------------- */
+
+/* Clicking by buttons "Service Call", "Follow  Up", "Recall" and calling the search-block */
+appointmentTypeButtons.forEach((appointmentTypeButton, index, array) => {
+  if (!array[index].classList.contains('selected')) { array[0].classList.add('selected'); }
+  appointmentTypeButton.addEventListener('click', function() {
+    if (!appointmentTypeButton.classList.contains('selected')) { appointmentTypeButton.classList.add('selected'); }
+    for (let j = index - 1; j >= 0; j--) {
+      if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
+    }
+    for (let k = index + 1; k < array.length; k++) {
+      if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
+    }
+
+    function getAppointmentTypeSearchBlock(variable) { // variable = active || inactive
+      if (variable === 'active') {
+        if (!appointmentTypeSearchBlock.classList.contains('active')) { appointmentTypeSearchBlock.classList.add('active'); }
+        setTimeout(function() {
+          if (appointmentTypeSearchBlock.classList.contains('collapse')) { appointmentTypeSearchBlock.classList.remove('collapse'); }
+        }, 80);
+      }
+      if (variable === 'inactive') {
+        if (!appointmentTypeSearchBlock.classList.contains('collapse')) { appointmentTypeSearchBlock.classList.add('collapse'); }
+        setTimeout(function() {
+          if (appointmentTypeSearchBlock.classList.contains('active')) { appointmentTypeSearchBlock.classList.remove('active'); }
+        }, 80);
+      }
+    } // function to active or inactive the search-block
+    if (index === 1) { // second and third button activate the search-block
+      getAppointmentTypeSearchBlock('active');
+    } else if (index === 2) {
+      getAppointmentTypeSearchBlock('active');
+    } else {
+      getAppointmentTypeSearchBlock('inactive');
+    }
+  });
+});
+
+
 
 
 
