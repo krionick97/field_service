@@ -81,7 +81,7 @@
     &.saved
       background-color: $color-green
 
-.checkbox
+.radiobox
   display: block
   width: 2.1rem
   height: 2.1rem
@@ -89,6 +89,7 @@
   box-sizing: border-box
   border: 0.1rem solid $color-blue-light
   position: relative
+  order: -1
   &:after
     position: absolute
     content: ''
@@ -100,10 +101,6 @@
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
-
-.checkbox
-  order: -1
-  position: relative
 .input-radio
   position: absolute
   opacity: 0
@@ -112,9 +109,72 @@
   height: 2.1rem
   &:hover
     cursor: pointer
-#radio-type-1:checked + .checkbox
-  &:after
-    display: block
-#radio-number-1:checked + .checkbox
-  &:after
-    display: block
+#radio-type-1:checked + .radiobox:after
+  display: block
+#radio-number-1:checked + .radiobox:after
+  display: block
+
+.check, .cancel
+  position: relative
+.checkbox, .cancelbox
+  display: block
+  width: 1.6rem
+  height: 1.6rem
+  border-radius: 0.3rem
+  background-color: $color-white
+  border: 0.1rem solid $color-data-border
+  box-sizing: border-box
+  position: relative
+  svg
+    position: absolute
+    display: none
+.checkbox svg
+  width: 1.2rem
+  height: 1rem
+  top: 0.24rem
+  left: 0.099rem
+.cancelbox svg
+  width: 1rem
+  height: 1rem
+  top: 0.2rem
+  left: 0.19rem
+.input-checkbox, .input-cancelbox
+  position: absolute
+  top: -0.1rem
+  left: -0.3rem
+  width: 1.6rem
+  height: 1.6rem
+  opacity: 0
+  z-index: 2
+  &:hover
+    cursor: pointer
+
+.trash
+  width: 1.2rem
+  height: 1.6rem
+  transition: 0.1s
+  &:hover
+    cursor: pointer
+    transform: scale(1.03)
+  &:active
+    transform: scale(1)
+  svg
+    width: 100%
+    height: 100%
+
+#checkbox-mainphone-payer-1:checked + .checkbox > svg
+  display: block
+#checkbox-mainphone-payer-2:checked + .checkbox > svg
+  display: block
+#checkbox-tenantphone-payer-1:checked + .checkbox > svg
+  display: block
+#checkbox-tenantphone-payer-2:checked + .checkbox > svg
+  display: block
+#checkbox-non-sms-1:checked + .checkbox > svg
+  display: block
+#cancelbox-mainphone-1:checked + .cancelbox > svg
+  display: block
+#cancelbox-tenantPhone-1:checked + .cancelbox > svg
+  display: block
+
+

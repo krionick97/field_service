@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style-booking.css?v=012"/>
+    <link rel="stylesheet" href="assets/css/style-booking.css?v=019"/>
     <title>Booking</title>
   </head>
   <body>
@@ -152,7 +152,7 @@
               <div class="call-variant_search-type_radiobtn">
                 <div class="radio">
                   <input class="input-radio" type="radio" name="radio-type-1" id="radio-type-1"/>
-                  <label class="checkbox" for="radio-type-1"></label>
+                  <label class="radiobox" for="radio-type-1"></label>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@
               <div class="call-variant_search-type_radiobtn">
                 <div class="radio">
                   <input class="input-radio" type="radio" name="radio-type-1" id="radio-type-1"/>
-                  <label class="checkbox" for="radio-type-1"></label>
+                  <label class="radiobox" for="radio-type-1"></label>
                 </div>
               </div>
             </div>
@@ -264,7 +264,7 @@
                   <div class="call-contact_number-radiobtn">
                     <div class="radio">
                       <input class="input-radio" type="radio" name="radio-number-1" id="radio-number-1"/>
-                      <label class="checkbox" for="radio-number-1"></label>
+                      <label class="radiobox" for="radio-number-1"></label>
                     </div>
                   </div>
                 </div>
@@ -279,7 +279,7 @@
                   <div class="call-contact_number-radiobtn">
                     <div class="radio">
                       <input class="input-radio" type="radio" name="radio-number-1" id="radio-number-1"/>
-                      <label class="checkbox" for="radio-number-1"></label>
+                      <label class="radiobox" for="radio-number-1"></label>
                     </div>
                   </div>
                 </div>
@@ -291,18 +291,153 @@
                   <div class="call-contact_number-radiobtn">
                     <div class="radio">
                       <input class="input-radio" type="radio" name="radio-number-1" id="radio-number-1"/>
-                      <label class="checkbox" for="radio-number-1"></label>
+                      <label class="radiobox" for="radio-number-1"></label>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="call-contact_new">
                 <div class="call-contact_new-title">
-                  <div class="call-contact_new-firstName"></div>
-                  <div class="call-contact_new-firstName"></div>
-                  <div class="call-contact_new-mainPhone"></div>
+                  <div class="call-contact_new-firstName">
+                    <label>First Name:</label>
+                    <input class="data-border call-contact_new-input" type="text"/>
+                  </div>
+                  <div class="call-contact_new-lastName">
+                    <label>Last Name:</label>
+                    <input class="data-border call-contact_new-input" type="text"/>
+                  </div>
+                  <div class="call-contact_new-phone">
+                    <label>Main Phone:</label>
+                    <input class="data-border call-contact_new-input" type="text"/>
+                  </div>
                 </div>
-                <div class="call-contact_new-company"></div>
+                <div class="call-contact_new-company">
+                  <label><span>and/or </span>Company Name:</label>
+                  <input class="data-border call-contact_new-input" type="text"/>
+                </div>
+              </div>
+              <div class="data-border call-contact_new-phones">
+                <div class="call-contact_new-topBlock">
+                  <div class="call-contact_new-leftBlock">
+                    <div class="call-contact_new-titleBlock">
+                      <p>Phones:</p>
+                      <div class="btn-marking call-contact_new-marking saved"><svg viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.56286 9.84218H0.471429L0.0342857 0H3L2.56286 9.84218ZM0 13.2874C0 12.9718 0.0371429 12.7065 0.111429 12.4916C0.191429 12.27 0.3 12.092 0.437143 11.9577C0.574286 11.8234 0.734286 11.726 0.917143 11.6655C1.1 11.6051 1.29714 11.5749 1.50857 11.5749C1.70857 11.5749 1.89714 11.6051 2.07429 11.6655C2.25714 11.726 2.41714 11.8234 2.55429 11.9577C2.69143 12.092 2.8 12.27 2.88 12.4916C2.96 12.7065 3 12.9718 3 13.2874C3 13.5897 2.96 13.8482 2.88 14.0631C2.8 14.278 2.69143 14.456 2.55429 14.597C2.41714 14.7381 2.25714 14.8388 2.07429 14.8993C1.89714 14.9664 1.70857 15 1.50857 15C1.29714 15 1.1 14.9664 0.917143 14.8993C0.734286 14.8388 0.574286 14.7381 0.437143 14.597C0.3 14.456 0.191429 14.278 0.111429 14.0631C0.0371429 13.8482 0 13.5897 0 13.2874Z" fill="white"/>
+</svg>
+<svg viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.75 4L7.25 9.5L15.25 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                      </div>
+                    </div>
+                    <div class="call-contact_new-payer">
+                      <p>Payer</p>
+                      <p>SMS</p>
+                    </div>
+                  </div>
+                  <div class="call-contact_new-sms">
+                    <p>Without Service SMS</p>
+                    <div class="check">
+                      <input class="input-checkbox" type="checkbox" name="checkbox-non-sms-1" id="checkbox-non-sms-1"/>
+                      <label class="checkbox" for="checkbox-mainphone-payer-1"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="call-contact_new-dontUse">
+                    <p>Don't Use</p>
+                  </div>
+                </div>
+                <div class="call-contact_new-block">
+                  <div class="call-contact_new-mainPhone">
+                    <div class="call-contact_new-block_text">
+                      <p>Main Phone:</p>
+                      <p>(712) 343-3344</p>
+                    </div>
+                    <div class="call-contact_new-checkboxes">
+                      <div class="check">
+                        <input class="input-checkbox" type="checkbox" name="checkbox-mainphone-payer-1" id="checkbox-mainphone-payer-1"/>
+                        <label class="checkbox" for="checkbox-mainphone-payer-1"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                        </label>
+                      </div>
+                      <div class="check">
+                        <input class="input-checkbox" type="checkbox" name="checkbox-mainphone-payer-2" id="checkbox-mainphone-payer-2"/>
+                        <label class="checkbox" for="checkbox-mainphone-payer-2"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="call-contact_new-block_delete">
+                    <div class="cancel">
+                      <input class="input-cancelbox" type="checkbox" name="cancelbox-mainphone-1" id="cancelbox-mainphone-1"/>
+                      <label class="cancelbox" for="cancelbox-mainphone-1"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.75 1.25L1.25 8.75M1.25 1.25L8.75 8.75" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                      </label>
+                    </div>
+                    <div class="trash call-contact_new-block_trash"><svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.84242 1.28C8.84242 0.57312 8.27684 0 7.57926 0H4.42137C3.72379 0 3.15821 0.57312 3.15821 1.28V1.92H0V2.56H0.710526L1.26284 15.04C1.26284 15.04 1.46147 16 2.21021 16C2.73032 16 4.83221 16 5.68389 16C5.68389 16 5.94032 16 6.31547 16C7.03911 16 9.56542 16 9.78916 16C10.5382 16 10.7368 15.04 10.7368 15.04L11.2633 2.56H12V1.92H8.84242V1.28ZM3.79004 1.27998C3.79004 0.926384 4.12014 0.639984 4.52688 0.639984H7.47425C7.88099 0.639984 8.21109 0.926704 8.21109 1.27998V1.91998H3.79004V1.27998ZM9.79014 15.3597H6.31646H5.68488H2.21119C2.21119 15.3597 1.94846 15.2144 1.89541 14.7197C1.84267 14.2249 1.34277 2.55967 1.34277 2.55967H10.6058C10.6061 2.55967 10.159 14.2249 10.1062 14.7197C10.0532 15.2144 9.79014 15.3597 9.79014 15.3597ZM8.52745 3.84002H7.89587L7.58008 14.08H8.21166L8.52745 3.84002ZM4.42132 14.08L4.10553 3.84002H3.47363L3.78942 14.08H4.42132ZM5.68457 3.84002H6.31615V14.08H5.68457V3.84002Z" fill="#FF0000"/>
+</svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="call-contact_new-block">
+                  <div class="call-contact_new-tenantPhone">
+                    <div class="call-contact_new-block_text">
+                      <p>Tenant Phone:</p>
+                      <p>(712) 454-4511</p>
+                    </div>
+                    <div class="call-contact_new-checkboxes">
+                      <div class="check">
+                        <input class="input-checkbox" type="checkbox" name="checkbox-tenantphone-payer-1" id="checkbox-tenantphone-payer-1"/>
+                        <label class="checkbox" for="checkbox-tenantphone-payer-1"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                        </label>
+                      </div>
+                      <div class="check">
+                        <input class="input-checkbox" type="checkbox" name="checkbox-tenantphone-payer-2" id="checkbox-tenantphone-payer-2"/>
+                        <label class="checkbox" for="checkbox-tenantphone-payer-2"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="call-contact_new-block_delete">
+                    <div class="cancel">
+                      <input class="input-cancelbox" type="checkbox" name="cancelbox-tenantPhone-1" id="cancelbox-tenantPhone-1"/>
+                      <label class="cancelbox" for="cancelbox-tenantPhone-1"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.75 1.25L1.25 8.75M1.25 1.25L8.75 8.75" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                      </label>
+                    </div>
+                    <div class="trash call-contact_new-block_trash"><svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.84242 1.28C8.84242 0.57312 8.27684 0 7.57926 0H4.42137C3.72379 0 3.15821 0.57312 3.15821 1.28V1.92H0V2.56H0.710526L1.26284 15.04C1.26284 15.04 1.46147 16 2.21021 16C2.73032 16 4.83221 16 5.68389 16C5.68389 16 5.94032 16 6.31547 16C7.03911 16 9.56542 16 9.78916 16C10.5382 16 10.7368 15.04 10.7368 15.04L11.2633 2.56H12V1.92H8.84242V1.28ZM3.79004 1.27998C3.79004 0.926384 4.12014 0.639984 4.52688 0.639984H7.47425C7.88099 0.639984 8.21109 0.926704 8.21109 1.27998V1.91998H3.79004V1.27998ZM9.79014 15.3597H6.31646H5.68488H2.21119C2.21119 15.3597 1.94846 15.2144 1.89541 14.7197C1.84267 14.2249 1.34277 2.55967 1.34277 2.55967H10.6058C10.6061 2.55967 10.159 14.2249 10.1062 14.7197C10.0532 15.2144 9.79014 15.3597 9.79014 15.3597ZM8.52745 3.84002H7.89587L7.58008 14.08H8.21166L8.52745 3.84002ZM4.42132 14.08L4.10553 3.84002H3.47363L3.78942 14.08H4.42132ZM5.68457 3.84002H6.31615V14.08H5.68457V3.84002Z" fill="#FF0000"/>
+</svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="call-contact_new-block">
+                  <div class="call-contact_new-add">
+                    <div class="call-contact_new-add_data">
+                      <p>Add Phone Number:</p>
+                      <div class="call-contact_new-add_name">
+                        <label>Name:</label>
+                        <input class="data-border call-contact_new-add_input" type="text"/>
+                      </div>
+                      <div class="call-contact_new-add_phone">
+                        <label>Phone:</label>
+                        <input class="data-border call-contact_new-add_input" type="text"/>
+                      </div>
+                    </div>
+                    <button class="btn call-contact_new-add_btn">Add</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -311,6 +446,6 @@
       <div class="content-right booking-right">Block-right</div>
     </div>
     <!-- Scripts-->
-    <script src="assets/js/booking.js?v=012"></script>
+    <script src="assets/js/booking.js?v=019"></script>
   </body>
 </html>

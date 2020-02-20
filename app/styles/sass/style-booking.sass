@@ -369,6 +369,7 @@ body
   &-contact
     padding-top: 2.1rem
     &_number
+      margin-bottom: 1.2rem
       &-item, &-name
         display: flex
         align-items: center
@@ -397,6 +398,125 @@ body
       &-subtitle
         width: 15rem
         margin-right: 1.3rem
+    &_new
+      padding: 0 0 0 1.2rem
+      margin-bottom: 2rem
+      &-phones
+        padding: 0
+        overflow: hidden
+      &-title
+        display: flex
+        margin-bottom: 1.8rem
+      &-firstName, &-lastName, &-phone, &-company
+        label
+          font-size: 1.4rem
+          margin-right: 1.8rem
+        &:not(:last-child)
+          margin-right: 2.5rem
+      &-firstName, &-lastName, &-phone
+        input
+          width: 11.5rem
+      &-company
+        label span
+          font-size: 1.2rem
+          color: $color-grey
+        input
+          width: 27.6rem
+      &-input
+        outline: none
+
+      &-topBlock, &-titleBlock
+        display: flex
+        align-items: center
+        p
+          +roboto_medium
+          font-size: 1.4rem
+      &-topBlock
+        justify-content: space-between
+        padding: 0.6rem 1.2rem 0
+        margin-bottom: 1rem
+      &-dontUse
+        margin-right: 6rem
+      &-leftBlock
+        display: flex
+        align-items: center
+        justify-content: space-between
+        width: 33.5rem
+      &-payer
+        display: flex
+        p:first-child
+          margin-right: 2.2rem
+      &-marking
+        width: 1.9rem
+        height: 1.9rem
+        border-radius: 9.5rem
+        svg
+          &:first-child
+            width: 0.3rem !important
+            height: 0.97rem !important
+          &:last-child
+            width: 1.1rem !important
+            height: 0.8rem !important
+      &-mainPhone, &-tenantPhone
+        display: flex
+        p:first-child
+          width: 9rem
+          margin-right: 0.9rem
+        p:last-child
+          width: 9.6rem
+      &-block
+        padding: 0.3rem 2.3rem
+        background-color: $color-bg-main
+        display: flex
+        align-items: center
+        justify-content: space-between
+        &:not(:last-child)
+          margin-bottom: 0.6rem
+        &_text
+          display: flex
+        &_delete
+          display: flex
+          align-items: center
+          width: 8rem
+          justify-content: space-between
+      &-sms
+        display: flex
+        align-items: center
+        p
+          margin-right: 0.9rem
+      &-mainPhone, &-tenantPhone
+        display: flex
+        align-items: center
+        width: 32.3rem
+        justify-content: space-between
+      &-checkboxes
+        display: flex
+        .check
+          &:first-child
+            margin: 0 3.1rem
+          &:last-child
+            margin: 0 0.6rem
+      &-add
+        display: flex
+        justify-content: space-between
+        width: 100%
+        &_data
+          display: flex
+          align-items: center
+        &_input
+          outline: none
+          width: 11.5rem
+        &_name, &_phone
+          display: flex
+          align-items: center
+          margin-left: 2.5rem
+          label
+            display: block
+            margin-right: 1.2rem
+        &_btn
+          font-size: 1.3rem
+          padding: 0.1rem 1.8rem
+          margin-right: 6rem
 
 
 @import 'section-booking'
