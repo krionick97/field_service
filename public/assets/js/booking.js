@@ -6,7 +6,7 @@ const addressListArrow = document.querySelector('.block-address_arrow');
 const arrButton = document.querySelector('.arr-button');
 const bookingLeft = document.querySelector('.booking-left');
 
-const callFromAciton = document.querySelector('.call-fromAction');
+// const callFromAciton = document.querySelector('.call-fromAction');
 const callFromAciton_list = document.querySelector('.call-fromAction_list');
 const callFromAciton_listItems = document.querySelectorAll('.call-fromAction_list-item');
 const callFromActionText = document.querySelector('.call-fromAction_text > p');
@@ -14,7 +14,7 @@ const callFromActionInput = document.querySelector('.call-fromAction_input');
 const callFromActionArrow = document.querySelector('.call-fromAction_arrow');
 const callFromActionClear = document.querySelector('.call-fromAction_clear');
 
-const callLeadSource = document.querySelector('.call-leadSource');
+// const callLeadSource = document.querySelector('.call-leadSource');
 const callLeadSource_list = document.querySelector('.call-leadSource_list');
 const callLeadSource_listItems = document.querySelectorAll('.call-leadSource_list-item');
 const callLeadSourceText = document.querySelector('.call-leadSource_text > p');
@@ -141,23 +141,135 @@ arrButton.addEventListener('click', function() {
 });
 /* ----------------------------------------------------------------- */
 
+// callFromActionArrow.addEventListener('click', function() {
+//   if (callFromActionInput.classList.contains('active')) {
+//     callFromAciton_list.classList.toggle('visible');
+//     callFromActionArrow.classList.toggle('open');
+//   }
+// });
+// callFromAciton.addEventListener('click', function() {
+//   if (callFromActionInput.classList.contains('active')) { return; }
+//   else {
+//     callFromAciton_list.classList.toggle('visible');
+//     callFromActionArrow.classList.toggle('open');
+//   }
+//   if (callLeadSource_list.classList.contains('visible')) { callLeadSource_list.classList.remove('visible'); }
+//   if (callLeadSourceArrow.classList.contains('open')) { callLeadSourceArrow.classList.remove('open'); }
+// });
+// callFromActionClear.addEventListener('click', function() {
+//   callFromActionText.textContent = '';
+//   if (callFromActionInput.classList.contains('active')) { callFromActionInput.classList.remove('active'); }
+//   if (!callFromAciton_listItems[0].classList.contains('selected')) { callFromAciton_listItems[0].classList.add('selected'); }
+//   for (let i = 1; i < callFromAciton_listItems.length; i++) {
+//     if (callFromAciton_listItems[i].classList.contains('selected')) { callFromAciton_listItems[i].classList.remove('selected'); }
+//   }
+//   callFromActionInput.value = '';
+// });
+// callFromAciton_listItems.forEach((callFromAciton_listItem, index, array) => {
+//   if (!array[index].classList.contains('selected')) {
+//     array[1].classList.add('selected');
+//     let itemText = array[1].querySelector('p');
+//     callFromActionText.textContent = itemText.textContent;
+//   }
+//   callFromAciton_listItem.addEventListener('click', function() {
+//     if (!callFromAciton_listItem.classList.contains('selected')) {
+//       callFromAciton_listItem.classList.add('selected');
+//       callFromActionText.textContent = '';
+//     }
+//     if (index === 1) {
+//       let itemText = callFromAciton_listItem.querySelector('p');
+//       callFromActionText.textContent = itemText.textContent;
+//     }
+//     if (index === 2) {
+//       if (!callFromActionInput.classList.contains('active')) {
+//         callFromActionInput.classList.add('active');
+//         callFromAciton_list.classList.remove('visible');
+//         callFromActionArrow.classList.remove('open');
+//       }
+//     } else {
+//       if (callFromActionInput.classList.contains('active')) { callFromActionInput.classList.remove('active'); }
+//     }
+
+//     for (let j = index - 1; j >= 0; j--) {
+//       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
+//     }
+//     for (let k = index + 1; k < array.length; k++) {
+//       if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
+//     }
+//   });
+// });
+// callLeadSourceArrow.addEventListener('click', function() {
+//   if (callLeadSourceInput.classList.contains('active')) {
+//     callLeadSource_list.classList.toggle('visible');
+//     callLeadSourceArrow.classList.toggle('open');
+//   }
+// });
+// callLeadSource.addEventListener('click', function() {
+//   if (callLeadSourceInput.classList.contains('active')) { return; }
+//   else {
+//     callLeadSource_list.classList.toggle('visible');
+//     callLeadSourceArrow.classList.toggle('open');
+//   }
+//   if (callFromAciton_list.classList.contains('visible')) { callFromAciton_list.classList.remove('visible'); }
+//   if (callFromActionArrow.classList.contains('open')) { callFromActionArrow.classList.remove('open'); }
+// });
+// callLeadSourceClear.addEventListener('click', function() {
+//   callLeadSourceText.textContent = '';
+//   if (callLeadSourceInput.classList.contains('active')) { callLeadSourceInput.classList.remove('active'); }
+//   if (!callLeadSource_listItems[0].classList.contains('selected')) { callLeadSource_listItems[0].classList.add('selected'); }
+//   for (let i = 1; i < callFromAciton_listItems.length; i++) {
+//     if (callLeadSource_listItems[i].classList.contains('selected')) { callLeadSource_listItems[i].classList.remove('selected'); }
+//   }
+//   callLeadSourceInput.value = '';
+// });
+// callLeadSource_listItems.forEach((callLeadSource_listItem, index, array) => {
+//   if (!array[index].classList.contains('selected')) {
+//     array[1].classList.add('selected');
+//     let itemText = array[1].querySelector('p');
+//     callLeadSourceText.textContent = itemText.textContent;
+//   }
+//   callLeadSource_listItem.addEventListener('click', function() {
+//     if (!callLeadSource_listItem.classList.contains('selected')) {
+//       callLeadSource_listItem.classList.add('selected');
+//       callLeadSourceText.textContent = '';
+//     }
+//     if (index === 1) {
+//       let itemText = callLeadSource_listItem.querySelector('p');
+//       callLeadSourceText.textContent = itemText.textContent;
+//     }
+//     if (index === 2) {
+//       if (!callLeadSourceInput.classList.contains('active')) {
+//         callLeadSourceInput.classList.add('active');
+//         callLeadSource_list.classList.remove('visible');
+//         callLeadSourceArrow.classList.remove('open');
+//       }
+//     } else {
+//       if (callLeadSourceInput.classList.contains('active')) { callLeadSourceInput.classList.remove('active'); }
+//     }
+
+//     for (let j = index - 1; j >= 0; j--) {
+//       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
+//     }
+//     for (let k = index + 1; k < array.length; k++) {
+//       if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
+//     }
+//   });
+// });
+
+
+/* ----------------callFromAction------------------------------------------------- */
 callFromActionArrow.addEventListener('click', function() {
-  if (callFromActionInput.classList.contains('active')) {
     callFromAciton_list.classList.toggle('visible');
     callFromActionArrow.classList.toggle('open');
-  }
 });
-callFromAciton.addEventListener('click', function() {
-  if (callFromActionInput.classList.contains('active')) { return; }
-  else {
+callFromActionText.addEventListener('click', function() {
     callFromAciton_list.classList.toggle('visible');
     callFromActionArrow.classList.toggle('open');
-  }
   if (callLeadSource_list.classList.contains('visible')) { callLeadSource_list.classList.remove('visible'); }
   if (callLeadSourceArrow.classList.contains('open')) { callLeadSourceArrow.classList.remove('open'); }
 });
 callFromActionClear.addEventListener('click', function() {
-  callFromActionText.textContent = '';
+  callFromActionText.innerHTML = '&nbsp;';
   if (callFromActionInput.classList.contains('active')) { callFromActionInput.classList.remove('active'); }
   if (!callFromAciton_listItems[0].classList.contains('selected')) { callFromAciton_listItems[0].classList.add('selected'); }
   for (let i = 1; i < callFromAciton_listItems.length; i++) {
@@ -166,30 +278,23 @@ callFromActionClear.addEventListener('click', function() {
   callFromActionInput.value = '';
 });
 callFromAciton_listItems.forEach((callFromAciton_listItem, index, array) => {
-  if (!array[index].classList.contains('selected')) {
-    array[1].classList.add('selected');
-    let itemText = array[1].querySelector('p');
-    callFromActionText.textContent = itemText.textContent;
-  }
   callFromAciton_listItem.addEventListener('click', function() {
     if (!callFromAciton_listItem.classList.contains('selected')) {
       callFromAciton_listItem.classList.add('selected');
+    }
+    let itemText = callFromAciton_listItem.querySelector('p');
+    if (itemText.textContent === 'Other') {
       callFromActionText.textContent = '';
-    }
-    if (index === 1) {
-      let itemText = callFromAciton_listItem.querySelector('p');
-      callFromActionText.textContent = itemText.textContent;
-    }
-    if (index === 2) {
       if (!callFromActionInput.classList.contains('active')) {
         callFromActionInput.classList.add('active');
-        callFromAciton_list.classList.remove('visible');
-        callFromActionArrow.classList.remove('open');
       }
     } else {
       if (callFromActionInput.classList.contains('active')) { callFromActionInput.classList.remove('active'); }
+        callFromActionText.textContent = itemText.textContent;
+        callFromActionInput.value = '';
     }
-
+    callFromAciton_list.classList.remove('visible');
+    callFromActionArrow.classList.remove('open');
     for (let j = index - 1; j >= 0; j--) {
       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
     }
@@ -198,23 +303,20 @@ callFromAciton_listItems.forEach((callFromAciton_listItem, index, array) => {
     }
   });
 });
+
+/* ----------------callLeadSource------------------------------------------------- */
 callLeadSourceArrow.addEventListener('click', function() {
-  if (callLeadSourceInput.classList.contains('active')) {
     callLeadSource_list.classList.toggle('visible');
     callLeadSourceArrow.classList.toggle('open');
-  }
 });
-callLeadSource.addEventListener('click', function() {
-  if (callLeadSourceInput.classList.contains('active')) { return; }
-  else {
+callLeadSourceText.addEventListener('click', function() {
     callLeadSource_list.classList.toggle('visible');
     callLeadSourceArrow.classList.toggle('open');
-  }
   if (callFromAciton_list.classList.contains('visible')) { callFromAciton_list.classList.remove('visible'); }
   if (callFromActionArrow.classList.contains('open')) { callFromActionArrow.classList.remove('open'); }
 });
 callLeadSourceClear.addEventListener('click', function() {
-  callLeadSourceText.textContent = '';
+  callLeadSourceText.innerHTML = '&nbsp;';
   if (callLeadSourceInput.classList.contains('active')) { callLeadSourceInput.classList.remove('active'); }
   if (!callLeadSource_listItems[0].classList.contains('selected')) { callLeadSource_listItems[0].classList.add('selected'); }
   for (let i = 1; i < callFromAciton_listItems.length; i++) {
@@ -223,30 +325,23 @@ callLeadSourceClear.addEventListener('click', function() {
   callLeadSourceInput.value = '';
 });
 callLeadSource_listItems.forEach((callLeadSource_listItem, index, array) => {
-  if (!array[index].classList.contains('selected')) {
-    array[1].classList.add('selected');
-    let itemText = array[1].querySelector('p');
-    callLeadSourceText.textContent = itemText.textContent;
-  }
   callLeadSource_listItem.addEventListener('click', function() {
     if (!callLeadSource_listItem.classList.contains('selected')) {
       callLeadSource_listItem.classList.add('selected');
+    }
+    let itemText = callLeadSource_listItem.querySelector('p');
+    if (itemText.textContent === 'Other') {
       callLeadSourceText.textContent = '';
-    }
-    if (index === 1) {
-      let itemText = callLeadSource_listItem.querySelector('p');
-      callLeadSourceText.textContent = itemText.textContent;
-    }
-    if (index === 2) {
       if (!callLeadSourceInput.classList.contains('active')) {
         callLeadSourceInput.classList.add('active');
-        callLeadSource_list.classList.remove('visible');
-        callLeadSourceArrow.classList.remove('open');
       }
     } else {
       if (callLeadSourceInput.classList.contains('active')) { callLeadSourceInput.classList.remove('active'); }
+      callLeadSourceText.textContent = itemText.textContent;
+      callLeadSourceInput.value = '';
     }
-
+    callLeadSource_list.classList.remove('visible');
+    callLeadSourceArrow.classList.remove('open');
     for (let j = index - 1; j >= 0; j--) {
       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
     }

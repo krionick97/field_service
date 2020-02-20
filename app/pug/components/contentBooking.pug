@@ -43,14 +43,16 @@ div.content.booking
           p From Action:
           div.call-fromAction.data-border
             div.call-fromAction_text
-             p
+             p Outgoing Call - From: (712) 343-3344 TexaxGoogleAds - To: (712) 341-8898 Robert May - Dispatcher: Mike
             input(type="text" placeholder="Other").call-fromAction_input
             div.arrow-list.call-fromAction_arrow
             div.call-fromAction_list
               div.call-fromAction_list-item
-              div.call-fromAction_list-item 
+                p &nbsp;
+              div.call-fromAction_list-item.selected
                 p Outgoing Call - From: (712) 343-3344 TexaxGoogleAds - To: (712) 341-8898 Robert May - Dispatcher: Mike
-              div.call-fromAction_list-item Other
+              div.call-fromAction_list-item 
+                p Other
           div.call-fromAction_clear
             <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M11 1L1 11M1 1L11 11" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -59,14 +61,16 @@ div.content.booking
           p Lead Source:
           div.call-leadSource.data-border
             div.call-leadSource_text
-              p
+              p Incoming Missing Call - From: (712) 341-8898 Robert May - To: (712) 341-8898 (712) 343-3344 TexasGoogle
             input(type="text" placeholder="Other").call-leadSource_input
             div.arrow-list.call-leadSource_arrow
             div.call-leadSource_list
               div.call-leadSource_list-item
-              div.call-leadSource_list-item
+                p &nbsp;
+              div.call-leadSource_list-item.selected
                 p Incoming Missing Call - From: (712) 341-8898 Robert May - To: (712) 341-8898 (712) 343-3344 TexasGoogle
-              div.call-leadSource_list-item Other
+              div.call-leadSource_list-item
+               p Other
           div.call-leadSource_clear
             <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M11 1L1 11M1 1L11 11" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -214,7 +218,13 @@ div.content.booking
                 div.radio
                   input(type="radio", name="radio-number-1" id="radio-number-1").input-radio
                   label(for="radio-number-1").checkbox
-
+          
+          div.call-contact_new
+            div.call-contact_new-title
+              div.call-contact_new-firstName
+              div.call-contact_new-firstName
+              div.call-contact_new-mainPhone
+            div.call-contact_new-company
 
   div.content-right.booking-right Block-right
 
