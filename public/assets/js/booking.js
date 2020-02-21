@@ -26,12 +26,34 @@ const appointmentTypeButtons = document.querySelectorAll('.call-variant_btn');
 const appointmentTypeSearchBlock = document.querySelector('.call-variant_search');
 
 const callCompanyNameText = document.querySelector('.call-company_text');
-const callCompanyNameList = document.querySelector('.call-compamy_list');
+const callCompanyNameList = document.querySelector('.call-company_list');
 const callCompanyNameListItems = document.querySelectorAll('.call-company_list-item');
 const callCompanyNameListArrow = document.querySelector('.call-company_arrow');
 
+const unitTypeText = document.querySelector('.call-units_add-unitType_text');
+const unitTypeList = document.querySelector('.call-units_add-unitType_list');
+const unitTypeListItems = document.querySelectorAll('.call-units_add-unitType_list-item');
+const unitTypeListArrow = document.querySelector('.call-units_add-unitType_arrow');
+
+const unitText = document.querySelector('.call-units_add-unit_text');
+const unitList = document.querySelector('.call-units_add-unit_list');
+const unitInput = document.querySelector('.call-units_add-unit_input');
+const unitListItems = document.querySelectorAll('.call-units_add-unit_list-item');
+const unitListArrow = document.querySelector('.call-units_add-unit_arrow');
+
+const brandText = document.querySelector('.call-units_add-brand_text');
+const brandList = document.querySelector('.call-units_add-brand_list');
+const brandInput = document.querySelector('.call-units_add-brand_input');
+const brandListItems = document.querySelectorAll('.call-units_add-brand_list-item');
+const brandListArrow = document.querySelector('.call-units_add-brand_arrow');
+
+const addressUnitsText = document.querySelector('.call-units_add-address_text');
+const addressUnitsList = document.querySelector('.call-units_add-address_list');
+const addressUnitsListItems = document.querySelectorAll('.call-units_add-address_list-item');
+const addressUnitsListArrow = document.querySelector('.call-units_add-address_arrow');
+
 /* List function to open-close */
-function listFunction(text, list, listIems, arrow) {
+function listFunction(text, list, listIems, arrow, input) {
   /* Event to show or to hide address-list by clicking on the adressText */
   text.addEventListener('click', function() {
     text.classList.toggle('open');
@@ -41,6 +63,16 @@ function listFunction(text, list, listIems, arrow) {
       getListToggle('hidden', list, arrow);
     }
   });
+  if (arrow) {
+    arrow.addEventListener('click', function() {
+      text.classList.toggle('open');
+      if (text.classList.contains('open')) {
+        getListToggle('visible', list, arrow);
+      } else {
+        getListToggle('hidden', list, arrow);
+      }
+    });
+  }
   /* Event to choose the address in addressText by click the item in addressList */
   listIems.forEach((listIem, index, array) => {
     let mainText = text.querySelector('p');
@@ -49,6 +81,7 @@ function listFunction(text, list, listIems, arrow) {
       mainText.textContent = array[0].textContent;
     }
     listIem.addEventListener('click', function() {
+      let itemText = listIem.querySelector('p');
       mainText.textContent = '';
       mainText.textContent = listIem.textContent;
       if (!listIem.classList.contains('selected')) { listIem.classList.add('selected'); }
@@ -62,6 +95,16 @@ function listFunction(text, list, listIems, arrow) {
       for (let k = index + 1; k < array.length; k++) {
         if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
       }
+      if (input) {
+        if (itemText.textContent === 'other' || itemText.textContent === 'Other') {
+          mainText.innerHTML = '&nbsp;';
+          input.value = '';
+          input.classList.add('active');
+        } else {
+          input.value = '';
+          input.classList.remove('active');
+        }
+      }
     });
   });
   /* ----------------------------------------------------------------- */
@@ -69,16 +112,24 @@ function listFunction(text, list, listIems, arrow) {
 /* function to show or to hide address-list and turn the arrow */
 function getListToggle(variable, list, arrow) { // variable = visible, variable = hidden;
   if (variable === 'visible') {
-    if (!arrow.classList.contains('open')) { arrow.classList.add('open'); }
+    if (arrow) {
+      if (!arrow.classList.contains('open')) { arrow.classList.add('open'); }
+    }
     if (!list.classList.contains('visible')) { list.classList.add('visible'); }
   }
   if (variable === 'hidden') {
-    if (arrow.classList.contains('open')) { arrow.classList.remove('open'); }
+    if (arrow) {
+      if (arrow.classList.contains('open')) { arrow.classList.remove('open'); }
+    }
     if (list.classList.contains('visible')) { list.classList.remove('visible'); }
   }
 }
 listFunction(addressText, addressList, addressListItems, addressListArrow); // address List
 listFunction(callCompanyNameText, callCompanyNameList, callCompanyNameListItems, callCompanyNameListArrow); // company-names List
+listFunction(unitTypeText, unitTypeList, unitTypeListItems, unitTypeListArrow);
+listFunction(unitText, unitList, unitListItems, unitListArrow, unitInput);
+listFunction(brandText, brandList, brandListItems, brandListArrow, brandInput);
+listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, addressUnitsListArrow);
 
 /* function to show or to hide address-list and turn the arrow */
 // function getAdressListToggle(variable) { // variable = visible, variable = hidden;
@@ -352,46 +403,6 @@ callLeadSource_listItems.forEach((callLeadSource_listItem, index, array) => {
 });
 
 
-/* Clicking outside for popups and others */
-window.addEventListener('click', function(event) {
-  let target = event.target;
-  let blockAddressClosest = target.closest('.block-address');
-  let blockAddressListClosest = target.closest('.block-address_list');
-  let callCompanyNameClosest = target.closest('.call-company_selector');
-  let callCompanyNameListClosest = target.closest('.call-compamy_list');
-  let callFromAcitonClosest = target.closest('.call-fromAction');
-  let callLeadSourceClosest = target.closest('.call-leadSource');
-
-  if (blockAddressListClosest) { return; }
-  else {
-    if (blockAddressClosest) { return; }
-    if (addressText.classList.contains('open')) {
-      addressText.classList.remove('open'); 
-      getListToggle('hidden', addressList, addressListArrow);
-    }
-  }
-  if (callCompanyNameListClosest) { return; }
-  else {
-    if (callCompanyNameClosest) { return; }
-    if (callCompanyNameText.classList.contains('open')) {
-      callCompanyNameText.classList.remove('open'); 
-      getListToggle('hidden', callCompanyNameList, callCompanyNameListArrow);
-    }
-  }
-
-  if (callFromAcitonClosest) { return; }
-  else {
-    if (callFromAciton_list.classList.contains('visible')) { callFromAciton_list.classList.remove('visible'); }
-    if (callFromActionArrow.classList.contains('open')) { callFromActionArrow.classList.remove('open'); }
-  }
-  if (callLeadSourceClosest) { return; }
-  else {
-    if (callLeadSource_list.classList.contains('visible')) { callLeadSource_list.classList.remove('visible'); }
-    if (callLeadSourceArrow.classList.contains('open')) { callLeadSourceArrow.classList.remove('open'); }
-  }
-});
-/* --------------------------------------- */
-
 /* Clicking by buttons "Service Call", "Follow  Up", "Recall" and calling the search-block */
 appointmentTypeButtons.forEach((appointmentTypeButton, index, array) => {
   if (!array[index].classList.contains('selected')) { array[0].classList.add('selected'); }
@@ -429,6 +440,90 @@ appointmentTypeButtons.forEach((appointmentTypeButton, index, array) => {
 });
 
 
+/* -------- Action List in Units --------- */
+// function listFunction(text, list, listIems, arrow) {
+//   /* Event to show or to hide address-list by clicking on the adressText */
+//   text.addEventListener('click', function() {
+//     text.classList.toggle('open');
+//     if (text.classList.contains('open')) {
+//       getListToggle('visible', list, arrow);
+//     } else {
+//       getListToggle('hidden', list, arrow);
+//     }
+//   });
+//   /* Event to choose the address in addressText by click the item in addressList */
+//   listIems.forEach((listIem, index, array) => {
+//     let mainText = text.querySelector('p');
+//     if (!array[index].classList.contains('selected')) {
+//       array[0].classList.add('selected');
+//       mainText.textContent = array[0].textContent;
+//     }
+//     listIem.addEventListener('click', function() {
+//       mainText.textContent = '';
+//       mainText.textContent = listIem.textContent;
+//       if (!listIem.classList.contains('selected')) { listIem.classList.add('selected'); }
+//       if (text.classList.contains('open')) {
+//         text.classList.remove('open'); 
+//         getListToggle('hidden', list, arrow);
+//       }
+//       for (let j = index - 1; j >= 0; j--) {
+//         if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
+//       }
+//       for (let k = index + 1; k < array.length; k++) {
+//         if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
+//       }
+//     });
+//   });
+//   /* ----------------------------------------------------------------- */
+// }
+/* --------------------------------------- */
 
+/* Clicking outside for popups and others */
+window.addEventListener('click', function(event) {
+  let target = event.target;
+  let blockAddressClosest = target.closest('.block-address');
+  let blockAddressListClosest = target.closest('.block-address_list');
+  let callCompanyNameClosest = target.closest('.call-company_selector');
+  let callCompanyNameListClosest = target.closest('.call-compamy_list');
+  let callFromAcitonClosest = target.closest('.call-fromAction');
+  let callLeadSourceClosest = target.closest('.call-leadSource');
+  let unitTypeListBlockClosest = target.closest('.call-units_add-unitType_listBlock');
+  let unitTypeListClosest = target.closest('.call-units_add-unitType_list');
+  let unitListBlockClosest = target.closest('.call-units_add-unit_listBlock');
+  let unitListClosest = target.closest('.call-units_add-unit_list');
+  let brandListBlockClosest = target.closest('.call-units_add-brand_listBlock');
+  let brandListClosest = target.closest('.call-units_add-brand_list');
+  let addressesUnitsListBlockClosest = target.closest('.call-units_add-address_listBlock');
+  let addressUnitsListClosest = target.closest('.call-units_add-address_list');
+
+  function clickOutsideCloseList(blockClosest, blockListClosest, blockText, blockList, blockArrow) {
+    if (blockListClosest) { return; }
+    else {
+      if (blockClosest) { return; }
+      if (blockText.classList.contains('open')) {
+        blockText.classList.remove('open'); 
+        getListToggle('hidden', blockList, blockArrow);
+      }
+    }  
+  }
+  clickOutsideCloseList(blockAddressClosest, blockAddressListClosest, addressText, addressList, addressListArrow);
+  clickOutsideCloseList(callCompanyNameClosest, callCompanyNameListClosest, callCompanyNameText, callCompanyNameList, callCompanyNameListArrow);
+  clickOutsideCloseList(unitTypeListClosest, unitTypeListBlockClosest, unitTypeText, unitTypeList, unitTypeListArrow);
+  clickOutsideCloseList(unitListBlockClosest, unitListClosest, unitText, unitList, unitListArrow);
+  clickOutsideCloseList(brandListBlockClosest, brandListClosest, brandText, brandList, brandListArrow);
+  clickOutsideCloseList(addressesUnitsListBlockClosest, addressUnitsListClosest, addressUnitsText, addressUnitsList, addressUnitsListArrow);
+
+  if (callFromAcitonClosest) { return; }
+  else {
+    if (callFromAciton_list.classList.contains('visible')) { callFromAciton_list.classList.remove('visible'); }
+    if (callFromActionArrow.classList.contains('open')) { callFromActionArrow.classList.remove('open'); }
+  }
+  if (callLeadSourceClosest) { return; }
+  else {
+    if (callLeadSource_list.classList.contains('visible')) { callLeadSource_list.classList.remove('visible'); }
+    if (callLeadSourceArrow.classList.contains('open')) { callLeadSourceArrow.classList.remove('open'); }
+  }
+});
+/* --------------------------------------- */
 
 

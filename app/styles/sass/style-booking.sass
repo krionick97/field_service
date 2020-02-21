@@ -368,6 +368,7 @@ body
 
   &-contact
     padding-top: 2.1rem
+    margin-bottom: 3rem
     &_number
       margin-bottom: 1.2rem
       &-item, &-name
@@ -401,9 +402,11 @@ body
     &_new
       padding: 0 0 0 1.2rem
       margin-bottom: 2rem
-      &-phones
+      &-phones, &-addresses
         padding: 0
         overflow: hidden
+      &-phones
+        margin-bottom: 1.5rem
       &-title
         display: flex
         margin-bottom: 1.8rem
@@ -446,19 +449,11 @@ body
         display: flex
         p:first-child
           margin-right: 2.2rem
-      &-marking
-        width: 1.9rem
-        height: 1.9rem
-        border-radius: 9.5rem
-        svg
-          &:first-child
-            width: 0.3rem !important
-            height: 0.97rem !important
-          &:last-child
-            width: 1.1rem !important
-            height: 0.8rem !important
-      &-mainPhone, &-tenantPhone
+      &-phone_item
         display: flex
+        align-items: center
+        width: 32.3rem
+        justify-content: space-between
         p:first-child
           width: 9rem
           margin-right: 0.9rem
@@ -484,11 +479,6 @@ body
         align-items: center
         p
           margin-right: 0.9rem
-      &-mainPhone, &-tenantPhone
-        display: flex
-        align-items: center
-        width: 32.3rem
-        justify-content: space-between
       &-checkboxes
         display: flex
         .check
@@ -496,10 +486,13 @@ body
             margin: 0 3.1rem
           &:last-child
             margin: 0 0.6rem
-      &-add
-        display: flex
-        justify-content: space-between
-        width: 100%
+      &-phone
+        &_add
+          display: flex
+          justify-content: space-between
+          width: 100%
+          button
+            margin-right: 6rem
         &_data
           display: flex
           align-items: center
@@ -513,10 +506,146 @@ body
           label
             display: block
             margin-right: 1.2rem
-        &_btn
-          font-size: 1.3rem
-          padding: 0.1rem 1.8rem
-          margin-right: 6rem
+      &-addresses
+        &_item
+          display: flex
+          width: 100%
+          justify-content: space-between
+        &_add
+          display: flex
+          width: 100%
+          p
+            display: inline-block
+            margin: 0.4rem 2rem 0 0
+          &-block
+            display: flex
+            &:not(:last-child)
+              margin: 0.1rem 0 1rem
+            &:last-child
+              margin-bottom: 0.5rem
+          &-input
+            display: block
+            outline: none
+            &::placeholder
+              color: $color-data-border
+            &:not(:last-child)
+              margin-right: 1rem
+            &.street
+              width: 26.5rem
+            &.unit
+              width: 5rem
+            &.city
+              width: 7.6rem
+            &.state, &.zip
+              width: 6rem
+            &.propertyType
+              width: 13rem
+            &.note
+              width: 41rem
+          &-btn
+            display: flex
+            justify-content: flex-end
+            margin: 0.1rem 0 0
+            flex-grow: 1
+            button
+              display: block
+              height: 2.3rem
+              margin-right: 6rem
+
+  &-units
+    padding-top: 2.1rem
+    margin-bottom: 3.5rem
+    &_content
+      margin-bottom: 2.5rem
+      &-add
+        width: 100%
+        display: flex
+        justify-content: center
+        margin-bottom: 1rem
+    &_add
+      padding: 0.6rem 1.2rem
+      background-color: $color-bg-main
+      &-row
+        display: flex
+        align-items: center
+        justify-content: space-between
+        &:not(:last-child)
+          margin-bottom: 2rem
+      &-data
+        display: flex
+        &_title
+          margin: 0.4rem 1rem 0 0
+        &_trash
+          margin-left: 2rem
+          height: 2rem
+      &-unitType, &-unit, &-brand, &-address
+        &_text
+          position: relative
+          &:hover
+            cursor: pointer
+          p
+            margin: 0.16rem 0
+        &_listBlock
+          position: relative
+        &_input
+          position: absolute
+          display: none
+          outline: none
+          border: none
+          width: 82%
+          font-size: 1.4rem
+          background: transparent
+          top: 0.3rem
+          left: 0.5rem
+          &.active
+            display: block
+      &-unitType, &-unit, &-brand
+        &_listBlock
+          width: 13rem
+        &_list
+          width: 13rem
+          top: 2.8rem
+      &-unitType, &-unit, &-brand, &-address
+        &_list
+          &-item 
+            padding: 0.65rem 0.5rem
+            p
+              +roboto_regular
+              font-size: 1.4rem
+      &-address
+        &_listBlock
+          width: 35rem
+          margin-left: 2rem
+
+      &-unit, &-brand
+        &_list
+          &-item
+            &:last-child
+              p
+                color: $color-grey
+
+      &-modelNumber, &-diagFee
+        &_input
+          width: 10rem
+          font-size: 1.4rem
+          outline: none
+
+      &-description
+        &_textarea
+          resize: none
+          outline: none
+          font-size: 1.4rem
+          +roboto_regular
+          width: 52rem
+          height: 4rem
+
+  &-clearSave
+    display: flex
+    justify-content: flex-end
+    margin-bottom: 7rem
+    &_block
+      button:first-child
+        margin-right: 2rem
 
 
 @import 'section-booking'
