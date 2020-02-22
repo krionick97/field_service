@@ -339,8 +339,16 @@ body
       align-items: center
       p:last-child
         +roboto_light
-        color: $color-red
         margin-left: 0.5rem
+      &.blue
+        p:last-child
+          color: $color-blue-light
+      &.red
+        p:last-child
+          color: $color-red
+      &.green
+        p:last-child
+          color: $color-red
 
   &-company
     &_name
@@ -404,7 +412,6 @@ body
       margin-bottom: 2rem
       &-phones, &-addresses
         padding: 0
-        overflow: hidden
       &-phones
         margin-bottom: 1.5rem
       &-title
@@ -538,8 +545,6 @@ body
               width: 7.6rem
             &.state, &.zip
               width: 6rem
-            &.propertyType
-              width: 13rem
             &.note
               width: 41rem
           &-btn
@@ -550,7 +555,38 @@ body
             button
               display: block
               height: 2.3rem
-              margin-right: 6rem
+              margin-right: 6rem     
+          &-propertyType
+            position: relative
+            width: 13rem
+            margin-right: 1rem
+            &_title
+              color: $color-data-border
+            &_text
+              position: relative
+              &:hover
+                cursor: pointer
+              p
+                margin: 0.16rem 0
+            &_list
+              top: 3rem
+              &-item 
+                padding: 0.5rem 0.5rem
+                p
+                  +roboto_regular
+                  font-size: 1.4rem
+                &:hover p
+                  text-decoration: underline
+        &_data
+          width: 80%
+          p
+            &:first-child
+              margin-bottom: 0.5rem
+            &:last-child
+              color: $color-grey
+            &:nth-child(2)
+              float: left
+              margin-right: 2rem
 
   &-units
     padding-top: 2.1rem

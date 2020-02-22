@@ -52,6 +52,13 @@ const addressUnitsList = document.querySelector('.call-units_add-address_list');
 const addressUnitsListItems = document.querySelectorAll('.call-units_add-address_list-item');
 const addressUnitsListArrow = document.querySelector('.call-units_add-address_arrow');
 
+const addressesText = document.querySelector('.call-contact_new-addresses_add-propertyType_text');
+const addressesList = document.querySelector('.call-contact_new-addresses_add-propertyType_list');
+const addressesListItems = document.querySelectorAll('.call-contact_new-addresses_add-propertyType_list-item');
+const addressesListArrow = document.querySelector('.call-contact_new-addresses_add-propertyType_arrow');
+
+
+
 /* List function to open-close */
 function listFunction(text, list, listIems, arrow, input) {
   /* Event to show or to hide address-list by clicking on the adressText */
@@ -131,51 +138,18 @@ listFunction(unitText, unitList, unitListItems, unitListArrow, unitInput);
 listFunction(brandText, brandList, brandListItems, brandListArrow, brandInput);
 listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, addressUnitsListArrow);
 
-/* function to show or to hide address-list and turn the arrow */
-// function getAdressListToggle(variable) { // variable = visible, variable = hidden;
-//   const arrow = addressText.querySelector('.arrow-list');
-//   if (variable === 'visible') {
-//     if (!arrow.classList.contains('open')) { arrow.classList.add('open'); }
-//     if (!addressList.classList.contains('visible')) { addressList.classList.add('visible'); }
-//   }
-//   if (variable === 'hidden') {
-//     if (arrow.classList.contains('open')) { arrow.classList.remove('open'); }
-//     if (addressList.classList.contains('visible')) { addressList.classList.remove('visible'); }
-//   }
-// }
-// /* Event to show or to hide address-list by clicking on the adressText */
-// addressText.addEventListener('click', function() {
-//   addressText.classList.toggle('open');
-//   if (addressText.classList.contains('open')) {
-//     getAdressListToggle('visible');
-//   } else {
-//     getAdressListToggle('hidden');
-//   }
-// });
-// /* Event to choose the address in addressText by click the item in addressList */
-// addressListItems.forEach((addressListItem, index, array) => {
-//   let mainText = addressText.querySelector('p');
-//   if (!array[index].classList.contains('selected')) {
-//     array[0].classList.add('selected');
-//     mainText.textContent = array[0].textContent;
-//   }
-//   addressListItem.addEventListener('click', function() {
-//     mainText.textContent = '';
-//     mainText.textContent = addressListItem.textContent;
-//     if (!addressListItem.classList.contains('selected')) { addressListItem.classList.add('selected'); }
-//     if (addressText.classList.contains('open')) {
-//       addressText.classList.remove('open'); 
-//       getAdressListToggle('hidden');
-//     }
-//     for (let j = index - 1; j >= 0; j--) {
-//       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
-//     }
-//     for (let k = index + 1; k < array.length; k++) {
-//       if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
-//     }
-//   });
-// });
-/* ----------------------------------------------------------------- */
+/* Property Type List in New Addresses Contact */
+listFunction(addressesText, addressesList, addressesListItems, addressesListArrow);
+let propertyTypeText = document.querySelector('.call-contact_new-addresses_add-propertyType_text > p');
+addressesListItems.forEach(addressesListItem => {
+  propertyTypeText.style.color = '#D0D3DA';
+  addressesListItem.addEventListener('click', function() {
+    let itemText = addressesListItem.querySelector('p');
+    if (itemText.textContent === 'Property Type') { propertyTypeText.style.color = '#D0D3DA'; } 
+    else { propertyTypeText.style.color = '#000000'; }
+  });
+});
+/* ------------- */
 
 /* Event to active or inactive left-block with the map by clicking the arr-button */
 arrButton.addEventListener('click', function() {
@@ -192,120 +166,6 @@ arrButton.addEventListener('click', function() {
 });
 /* ----------------------------------------------------------------- */
 
-// callFromActionArrow.addEventListener('click', function() {
-//   if (callFromActionInput.classList.contains('active')) {
-//     callFromAciton_list.classList.toggle('visible');
-//     callFromActionArrow.classList.toggle('open');
-//   }
-// });
-// callFromAciton.addEventListener('click', function() {
-//   if (callFromActionInput.classList.contains('active')) { return; }
-//   else {
-//     callFromAciton_list.classList.toggle('visible');
-//     callFromActionArrow.classList.toggle('open');
-//   }
-//   if (callLeadSource_list.classList.contains('visible')) { callLeadSource_list.classList.remove('visible'); }
-//   if (callLeadSourceArrow.classList.contains('open')) { callLeadSourceArrow.classList.remove('open'); }
-// });
-// callFromActionClear.addEventListener('click', function() {
-//   callFromActionText.textContent = '';
-//   if (callFromActionInput.classList.contains('active')) { callFromActionInput.classList.remove('active'); }
-//   if (!callFromAciton_listItems[0].classList.contains('selected')) { callFromAciton_listItems[0].classList.add('selected'); }
-//   for (let i = 1; i < callFromAciton_listItems.length; i++) {
-//     if (callFromAciton_listItems[i].classList.contains('selected')) { callFromAciton_listItems[i].classList.remove('selected'); }
-//   }
-//   callFromActionInput.value = '';
-// });
-// callFromAciton_listItems.forEach((callFromAciton_listItem, index, array) => {
-//   if (!array[index].classList.contains('selected')) {
-//     array[1].classList.add('selected');
-//     let itemText = array[1].querySelector('p');
-//     callFromActionText.textContent = itemText.textContent;
-//   }
-//   callFromAciton_listItem.addEventListener('click', function() {
-//     if (!callFromAciton_listItem.classList.contains('selected')) {
-//       callFromAciton_listItem.classList.add('selected');
-//       callFromActionText.textContent = '';
-//     }
-//     if (index === 1) {
-//       let itemText = callFromAciton_listItem.querySelector('p');
-//       callFromActionText.textContent = itemText.textContent;
-//     }
-//     if (index === 2) {
-//       if (!callFromActionInput.classList.contains('active')) {
-//         callFromActionInput.classList.add('active');
-//         callFromAciton_list.classList.remove('visible');
-//         callFromActionArrow.classList.remove('open');
-//       }
-//     } else {
-//       if (callFromActionInput.classList.contains('active')) { callFromActionInput.classList.remove('active'); }
-//     }
-
-//     for (let j = index - 1; j >= 0; j--) {
-//       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
-//     }
-//     for (let k = index + 1; k < array.length; k++) {
-//       if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
-//     }
-//   });
-// });
-// callLeadSourceArrow.addEventListener('click', function() {
-//   if (callLeadSourceInput.classList.contains('active')) {
-//     callLeadSource_list.classList.toggle('visible');
-//     callLeadSourceArrow.classList.toggle('open');
-//   }
-// });
-// callLeadSource.addEventListener('click', function() {
-//   if (callLeadSourceInput.classList.contains('active')) { return; }
-//   else {
-//     callLeadSource_list.classList.toggle('visible');
-//     callLeadSourceArrow.classList.toggle('open');
-//   }
-//   if (callFromAciton_list.classList.contains('visible')) { callFromAciton_list.classList.remove('visible'); }
-//   if (callFromActionArrow.classList.contains('open')) { callFromActionArrow.classList.remove('open'); }
-// });
-// callLeadSourceClear.addEventListener('click', function() {
-//   callLeadSourceText.textContent = '';
-//   if (callLeadSourceInput.classList.contains('active')) { callLeadSourceInput.classList.remove('active'); }
-//   if (!callLeadSource_listItems[0].classList.contains('selected')) { callLeadSource_listItems[0].classList.add('selected'); }
-//   for (let i = 1; i < callFromAciton_listItems.length; i++) {
-//     if (callLeadSource_listItems[i].classList.contains('selected')) { callLeadSource_listItems[i].classList.remove('selected'); }
-//   }
-//   callLeadSourceInput.value = '';
-// });
-// callLeadSource_listItems.forEach((callLeadSource_listItem, index, array) => {
-//   if (!array[index].classList.contains('selected')) {
-//     array[1].classList.add('selected');
-//     let itemText = array[1].querySelector('p');
-//     callLeadSourceText.textContent = itemText.textContent;
-//   }
-//   callLeadSource_listItem.addEventListener('click', function() {
-//     if (!callLeadSource_listItem.classList.contains('selected')) {
-//       callLeadSource_listItem.classList.add('selected');
-//       callLeadSourceText.textContent = '';
-//     }
-//     if (index === 1) {
-//       let itemText = callLeadSource_listItem.querySelector('p');
-//       callLeadSourceText.textContent = itemText.textContent;
-//     }
-//     if (index === 2) {
-//       if (!callLeadSourceInput.classList.contains('active')) {
-//         callLeadSourceInput.classList.add('active');
-//         callLeadSource_list.classList.remove('visible');
-//         callLeadSourceArrow.classList.remove('open');
-//       }
-//     } else {
-//       if (callLeadSourceInput.classList.contains('active')) { callLeadSourceInput.classList.remove('active'); }
-//     }
-
-//     for (let j = index - 1; j >= 0; j--) {
-//       if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
-//     }
-//     for (let k = index + 1; k < array.length; k++) {
-//       if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
-//     }
-//   });
-// });
 
 
 /* ----------------callFromAction------------------------------------------------- */
@@ -495,6 +355,8 @@ window.addEventListener('click', function(event) {
   let brandListClosest = target.closest('.call-units_add-brand_list');
   let addressesUnitsListBlockClosest = target.closest('.call-units_add-address_listBlock');
   let addressUnitsListClosest = target.closest('.call-units_add-address_list');
+  let addressesPropertyTypeClosest = target.closest('.call-contact_new-addresses_add-propertyType');
+  let addressesPropertyTypeListClosest = target.closest('.call-contact_new-addresses_add-propertyType_list');
 
   function clickOutsideCloseList(blockClosest, blockListClosest, blockText, blockList, blockArrow) {
     if (blockListClosest) { return; }
@@ -512,6 +374,7 @@ window.addEventListener('click', function(event) {
   clickOutsideCloseList(unitListBlockClosest, unitListClosest, unitText, unitList, unitListArrow);
   clickOutsideCloseList(brandListBlockClosest, brandListClosest, brandText, brandList, brandListArrow);
   clickOutsideCloseList(addressesUnitsListBlockClosest, addressUnitsListClosest, addressUnitsText, addressUnitsList, addressUnitsListArrow);
+  clickOutsideCloseList(addressesPropertyTypeClosest, addressesPropertyTypeListClosest, addressesText, addressesList, addressesListArrow);
 
   if (callFromAcitonClosest) { return; }
   else {
@@ -526,4 +389,155 @@ window.addEventListener('click', function(event) {
 });
 /* --------------------------------------- */
 
+
+/* ------- Add of Phone-number ----------------- */
+let addNewPhoneBlock = document.querySelector('.call-contact_new-phones');
+let addNewPhoneItemInput = addNewPhoneBlock.querySelector('.call-contact_new-block:last-child');
+let addNewPhoneButton = addNewPhoneItemInput.querySelector('.btn-add');
+let addNewPhoneItems = addNewPhoneBlock.querySelectorAll('.call-contact_new-block');
+let phoneName = addNewPhoneItemInput.querySelector('.call-contact_new-phone_add > .call-contact_new-phone_data > .call-contact_new-phone_name > .call-contact_new-phone_input');
+let phoneNumber = addNewPhoneItemInput.querySelector('.call-contact_new-phone_add > .call-contact_new-phone_data > .call-contact_new-phone_phone > .call-contact_new-phone_input');
+let phoneNameTitle = addNewPhoneItemInput.querySelector('.call-contact_new-phone_add > .call-contact_new-phone_data > .call-contact_new-phone_name > label');
+let phoneNumberTitle = addNewPhoneItemInput.querySelector('.call-contact_new-phone_add > .call-contact_new-phone_data > .call-contact_new-phone_phone > label');
+let id_phone = 0;
+
+addNewPhoneButton.addEventListener('click', function() {
+  if (phoneName.value != '' && phoneNumber.value != '') {
+    id_phone += 1;
+    let addNewPhoneItemBlock = document.createElement('div');
+    let addNewPhoneItem = document.createElement('div');
+    addNewPhoneItemBlock.classList.add('call-contact_new-block');
+    addNewPhoneItem.classList.add('call-contact_new-phone_item');
+    addNewPhoneItem.insertAdjacentHTML('beforeend', `
+      <div class="call-contact_new-block_text">
+        <p>${phoneName.value}<span>:</span></p>
+        <p>${phoneNumber.value}</p>
+      </div>
+      <div class="call-contact_new-checkboxes">
+        <div class="check">
+          <input class="input-checkbox" type="checkbox" name="checkbox-phone-payer-10${id_phone}" id="checkbox-phone-payer-10${id_phone}"/>
+          <label class="checkbox" for="checkbox-mainphone-payer-10${id_phone}">
+            <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </label>
+        </div>
+        <div class="check">
+          <input class="input-checkbox" type="checkbox" name="checkbox-phone-payer-20${id_phone}" id="checkbox-phone-payer-20${id_phone}"/>
+          <label class="checkbox" for="checkbox-phone-payer-20${id_phone}">
+            <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </label>
+        </div>
+      </div>
+    `);
+    addNewPhoneItemBlock.append(addNewPhoneItem);
+    addNewPhoneItemBlock.insertAdjacentHTML('beforeend', `
+      <div class="call-contact_new-block_delete">
+        <div class="cancel">
+          <input class="input-cancelbox" type="checkbox" name="cancelbox-tenantPhone-10${id_phone}" id="cancelbox-tenantPhone-10${id_phone}"/>
+          <label class="cancelbox" for="cancelbox-tenantPhone-10${id_phone}">
+            <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.75 1.25L1.25 8.75M1.25 1.25L8.75 8.75" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </label>
+        </div>
+        <div class="trash call-contact_new-block_trash">
+          <svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.84242 1.28C8.84242 0.57312 8.27684 0 7.57926 0H4.42137C3.72379 0 3.15821 0.57312 3.15821 1.28V1.92H0V2.56H0.710526L1.26284 15.04C1.26284 15.04 1.46147 16 2.21021 16C2.73032 16 4.83221 16 5.68389 16C5.68389 16 5.94032 16 6.31547 16C7.03911 16 9.56542 16 9.78916 16C10.5382 16 10.7368 15.04 10.7368 15.04L11.2633 2.56H12V1.92H8.84242V1.28ZM3.79004 1.27998C3.79004 0.926384 4.12014 0.639984 4.52688 0.639984H7.47425C7.88099 0.639984 8.21109 0.926704 8.21109 1.27998V1.91998H3.79004V1.27998ZM9.79014 15.3597H6.31646H5.68488H2.21119C2.21119 15.3597 1.94846 15.2144 1.89541 14.7197C1.84267 14.2249 1.34277 2.55967 1.34277 2.55967H10.6058C10.6061 2.55967 10.159 14.2249 10.1062 14.7197C10.0532 15.2144 9.79014 15.3597 9.79014 15.3597ZM8.52745 3.84002H7.89587L7.58008 14.08H8.21166L8.52745 3.84002ZM4.42132 14.08L4.10553 3.84002H3.47363L3.78942 14.08H4.42132ZM5.68457 3.84002H6.31615V14.08H5.68457V3.84002Z" />
+          </svg>
+        </div>
+      </div>
+    `);
+    addNewPhoneItemInput.before(addNewPhoneItemBlock);
+    phoneNameTitle.style.color = '#000000';
+    phoneNumberTitle.style.color = '#0000';
+    phoneName.value = '';
+    phoneNumber.value = '';
+  } else {
+    if (phoneName.value === '') { phoneNameTitle.style.color = '#FF0000'; }
+    if (phoneNumber.value === '') { phoneNumberTitle.style.color = '#FF0000'; }
+  }
+});
+
+let delNewPhoneButtons = document.querySelectorAll('.call-contact_new-block_trash');
+delNewPhoneButtons.forEach(delNewPhoneButton => {
+  delNewPhoneButton.addEventListener('click', function() {
+    let parent = delNewPhoneButton.parentNode;
+    console.log(parent);
+  });
+});
+/* ------------------------------------ */
+
+/* ------- Add of Phone-number ----------------- */
+let addNewAddressBlock = document.querySelector('.call-contact_new-addresses');
+let addNewAddressItemInput = addNewAddressBlock.querySelector('.call-contact_new-block:last-child');
+let addNewAddressButton = addNewAddressItemInput.querySelector('.btn-add');
+let addNewAddressItems = addNewAddressBlock.querySelectorAll('.call-contact_new-block');
+let addNewAddressInputs = addNewAddressBlock.querySelectorAll('.call-contact_new-addresses_add-input');
+
+let id_address = 0;
+
+addNewAddressButton.addEventListener('click', function() {
+  if (addNewAddressInputs[0].value != ''
+      && addNewAddressInputs[1].value != ''
+      && addNewAddressInputs[2].value != ''
+      && addNewAddressInputs[3].value != ''
+      && addNewAddressInputs[4].value != ''
+      ) {
+        id_address += 1;
+        let addNewAddressItemBlock = document.createElement('div');
+        let addNewAddressItem = document.createElement('div');
+        addNewAddressItemBlock.classList.add('call-contact_new-block');
+        addNewAddressItem.classList.add('call-contact_new-addresses_item');
+        let propertyTypeValue = function() {
+          if (addressesListItems[0].classList.contains('selected')) {
+            return '';
+          } else {
+            return addressesText.textContent;
+          }
+        }
+        // if (addressesText.textContent === 'Property Type') {
+        //   console.log(addressesText.textContent);
+        // }
+        addNewAddressItem.insertAdjacentHTML('beforeend', `
+          <div class="call-contact_new-addresses_data">
+            <p><span class="call-contact_new-addresses_data zip">${addNewAddressInputs[0].value}</span>&nbsp;<span class="call-contact_new-addresses_data street">${addNewAddressInputs[1].value}</span>&nbsp;#<span class="call-contact_new-addresses_data appartment">${addNewAddressInputs[2].value}</span>,&nbsp;<span class="call-contact_new-addresses_data city">${addNewAddressInputs[3].value}</span>,&nbsp;<span class="call-contact_new-addresses_data state">${addNewAddressInputs[4].value}</span></span></p>
+            <p>Property Type:&nbsp;<span class="call-contact_new-addresses_data propertyType">${propertyTypeValue()}</span>&nbsp;</p>
+            <p>Note:&nbsp;<span class="call-contact_new-addresses_data note">${addNewAddressInputs[5].value}</span></p>
+          </div>
+          <div class="call-contact_new-block_delete">
+            <div class="cancel">
+              <input class="input-cancelbox" type="checkbox" name="cancelbox-address-10${id_address}" id="cancelbox-address-10${id_address}"/>
+              <label class="cancelbox" for="cancelbox-address-10${id_address}">
+                <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.75 1.25L1.25 8.75M1.25 1.25L8.75 8.75" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </label>
+            </div>
+            <div class="trash call-contact_new-block_trash">
+              <svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.84242 1.28C8.84242 0.57312 8.27684 0 7.57926 0H4.42137C3.72379 0 3.15821 0.57312 3.15821 1.28V1.92H0V2.56H0.710526L1.26284 15.04C1.26284 15.04 1.46147 16 2.21021 16C2.73032 16 4.83221 16 5.68389 16C5.68389 16 5.94032 16 6.31547 16C7.03911 16 9.56542 16 9.78916 16C10.5382 16 10.7368 15.04 10.7368 15.04L11.2633 2.56H12V1.92H8.84242V1.28ZM3.79004 1.27998C3.79004 0.926384 4.12014 0.639984 4.52688 0.639984H7.47425C7.88099 0.639984 8.21109 0.926704 8.21109 1.27998V1.91998H3.79004V1.27998ZM9.79014 15.3597H6.31646H5.68488H2.21119C2.21119 15.3597 1.94846 15.2144 1.89541 14.7197C1.84267 14.2249 1.34277 2.55967 1.34277 2.55967H10.6058C10.6061 2.55967 10.159 14.2249 10.1062 14.7197C10.0532 15.2144 9.79014 15.3597 9.79014 15.3597ZM8.52745 3.84002H7.89587L7.58008 14.08H8.21166L8.52745 3.84002ZM4.42132 14.08L4.10553 3.84002H3.47363L3.78942 14.08H4.42132ZM5.68457 3.84002H6.31615V14.08H5.68457V3.84002Z" fill="#FF0000"/>
+              </svg>
+            </div>
+          </div>
+        `);
+        addNewAddressItemBlock.append(addNewAddressItem);
+        addNewAddressItemInput.before(addNewAddressItemBlock);
+        for (let i = 0; i < addNewAddressInputs.length; i++) {
+          addNewAddressInputs[i].style = 'border-color: #D0D3DA';
+          addNewAddressInputs[i].value = '';
+        }
+      } else {
+        if (addNewAddressInputs[0].value === '') { addNewAddressInputs[0].style = 'border-color: #FF0000'; }
+        if (addNewAddressInputs[1].value === '') { addNewAddressInputs[1].style = 'border-color: #FF0000'; }
+        if (addNewAddressInputs[2].value === '') { addNewAddressInputs[2].style = 'border-color: #FF0000'; }
+        if (addNewAddressInputs[3].value === '') { addNewAddressInputs[3].style = 'border-color: #FF0000'; }
+        if (addNewAddressInputs[4].value === '') { addNewAddressInputs[4].style = 'border-color: #FF0000'; }
+      }
+
+});
+
+/* ------------------------------------ */
 
