@@ -2,6 +2,7 @@ const addressText = document.querySelector('.block-address_text');
 const addressList = document.querySelector('.block-address_list');
 const addressListItems = document.querySelectorAll('.block-address_item');
 const addressListArrow = document.querySelector('.block-address_arrow');
+const addressBlock = document.querySelector('.block-address');
 
 const arrButton = document.querySelector('.arr-button');
 const bookingLeft = document.querySelector('.booking-left');
@@ -29,33 +30,39 @@ const callCompanyNameText = document.querySelector('.call-company_text');
 const callCompanyNameList = document.querySelector('.call-company_list');
 const callCompanyNameListItems = document.querySelectorAll('.call-company_list-item');
 const callCompanyNameListArrow = document.querySelector('.call-company_arrow');
+const callCompanyNameBlock = document.querySelector('.call-company_selector');
 
 const unitTypeText = document.querySelector('.call-units_add-unitType_text');
 const unitTypeList = document.querySelector('.call-units_add-unitType_list');
 const unitTypeListItems = document.querySelectorAll('.call-units_add-unitType_list-item');
 const unitTypeListArrow = document.querySelector('.call-units_add-unitType_arrow');
+const unitTypeListBlock = document.querySelector('.call-units_add-unitType_listBlock');
 
 const unitText = document.querySelector('.call-units_add-unit_text');
 const unitList = document.querySelector('.call-units_add-unit_list');
 const unitInput = document.querySelector('.call-units_add-unit_input');
 const unitListItems = document.querySelectorAll('.call-units_add-unit_list-item');
 const unitListArrow = document.querySelector('.call-units_add-unit_arrow');
+const unitBlock = document.querySelector('.call-units_add-unit_listBlock');
 
 const brandText = document.querySelector('.call-units_add-brand_text');
 const brandList = document.querySelector('.call-units_add-brand_list');
 const brandInput = document.querySelector('.call-units_add-brand_input');
 const brandListItems = document.querySelectorAll('.call-units_add-brand_list-item');
 const brandListArrow = document.querySelector('.call-units_add-brand_arrow');
+const brandBlock = document.querySelector('.call-units_add-brand_listBlock');
 
 const addressUnitsText = document.querySelector('.call-units_add-address_text');
 const addressUnitsList = document.querySelector('.call-units_add-address_list');
 const addressUnitsListItems = document.querySelectorAll('.call-units_add-address_list-item');
 const addressUnitsListArrow = document.querySelector('.call-units_add-address_arrow');
+const addressUnitsBlock = document.querySelector('.call-units_add-address_listBlock');
 
 const addressesText = document.querySelector('.call-contact_new-addresses_add-propertyType_text');
 const addressesList = document.querySelector('.call-contact_new-addresses_add-propertyType_list');
 const addressesListItems = document.querySelectorAll('.call-contact_new-addresses_add-propertyType_list-item');
 const addressesListArrow = document.querySelector('.call-contact_new-addresses_add-propertyType_arrow');
+const addressesPropTypeBlock = document.querySelector('.call-contact_new-addresses_add-propertyType');
 
 
 
@@ -116,6 +123,8 @@ function listFunction(text, list, listIems, arrow, input) {
   });
   /* ----------------------------------------------------------------- */
 }
+
+
 /* function to show or to hide address-list and turn the arrow */
 function getListToggle(variable, list, arrow) { // variable = visible, variable = hidden;
   if (variable === 'visible') {
@@ -131,12 +140,46 @@ function getListToggle(variable, list, arrow) { // variable = visible, variable 
     if (list.classList.contains('visible')) { list.classList.remove('visible'); }
   }
 }
+
+/* Function to clost the list by clicking outside */
+function clickOutsideCloseList(text, list, arrow, wholeBlock) {
+  window.addEventListener('click', function(event) {
+    let target = event.target;
+    let blockClosest = target.closest(`.${wholeBlock.classList[0]}`);
+    let blockListClosest = target.closest(`.${list.classList[0]}`);
+  
+    function clickOutsideListener(blockClosest, blockListClosest, blockText, blockList, blockArrow) {
+      if (blockListClosest) { return; }
+      else {
+        if (blockClosest) { return; }
+        if (blockText.classList.contains('open')) {
+          blockText.classList.remove('open'); 
+          getListToggle('hidden', blockList, blockArrow);
+        }
+      }  
+    }
+    clickOutsideListener(blockListClosest, blockClosest, text, list, arrow);
+  });  
+}
+/* --------------------------------- */
+
 listFunction(addressText, addressList, addressListItems, addressListArrow); // address List
+clickOutsideCloseList(addressText, addressList, addressListArrow, addressBlock);
+
 listFunction(callCompanyNameText, callCompanyNameList, callCompanyNameListItems, callCompanyNameListArrow); // company-names List
+clickOutsideCloseList(callCompanyNameText, callCompanyNameList, callCompanyNameListArrow, callCompanyNameBlock);
+
 listFunction(unitTypeText, unitTypeList, unitTypeListItems, unitTypeListArrow);
+clickOutsideCloseList(unitTypeText, unitTypeList, unitTypeListArrow, unitTypeListBlock);
+
 listFunction(unitText, unitList, unitListItems, unitListArrow, unitInput);
+clickOutsideCloseList(unitText, unitList, unitListArrow, unitBlock);
+
 listFunction(brandText, brandList, brandListItems, brandListArrow, brandInput);
+clickOutsideCloseList(brandText, brandList, brandListArrow, brandBlock);
+
 listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, addressUnitsListArrow);
+clickOutsideCloseList(addressUnitsText, addressUnitsList, addressUnitsListArrow, addressUnitsBlock);
 
 /* Property Type List in New Addresses Contact */
 listFunction(addressesText, addressesList, addressesListItems, addressesListArrow);
@@ -149,6 +192,7 @@ addressesListItems.forEach(addressesListItem => {
     else { propertyTypeText.style.color = '#000000'; }
   });
 });
+clickOutsideCloseList(addressesText, addressesList, addressesListArrow, addressesPropTypeBlock);
 /* ------------- */
 
 /* Event to active or inactive left-block with the map by clicking the arr-button */
@@ -338,57 +382,6 @@ appointmentTypeButtons.forEach((appointmentTypeButton, index, array) => {
 // }
 /* --------------------------------------- */
 
-/* Clicking outside for popups and others */
-window.addEventListener('click', function(event) {
-  let target = event.target;
-  let blockAddressClosest = target.closest('.block-address');
-  let blockAddressListClosest = target.closest('.block-address_list');
-  let callCompanyNameClosest = target.closest('.call-company_selector');
-  let callCompanyNameListClosest = target.closest('.call-compamy_list');
-  let callFromAcitonClosest = target.closest('.call-fromAction');
-  let callLeadSourceClosest = target.closest('.call-leadSource');
-  let unitTypeListBlockClosest = target.closest('.call-units_add-unitType_listBlock');
-  let unitTypeListClosest = target.closest('.call-units_add-unitType_list');
-  let unitListBlockClosest = target.closest('.call-units_add-unit_listBlock');
-  let unitListClosest = target.closest('.call-units_add-unit_list');
-  let brandListBlockClosest = target.closest('.call-units_add-brand_listBlock');
-  let brandListClosest = target.closest('.call-units_add-brand_list');
-  let addressesUnitsListBlockClosest = target.closest('.call-units_add-address_listBlock');
-  let addressUnitsListClosest = target.closest('.call-units_add-address_list');
-  let addressesPropertyTypeClosest = target.closest('.call-contact_new-addresses_add-propertyType');
-  let addressesPropertyTypeListClosest = target.closest('.call-contact_new-addresses_add-propertyType_list');
-
-  function clickOutsideCloseList(blockClosest, blockListClosest, blockText, blockList, blockArrow) {
-    if (blockListClosest) { return; }
-    else {
-      if (blockClosest) { return; }
-      if (blockText.classList.contains('open')) {
-        blockText.classList.remove('open'); 
-        getListToggle('hidden', blockList, blockArrow);
-      }
-    }  
-  }
-  clickOutsideCloseList(blockAddressClosest, blockAddressListClosest, addressText, addressList, addressListArrow);
-  clickOutsideCloseList(callCompanyNameClosest, callCompanyNameListClosest, callCompanyNameText, callCompanyNameList, callCompanyNameListArrow);
-  clickOutsideCloseList(unitTypeListClosest, unitTypeListBlockClosest, unitTypeText, unitTypeList, unitTypeListArrow);
-  clickOutsideCloseList(unitListBlockClosest, unitListClosest, unitText, unitList, unitListArrow);
-  clickOutsideCloseList(brandListBlockClosest, brandListClosest, brandText, brandList, brandListArrow);
-  clickOutsideCloseList(addressesUnitsListBlockClosest, addressUnitsListClosest, addressUnitsText, addressUnitsList, addressUnitsListArrow);
-  clickOutsideCloseList(addressesPropertyTypeClosest, addressesPropertyTypeListClosest, addressesText, addressesList, addressesListArrow);
-
-  if (callFromAcitonClosest) { return; }
-  else {
-    if (callFromAciton_list.classList.contains('visible')) { callFromAciton_list.classList.remove('visible'); }
-    if (callFromActionArrow.classList.contains('open')) { callFromActionArrow.classList.remove('open'); }
-  }
-  if (callLeadSourceClosest) { return; }
-  else {
-    if (callLeadSource_list.classList.contains('visible')) { callLeadSource_list.classList.remove('visible'); }
-    if (callLeadSourceArrow.classList.contains('open')) { callLeadSourceArrow.classList.remove('open'); }
-  }
-});
-/* --------------------------------------- */
-
 
 /* ------- Add of Phone-number ----------------- */
 let addNewPhoneBlock = document.querySelector('.call-contact_new-phones');
@@ -455,18 +448,16 @@ addNewPhoneButton.addEventListener('click', function() {
     phoneNumberTitle.style.color = '#0000';
     phoneName.value = '';
     phoneNumber.value = '';
+
+    let itemNewPhoneDelButton = addNewPhoneItemBlock.querySelector('.call-contact_new-block_trash');
+    itemNewPhoneDelButton.addEventListener('click', function() {
+      let itemParentNode = itemNewPhoneDelButton.parentNode.parentNode;
+      itemParentNode.remove();
+    });
   } else {
     if (phoneName.value === '') { phoneNameTitle.style.color = '#FF0000'; }
     if (phoneNumber.value === '') { phoneNumberTitle.style.color = '#FF0000'; }
   }
-});
-
-let delNewPhoneButtons = document.querySelectorAll('.call-contact_new-block_trash');
-delNewPhoneButtons.forEach(delNewPhoneButton => {
-  delNewPhoneButton.addEventListener('click', function() {
-    let parent = delNewPhoneButton.parentNode;
-    console.log(parent);
-  });
 });
 /* ------------------------------------ */
 
@@ -481,7 +472,6 @@ let id_address = 0;
 
 addNewAddressButton.addEventListener('click', function() {
   if (addNewAddressInputs[0].value != ''
-      && addNewAddressInputs[1].value != ''
       && addNewAddressInputs[2].value != ''
       && addNewAddressInputs[3].value != ''
       && addNewAddressInputs[4].value != ''
@@ -498,12 +488,13 @@ addNewAddressButton.addEventListener('click', function() {
             return addressesText.textContent;
           }
         }
-        // if (addressesText.textContent === 'Property Type') {
-        //   console.log(addressesText.textContent);
-        // }
+        let appartmentNumber = function() {
+          if (addNewAddressInputs[1].value != '') { return `#${addNewAddressInputs[1].value}`; }
+          else { return ''; }
+        }
         addNewAddressItem.insertAdjacentHTML('beforeend', `
           <div class="call-contact_new-addresses_data">
-            <p><span class="call-contact_new-addresses_data zip">${addNewAddressInputs[0].value}</span>&nbsp;<span class="call-contact_new-addresses_data street">${addNewAddressInputs[1].value}</span>&nbsp;#<span class="call-contact_new-addresses_data appartment">${addNewAddressInputs[2].value}</span>,&nbsp;<span class="call-contact_new-addresses_data city">${addNewAddressInputs[3].value}</span>,&nbsp;<span class="call-contact_new-addresses_data state">${addNewAddressInputs[4].value}</span></span></p>
+            <p><span class="call-contact_new-addresses_data zip">${addNewAddressInputs[0].value}</span>&nbsp;<span class="call-contact_new-addresses_data street">${appartmentNumber()}</span>&nbsp;<span class="call-contact_new-addresses_data appartment">${addNewAddressInputs[2].value}</span>,&nbsp;<span class="call-contact_new-addresses_data city">${addNewAddressInputs[3].value}</span>,&nbsp;<span class="call-contact_new-addresses_data state">${addNewAddressInputs[4].value}</span></span></p>
             <p>Property Type:&nbsp;<span class="call-contact_new-addresses_data propertyType">${propertyTypeValue()}</span>&nbsp;</p>
             <p>Note:&nbsp;<span class="call-contact_new-addresses_data note">${addNewAddressInputs[5].value}</span></p>
           </div>
@@ -529,15 +520,281 @@ addNewAddressButton.addEventListener('click', function() {
           addNewAddressInputs[i].style = 'border-color: #D0D3DA';
           addNewAddressInputs[i].value = '';
         }
+        let addressItemDelButton = addNewAddressItem.querySelector('.call-contact_new-block_trash');
+        addressItemDelButton.addEventListener('click', function() {
+          let parentItemNode = addressItemDelButton.parentNode.parentNode.parentNode;
+          parentItemNode.remove();
+        });    
       } else {
         if (addNewAddressInputs[0].value === '') { addNewAddressInputs[0].style = 'border-color: #FF0000'; }
-        if (addNewAddressInputs[1].value === '') { addNewAddressInputs[1].style = 'border-color: #FF0000'; }
         if (addNewAddressInputs[2].value === '') { addNewAddressInputs[2].style = 'border-color: #FF0000'; }
         if (addNewAddressInputs[3].value === '') { addNewAddressInputs[3].style = 'border-color: #FF0000'; }
         if (addNewAddressInputs[4].value === '') { addNewAddressInputs[4].style = 'border-color: #FF0000'; }
       }
-
 });
-
 /* ------------------------------------ */
+
+/* ---- Delete First Unit */
+const firstUnit = document.querySelector('#unit-add-id-00');
+const firstUnitDelButton = firstUnit.querySelector('.call-units_add-data_trash');
+firstUnitDelButton.addEventListener('click', function() {
+  let parentUnitNode = firstUnitDelButton.parentNode.parentNode.parentNode;
+  parentUnitNode.remove();
+});
+/* ------------- */
+
+/* ------- Add of Unit ----------------- */
+const units = document.querySelector('.call-units');
+const unitsBlock = units.querySelector('.call-units_content');
+const addUnitItemAddButton = units.querySelector('.btn-add');
+let unit_id = 0;
+
+addUnitItemAddButton.addEventListener('click', function() {
+  unit_id += 1;
+  let unitAddItem = document.createElement('div');
+  unitAddItem.id = `unit-add-id-0${unit_id}`;
+  unitAddItem.classList.add('data-border', 'call-units_add');
+  unitAddItem.insertAdjacentHTML('beforeend', `
+  <div class="call-units_add-row ">
+    <div class="call-units_add-data">
+      <p class="call-units_add-data_title">Unit Type:</p>
+      <div class="call-units_add-unitType_listBlock">
+        <div class="data-border call-units_add-unitType_text">
+          <p>&nbsp;</p>
+        </div>
+        <div class="arrow-list call-units_add-unitType_arrow"></div>
+        <div class="block-list call-units_add-unitType_list">
+          <div class="block-list_item call-units_add-unitType_list-item">
+            <p>&nbsp;</p>
+          </div>
+          <div class="block-list_item call-units_add-unitType_list-item">
+            <p>Residential</p>
+          </div>
+          <div class="block-list_item call-units_add-unitType_list-item">
+            <p>Commercial</p>
+          </div>
+          <div class="block-list_item call-units_add-unitType_list-item">
+            <p>Industrial</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="call-units_add-data">
+      <p class="call-units_add-data_title">Unit:</p>
+      <div class="call-units_add-unit_listBlock">
+        <div class="data-border call-units_add-unit_text">
+          <p>&nbsp;</p>
+        </div>
+        <input class="call-units_add-unit_input" type="text" placeholder="other"/>
+        <div class="arrow-list call-units_add-unit_arrow"></div>
+        <div class="block-list call-units_add-unit_list">
+          <div class="block-list_item call-units_add-unit_list-item">
+            <p>&nbsp;</p>
+          </div>
+          <div class="block-list_item call-units_add-unit_list-item">
+            <p>Refrigerator</p>
+          </div>
+          <div class="block-list_item call-units_add-unit_list-item">
+            <p>Washer</p>
+          </div>
+          <div class="block-list_item call-units_add-unit_list-item">
+            <p>Dryer</p>
+          </div>
+          <div class="block-list_item call-units_add-unit_list-item">
+            <p>Oven</p>
+          </div>
+          <div class="block-list_item call-units_add-unit_list-item">
+            <p>Other</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="call-units_add-data">
+      <p class="call-units_add-data_title">Brand:</p>
+      <div class="call-units_add-brand_listBlock">
+        <div class="data-border call-units_add-brand_text">
+          <p>&nbsp;</p>
+        </div>
+        <input class="call-units_add-brand_input" type="text" placeholder="Other"/>
+        <div class="arrow-list call-units_add-brand_arrow"></div>
+        <div class="block-list call-units_add-brand_list">
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>&nbsp;</p>
+          </div>
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>Samsung</p>
+          </div>
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>Bosch</p>
+          </div>
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>Sub-Zero</p>
+          </div>
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>Wolf</p>
+          </div>
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>GE</p>
+          </div>
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>GE Profile</p>
+          </div>
+          <div class="block-list_item call-units_add-brand_list-item">
+            <p>Other</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="call-units_add-data">
+      <label class="call-units_add-data_title">Model Number:</label>
+      <input class="data-border call-units_add-modelNumber_input" type="text"/>
+  </div>
+</div>
+<div class="call-units_add-row">
+  <div class="call-units_add-data">
+    <label class="call-units_add-data_title">Description:</label>
+    <textarea class="data-border call-units_add-description_textarea" name="description-textarea" id="description-textarea"></textarea>
+  </div>
+  <div class="call-units_add-data">
+    <label class="call-units_add-data_title">Diagnostic Fee:</label>
+    <input class="data-border call-units_add-diagFee_input" type="number" min="0"/>
+  </div>
+</div>
+<div class="call-units_add-row">
+  <div class="call-units_add-data">
+    <p class="call-units_add-data_title">Address:</p>
+    <div class="call-units_add-address_listBlock">
+      <div class="data-border call-units_add-address_text">
+        <p>&nbsp;</p>
+      </div>
+      <div class="arrow-list call-units_add-address_arrow"></div>
+      <div class="block-list call-units_add-address_list">
+        <div class="block-list_item call-units_add-address_list-item">
+          <p>1234 Florida Rt, Fort Mayers, 34354 FL</p>
+        </div>
+        <div class="block-list_item call-units_add-address_list-item">
+          <p>Address_1</p>
+        </div>
+        <div class="block-list_item call-units_add-address_list-item">
+          <p>Address_2</p>
+        </div>
+        <div class="block-list_item call-units_add-address_list-item">
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="call-units_add-data">
+    <div class="btn-marking btn-marking-mini saved"><svg viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.56286 9.84218H0.471429L0.0342857 0H3L2.56286 9.84218ZM0 13.2874C0 12.9718 0.0371429 12.7065 0.111429 12.4916C0.191429 12.27 0.3 12.092 0.437143 11.9577C0.574286 11.8234 0.734286 11.726 0.917143 11.6655C1.1 11.6051 1.29714 11.5749 1.50857 11.5749C1.70857 11.5749 1.89714 11.6051 2.07429 11.6655C2.25714 11.726 2.41714 11.8234 2.55429 11.9577C2.69143 12.092 2.8 12.27 2.88 12.4916C2.96 12.7065 3 12.9718 3 13.2874C3 13.5897 2.96 13.8482 2.88 14.0631C2.8 14.278 2.69143 14.456 2.55429 14.597C2.41714 14.7381 2.25714 14.8388 2.07429 14.8993C1.89714 14.9664 1.70857 15 1.50857 15C1.29714 15 1.1 14.9664 0.917143 14.8993C0.734286 14.8388 0.574286 14.7381 0.437143 14.597C0.3 14.456 0.191429 14.278 0.111429 14.0631C0.0371429 13.8482 0 13.5897 0 13.2874Z" fill="white"/>
+</svg>
+<svg viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.75 4L7.25 9.5L15.25 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </div>
+    <div class="trash call-units_add-data_trash"><svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.84242 1.28C8.84242 0.57312 8.27684 0 7.57926 0H4.42137C3.72379 0 3.15821 0.57312 3.15821 1.28V1.92H0V2.56H0.710526L1.26284 15.04C1.26284 15.04 1.46147 16 2.21021 16C2.73032 16 4.83221 16 5.68389 16C5.68389 16 5.94032 16 6.31547 16C7.03911 16 9.56542 16 9.78916 16C10.5382 16 10.7368 15.04 10.7368 15.04L11.2633 2.56H12V1.92H8.84242V1.28ZM3.79004 1.27998C3.79004 0.926384 4.12014 0.639984 4.52688 0.639984H7.47425C7.88099 0.639984 8.21109 0.926704 8.21109 1.27998V1.91998H3.79004V1.27998ZM9.79014 15.3597H6.31646H5.68488H2.21119C2.21119 15.3597 1.94846 15.2144 1.89541 14.7197C1.84267 14.2249 1.34277 2.55967 1.34277 2.55967H10.6058C10.6061 2.55967 10.159 14.2249 10.1062 14.7197C10.0532 15.2144 9.79014 15.3597 9.79014 15.3597ZM8.52745 3.84002H7.89587L7.58008 14.08H8.21166L8.52745 3.84002ZM4.42132 14.08L4.10553 3.84002H3.47363L3.78942 14.08H4.42132ZM5.68457 3.84002H6.31615V14.08H5.68457V3.84002Z" />
+</svg>
+    </div>
+  </div>
+</div>
+  `);
+  unitsBlock.append(unitAddItem);
+
+  const unitTypeText = unitAddItem.querySelector('.call-units_add-unitType_text');
+  const unitTypeList = unitAddItem.querySelector('.call-units_add-unitType_list');
+  const unitTypeListItems = unitAddItem.querySelectorAll('.call-units_add-unitType_list-item');
+  const unitTypeListArrow = unitAddItem.querySelector('.call-units_add-unitType_arrow');
+  const unitTypeListBlock = unitAddItem.querySelector('.call-units_add-unitType_listBlock');
+  
+  const unitText = unitAddItem.querySelector('.call-units_add-unit_text');
+  const unitList = unitAddItem.querySelector('.call-units_add-unit_list');
+  const unitInput = unitAddItem.querySelector('.call-units_add-unit_input');
+  const unitListItems = unitAddItem.querySelectorAll('.call-units_add-unit_list-item');
+  const unitListArrow = unitAddItem.querySelector('.call-units_add-unit_arrow');
+  const unitBlock = unitAddItem.querySelector('.call-units_add-unit_listBlock');
+  
+  const brandText = unitAddItem.querySelector('.call-units_add-brand_text');
+  const brandList = unitAddItem.querySelector('.call-units_add-brand_list');
+  const brandInput = unitAddItem.querySelector('.call-units_add-brand_input');
+  const brandListItems = unitAddItem.querySelectorAll('.call-units_add-brand_list-item');
+  const brandListArrow = unitAddItem.querySelector('.call-units_add-brand_arrow');
+  const brandBlock = unitAddItem.querySelector('.call-units_add-brand_listBlock');
+  
+  const addressUnitsText = unitAddItem.querySelector('.call-units_add-address_text');
+  const addressUnitsList = unitAddItem.querySelector('.call-units_add-address_list');
+  const addressUnitsListItems = unitAddItem.querySelectorAll('.call-units_add-address_list-item');
+  const addressUnitsListArrow = unitAddItem.querySelector('.call-units_add-address_arrow');
+  const addressUnitsBlock = unitAddItem.querySelector('.call-units_add-address_listBlock');
+
+  const unitItemDelButton = unitAddItem.querySelector('.call-units_add-data_trash');
+  
+  listFunction(unitTypeText, unitTypeList, unitTypeListItems, unitTypeListArrow);
+  clickOutsideCloseList(unitTypeText, unitTypeList, unitTypeListArrow, unitTypeListBlock);
+  listFunction(unitText, unitList, unitListItems, unitListArrow, unitInput);
+  clickOutsideCloseList(unitText, unitList, unitListArrow, unitBlock);
+  listFunction(brandText, brandList, brandListItems, brandListArrow, brandInput);
+  clickOutsideCloseList(brandText, brandList, brandListArrow, brandBlock);
+  listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, addressUnitsListArrow);
+  clickOutsideCloseList(addressUnitsText, addressUnitsList, addressUnitsListArrow, addressUnitsBlock);
+
+  unitItemDelButton.addEventListener('click', function() {
+    let parentUnitNode = unitItemDelButton.parentNode.parentNode.parentNode;
+    parentUnitNode.remove();
+  });
+});
+/* ------------------------------------ */
+
+
+/* Clicking outside for popups and others */
+window.addEventListener('click', function(event) {
+  let target = event.target;
+  // let blockAddressClosest = target.closest('.block-address');
+  // let blockAddressListClosest = target.closest('.block-address_list');
+  // let callCompanyNameClosest = target.closest('.call-company_selector');
+  // let callCompanyNameListClosest = target.closest('.call-compamy_list');
+  let callFromAcitonClosest = target.closest('.call-fromAction');
+  let callLeadSourceClosest = target.closest('.call-leadSource');
+  // let unitTypeListBlockClosest = target.closest('.call-units_add-unitType_listBlock');
+  // let unitTypeListClosest = target.closest('.call-units_add-unitType_list');
+  // let unitListBlockClosest = target.closest('.call-units_add-unit_listBlock');
+  // let unitListClosest = target.closest('.call-units_add-unit_list');
+  // let brandListBlockClosest = target.closest('.call-units_add-brand_listBlock');
+  // let brandListClosest = target.closest('.call-units_add-brand_list');
+  // let addressesUnitsListBlockClosest = target.closest('.call-units_add-address_listBlock');
+  // let addressUnitsListClosest = target.closest('.call-units_add-address_list');
+  // let addressesPropertyTypeClosest = target.closest('.call-contact_new-addresses_add-propertyType');
+  // let addressesPropertyTypeListClosest = target.closest('.call-contact_new-addresses_add-propertyType_list');
+
+  // function clickOutsideCloseList(blockClosest, blockListClosest, blockText, blockList, blockArrow) {
+  //   if (blockListClosest) { return; }
+  //   else {
+  //     if (blockClosest) { return; }
+  //     if (blockText.classList.contains('open')) {
+  //       blockText.classList.remove('open'); 
+  //       getListToggle('hidden', blockList, blockArrow);
+  //     }
+  //   }  
+  // }
+  // clickOutsideCloseList(blockAddressClosest, blockAddressListClosest, addressText, addressList, addressListArrow);
+  // clickOutsideCloseList(callCompanyNameClosest, callCompanyNameListClosest, callCompanyNameText, callCompanyNameList, callCompanyNameListArrow);
+  // clickOutsideCloseList(unitTypeListClosest, unitTypeListBlockClosest, unitTypeText, unitTypeList, unitTypeListArrow);
+  // clickOutsideCloseList(unitListBlockClosest, unitListClosest, unitText, unitList, unitListArrow);
+  // clickOutsideCloseList(brandListBlockClosest, brandListClosest, brandText, brandList, brandListArrow);
+  // clickOutsideCloseList(addressesUnitsListBlockClosest, addressUnitsListClosest, addressUnitsText, addressUnitsList, addressUnitsListArrow);
+  // clickOutsideCloseList(addressesPropertyTypeClosest, addressesPropertyTypeListClosest, addressesText, addressesList, addressesListArrow);
+
+  if (callFromAcitonClosest) { return; }
+  else {
+    if (callFromAciton_list.classList.contains('visible')) { callFromAciton_list.classList.remove('visible'); }
+    if (callFromActionArrow.classList.contains('open')) { callFromActionArrow.classList.remove('open'); }
+  }
+  if (callLeadSourceClosest) { return; }
+  else {
+    if (callLeadSource_list.classList.contains('visible')) { callLeadSource_list.classList.remove('visible'); }
+    if (callLeadSourceArrow.classList.contains('open')) { callLeadSourceArrow.classList.remove('open'); }
+  }
+});
+/* --------------------------------------- */
+
 

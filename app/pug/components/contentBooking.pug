@@ -356,8 +356,8 @@ div.content.booking
                     span.call-contact_new-addresses_data.zip 1234
                     |&nbsp;
                     span.call-contact_new-addresses_data.street Florida Rt
-                    |&nbsp;#
-                    span.call-contact_new-addresses_data.appartment 327
+                    |&nbsp;
+                    span.call-contact_new-addresses_data.appartment #327
                     |,&nbsp;
                     span.call-contact_new-addresses_data.city Fort Mayers
                     |,&nbsp;
@@ -397,11 +397,11 @@ div.content.booking
                         div.block-list_item.call-contact_new-addresses_add-propertyType_list-item
                           p.call-contact_new-addresses_add-propertyType_title Property Type
                         div.block-list_item.call-contact_new-addresses_add-propertyType_list-item
-                          p residential
+                          p Residential
                         div.block-list_item.call-contact_new-addresses_add-propertyType_list-item
-                          p commercial
+                          p Commercial
                         div.block-list_item.call-contact_new-addresses_add-propertyType_list-item
-                          p industrial
+                          p Industrial
                     input(type="text" placeholder="Note").data-border.call-contact_new-addresses_add-input.note
                 div.call-contact_new-addresses_add-btn
                   button.btn.btn-add Add               
@@ -418,7 +418,7 @@ div.content.booking
               <path d="M1.75 4L7.25 9.5L15.25 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         div.call-units_content
-          div.data-border.call-units_add
+          div(id="unit-add-id-00").data-border.call-units_add
             div.call-units_add-row
               div.call-units_add-data
                 p.call-units_add-data_title Unit Type:
@@ -430,11 +430,11 @@ div.content.booking
                     div.block-list_item.call-units_add-unitType_list-item
                       p &nbsp;
                     div.block-list_item.call-units_add-unitType_list-item
-                      p residential
+                      p Residential
                     div.block-list_item.call-units_add-unitType_list-item
-                      p commercial
+                      p Commercial
                     div.block-list_item.call-units_add-unitType_list-item
-                      p industrial
+                      p Industrial
 
               div.call-units_add-data
                 p.call-units_add-data_title Unit:
@@ -447,15 +447,15 @@ div.content.booking
                     div.block-list_item.call-units_add-unit_list-item
                       p &nbsp;
                     div.block-list_item.call-units_add-unit_list-item
-                      p refrigerator
+                      p Refrigerator
                     div.block-list_item.call-units_add-unit_list-item
-                      p washer
+                      p Washer
                     div.block-list_item.call-units_add-unit_list-item
-                      p dryer
+                      p Dryer
                     div.block-list_item.call-units_add-unit_list-item
-                      p oven
+                      p Oven
                     div.block-list_item.call-units_add-unit_list-item
-                      p other
+                      p Other
 
               div.call-units_add-data
                 p.call-units_add-data_title Brand:
@@ -527,10 +527,17 @@ div.content.booking
         div.call-units_content-add
           button.btn.btn-add Add
 
+    div.call-note
+      div.block-content
+        div.block-content-title
+          div.block-title Note
+        textarea(name="note-textarea", id="note-textarea").data-border.call-note_textarea
+
+
     div.call-clearSave
       div.call-clearSave_block
         button.btn.btn-clear Clear
-        button.btn.btn-save Save
+        button.btn.btn-save.inactive Save
 
   div.content-right.booking-right Block-right
 

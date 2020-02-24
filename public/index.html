@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style-booking.css?v=013"/>
+    <link rel="stylesheet" href="assets/css/style-booking.css?v=028"/>
     <title>Booking</title>
   </head>
   <body>
@@ -458,7 +458,7 @@
                 <div class="call-contact_new-block">
                   <div class="call-contact_new-addresses_item">
                     <div class="call-contact_new-addresses_data">
-                      <p><span class="call-contact_new-addresses_data zip">1234</span>&nbsp;<span class="call-contact_new-addresses_data street">Florida Rt</span>&nbsp;#<span class="call-contact_new-addresses_data appartment">327</span>,&nbsp;<span class="call-contact_new-addresses_data city">Fort Mayers</span>,&nbsp;<span class="call-contact_new-addresses_data state">FL 34354</span></p>
+                      <p><span class="call-contact_new-addresses_data zip">1234</span>&nbsp;<span class="call-contact_new-addresses_data street">Florida Rt</span>&nbsp;<span class="call-contact_new-addresses_data appartment">#327</span>,&nbsp;<span class="call-contact_new-addresses_data city">Fort Mayers</span>,&nbsp;<span class="call-contact_new-addresses_data state">FL 34354</span></p>
                       <p>Property Type:&nbsp;<span class="call-contact_new-addresses_data propertyType">residential</span>&nbsp;</p>
                       <p>Note:&nbsp;<span class="call-contact_new-addresses_data note">abcdefg</span></p>
                     </div>
@@ -499,13 +499,13 @@
                               <p class="call-contact_new-addresses_add-propertyType_title">Property Type</p>
                             </div>
                             <div class="block-list_item call-contact_new-addresses_add-propertyType_list-item">
-                              <p>residential</p>
+                              <p>Residential</p>
                             </div>
                             <div class="block-list_item call-contact_new-addresses_add-propertyType_list-item">
-                              <p>commercial</p>
+                              <p>Commercial</p>
                             </div>
                             <div class="block-list_item call-contact_new-addresses_add-propertyType_list-item">
-                              <p>industrial</p>
+                              <p>Industrial</p>
                             </div>
                           </div>
                         </div>
@@ -534,7 +534,7 @@
               </div>
             </div>
             <div class="call-units_content">
-              <div class="data-border call-units_add">
+              <div class="data-border call-units_add" id="unit-add-id-00">
                 <div class="call-units_add-row">
                   <div class="call-units_add-data">
                     <p class="call-units_add-data_title">Unit Type:</p>
@@ -548,13 +548,13 @@
                           <p>&nbsp;</p>
                         </div>
                         <div class="block-list_item call-units_add-unitType_list-item">
-                          <p>residential</p>
+                          <p>Residential</p>
                         </div>
                         <div class="block-list_item call-units_add-unitType_list-item">
-                          <p>commercial</p>
+                          <p>Commercial</p>
                         </div>
                         <div class="block-list_item call-units_add-unitType_list-item">
-                          <p>industrial</p>
+                          <p>Industrial</p>
                         </div>
                       </div>
                     </div>
@@ -572,19 +572,19 @@
                           <p>&nbsp;</p>
                         </div>
                         <div class="block-list_item call-units_add-unit_list-item">
-                          <p>refrigerator</p>
+                          <p>Refrigerator</p>
                         </div>
                         <div class="block-list_item call-units_add-unit_list-item">
-                          <p>washer</p>
+                          <p>Washer</p>
                         </div>
                         <div class="block-list_item call-units_add-unit_list-item">
-                          <p>dryer</p>
+                          <p>Dryer</p>
                         </div>
                         <div class="block-list_item call-units_add-unit_list-item">
-                          <p>oven</p>
+                          <p>Oven</p>
                         </div>
                         <div class="block-list_item call-units_add-unit_list-item">
-                          <p>other</p>
+                          <p>Other</p>
                         </div>
                       </div>
                     </div>
@@ -685,16 +685,24 @@
             </div>
           </div>
         </div>
+        <div class="call-note">
+          <div class="block-content">
+            <div class="block-content-title">
+              <div class="block-title">Note</div>
+            </div>
+            <textarea class="data-border call-note_textarea" name="note-textarea" id="note-textarea"></textarea>
+          </div>
+        </div>
         <div class="call-clearSave">
           <div class="call-clearSave_block">
             <button class="btn btn-clear">Clear</button>
-            <button class="btn btn-save">Save</button>
+            <button class="btn btn-save inactive">Save</button>
           </div>
         </div>
       </div>
       <div class="content-right booking-right">Block-right</div>
     </div>
     <!-- Scripts-->
-    <script src="assets/js/booking.js?v=013"></script>
+    <script src="assets/js/booking.js?v=028"></script>
   </body>
 </html>
