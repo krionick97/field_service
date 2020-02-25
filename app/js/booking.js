@@ -64,6 +64,11 @@ const addressesListItems = document.querySelectorAll('.call-contact_new-addresse
 const addressesListArrow = document.querySelector('.call-contact_new-addresses_add-propertyType_arrow');
 const addressesPropTypeBlock = document.querySelector('.call-contact_new-addresses_add-propertyType');
 
+const dataPropertyTypeText = document.querySelector('.call-contact_new-addresses_data-propertyType_text');
+const dataPropertyTypeList = document.querySelector('.call-contact_new-addresses_data-propertyType_list');
+const dataPropertyTypeListItems = document.querySelectorAll('.call-contact_new-addresses_data-propertyType_list-item');
+const dataPropertyTypeListArrow = document.querySelector('.call-contact_new-addresses_data-propertyType_arrow');
+const dataPropertyTypeBlock = document.querySelector('.call-contact_new-addresses_data-propertyType');
 
 
 /* List function to open-close */
@@ -124,7 +129,6 @@ function listFunction(text, list, listIems, arrow, input) {
   /* ----------------------------------------------------------------- */
 }
 
-
 /* function to show or to hide address-list and turn the arrow */
 function getListToggle(variable, list, arrow) { // variable = visible, variable = hidden;
   if (variable === 'visible') {
@@ -148,18 +152,15 @@ function clickOutsideCloseList(text, list, arrow, wholeBlock) {
     let blockClosest = target.closest(`.${wholeBlock.classList[0]}`);
     let blockListClosest = target.closest(`.${list.classList[0]}`);
   
-    function clickOutsideListener(blockClosest, blockListClosest, blockText, blockList, blockArrow) {
-      if (blockListClosest) { return; }
-      else {
-        if (blockClosest) { return; }
-        if (blockText.classList.contains('open')) {
-          blockText.classList.remove('open'); 
-          getListToggle('hidden', blockList, blockArrow);
-        }
-      }  
+    if (blockListClosest) { return; }
+    else {
+      if (blockClosest) { return; }
+      if (text.classList.contains('open')) {
+        text.classList.remove('open'); 
+        getListToggle('hidden', list, arrow);
+      }
     }
-    clickOutsideListener(blockListClosest, blockClosest, text, list, arrow);
-  });  
+  });
 }
 /* --------------------------------- */
 
@@ -181,15 +182,28 @@ clickOutsideCloseList(brandText, brandList, brandListArrow, brandBlock);
 listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, addressUnitsListArrow);
 clickOutsideCloseList(addressUnitsText, addressUnitsList, addressUnitsListArrow, addressUnitsBlock);
 
+
+/* Property Type in current Address Contact */
+listFunction(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListItems, dataPropertyTypeListArrow);
+dataPropertyTypeListItems.forEach(dataPropertyTypeListItem => {
+  dataPropertyTypeText.style.color = '#D0D3DA';
+  dataPropertyTypeListItem.addEventListener('click', function() {
+    let itemText = dataPropertyTypeListItem.querySelector('p');
+    if (itemText.textContent === 'Property Type') { dataPropertyTypeText.style.color = '#D0D3DA'; } 
+    else { dataPropertyTypeText.style.color = '#000000'; }
+  });
+});
+clickOutsideCloseList(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListArrow, dataPropertyTypeBlock);
+/* --------------- */
+
 /* Property Type List in New Addresses Contact */
 listFunction(addressesText, addressesList, addressesListItems, addressesListArrow);
-let propertyTypeText = document.querySelector('.call-contact_new-addresses_add-propertyType_text > p');
 addressesListItems.forEach(addressesListItem => {
-  propertyTypeText.style.color = '#D0D3DA';
+  addressesText.style.color = '#D0D3DA';
   addressesListItem.addEventListener('click', function() {
     let itemText = addressesListItem.querySelector('p');
-    if (itemText.textContent === 'Property Type') { propertyTypeText.style.color = '#D0D3DA'; } 
-    else { propertyTypeText.style.color = '#000000'; }
+    if (itemText.textContent === 'Property Type') { addressesText.style.color = '#D0D3DA'; } 
+    else { addressesText.style.color = '#000000'; }
   });
 });
 clickOutsideCloseList(addressesText, addressesList, addressesListArrow, addressesPropTypeBlock);
@@ -209,8 +223,6 @@ arrButton.addEventListener('click', function() {
   arrButton.classList.toggle('inactive');
 });
 /* ----------------------------------------------------------------- */
-
-
 
 /* ----------------callFromAction------------------------------------------------- */
 callFromActionArrow.addEventListener('click', function() {
@@ -258,6 +270,7 @@ callFromAciton_listItems.forEach((callFromAciton_listItem, index, array) => {
     }
   });
 });
+/* ----------------------------------------------------------------- */
 
 /* ----------------callLeadSource------------------------------------------------- */
 callLeadSourceArrow.addEventListener('click', function() {
@@ -305,7 +318,7 @@ callLeadSource_listItems.forEach((callLeadSource_listItem, index, array) => {
     }
   });
 });
-
+/* ----------------------------------------------------------------- */
 
 /* Clicking by buttons "Service Call", "Follow  Up", "Recall" and calling the search-block */
 appointmentTypeButtons.forEach((appointmentTypeButton, index, array) => {
@@ -342,45 +355,7 @@ appointmentTypeButtons.forEach((appointmentTypeButton, index, array) => {
     }
   });
 });
-
-
-/* -------- Action List in Units --------- */
-// function listFunction(text, list, listIems, arrow) {
-//   /* Event to show or to hide address-list by clicking on the adressText */
-//   text.addEventListener('click', function() {
-//     text.classList.toggle('open');
-//     if (text.classList.contains('open')) {
-//       getListToggle('visible', list, arrow);
-//     } else {
-//       getListToggle('hidden', list, arrow);
-//     }
-//   });
-//   /* Event to choose the address in addressText by click the item in addressList */
-//   listIems.forEach((listIem, index, array) => {
-//     let mainText = text.querySelector('p');
-//     if (!array[index].classList.contains('selected')) {
-//       array[0].classList.add('selected');
-//       mainText.textContent = array[0].textContent;
-//     }
-//     listIem.addEventListener('click', function() {
-//       mainText.textContent = '';
-//       mainText.textContent = listIem.textContent;
-//       if (!listIem.classList.contains('selected')) { listIem.classList.add('selected'); }
-//       if (text.classList.contains('open')) {
-//         text.classList.remove('open'); 
-//         getListToggle('hidden', list, arrow);
-//       }
-//       for (let j = index - 1; j >= 0; j--) {
-//         if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
-//       }
-//       for (let k = index + 1; k < array.length; k++) {
-//         if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
-//       }
-//     });
-//   });
-//   /* ----------------------------------------------------------------- */
-// }
-/* --------------------------------------- */
+/* ----------------------------------------------------------------- */
 
 
 /* ------- Add of Phone-number ----------------- */
@@ -469,7 +444,62 @@ let addNewAddressItems = addNewAddressBlock.querySelectorAll('.call-contact_new-
 let addNewAddressInputs = addNewAddressBlock.querySelectorAll('.call-contact_new-addresses_add-input');
 
 let id_address = 0;
-
+let propertyTypeText = addressesText.querySelector('p');
+function dataPropertylistFunction(text, list, listIems, arrow, input) {
+  /* Event to show or to hide address-list by clicking on the adressText */
+  text.addEventListener('click', function() {
+    text.classList.toggle('open');
+    if (text.classList.contains('open')) {
+      getListToggle('visible', list, arrow);
+    } else {
+      getListToggle('hidden', list, arrow);
+    }
+  });
+  if (arrow) {
+    arrow.addEventListener('click', function() {
+      text.classList.toggle('open');
+      if (text.classList.contains('open')) {
+        getListToggle('visible', list, arrow);
+      } else {
+        getListToggle('hidden', list, arrow);
+      }
+    });
+  }
+  /* Event to choose the address in addressText by click the item in addressList */
+  listIems.forEach((listIem, index, array) => {
+    // dataPropertyTypeText.style.color = '#D0D3DA';
+    let mainText = text.querySelector('p');
+    listIem.addEventListener('click', function() {
+      let itemText = listIem.querySelector('p');
+      // if (itemText.textContent === 'Property Type') { dataPropertyTypeText.style.color = '#D0D3DA'; } 
+      // else { dataPropertyTypeText.style.color = '#000000'; }
+      mainText.textContent = '';
+      mainText.textContent = listIem.textContent;
+      // if (!listIem.classList.contains('selected')) { listIem.classList.add('selected'); }
+      if (text.classList.contains('open')) {
+        text.classList.remove('open'); 
+        getListToggle('hidden', list, arrow);
+      }
+      for (let j = index - 1; j >= 0; j--) {
+        if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); }
+      }
+      for (let k = index + 1; k < array.length; k++) {
+        if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); }
+      }
+      if (input) {
+        if (itemText.textContent === 'other' || itemText.textContent === 'Other') {
+          mainText.innerHTML = '&nbsp;';
+          input.value = '';
+          input.classList.add('active');
+        } else {
+          input.value = '';
+          input.classList.remove('active');
+        }
+      }
+    });
+  });
+  /* ----------------------------------------------------------------- */
+}
 addNewAddressButton.addEventListener('click', function() {
   if (addNewAddressInputs[0].value != ''
       && addNewAddressInputs[2].value != ''
@@ -481,36 +511,59 @@ addNewAddressButton.addEventListener('click', function() {
         let addNewAddressItem = document.createElement('div');
         addNewAddressItemBlock.classList.add('call-contact_new-block');
         addNewAddressItem.classList.add('call-contact_new-addresses_item');
-        let propertyTypeValue = function() {
-          if (addressesListItems[0].classList.contains('selected')) {
-            return '';
-          } else {
-            return addressesText.textContent;
-          }
-        }
+
+        // let propertyTypeValue = function() {
+        //   if (addressesListItems[0].classList.contains('selected')) {
+        //     return `<span color="#D0D3DA">${addressesText.textContent}</span>`;
+        //   } else {
+        //     return addressesText.textContent;
+        //   }
+        // }
+
         let appartmentNumber = function() {
           if (addNewAddressInputs[1].value != '') { return `#${addNewAddressInputs[1].value}`; }
           else { return ''; }
         }
         addNewAddressItem.insertAdjacentHTML('beforeend', `
           <div class="call-contact_new-addresses_data">
-            <p><span class="call-contact_new-addresses_data zip">${addNewAddressInputs[0].value}</span>&nbsp;<span class="call-contact_new-addresses_data street">${appartmentNumber()}</span>&nbsp;<span class="call-contact_new-addresses_data appartment">${addNewAddressInputs[2].value}</span>,&nbsp;<span class="call-contact_new-addresses_data city">${addNewAddressInputs[3].value}</span>,&nbsp;<span class="call-contact_new-addresses_data state">${addNewAddressInputs[4].value}</span></span></p>
-            <p>Property Type:&nbsp;<span class="call-contact_new-addresses_data propertyType">${propertyTypeValue()}</span>&nbsp;</p>
-            <p>Note:&nbsp;<span class="call-contact_new-addresses_data note">${addNewAddressInputs[5].value}</span></p>
+          <p class="call-contact_new-addresses_data-text"><span class="call-contact_new-addresses_data zip">${addNewAddressInputs[4].value}</span>&nbsp;<span class="call-contact_new-addresses_data street">${addNewAddressInputs[0].value}</span>&nbsp;<span class="call-contact_new-addresses_data appartment">${appartmentNumber()}</span>,&nbsp;<span class="call-contact_new-addresses_data city">${addNewAddressInputs[2].value}</span>,&nbsp;<span class="call-contact_new-addresses_data state">${addNewAddressInputs[3].value}</span></p>
+          <div class="call-contact_new-addresses_data-block">
+              <div class="call-contact_new-addresses_data-propertyType" id="address-data-propertyType-0${id_address}">
+                <div class="data-border call-contact_new-addresses_data-propertyType_text">
+                  <p>${addressesText.textContent}</p>
+                </div>
+                <div class="arrow-list call-contact_new-addresses_data-propertyType_arrow"></div>
+                <div class="block-list call-contact_new-addresses_data-propertyType_list">
+                  <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                    <p class="call-contact_new-addresses_data-propertyType_title">Property Type</p>
+                  </div>
+                  <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                    <p>Residential</p>
+                  </div>
+                  <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                    <p>Commercial</p>
+                  </div>
+                  <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                    <p>Industrial</p>
+                  </div>
+                </div>
+              </div>
+              <input class="call-contact_new-addresses_data-note" type="text" placeholder="Note" id="address-data-note-0${id_address}" value="${addNewAddressInputs[5].value}"/>
+            </div>
           </div>
           <div class="call-contact_new-block_delete">
             <div class="cancel">
-              <input class="input-cancelbox" type="checkbox" name="cancelbox-address-10${id_address}" id="cancelbox-address-10${id_address}"/>
-              <label class="cancelbox" for="cancelbox-address-10${id_address}">
-                <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.75 1.25L1.25 8.75M1.25 1.25L8.75 8.75" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+              <input class="input-cancelbox" type="checkbox" name="cancelbox-address-1" id="cancelbox-address-1"/>
+              <label class="cancelbox" for="cancelbox-mainphone-1">
+              <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.75 1.25L1.25 8.75M1.25 1.25L8.75 8.75" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
               </label>
             </div>
             <div class="trash call-contact_new-block_trash">
-              <svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.84242 1.28C8.84242 0.57312 8.27684 0 7.57926 0H4.42137C3.72379 0 3.15821 0.57312 3.15821 1.28V1.92H0V2.56H0.710526L1.26284 15.04C1.26284 15.04 1.46147 16 2.21021 16C2.73032 16 4.83221 16 5.68389 16C5.68389 16 5.94032 16 6.31547 16C7.03911 16 9.56542 16 9.78916 16C10.5382 16 10.7368 15.04 10.7368 15.04L11.2633 2.56H12V1.92H8.84242V1.28ZM3.79004 1.27998C3.79004 0.926384 4.12014 0.639984 4.52688 0.639984H7.47425C7.88099 0.639984 8.21109 0.926704 8.21109 1.27998V1.91998H3.79004V1.27998ZM9.79014 15.3597H6.31646H5.68488H2.21119C2.21119 15.3597 1.94846 15.2144 1.89541 14.7197C1.84267 14.2249 1.34277 2.55967 1.34277 2.55967H10.6058C10.6061 2.55967 10.159 14.2249 10.1062 14.7197C10.0532 15.2144 9.79014 15.3597 9.79014 15.3597ZM8.52745 3.84002H7.89587L7.58008 14.08H8.21166L8.52745 3.84002ZM4.42132 14.08L4.10553 3.84002H3.47363L3.78942 14.08H4.42132ZM5.68457 3.84002H6.31615V14.08H5.68457V3.84002Z" fill="#FF0000"/>
-              </svg>
+            <svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M8.84242 1.28C8.84242 0.57312 8.27684 0 7.57926 0H4.42137C3.72379 0 3.15821 0.57312 3.15821 1.28V1.92H0V2.56H0.710526L1.26284 15.04C1.26284 15.04 1.46147 16 2.21021 16C2.73032 16 4.83221 16 5.68389 16C5.68389 16 5.94032 16 6.31547 16C7.03911 16 9.56542 16 9.78916 16C10.5382 16 10.7368 15.04 10.7368 15.04L11.2633 2.56H12V1.92H8.84242V1.28ZM3.79004 1.27998C3.79004 0.926384 4.12014 0.639984 4.52688 0.639984H7.47425C7.88099 0.639984 8.21109 0.926704 8.21109 1.27998V1.91998H3.79004V1.27998ZM9.79014 15.3597H6.31646H5.68488H2.21119C2.21119 15.3597 1.94846 15.2144 1.89541 14.7197C1.84267 14.2249 1.34277 2.55967 1.34277 2.55967H10.6058C10.6061 2.55967 10.159 14.2249 10.1062 14.7197C10.0532 15.2144 9.79014 15.3597 9.79014 15.3597ZM8.52745 3.84002H7.89587L7.58008 14.08H8.21166L8.52745 3.84002ZM4.42132 14.08L4.10553 3.84002H3.47363L3.78942 14.08H4.42132ZM5.68457 3.84002H6.31615V14.08H5.68457V3.84002Z" fill="#FF0000"/>
+            </svg>
             </div>
           </div>
         `);
@@ -520,11 +573,31 @@ addNewAddressButton.addEventListener('click', function() {
           addNewAddressInputs[i].style = 'border-color: #D0D3DA';
           addNewAddressInputs[i].value = '';
         }
+        const dataPropertyTypeText = addNewAddressItem.querySelector('.call-contact_new-addresses_data-propertyType_text');
+        const dataPropertyTypeList = addNewAddressItem.querySelector('.call-contact_new-addresses_data-propertyType_list');
+        const dataPropertyTypeListItems = addNewAddressItem.querySelectorAll('.call-contact_new-addresses_data-propertyType_list-item');
+        const dataPropertyTypeListArrow = addNewAddressItem.querySelector('.call-contact_new-addresses_data-propertyType_arrow');
+        const dataPropertyTypeBlock = addNewAddressItem.querySelector('.call-contact_new-addresses_data-propertyType');
+
+        dataPropertylistFunction(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListItems, dataPropertyTypeListArrow);
+        
+        clickOutsideCloseList(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListArrow, dataPropertyTypeBlock);
+
+        // for (let i = 0; i < addressesListItems.length; i++) {
+        //   if (addressesListItems[i].classList.contains('selected')) { dataPropertyTypeListItems[i].classList.add('selected'); }
+        //   if (addressesListItems[0].classList.contains('selected')) { dataPropertyTypeText.style.color = '#D0D3DA'; }
+        //   else { dataPropertyTypeText.style.color = '#8E8E93'; }
+        // }
+
         let addressItemDelButton = addNewAddressItem.querySelector('.call-contact_new-block_trash');
+
         addressItemDelButton.addEventListener('click', function() {
-          let parentItemNode = addressItemDelButton.parentNode.parentNode.parentNode;
-          parentItemNode.remove();
-        });    
+          if (addressItemDelButton.classList.contains('inactive')) { return; }
+          else {
+            let parentItemNode = addressItemDelButton.parentNode.parentNode.parentNode;
+            parentItemNode.remove();
+          }
+        });
       } else {
         if (addNewAddressInputs[0].value === '') { addNewAddressInputs[0].style = 'border-color: #FF0000'; }
         if (addNewAddressInputs[2].value === '') { addNewAddressInputs[2].style = 'border-color: #FF0000'; }
@@ -534,7 +607,7 @@ addNewAddressButton.addEventListener('click', function() {
 });
 /* ------------------------------------ */
 
-/* ---- Delete First Unit */
+/* ---- Delete First Unit -------------*/
 const firstUnit = document.querySelector('#unit-add-id-00');
 const firstUnitDelButton = firstUnit.querySelector('.call-units_add-data_trash');
 firstUnitDelButton.addEventListener('click', function() {
@@ -749,40 +822,8 @@ addUnitItemAddButton.addEventListener('click', function() {
 /* Clicking outside for popups and others */
 window.addEventListener('click', function(event) {
   let target = event.target;
-  // let blockAddressClosest = target.closest('.block-address');
-  // let blockAddressListClosest = target.closest('.block-address_list');
-  // let callCompanyNameClosest = target.closest('.call-company_selector');
-  // let callCompanyNameListClosest = target.closest('.call-compamy_list');
   let callFromAcitonClosest = target.closest('.call-fromAction');
   let callLeadSourceClosest = target.closest('.call-leadSource');
-  // let unitTypeListBlockClosest = target.closest('.call-units_add-unitType_listBlock');
-  // let unitTypeListClosest = target.closest('.call-units_add-unitType_list');
-  // let unitListBlockClosest = target.closest('.call-units_add-unit_listBlock');
-  // let unitListClosest = target.closest('.call-units_add-unit_list');
-  // let brandListBlockClosest = target.closest('.call-units_add-brand_listBlock');
-  // let brandListClosest = target.closest('.call-units_add-brand_list');
-  // let addressesUnitsListBlockClosest = target.closest('.call-units_add-address_listBlock');
-  // let addressUnitsListClosest = target.closest('.call-units_add-address_list');
-  // let addressesPropertyTypeClosest = target.closest('.call-contact_new-addresses_add-propertyType');
-  // let addressesPropertyTypeListClosest = target.closest('.call-contact_new-addresses_add-propertyType_list');
-
-  // function clickOutsideCloseList(blockClosest, blockListClosest, blockText, blockList, blockArrow) {
-  //   if (blockListClosest) { return; }
-  //   else {
-  //     if (blockClosest) { return; }
-  //     if (blockText.classList.contains('open')) {
-  //       blockText.classList.remove('open'); 
-  //       getListToggle('hidden', blockList, blockArrow);
-  //     }
-  //   }  
-  // }
-  // clickOutsideCloseList(blockAddressClosest, blockAddressListClosest, addressText, addressList, addressListArrow);
-  // clickOutsideCloseList(callCompanyNameClosest, callCompanyNameListClosest, callCompanyNameText, callCompanyNameList, callCompanyNameListArrow);
-  // clickOutsideCloseList(unitTypeListClosest, unitTypeListBlockClosest, unitTypeText, unitTypeList, unitTypeListArrow);
-  // clickOutsideCloseList(unitListBlockClosest, unitListClosest, unitText, unitList, unitListArrow);
-  // clickOutsideCloseList(brandListBlockClosest, brandListClosest, brandText, brandList, brandListArrow);
-  // clickOutsideCloseList(addressesUnitsListBlockClosest, addressUnitsListClosest, addressUnitsText, addressUnitsList, addressUnitsListArrow);
-  // clickOutsideCloseList(addressesPropertyTypeClosest, addressesPropertyTypeListClosest, addressesText, addressesList, addressesListArrow);
 
   if (callFromAcitonClosest) { return; }
   else {

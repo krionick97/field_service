@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style-booking.css?v=028"/>
+    <link rel="stylesheet" href="assets/css/style-booking.css?v=015"/>
     <title>Booking</title>
   </head>
   <body>
@@ -458,9 +458,30 @@
                 <div class="call-contact_new-block">
                   <div class="call-contact_new-addresses_item">
                     <div class="call-contact_new-addresses_data">
-                      <p><span class="call-contact_new-addresses_data zip">1234</span>&nbsp;<span class="call-contact_new-addresses_data street">Florida Rt</span>&nbsp;<span class="call-contact_new-addresses_data appartment">#327</span>,&nbsp;<span class="call-contact_new-addresses_data city">Fort Mayers</span>,&nbsp;<span class="call-contact_new-addresses_data state">FL 34354</span></p>
-                      <p>Property Type:&nbsp;<span class="call-contact_new-addresses_data propertyType">residential</span>&nbsp;</p>
-                      <p>Note:&nbsp;<span class="call-contact_new-addresses_data note">abcdefg</span></p>
+                      <p class="call-contact_new-addresses_data-text"><span class="call-contact_new-addresses_data zip">1234</span>&nbsp;<span class="call-contact_new-addresses_data street">Florida Rt</span>&nbsp;<span class="call-contact_new-addresses_data appartment">#327</span>,&nbsp;<span class="call-contact_new-addresses_data city">Fort Mayers</span>,&nbsp;<span class="call-contact_new-addresses_data state">FL 34354</span></p>
+                      <div class="call-contact_new-addresses_data-block">
+                        <div class="call-contact_new-addresses_data-propertyType" id="address-data-propertyType-00">
+                          <div class="data-border call-contact_new-addresses_data-propertyType_text">
+                            <p>Property Type</p>
+                          </div>
+                          <div class="arrow-list call-contact_new-addresses_data-propertyType_arrow"></div>
+                          <div class="block-list call-contact_new-addresses_data-propertyType_list">
+                            <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                              <p class="call-contact_new-addresses_data-propertyType_title">Property Type</p>
+                            </div>
+                            <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                              <p>Residential</p>
+                            </div>
+                            <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                              <p>Commercial</p>
+                            </div>
+                            <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
+                              <p>Industrial</p>
+                            </div>
+                          </div>
+                        </div>
+                        <input class="call-contact_new-addresses_data-note" type="text" placeholder="Note" id="address-data-note-00"/>
+                      </div>
                     </div>
                     <div class="call-contact_new-block_delete">
                       <div class="cancel">
@@ -700,9 +721,115 @@
           </div>
         </div>
       </div>
-      <div class="content-right booking-right">Block-right</div>
+      <div class="content-right booking-right">
+        <div class="call-bookingInfo">
+          <div class="block-content">
+            <div class="block-content-title">
+              <div class="block-title">Booking Info</div>
+            </div>
+            <div class="call-bookingInfo_typing">
+              <label>Duration:</label>
+              <input class="data-border call-bookingInfo_input" type="text"/>
+            </div>
+            <div class="call-bookingInfo_checkboxes">
+              <div class="call-bookingInfo_checkbox">
+                <p>Without check:</p>
+                <div class="check">
+                  <input class="input-checkbox" type="checkbox" name="checkbox-bookingInfo-withoutCheck-1" id="checkbox-bookingInfo-withoutCheck-1"/>
+                  <label class="checkbox" for="checkbox-bookingInfo-withoutCheck-1"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                  </label>
+                </div>
+              </div>
+              <div class="call-bookingInfo_checkbox">
+                <p>Choose technician:</p>
+                <div class="check">
+                  <input class="input-checkbox" type="checkbox" name="checkbox-bookingInfo-withoutCheck-1" id="checkbox-bookingInfo-withoutCheck-1"/>
+                  <label class="checkbox" for="checkbox-bookingInfo-withoutCheck-1"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="call-bookingInfo_typing">
+              <label>To Technician:</label>
+              <input class="data-border call-bookingInfo_input" type="text"/>
+            </div>
+          </div>
+        </div>
+        <div class="call-avaltime">
+          <div class="block-content">
+            <div class="block-content-title">
+              <div class="block-title">Available Time</div>
+            </div>
+            <div class="call-avaltime_block">
+              <div class="call-avaltime_date">
+                <p><span class="call-avaltime_data day">02</span>/<span class="call-avaltime_data month">07</span>/<span class="call-avaltime_data year">2020</span></p>
+              </div>
+              <div class="call-avaltime_hours">
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">13:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00PM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">17:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30PM</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="block-content">
+            <div class="call-avaltime_block">
+              <div class="call-avaltime_date">
+                <p><span class="call-avaltime_data day">03</span>/<span class="call-avaltime_data month">07</span>/<span class="call-avaltime_data year">2020</span></p>
+              </div>
+              <div class="call-avaltime_hours">
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">13:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00PM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">17:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30PM</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="block-content">
+            <div class="call-avaltime_block">
+              <div class="call-avaltime_date">
+                <p><span class="call-avaltime_data day">04</span>/<span class="call-avaltime_data month">07</span>/<span class="call-avaltime_data year">2020</span></p>
+              </div>
+              <div class="call-avaltime_hours">
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">13:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00PM</span></p>
+                </div>
+                <div class="call-avaltime_hour">
+                  <p><span class="call-avaltime_hour from">17:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30PM</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Scripts-->
-    <script src="assets/js/booking.js?v=028"></script>
+    <script src="assets/js/booking.js?v=015"></script>
   </body>
 </html>

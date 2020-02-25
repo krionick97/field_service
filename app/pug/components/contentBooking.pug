@@ -352,7 +352,7 @@ div.content.booking
             div.call-contact_new-block
               div.call-contact_new-addresses_item
                 div.call-contact_new-addresses_data
-                  p
+                  p.call-contact_new-addresses_data-text
                     span.call-contact_new-addresses_data.zip 1234
                     |&nbsp;
                     span.call-contact_new-addresses_data.street Florida Rt
@@ -362,11 +362,22 @@ div.content.booking
                     span.call-contact_new-addresses_data.city Fort Mayers
                     |,&nbsp;
                     span.call-contact_new-addresses_data.state FL 34354
-                  p Property Type:&nbsp;
-                    span.call-contact_new-addresses_data.propertyType residential
-                    |&nbsp;
-                  p Note:&nbsp;
-                    span.call-contact_new-addresses_data.note abcdefg
+                  div.call-contact_new-addresses_data-block
+                    div(id="address-data-propertyType-00").call-contact_new-addresses_data-propertyType
+                      div.data-border.call-contact_new-addresses_data-propertyType_text
+                        p Property Type
+                      div.arrow-list.call-contact_new-addresses_data-propertyType_arrow
+                      div.block-list.call-contact_new-addresses_data-propertyType_list
+                        div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
+                          p.call-contact_new-addresses_data-propertyType_title Property Type
+                        div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
+                          p Residential
+                        div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
+                          p Commercial
+                        div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
+                          p Industrial
+                    input(type="text" placeholder="Note" id="address-data-note-00").call-contact_new-addresses_data-note
+
                 div.call-contact_new-block_delete
                   div.cancel
                     input(type="checkbox", name="cancelbox-address-1" id="cancelbox-address-1").input-cancelbox
@@ -539,6 +550,132 @@ div.content.booking
         button.btn.btn-clear Clear
         button.btn.btn-save.inactive Save
 
-  div.content-right.booking-right Block-right
+  div.content-right.booking-right
+    div.call-bookingInfo
+      div.block-content
+        div.block-content-title
+          div.block-title Booking Info
+        div.call-bookingInfo_typing
+          label Duration:
+          input(type="text").data-border.call-bookingInfo_input
+        div.call-bookingInfo_checkboxes
+          div.call-bookingInfo_checkbox
+            p Without check:
+            div.check
+              input(type="checkbox", name="checkbox-bookingInfo-withoutCheck-1" id="checkbox-bookingInfo-withoutCheck-1").input-checkbox
+              label(for="checkbox-bookingInfo-withoutCheck-1").checkbox
+                <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          div.call-bookingInfo_checkbox
+            p Choose technician:
+            div.check
+              input(type="checkbox", name="checkbox-bookingInfo-withoutCheck-1" id="checkbox-bookingInfo-withoutCheck-1").input-checkbox
+              label(for="checkbox-bookingInfo-withoutCheck-1").checkbox
+                <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+        div.call-bookingInfo_typing
+          label To Technician:
+          input(type="text").data-border.call-bookingInfo_input
+
+    div.call-avaltime
+      div.block-content
+        div.block-content-title
+          div.block-title Available Time
+        div.call-avaltime_block
+          div.call-avaltime_date
+            p
+              span.call-avaltime_data.day 02
+              |/
+              span.call-avaltime_data.month 07
+              |/
+              span.call-avaltime_data.year 2020
+          div.call-avaltime_hours
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 8:00AM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 10:00AM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 10:00AM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 12:00AM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 13:00PM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 16:00PM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 17:00PM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 18:30PM
+
+      div.block-content
+        div.call-avaltime_block
+          div.call-avaltime_date
+            p
+              span.call-avaltime_data.day 03
+              |/
+              span.call-avaltime_data.month 07
+              |/
+              span.call-avaltime_data.year 2020
+          div.call-avaltime_hours
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 8:00AM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 10:00AM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 10:00AM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 12:00AM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 13:00PM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 16:00PM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 17:00PM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 18:30PM
+
+      div.block-content
+        div.call-avaltime_block
+          div.call-avaltime_date
+            p
+              span.call-avaltime_data.day 04
+              |/
+              span.call-avaltime_data.month 07
+              |/
+              span.call-avaltime_data.year 2020
+          div.call-avaltime_hours
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 8:00AM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 10:00AM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 10:00AM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 12:00AM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 13:00PM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 16:00PM
+            div.call-avaltime_hour
+              p
+                span.call-avaltime_hour.from 17:00PM
+                |&nbsp;—&nbsp;
+                span.call-avaltime_hour.till 18:30PM
+
+
+
 
 
