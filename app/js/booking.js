@@ -70,9 +70,23 @@ const dataPropertyTypeListItems = document.querySelectorAll('.call-contact_new-a
 const dataPropertyTypeListArrow = document.querySelector('.call-contact_new-addresses_data-propertyType_arrow');
 const dataPropertyTypeBlock = document.querySelector('.call-contact_new-addresses_data-propertyType');
 
+const bookingDurationText = document.querySelector('.call-bookingSettings_duration-listText');
+const bookingDurationList = document.querySelector('.call-bookingSettings_duration-list');
+const bookingDurationListItems = document.querySelectorAll('.call-bookingSettings_duration-listItem');
+const bookingDurationBlock = document.querySelector('.call-bookingSettings_duration-listBlock');
+
+const bookingOntimeFromText = document.querySelector('.call-bookingSettings_ontime-from-listText');
+const bookingOntimeFromList = document.querySelector('.call-bookingSettings_ontime-from-list');
+const bookingOntimeFromListItems = document.querySelectorAll('.call-bookingSettings_ontime-from-listItem');
+const bookingOntimeFromBlock = document.querySelector('.call-bookingSettings_ontime-listBlock:nth-child(2)');
+
+const bookingOntimeTillText = document.querySelector('.call-bookingSettings_ontime-till-listText');
+const bookingOntimeTillList = document.querySelector('.call-bookingSettings_ontime-till-list');
+const bookingOntimeTillListItems = document.querySelectorAll('.call-bookingSettings_ontime-till-listItem');
+const bookingOntimeTillBlock = document.querySelector('.call-bookingSettings_ontime-listBlock:nth-child(4)');
 
 /* List function to open-close */
-function listFunction(text, list, listIems, arrow, input) {
+function listFunction(text, list, listIems, arrayIndexSelect, arrow, input) {
   /* Event to show or to hide address-list by clicking on the adressText */
   text.addEventListener('click', function() {
     text.classList.toggle('open');
@@ -96,8 +110,8 @@ function listFunction(text, list, listIems, arrow, input) {
   listIems.forEach((listIem, index, array) => {
     let mainText = text.querySelector('p');
     if (!array[index].classList.contains('selected')) {
-      array[0].classList.add('selected');
-      mainText.textContent = array[0].textContent;
+      array[arrayIndexSelect].classList.add('selected');
+      mainText.textContent = array[arrayIndexSelect].textContent;
     }
     listIem.addEventListener('click', function() {
       let itemText = listIem.querySelector('p');
@@ -146,7 +160,7 @@ function getListToggle(variable, list, arrow) { // variable = visible, variable 
 }
 
 /* Function to clost the list by clicking outside */
-function clickOutsideCloseList(text, list, arrow, wholeBlock) {
+function clickOutsideCloseList(text, list, wholeBlock, arrow) {
   window.addEventListener('click', function(event) {
     let target = event.target;
     let blockClosest = target.closest(`.${wholeBlock.classList[0]}`);
@@ -156,58 +170,54 @@ function clickOutsideCloseList(text, list, arrow, wholeBlock) {
     else {
       if (blockClosest) { return; }
       if (text.classList.contains('open')) {
-        text.classList.remove('open'); 
-        getListToggle('hidden', list, arrow);
+        text.classList.remove('open');
+        if (arrow) { getListToggle('hidden', list, arrow); }
+        else { getListToggle('hidden', list); }
       }
     }
   });
 }
 /* --------------------------------- */
 
-listFunction(addressText, addressList, addressListItems, addressListArrow); // address List
-clickOutsideCloseList(addressText, addressList, addressListArrow, addressBlock);
+listFunction(addressText, addressList, addressListItems, 0, addressListArrow); // address List
+clickOutsideCloseList(addressText, addressList, addressBlock, addressListArrow);
 
-listFunction(callCompanyNameText, callCompanyNameList, callCompanyNameListItems, callCompanyNameListArrow); // company-names List
-clickOutsideCloseList(callCompanyNameText, callCompanyNameList, callCompanyNameListArrow, callCompanyNameBlock);
+listFunction(callCompanyNameText, callCompanyNameList, callCompanyNameListItems, 0, callCompanyNameListArrow); // company-names List
+clickOutsideCloseList(callCompanyNameText, callCompanyNameList, callCompanyNameBlock, callCompanyNameListArrow);
 
-listFunction(unitTypeText, unitTypeList, unitTypeListItems, unitTypeListArrow);
-clickOutsideCloseList(unitTypeText, unitTypeList, unitTypeListArrow, unitTypeListBlock);
+listFunction(unitTypeText, unitTypeList, unitTypeListItems, 0, unitTypeListArrow);
+clickOutsideCloseList(unitTypeText, unitTypeList, unitTypeListBlock, unitTypeListArrow);
 
-listFunction(unitText, unitList, unitListItems, unitListArrow, unitInput);
-clickOutsideCloseList(unitText, unitList, unitListArrow, unitBlock);
+listFunction(unitText, unitList, unitListItems, 0, unitListArrow, unitInput);
+clickOutsideCloseList(unitText, unitList, unitBlock, unitListArrow);
 
-listFunction(brandText, brandList, brandListItems, brandListArrow, brandInput);
-clickOutsideCloseList(brandText, brandList, brandListArrow, brandBlock);
+listFunction(brandText, brandList, brandListItems, 0, brandListArrow, brandInput);
+clickOutsideCloseList(brandText, brandList, brandBlock, brandListArrow);
 
-listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, addressUnitsListArrow);
-clickOutsideCloseList(addressUnitsText, addressUnitsList, addressUnitsListArrow, addressUnitsBlock);
+listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, 0, addressUnitsListArrow);
+clickOutsideCloseList(addressUnitsText, addressUnitsList, addressUnitsBlock, addressUnitsListArrow);
 
 
 /* Property Type in current Address Contact */
-listFunction(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListItems, dataPropertyTypeListArrow);
-dataPropertyTypeListItems.forEach(dataPropertyTypeListItem => {
-  dataPropertyTypeText.style.color = '#D0D3DA';
-  dataPropertyTypeListItem.addEventListener('click', function() {
-    let itemText = dataPropertyTypeListItem.querySelector('p');
-    if (itemText.textContent === 'Property Type') { dataPropertyTypeText.style.color = '#D0D3DA'; } 
-    else { dataPropertyTypeText.style.color = '#000000'; }
-  });
-});
-clickOutsideCloseList(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListArrow, dataPropertyTypeBlock);
+listFunction(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListItems, 0, dataPropertyTypeListArrow);
+clickOutsideCloseList(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeBlock, dataPropertyTypeListArrow);
 /* --------------- */
 
 /* Property Type List in New Addresses Contact */
-listFunction(addressesText, addressesList, addressesListItems, addressesListArrow);
-addressesListItems.forEach(addressesListItem => {
-  addressesText.style.color = '#D0D3DA';
-  addressesListItem.addEventListener('click', function() {
-    let itemText = addressesListItem.querySelector('p');
-    if (itemText.textContent === 'Property Type') { addressesText.style.color = '#D0D3DA'; } 
-    else { addressesText.style.color = '#000000'; }
-  });
-});
-clickOutsideCloseList(addressesText, addressesList, addressesListArrow, addressesPropTypeBlock);
+listFunction(addressesText, addressesList, addressesListItems, 0, addressesListArrow);
+clickOutsideCloseList(addressesText, addressesList, addressesPropTypeBlock, addressesListArrow);
 /* ------------- */
+
+listFunction(bookingDurationText, bookingDurationList, bookingDurationListItems, 3);
+clickOutsideCloseList(bookingDurationText, bookingDurationList, bookingDurationBlock);
+
+listFunction(bookingOntimeFromText, bookingOntimeFromList, bookingOntimeFromListItems, 19);
+clickOutsideCloseList(bookingOntimeFromText, bookingOntimeFromList, bookingOntimeFromBlock);
+
+listFunction(bookingOntimeTillText, bookingOntimeTillList, bookingOntimeTillListItems, 23);
+clickOutsideCloseList(bookingOntimeTillText, bookingOntimeTillList, bookingOntimeTillBlock);
+
+// console.log(bookingOntimeTillListItems[23]);
 
 /* Event to active or inactive left-block with the map by clicking the arr-button */
 arrButton.addEventListener('click', function() {
@@ -535,9 +545,6 @@ addNewAddressButton.addEventListener('click', function() {
                 <div class="arrow-list call-contact_new-addresses_data-propertyType_arrow"></div>
                 <div class="block-list call-contact_new-addresses_data-propertyType_list">
                   <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
-                    <p class="call-contact_new-addresses_data-propertyType_title">Property Type</p>
-                  </div>
-                  <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
                     <p>Residential</p>
                   </div>
                   <div class="block-list_item call-contact_new-addresses_data-propertyType_list-item">
@@ -548,7 +555,7 @@ addNewAddressButton.addEventListener('click', function() {
                   </div>
                 </div>
               </div>
-              <input class="call-contact_new-addresses_data-note" type="text" placeholder="Note" id="address-data-note-0${id_address}" value="${addNewAddressInputs[5].value}"/>
+              <input class="call-contact_new-addresses_data-note" type="text" placeholder="" id="address-data-note-0${id_address}" value="${addNewAddressInputs[5].value}"/>
             </div>
           </div>
           <div class="call-contact_new-block_delete">
@@ -567,12 +574,14 @@ addNewAddressButton.addEventListener('click', function() {
             </div>
           </div>
         `);
+
         addNewAddressItemBlock.append(addNewAddressItem);
         addNewAddressItemInput.before(addNewAddressItemBlock);
         for (let i = 0; i < addNewAddressInputs.length; i++) {
           addNewAddressInputs[i].style = 'border-color: #D0D3DA';
           addNewAddressInputs[i].value = '';
         }
+
         const dataPropertyTypeText = addNewAddressItem.querySelector('.call-contact_new-addresses_data-propertyType_text');
         const dataPropertyTypeList = addNewAddressItem.querySelector('.call-contact_new-addresses_data-propertyType_list');
         const dataPropertyTypeListItems = addNewAddressItem.querySelectorAll('.call-contact_new-addresses_data-propertyType_list-item');
@@ -580,14 +589,8 @@ addNewAddressButton.addEventListener('click', function() {
         const dataPropertyTypeBlock = addNewAddressItem.querySelector('.call-contact_new-addresses_data-propertyType');
 
         dataPropertylistFunction(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListItems, dataPropertyTypeListArrow);
-        
-        clickOutsideCloseList(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeListArrow, dataPropertyTypeBlock);
 
-        // for (let i = 0; i < addressesListItems.length; i++) {
-        //   if (addressesListItems[i].classList.contains('selected')) { dataPropertyTypeListItems[i].classList.add('selected'); }
-        //   if (addressesListItems[0].classList.contains('selected')) { dataPropertyTypeText.style.color = '#D0D3DA'; }
-        //   else { dataPropertyTypeText.style.color = '#8E8E93'; }
-        // }
+        clickOutsideCloseList(dataPropertyTypeText, dataPropertyTypeList, dataPropertyTypeBlock, dataPropertyTypeListArrow);
 
         let addressItemDelButton = addNewAddressItem.querySelector('.call-contact_new-block_trash');
 
@@ -598,12 +601,14 @@ addNewAddressButton.addEventListener('click', function() {
             parentItemNode.remove();
           }
         });
+
       } else {
         if (addNewAddressInputs[0].value === '') { addNewAddressInputs[0].style = 'border-color: #FF0000'; }
         if (addNewAddressInputs[2].value === '') { addNewAddressInputs[2].style = 'border-color: #FF0000'; }
         if (addNewAddressInputs[3].value === '') { addNewAddressInputs[3].style = 'border-color: #FF0000'; }
         if (addNewAddressInputs[4].value === '') { addNewAddressInputs[4].style = 'border-color: #FF0000'; }
       }
+
 });
 /* ------------------------------------ */
 
@@ -633,13 +638,10 @@ addUnitItemAddButton.addEventListener('click', function() {
       <p class="call-units_add-data_title">Unit Type:</p>
       <div class="call-units_add-unitType_listBlock">
         <div class="data-border call-units_add-unitType_text">
-          <p>&nbsp;</p>
+          <p>Residential</p>
         </div>
         <div class="arrow-list call-units_add-unitType_arrow"></div>
         <div class="block-list call-units_add-unitType_list">
-          <div class="block-list_item call-units_add-unitType_list-item">
-            <p>&nbsp;</p>
-          </div>
           <div class="block-list_item call-units_add-unitType_list-item">
             <p>Residential</p>
           </div>
@@ -779,7 +781,7 @@ addUnitItemAddButton.addEventListener('click', function() {
   const unitTypeListItems = unitAddItem.querySelectorAll('.call-units_add-unitType_list-item');
   const unitTypeListArrow = unitAddItem.querySelector('.call-units_add-unitType_arrow');
   const unitTypeListBlock = unitAddItem.querySelector('.call-units_add-unitType_listBlock');
-  
+
   const unitText = unitAddItem.querySelector('.call-units_add-unit_text');
   const unitList = unitAddItem.querySelector('.call-units_add-unit_list');
   const unitInput = unitAddItem.querySelector('.call-units_add-unit_input');
@@ -802,14 +804,14 @@ addUnitItemAddButton.addEventListener('click', function() {
 
   const unitItemDelButton = unitAddItem.querySelector('.call-units_add-data_trash');
   
-  listFunction(unitTypeText, unitTypeList, unitTypeListItems, unitTypeListArrow);
-  clickOutsideCloseList(unitTypeText, unitTypeList, unitTypeListArrow, unitTypeListBlock);
-  listFunction(unitText, unitList, unitListItems, unitListArrow, unitInput);
-  clickOutsideCloseList(unitText, unitList, unitListArrow, unitBlock);
-  listFunction(brandText, brandList, brandListItems, brandListArrow, brandInput);
-  clickOutsideCloseList(brandText, brandList, brandListArrow, brandBlock);
-  listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, addressUnitsListArrow);
-  clickOutsideCloseList(addressUnitsText, addressUnitsList, addressUnitsListArrow, addressUnitsBlock);
+  listFunction(unitTypeText, unitTypeList, unitTypeListItems, 0, unitTypeListArrow);
+  clickOutsideCloseList(unitTypeText, unitTypeList, unitTypeListBlock, unitTypeListArrow);
+  listFunction(unitText, unitList, unitListItems, 0, unitListArrow, unitInput);
+  clickOutsideCloseList(unitText, unitList, unitBlock, unitListArrow);
+  listFunction(brandText, brandList, brandListItems, 0, brandListArrow, brandInput);
+  clickOutsideCloseList(brandText, brandList, brandBlock, brandListArrow);
+  listFunction(addressUnitsText, addressUnitsList, addressUnitsListItems, 0, addressUnitsListArrow);
+  clickOutsideCloseList(addressUnitsText, addressUnitsList, addressUnitsBlock, addressUnitsListArrow);
 
   unitItemDelButton.addEventListener('click', function() {
     let parentUnitNode = unitItemDelButton.parentNode.parentNode.parentNode;

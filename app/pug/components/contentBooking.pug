@@ -365,18 +365,18 @@ div.content.booking
                   div.call-contact_new-addresses_data-block
                     div(id="address-data-propertyType-00").call-contact_new-addresses_data-propertyType
                       div.data-border.call-contact_new-addresses_data-propertyType_text
-                        p Property Type
+                        p Residential
                       div.arrow-list.call-contact_new-addresses_data-propertyType_arrow
                       div.block-list.call-contact_new-addresses_data-propertyType_list
-                        div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
-                          p.call-contact_new-addresses_data-propertyType_title Property Type
+                        //- div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
+                        //-   p.call-contact_new-addresses_data-propertyType_title Property Type
                         div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
                           p Residential
                         div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
                           p Commercial
                         div.block-list_item.call-contact_new-addresses_data-propertyType_list-item
                           p Industrial
-                    input(type="text" placeholder="Note" id="address-data-note-00").call-contact_new-addresses_data-note
+                    input(type="text" placeholder="" id="address-data-note-00" value="Some note").call-contact_new-addresses_data-note
 
                 div.call-contact_new-block_delete
                   div.cancel
@@ -402,11 +402,9 @@ div.content.booking
                   div.call-contact_new-addresses_add-block
                     div.call-contact_new-addresses_add-propertyType
                       div.data-border.call-contact_new-addresses_add-propertyType_text
-                        p Property Type
+                        p Residential
                       div.arrow-list.call-contact_new-addresses_add-propertyType_arrow
                       div.block-list.call-contact_new-addresses_add-propertyType_list
-                        div.block-list_item.call-contact_new-addresses_add-propertyType_list-item
-                          p.call-contact_new-addresses_add-propertyType_title Property Type
                         div.block-list_item.call-contact_new-addresses_add-propertyType_list-item
                           p Residential
                         div.block-list_item.call-contact_new-addresses_add-propertyType_list-item
@@ -551,33 +549,287 @@ div.content.booking
         button.btn.btn-save.inactive Save
 
   div.content-right.booking-right
-    div.call-bookingInfo
+    div.call-bookingSettings
       div.block-content
         div.block-content-title
-          div.block-title Booking Info
-        div.call-bookingInfo_typing
-          label Duration:
-          input(type="text").data-border.call-bookingInfo_input
-        div.call-bookingInfo_checkboxes
-          div.call-bookingInfo_checkbox
-            p Without check:
-            div.check
-              input(type="checkbox", name="checkbox-bookingInfo-withoutCheck-1" id="checkbox-bookingInfo-withoutCheck-1").input-checkbox
-              label(for="checkbox-bookingInfo-withoutCheck-1").checkbox
+          div.block-title Booking Settings
+        div.call-bookingSettings_row.call-bookingSettings_showDays
+          label Show (days):
+          input(type="number" min="0" max="10").data-border.call-bookingSettings_input
+        div.call-bookingSettings_row.call-bookingSettings_showServRes
+          p Show Service Resource:
+          div.check
+            input(type="checkbox", name="checkbox-showServiceSource-01" id="checkbox-showServiceSource-01").input-checkbox
+            label(for="checkbox-showServiceSource-01").checkbox
                 <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-          div.call-bookingInfo_checkbox
-            p Choose technician:
-            div.check
-              input(type="checkbox", name="checkbox-bookingInfo-withoutCheck-1" id="checkbox-bookingInfo-withoutCheck-1").input-checkbox
-              label(for="checkbox-bookingInfo-withoutCheck-1").checkbox
+        div.call-bookingSettings_row.call-bookingSettings_checkAvail
+          p Check Availability:
+          div.check
+            input(type="checkbox", name="checkbox-checkAvailability-01" id="checkbox-checkAvailability-01" checked).input-checkbox
+            label(for="checkbox-checkAvailability-01").checkbox
                 <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-        div.call-bookingInfo_typing
-          label To Technician:
-          input(type="text").data-border.call-bookingInfo_input
+        div.call-bookingSettings_row.call-bookingSettings_checkArea
+          p Check Area:
+          div.check
+            input(type="checkbox", name="checkbox-checkArea-01" id="checkbox-checkArea-01").input-checkbox
+            label(for="checkbox-checkArea-01").checkbox
+                <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+        div.call-bookingSettings_row.call-bookingSettings_duration
+          p Duration:
+          div.call-bookingSettings_listBlock.call-bookingSettings_duration-listBlock
+            div.data-border.call-bookingSettings_listBlock-text.call-bookingSettings_duration-listText
+              p 2:00 hours
+            div.block-list.call-bookingSettings_listBlock-list.call-bookingSettings_duration-list
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 30 min
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 1:00 hour
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 1:30 hour
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 2:00 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 2:30 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 3:00 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 3:30 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 4:00 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 4:30 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 5:00 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 5:30 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 6:00 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 6:30 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 7:00 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 7:30 hours
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
+                p 8:00 hours
+        div.call-bookingSettings_row.call-bookingSettings_onDate
+          p On Date:
+          input(type="date" value="").data-border.call-bookingSettings_input
+
+        div.call-bookingSettings_row.call-bookingSettings_ontime
+          p On Time:
+          div.call-bookingSettings_listBlock.call-bookingSettings_ontime-listBlock
+            div.data-border.call-bookingSettings_listBlock-text.call-bookingSettings_ontime-from-listText
+              p 09:30AM
+            div.block-list.call-bookingSettings_listBlock-list.call-bookingSettings_ontime-from-list
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 12:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 12:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 01:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 01:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 02:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 02:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 03:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 03:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 04:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 04:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 05:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 05:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 06:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 06:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 07:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 07:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 08:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 08:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 09:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 09:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 10:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 10:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 11:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 11:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 12:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 12:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 01:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 01:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 02:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 02:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 03:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 03:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 04:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 04:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 05:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 05:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 06:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 06:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 07:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 07:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 08:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 08:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 09:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 09:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 10:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 10:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 11:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 11:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-from-listItem
+                p 12:00AM
+          p –
+          div.call-bookingSettings_listBlock.call-bookingSettings_ontime-listBlock
+            div.data-border.call-bookingSettings_listBlock-text.call-bookingSettings_ontime-till-listText
+              p 11:30AM
+            div.block-list.call-bookingSettings_listBlock-list.call-bookingSettings_ontime-till-list
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 12:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 12:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 01:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 01:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 02:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 02:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 03:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 03:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 04:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 04:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 05:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 05:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 06:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 06:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 07:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 07:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 08:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 08:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 09:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 09:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 10:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 10:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 11:00AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 11:30AM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 12:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 12:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 01:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 01:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 02:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 02:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 03:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 03:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 04:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 04:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 05:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 05:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 06:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 06:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 07:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 07:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 08:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 08:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 09:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 09:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 10:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 10:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 11:00PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 11:30PM
+              div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_ontime-till-listItem
+                p 12:00AM
+
 
     div.call-avaltime
       div.block-content
@@ -675,6 +927,7 @@ div.content.booking
                 |&nbsp;—&nbsp;
                 span.call-avaltime_hour.till 18:30PM
 
+    //- input(type="date", name="appointment-date" value="").appointment-date
 
 
 
