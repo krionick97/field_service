@@ -78,12 +78,21 @@ const bookingDurationBlock = document.querySelector('.call-bookingSettings_durat
 const bookingOntimeFromText = document.querySelector('.call-bookingSettings_ontime-from-listText');
 const bookingOntimeFromList = document.querySelector('.call-bookingSettings_ontime-from-list');
 const bookingOntimeFromListItems = document.querySelectorAll('.call-bookingSettings_ontime-from-listItem');
-const bookingOntimeFromBlock = document.querySelector('.call-bookingSettings_ontime-listBlock:nth-child(2)');
+const bookingOntimeFromBlock = document.querySelector('.call-bookingSettings_ontime-from-listBlock');
 
 const bookingOntimeTillText = document.querySelector('.call-bookingSettings_ontime-till-listText');
 const bookingOntimeTillList = document.querySelector('.call-bookingSettings_ontime-till-list');
 const bookingOntimeTillListItems = document.querySelectorAll('.call-bookingSettings_ontime-till-listItem');
-const bookingOntimeTillBlock = document.querySelector('.call-bookingSettings_ontime-listBlock:nth-child(4)');
+const bookingOntimeTillBlock = document.querySelector('.call-bookingSettings_ontime-till-listBlock');
+
+const avaltimeList = document.querySelectorAll('.call-avaltime_time');
+avaltimeList.forEach((avaltimeItem, index, array) => {
+  avaltimeItem.addEventListener('click', function() {
+    if (!avaltimeItem.classList.contains('selected')) { avaltimeItem.classList.add('selected'); }
+    for (let j = index - 1; j >= 0; j--) { if (array[j].classList.contains('selected')) { array[j].classList.remove('selected'); } }
+    for (let k = index + 1; k < array.length; k++) { if (array[k].classList.contains('selected')) { array[k].classList.remove('selected'); } }
+  });
+});
 
 /* List function to open-close */
 function listFunction(text, list, listIems, arrayIndexSelect, arrow, input) {
@@ -211,10 +220,10 @@ clickOutsideCloseList(addressesText, addressesList, addressesPropTypeBlock, addr
 listFunction(bookingDurationText, bookingDurationList, bookingDurationListItems, 3);
 clickOutsideCloseList(bookingDurationText, bookingDurationList, bookingDurationBlock);
 
-listFunction(bookingOntimeFromText, bookingOntimeFromList, bookingOntimeFromListItems, 19);
+listFunction(bookingOntimeFromText, bookingOntimeFromList, bookingOntimeFromListItems, 0);
 clickOutsideCloseList(bookingOntimeFromText, bookingOntimeFromList, bookingOntimeFromBlock);
 
-listFunction(bookingOntimeTillText, bookingOntimeTillList, bookingOntimeTillListItems, 23);
+listFunction(bookingOntimeTillText, bookingOntimeTillList, bookingOntimeTillListItems, 0);
 clickOutsideCloseList(bookingOntimeTillText, bookingOntimeTillList, bookingOntimeTillBlock);
 
 // console.log(bookingOntimeTillListItems[23]);

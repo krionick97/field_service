@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style-booking.css?v=013"/>
+    <link rel="stylesheet" href="assets/css/style-booking.css?v=014"/>
     <title>Booking</title>
   </head>
   <body>
@@ -29,7 +29,9 @@
           </div>
           <div class="block-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14268.274546089124!2d-81.88672024389766!3d26.614246625837634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db41b541a87ca1%3A0xb25b25fe95027f76!2zMTIzNCBGbG9yaWRhIEF2ZSwgRm9ydCBNeWVycywgRkwgMzM5MDEsINCh0KjQkA!5e0!3m2!1sru!2sru!4v1581884786460!5m2!1sru!2sru" allowfullscreen=""></iframe></div>
           <div class="house-info">
-            <div class="house-img"><img src="assets/images/house-sample.jpg" alt="img"/></div>
+            <div class="house-img"><img src="assets/images/house-sample.jpg" alt="img"/>
+              <p>© Zillow, Inc 2006-2020</p>
+            </div>
             <div class="house-data">
               <div class="house-table">
                 <table>
@@ -723,7 +725,7 @@
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_showDays">
               <label>Show (days):</label>
-              <input class="data-border call-bookingSettings_input" type="number" min="0" max="10"/>
+              <input class="data-border call-bookingSettings_input" type="number" min="0" max="10" value="3"/>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_showServRes">
               <p>Show Service Resource:</p>
@@ -748,7 +750,7 @@
             <div class="call-bookingSettings_row call-bookingSettings_checkArea">
               <p>Check Area:</p>
               <div class="check">
-                <input class="input-checkbox" type="checkbox" name="checkbox-checkArea-01" id="checkbox-checkArea-01"/>
+                <input class="input-checkbox" type="checkbox" name="checkbox-checkArea-01" id="checkbox-checkArea-01" checked="checked"/>
                 <label class="checkbox" for="checkbox-checkArea-01"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
@@ -757,11 +759,11 @@
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_duration">
               <p>Duration:</p>
-              <div class="call-bookingSettings_listBlock call-bookingSettings_duration-listBlock">
+              <div class="call-bookingSettings_duration-listBlock call-bookingSettings_listBlock">
                 <div class="data-border call-bookingSettings_listBlock-text call-bookingSettings_duration-listText">
                   <p>2:00 hours</p>
                 </div>
-                <div class="block-list call-bookingSettings_listBlock-list call-bookingSettings_duration-list">
+                <div class="call-bookingSettings_duration-list block-list call-bookingSettings_listBlock-list">
                   <div class="block-list_item call-bookingSettings_listBlock-item call-bookingSettings_duration-listItem">
                     <p>30 min</p>
                   </div>
@@ -819,11 +821,14 @@
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_ontime">
               <p>On Time:</p>
-              <div class="call-bookingSettings_listBlock call-bookingSettings_ontime-listBlock">
+              <div class="call-bookingSettings_ontime-from-listBlock call-bookingSettings_ontime-listBlock call-bookingSettings_listBlock">
                 <div class="data-border call-bookingSettings_listBlock-text call-bookingSettings_ontime-from-listText">
-                  <p>09:30AM</p>
+                  <p>&nbsp;</p>
                 </div>
-                <div class="block-list call-bookingSettings_listBlock-list call-bookingSettings_ontime-from-list">
+                <div class="call-bookingSettings_ontime-from-list block-list call-bookingSettings_listBlock-list">
+                  <div class="block-list_item call-bookingSettings_listBlock-item call-bookingSettings_ontime-from-listItem">
+                    <p>&nbsp;</p>
+                  </div>
                   <div class="block-list_item call-bookingSettings_listBlock-item call-bookingSettings_ontime-from-listItem">
                     <p>12:00AM</p>
                   </div>
@@ -974,11 +979,14 @@
                 </div>
               </div>
               <p>–</p>
-              <div class="call-bookingSettings_listBlock call-bookingSettings_ontime-listBlock">
+              <div class="call-bookingSettings_ontime-till-listBlock call-bookingSettings_ontime-listBlock call-bookingSettings_listBlock">
                 <div class="data-border call-bookingSettings_listBlock-text call-bookingSettings_ontime-till-listText">
-                  <p>11:30AM</p>
+                  <p>&nbsp;</p>
                 </div>
-                <div class="block-list call-bookingSettings_listBlock-list call-bookingSettings_ontime-till-list">
+                <div class="call-bookingSettings_ontime-till-list block-list call-bookingSettings_listBlock-list">
+                  <div class="block-list_item call-bookingSettings_listBlock-item call-bookingSettings_ontime-till-listItem">
+                    <p>&nbsp;</p>
+                  </div>
                   <div class="block-list_item call-bookingSettings_listBlock-item call-bookingSettings_ontime-till-listItem">
                     <p>12:00AM</p>
                   </div>
@@ -1129,12 +1137,20 @@
                 </div>
               </div>
             </div>
+            <button class="btn btn-apply">Apply</button>
           </div>
         </div>
         <div class="call-avaltime">
           <div class="block-content">
             <div class="block-content-title">
               <div class="block-title">Available Time</div>
+              <div class="btn-marking saved"><svg viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.56286 9.84218H0.471429L0.0342857 0H3L2.56286 9.84218ZM0 13.2874C0 12.9718 0.0371429 12.7065 0.111429 12.4916C0.191429 12.27 0.3 12.092 0.437143 11.9577C0.574286 11.8234 0.734286 11.726 0.917143 11.6655C1.1 11.6051 1.29714 11.5749 1.50857 11.5749C1.70857 11.5749 1.89714 11.6051 2.07429 11.6655C2.25714 11.726 2.41714 11.8234 2.55429 11.9577C2.69143 12.092 2.8 12.27 2.88 12.4916C2.96 12.7065 3 12.9718 3 13.2874C3 13.5897 2.96 13.8482 2.88 14.0631C2.8 14.278 2.69143 14.456 2.55429 14.597C2.41714 14.7381 2.25714 14.8388 2.07429 14.8993C1.89714 14.9664 1.70857 15 1.50857 15C1.29714 15 1.1 14.9664 0.917143 14.8993C0.734286 14.8388 0.574286 14.7381 0.437143 14.597C0.3 14.456 0.191429 14.278 0.111429 14.0631C0.0371429 13.8482 0 13.5897 0 13.2874Z" fill="white"/>
+</svg>
+<svg viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.75 4L7.25 9.5L15.25 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+              </div>
             </div>
             <div class="call-avaltime_block">
               <div class="call-avaltime_date">
@@ -1142,16 +1158,34 @@
               </div>
               <div class="call-avaltime_hours">
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span></p>
+                  <div class="data-border call-avaltime_indicator"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
                 </div>
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span></p>
+                  <div class="data-border call-avaltime_indicator green"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span>&nbsp;<span class="call-avaltime_name">/ Mike</span></p>
+                  </div>
                 </div>
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">13:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00PM</span></p>
+                  <div class="data-border call-avaltime_indicator red"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">13:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
                 </div>
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">17:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30PM</span></p>
+                  <div class="data-border call-avaltime_indicator blue"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">16:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">17:00AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
+                </div>
+                <div class="call-avaltime_hour">
+                  <div class="data-border call-avaltime_indicator"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">17:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1163,37 +1197,34 @@
               </div>
               <div class="call-avaltime_hours">
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span></p>
+                  <div class="data-border call-avaltime_indicator"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
                 </div>
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span></p>
+                  <div class="data-border call-avaltime_indicator green"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span>&nbsp;<span class="call-avaltime_name">/ Mike</span></p>
+                  </div>
                 </div>
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">13:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00PM</span></p>
+                  <div class="data-border call-avaltime_indicator red"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">13:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
                 </div>
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">17:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30PM</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="block-content">
-            <div class="call-avaltime_block">
-              <div class="call-avaltime_date">
-                <p><span class="call-avaltime_data day">04</span>/<span class="call-avaltime_data month">07</span>/<span class="call-avaltime_data year">2020</span></p>
-              </div>
-              <div class="call-avaltime_hours">
-                <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">8:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">10:00AM</span></p>
+                  <div class="data-border call-avaltime_indicator blue"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">16:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">17:00AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
                 </div>
                 <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">10:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">12:00AM</span></p>
-                </div>
-                <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">13:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">16:00PM</span></p>
-                </div>
-                <div class="call-avaltime_hour">
-                  <p><span class="call-avaltime_hour from">17:00PM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30PM</span></p>
+                  <div class="data-border call-avaltime_indicator"></div>
+                  <div class="call-avaltime_time">
+                    <p><span class="call-avaltime_hour from">17:00AM</span>&nbsp;—&nbsp;<span class="call-avaltime_hour till">18:30AM</span>&nbsp;<span class="call-avaltime_name"></span></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1202,6 +1233,6 @@
       </div>
     </div>
     <!-- Scripts-->
-    <script src="assets/js/booking.js?v=013"></script>
+    <script src="assets/js/booking.js?v=014"></script>
   </body>
 </html>

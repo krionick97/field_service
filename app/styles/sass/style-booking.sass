@@ -124,9 +124,21 @@ input, textarea
     border-radius: 0.5rem
     height: 18rem
     margin-bottom: 0.8rem
+    position: relative
     img
       width: 100%
       height: 100%
+    p
+      display: inline-block
+      position: absolute
+      bottom: 0
+      left: 0
+      z-index: 2
+      font-size: 1rem
+      +roboto_light
+      color: $color-white
+      @include box-shadow-simple
+
   &-table
     width: 100%
     table 
@@ -525,6 +537,7 @@ input, textarea
           display: flex
           width: 100%
           justify-content: space-between
+          // align-items: center
         &_add
           display: flex
           width: 100%
@@ -553,7 +566,7 @@ input, textarea
             &.state, &.zip
               width: 6rem
             &.note
-              width: 41rem
+              flex-grow: 1
           &-btn
             display: flex
             justify-content: flex-end
@@ -567,8 +580,6 @@ input, textarea
             position: relative
             width: 13rem
             margin-right: 1rem
-            // &_title
-            //   color: $color-data-border
             &_text
               position: relative
               &:hover
@@ -585,13 +596,13 @@ input, textarea
                 &:hover p
                   text-decoration: underline
         &_data
-          width: 80%
+          margin-top: 0.5rem
+          // width: 80%
           &-text
             margin-bottom: 0.3rem
           &-block
             display: flex
             height: 2.4rem
-            // margin-bottom: 0.5rem
           &-propertyType
             height: 2.4rem
             position: relative
@@ -613,20 +624,18 @@ input, textarea
               top: 2.9rem
               &-item
                 padding: 0.7rem 0.5rem
-                font-size: 1.4rem
+                font-size: 1.3rem
                 +roboto_regular
-                // &:first-child
-                //   color: $color-data-border
           &-note
             box-sizing: border-box
             outline: none
-            // flex-grow: 1
-            width: 51.4rem
+            // width: 51.4rem
             border: none
             background: transparent
-            // color: $color-grey
             color: $color-data-border
-
+            +roboto_regular
+            font-size: 1.4rem
+            padding: 0 0 0.12rem
 
   &-units
     padding-top: 2.1rem
@@ -775,14 +784,16 @@ input, textarea
         font-size: 1.3rem
 
     &_ontime
+      &-listBlock
+        width: 6.9rem
       p:nth-child(3)
         margin: 0 0.4rem
       &-listBlock
         &:nth-child(4)
           margin-left: 0
 
-
-
+    .btn-apply
+      margin-top: 1.5rem
 
 
   &-avaltime
@@ -802,12 +813,43 @@ input, textarea
     &_hours, &_hour
       width: 100%
     &_hour
+      display: flex
+      align-items: center
+      &:not(:last-child)
+        margin-bottom: 1.3rem
+    &_indicator
+      display: block
+      width: 1.3rem
+      height: 1.3rem
+      border-radius: 0.65rem
+      margin-right: 1rem
+      user-select: none
+      position: relative
+      box-sizing: border-box
+      &:after
+        position: absolute
+        content: ''
+        display: block
+        width: 0.6rem
+        height: 0.6rem
+        border-radius: 0.3rem
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+      &.green:after
+        background-color: $color-green
+      &.blue:after
+        background-color: $color-blue-light
+      &.red:after
+        background-color: $color-red
+
+    &_time
+      flex-grow: 1
       border: 0.1rem solid $color-blue-light
       padding: 0.4rem 0
       border-radius: 0.4rem
-      // transition: 0.1s
-      &:not(:last-child)
-        margin-bottom: 1.3rem
+      // text-align: center
+      white-space: nowrap
       p
         user-select: none
         font-size: 1.4rem
@@ -815,17 +857,18 @@ input, textarea
         outline: none
         background: transparent
         span
+          display: inline
+          white-space: nowrap
           border: none
-        // &:hover
       &:hover
         cursor: pointer
-        // transform: scale(1.01)
         background-color: $color-bg-main
-      &:active
-        transform: scale(1)
       &.from, &.till
         &:hover
           background: transparent
+      &.selected
+        background-color: $color-blue-light
+        color: $color-white
 
   &-clearSave
     display: flex
@@ -835,12 +878,32 @@ input, textarea
       button:first-child
         margin-right: 2rem
 
-// .appointment-date
-//   border-radius: 0.5rem
-//   border: 0.1rem solid $color-blue-light
-//   outline: none
-//   +roboto_regular
-
 
 @import 'section-booking'
+
+@media (max-width: 1500px)
+  .call
+    &-contact
+      &_new
+        &-addresses
+          &_add
+            &-input
+              &.street
+                width: auto
+    &-units
+      &_add
+        &-row
+          flex-wrap: wrap
+          &:not(:last-child)
+            margin-bottom: 0
+        &-data
+          margin-bottom: 2rem
+          // width: 50%
+        &-description
+          &_textarea
+            width: 30rem
+        &-address
+          &_listBlock
+            width: 30rem
+
 
