@@ -401,21 +401,27 @@ addNewPhoneButton.addEventListener('click', function() {
         <p>${phoneNumber.value}</p>
       </div>
       <div class="call-contact_new-checkboxes">
-        <div class="check">
-          <input class="input-checkbox" type="checkbox" name="checkbox-phone-payer-10${id_phone}" id="checkbox-phone-payer-10${id_phone}"/>
-          <label class="checkbox" for="checkbox-mainphone-payer-10${id_phone}">
-            <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </label>
+        <div class="call-contact_new-checkbox">
+          <p>Payer</p>
+          <div class="check">
+            <input class="input-checkbox" type="checkbox" name="checkbox-phone-payer-10${id_phone}" id="checkbox-phone-payer-10${id_phone}"/>
+            <label class="checkbox" for="checkbox-mainphone-payer-10${id_phone}">
+              <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </label>
+          </div>
         </div>
-        <div class="check">
-          <input class="input-checkbox" type="checkbox" name="checkbox-phone-payer-20${id_phone}" id="checkbox-phone-payer-20${id_phone}"/>
-          <label class="checkbox" for="checkbox-phone-payer-20${id_phone}">
-            <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </label>
+        <div class="call-contact_new-checkbox">
+          <p>SMS</p>
+          <div class="check">
+            <input class="input-checkbox" type="checkbox" name="checkbox-phone-payer-20${id_phone}" id="checkbox-phone-payer-20${id_phone}"/>
+            <label class="checkbox" for="checkbox-phone-payer-20${id_phone}">
+              <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </label>
+          </div>
         </div>
       </div>
     `);
@@ -439,7 +445,7 @@ addNewPhoneButton.addEventListener('click', function() {
     `);
     addNewPhoneItemInput.before(addNewPhoneItemBlock);
     phoneNameTitle.style.color = '#000000';
-    phoneNumberTitle.style.color = '#0000';
+    phoneNumberTitle.style.color = '#000000';
     phoneName.value = '';
     phoneNumber.value = '';
 
