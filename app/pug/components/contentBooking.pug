@@ -1,5 +1,12 @@
+div.booking_adaptive-buttons
+  div.booking_adaptive-button.booking_adaptive-button_left
+    p Info
+  div.booking_adaptive-button.booking_adaptive-button_center.selected
+    p Main
+  div.booking_adaptive-button.booking_adaptive-button_right
+    p Time
 div.content.booking
-  div.content-left.booking-left.active
+  div.content-left.booking-left.active.adaptive-invisible
     div.block-location.booking-location
       div.block-title Map Preview
       div.block-address
@@ -10,10 +17,10 @@ div.content.booking
           div.block-list_item.block-address_item 1234 Florida Rt, Fort Mayers, 34354 FL
           div.block-list_item.block-address_item Address_1
           div.block-list_item.block-address_item Address_2
-      div.block-map
+      div.block-map.booking_block-map
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14268.274546089124!2d-81.88672024389766!3d26.614246625837634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db41b541a87ca1%3A0xb25b25fe95027f76!2zMTIzNCBGbG9yaWRhIEF2ZSwgRm9ydCBNeWVycywgRkwgMzM5MDEsINCh0KjQkA!5e0!3m2!1sru!2sru!4v1581884786460!5m2!1sru!2sru" allowfullscreen=""></iframe>
-      div.house-info
-        div.house-img
+      div.house-info.booking_house-info
+        div.house-img.booking_house-img
           img(src="assets/images/house-sample.jpg", alt="img")
           p © Zillow, Inc 2006-2020
         div.house-data
@@ -557,7 +564,7 @@ div.content.booking
         button.btn.btn-clear Clear
         button.btn.btn-save.inactive Save
 
-  div.content-right.booking-right
+  div.content-right.booking-right.adaptive-invisible
     div.call-bookingSettings
       div.block-content
         div.block-content-title

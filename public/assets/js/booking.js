@@ -6,6 +6,8 @@ const addressBlock = document.querySelector('.block-address');
 
 const arrButton = document.querySelector('.arr-button');
 const bookingLeft = document.querySelector('.booking-left');
+const bookingCenter = document.querySelector('.booking-center');
+const bookingRight = document.querySelector('.booking-right');
 
 // const callFromAciton = document.querySelector('.call-fromAction');
 const callFromAciton_list = document.querySelector('.call-fromAction_list');
@@ -84,6 +86,10 @@ const bookingOntimeTillText = document.querySelector('.call-bookingSettings_onti
 const bookingOntimeTillList = document.querySelector('.call-bookingSettings_ontime-till-list');
 const bookingOntimeTillListItems = document.querySelectorAll('.call-bookingSettings_ontime-till-listItem');
 const bookingOntimeTillBlock = document.querySelector('.call-bookingSettings_ontime-till-listBlock');
+
+const buttonBlockLeft = document.querySelector('.booking_adaptive-button_left');
+const buttonBlockCenter = document.querySelector('.booking_adaptive-button_center');
+const buttonBlockRight = document.querySelector('.booking_adaptive-button_right');
 
 const avaltimeList = document.querySelectorAll('.call-avaltime_time');
 avaltimeList.forEach((avaltimeItem, index, array) => {
@@ -855,4 +861,42 @@ window.addEventListener('click', function(event) {
 });
 /* --------------------------------------- */
 
+/*
+const buttonBlockLeft = document.querySelector('.booking_adaptive-button_left');
+const buttonBlockCenter = document.querySelector('.booking_adaptive-button_center');
+const buttonBlockRight = document.querySelector('.booking_adaptive-button_right');
+*/
+
+/* Clicking by adaptive tabs */
+buttonBlockLeft.addEventListener('click', function() {
+  if (bookingLeft.classList.contains('collapse')) { bookingLeft.classList.remove('collapse'); }
+  if (buttonBlockCenter.classList.contains('selected')) { buttonBlockCenter.classList.remove('selected'); }
+  if (buttonBlockRight.classList.contains('selected')) { buttonBlockRight.classList.remove('selected'); }
+  if (!buttonBlockLeft.classList.contains('selected')) { buttonBlockLeft.classList.add('selected') }
+  if (!bookingLeft.classList.contains('active')) { bookingLeft.classList.add('active'); }
+  if (bookingLeft.classList.contains('adaptive-invisible')) { bookingLeft.classList.remove('adaptive-invisible'); }
+  if (!bookingCenter.classList.contains('adaptive-invisible')) { bookingCenter.classList.add('adaptive-invisible'); }
+  if (!bookingRight.classList.contains('adaptive-invisible')) { bookingRight.classList.add('adaptive-invisible'); }
+});
+
+buttonBlockCenter.addEventListener('click', function() {
+  if (!bookingLeft.classList.contains('adaptive-invisible')) { bookingLeft.classList.add('adaptive-invisible'); }
+  if (!bookingRight.classList.contains('adaptive-invisible')) { bookingRight.classList.add('adaptive-invisible'); }
+  if (!buttonBlockCenter.classList.contains('selected')) { buttonBlockCenter.classList.add('selected'); }
+  if (buttonBlockLeft.classList.contains('selected')) { buttonBlockLeft.classList.remove('selected'); }
+  if (buttonBlockRight.classList.contains('selected')) { buttonBlockRight.classList.remove('selected'); }
+  if (!bookingLeft.classList.contains('adaptive-invisible')) { bookingLeft.classList.add('adaptive-invisible'); }
+  if (bookingCenter.classList.contains('adaptive-invisible')) { bookingCenter.classList.remove('adaptive-invisible'); }
+  if (!bookingRight.classList.contains('adaptive-invisible')) { bookingRight.classList.add('adaptive-invisible'); }
+});
+
+buttonBlockRight.addEventListener('click', function() {
+  if (!bookingLeft.classList.contains('adaptive-invisible')) { bookingLeft.classList.add('adaptive-invisible'); }
+  if (!bookingCenter.classList.contains('adaptive-invisible')) { bookingCenter.classList.add('adaptive-invisible'); }
+  if (bookingRight.classList.contains('adaptive-invisible')) { bookingRight.classList.remove('adaptive-invisible'); }
+  if (buttonBlockLeft.classList.contains('selected')) { buttonBlockLeft.classList.remove('selected'); }
+  if (buttonBlockCenter.classList.contains('selected')) { buttonBlockCenter.classList.remove('selected'); }
+  if (!buttonBlockRight.classList.contains('selected')) { buttonBlockRight.classList.add('selected'); }
+});
+/* -------------------------------------- */
 

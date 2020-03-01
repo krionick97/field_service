@@ -39,4 +39,91 @@
       &:last-child
         margin: 0 0.6rem
 
+  &_adaptive-buttons
+    display: none
+
+
+@media (max-width: 945px)
+  .adaptive-invisible
+    display: none !important
+  .booking
+    &-location
+      margin: 2.1rem auto 0
+      width: 40rem
+      position: relative
+      .block-title
+        position: absolute
+        left: 0
+        top: -2.1rem
+    &-left
+      width: 100%
+    &-center
+      margin: 0 auto
+      flex-grow: 0
+      width: 42.4rem
+    &-right
+      margin: 0 auto
+      width: 42.4rem
+
+    &_adaptive
+      &-buttons
+        display: flex
+        max-width: 42.4rem
+        justify-content: space-between
+        margin: 0.2rem auto 3rem
+        background-color: $color-white
+        height: 4rem
+        border-bottom: 0.05rem solid $color-data-border
+
+      &-button
+        box-sizing: border-box
+        width: 100%
+        position: relative
+        &:after
+          position: absolute
+          content: ''
+          display: none
+          width: 100%
+          height: 0.5rem
+          background-color: $color-blue-light
+          bottom: 0
+        &:not(:last-child)
+          border-right: 0.05rem solid $color-data-border
+        p
+          user-select: none
+          margin-top: 0.8rem
+          font-size: 1.4rem
+          text-align: center
+          +roboto_medium
+        &.selected
+          &:after
+            display: block
+
+
+    &_block-map
+      width: 100%
+    &-center_upper-block
+      .arr-button
+        display: none
+    &-callInfo
+      margin-left: 0
+
+.block-content
+  padding: 2rem 1.8rem 2.2rem !important
+
+@media (max-width: 428px)
+  .booking
+    &-location
+      width: calc(98% - 24px)
+    &-center
+      width: 98%
+    &-right
+      width: 98%
+
+    &_adaptive-buttons
+      width: 98%
+
+
+
+
 

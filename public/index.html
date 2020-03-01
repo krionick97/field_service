@@ -8,12 +8,23 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style-booking.css?v=019"/>
+    <link rel="stylesheet" href="assets/css/style-booking.css?v=023"/>
     <title>Booking</title>
   </head>
   <body>
+    <div class="booking_adaptive-buttons">
+      <div class="booking_adaptive-button booking_adaptive-button_left">
+        <p>Info</p>
+      </div>
+      <div class="booking_adaptive-button booking_adaptive-button_center selected">
+        <p>Main</p>
+      </div>
+      <div class="booking_adaptive-button booking_adaptive-button_right">
+        <p>Time</p>
+      </div>
+    </div>
     <div class="content booking">
-      <div class="content-left booking-left active">
+      <div class="content-left booking-left active adaptive-invisible">
         <div class="block-location booking-location">
           <div class="block-title">Map Preview</div>
           <div class="block-address">
@@ -27,9 +38,9 @@
               <div class="block-list_item block-address_item">Address_2</div>
             </div>
           </div>
-          <div class="block-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14268.274546089124!2d-81.88672024389766!3d26.614246625837634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db41b541a87ca1%3A0xb25b25fe95027f76!2zMTIzNCBGbG9yaWRhIEF2ZSwgRm9ydCBNeWVycywgRkwgMzM5MDEsINCh0KjQkA!5e0!3m2!1sru!2sru!4v1581884786460!5m2!1sru!2sru" allowfullscreen=""></iframe></div>
-          <div class="house-info">
-            <div class="house-img"><img src="assets/images/house-sample.jpg" alt="img"/>
+          <div class="block-map booking_block-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14268.274546089124!2d-81.88672024389766!3d26.614246625837634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db41b541a87ca1%3A0xb25b25fe95027f76!2zMTIzNCBGbG9yaWRhIEF2ZSwgRm9ydCBNeWVycywgRkwgMzM5MDEsINCh0KjQkA!5e0!3m2!1sru!2sru!4v1581884786460!5m2!1sru!2sru" allowfullscreen=""></iframe></div>
+          <div class="house-info booking_house-info">
+            <div class="house-img booking_house-img"><img src="assets/images/house-sample.jpg" alt="img"/>
               <p>© Zillow, Inc 2006-2020</p>
             </div>
             <div class="house-data">
@@ -729,7 +740,7 @@
           </div>
         </div>
       </div>
-      <div class="content-right booking-right">
+      <div class="content-right booking-right adaptive-invisible">
         <div class="call-bookingSettings">
           <div class="block-content">
             <div class="block-content-title">
@@ -1245,6 +1256,6 @@
       </div>
     </div>
     <!-- Scripts-->
-    <script src="assets/js/booking.js?v=019"></script>
+    <script src="assets/js/booking.js?v=023"></script>
   </body>
 </html>
