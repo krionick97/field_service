@@ -70,10 +70,19 @@
         display: flex
         max-width: 42.4rem
         justify-content: space-between
-        margin: 0.2rem auto 3rem
+        // margin: 0.2rem auto 3rem
         background-color: $color-white
         height: 4rem
         border-bottom: 0.05rem solid $color-data-border
+        position: fixed
+        width: 100%
+        left: 50%
+        transform: translateX(-50%)
+        z-index: 2
+        @include box-shadow-simple
+      &-block
+        height: 4rem
+        margin-bottom: 2.8rem
 
       &-button
         box-sizing: border-box
@@ -98,7 +107,6 @@
         &.selected
           &:after
             display: block
-
 
     &_block-map
       width: 100%
