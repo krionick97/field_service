@@ -22,7 +22,6 @@ div.content.booking
       div.house-info.booking_house-info
         div.house-img.booking_house-img
           img(src="assets/images/house-sample.jpg", alt="img")
-          p © Zillow, Inc 2006-2020
         div.house-data
           div.house-table
             table
@@ -39,7 +38,7 @@ div.content.booking
                 th
                   p 2,453
                   p Sq.ft.
-
+          p.copyright © Zillow, Inc 2006-2020
   div.content-center.booking-center
     div.booking-center_upper-block
       div.arr-button
@@ -240,8 +239,8 @@ div.content.booking
                 input(type="text").data-border.call-contact_new-input
             div.call-contact_new-company
               label
-                span and/or 
-                | Company Name:
+                span and/or&nbsp;
+                | Company&nbsp;Name:
               input(type="text").data-border.call-contact_new-input
 
           div.data-border.call-contact_new-phones
@@ -429,7 +428,7 @@ div.content.booking
                           p Industrial
                     input(type="text" placeholder="Note").data-border.call-contact_new-addresses_add-input.note
                 div.call-contact_new-addresses_add-btn
-                  button.btn.btn-add Add               
+                  button.btn.btn-add Add
 
     div.call-units
       div.block-content
@@ -570,10 +569,10 @@ div.content.booking
         div.block-content-title
           div.block-title Booking Settings
         div.call-bookingSettings_row.call-bookingSettings_showDays
-          label Show (days):
+          label.call-bookingSettings_row-subtitle Show (days):
           input(type="number" min="0" max="10" value="3").data-border.call-bookingSettings_input
         div.call-bookingSettings_row.call-bookingSettings_showServRes
-          p Show Service Resource:
+          p.call-bookingSettings_row-subtitle Show Service Resource:
           div.check
             input(type="checkbox", name="checkbox-showServiceSource-01" id="checkbox-showServiceSource-01").input-checkbox
             label(for="checkbox-showServiceSource-01").checkbox
@@ -581,7 +580,7 @@ div.content.booking
                   <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
         div.call-bookingSettings_row.call-bookingSettings_checkAvail
-          p Check Availability:
+          p.call-bookingSettings_row-subtitle Check Availability:
           div.check
             input(type="checkbox", name="checkbox-checkAvailability-01" id="checkbox-checkAvailability-01" checked).input-checkbox
             label(for="checkbox-checkAvailability-01").checkbox
@@ -589,7 +588,7 @@ div.content.booking
                   <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
         div.call-bookingSettings_row.call-bookingSettings_checkArea
-          p Check Area:
+          p.call-bookingSettings_row-subtitle Check Area:
           div.check
             input(type="checkbox", name="checkbox-checkArea-01" id="checkbox-checkArea-01" checked).input-checkbox
             label(for="checkbox-checkArea-01").checkbox
@@ -597,7 +596,7 @@ div.content.booking
                   <path d="M1.2002 3.80002L5.0402 8.60002L10.8002 1.40002" stroke="#6093DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
         div.call-bookingSettings_row.call-bookingSettings_duration
-          p Duration:
+          p.call-bookingSettings_row-subtitle Duration:
           div.call-bookingSettings_duration-listBlock.call-bookingSettings_listBlock
             div.data-border.call-bookingSettings_listBlock-text.call-bookingSettings_duration-listText
               p 2:00 hours
@@ -635,11 +634,11 @@ div.content.booking
               div.block-list_item.call-bookingSettings_listBlock-item.call-bookingSettings_duration-listItem
                 p 8:00 hours
         div.call-bookingSettings_row.call-bookingSettings_onDate
-          p On Date:
+          p.call-bookingSettings_row-subtitle On Date:
           input(type="date" value="").data-border.call-bookingSettings_input
 
         div.call-bookingSettings_row.call-bookingSettings_ontime
-          p On Time:
+          p.call-bookingSettings_row-subtitle On Time:
           div.call-bookingSettings_ontime-from-listBlock.call-bookingSettings_ontime-listBlock.call-bookingSettings_listBlock
             div.data-border.call-bookingSettings_listBlock-text.call-bookingSettings_ontime-from-listText
               p &nbsp;

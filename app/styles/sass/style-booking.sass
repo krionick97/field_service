@@ -120,6 +120,20 @@ input, textarea
       display: flex
       align-items: center
 
+.copyright
+  // display: inline-block
+  // position: absolute
+  // bottom: 0
+  // right: 0
+  // z-index: 2
+  // font-size: 1rem
+  text-align: right
+  margin: 1rem 0.5rem 0 0
+  +roboto_light
+  // color: $color-white
+  // @include box-shadow-simple
+
+
 .house
   &-img
     overflow: hidden
@@ -129,18 +143,9 @@ input, textarea
     margin-bottom: 0.8rem
     position: relative
     img
+      object-fit: cover
       width: 100%
       height: 100%
-    p
-      display: inline-block
-      position: absolute
-      bottom: 0
-      left: 0
-      z-index: 2
-      font-size: 1rem
-      +roboto_light
-      color: $color-white
-      @include box-shadow-simple
 
   &-table
     width: 100%
@@ -582,12 +587,13 @@ input, textarea
           &-btn
             display: flex
             justify-content: flex-end
+            align-self: flex-end
             margin: 0.1rem 0 0
             flex-grow: 1
             button
               display: block
               height: 2.3rem
-              margin-right: 6rem     
+              // margin-right: 6rem     
           &-propertyType
             position: relative
             width: 11rem
@@ -799,6 +805,7 @@ input, textarea
       p
         white-space: nowrap
         &:nth-child(3)
+          width: 1rem
           margin: 0 0.4rem
       &-listBlock
         &:nth-child(4)
@@ -887,6 +894,7 @@ input, textarea
     justify-content: flex-end
     margin-bottom: 7rem
     &_block
+      padding-right: 1rem
       button:first-child
         margin-right: 2rem
 
@@ -1021,6 +1029,11 @@ input, textarea
               margin-bottom: 0.8rem
           &_name
             margin-bottom: 0.6rem
+        &-firstName:not(:last-child), &-lastName:not(:last-child), &-phone:not(:last-child), &-company:not(:last-child)
+          margin-right: 0 !important
+        &-firstName, &-lastName, &-phone, &-company
+          margin-right: 0
+
         &-block
           &_delete
             margin-left: 2rem
@@ -1046,11 +1059,15 @@ input, textarea
               flex-grow: 0
             &-btn
               display: flex
-              justify-content: center
+              // justify-content: center
               margin: 1.5rem 0 1.3rem
               button
                 margin-right: 0
                 display: block
+    &-units
+      &_content
+        &-add
+          justify-content: flex-end
 
 
 
@@ -1094,12 +1111,10 @@ input, textarea
     &-contact
       &_number
         &-subtitle
-          display: none
+          // display: none
+          font-size: 1.2rem
+          letter-spacing: -0.06rem
       &_new
-        &-firstName:not(:last-child), &-lastName:not(:last-child), &-phone:not(:last-child), &-company:not(:last-child)
-          margin-right: 0
-        &-firstName, &-lastName, &-phone, &-company
-          margin-right: 0
         &-leftBlock
           width: 8.6rem
         &-payer
@@ -1184,5 +1199,32 @@ input, textarea
                 width: 25%
               &.note
                 width: 45%
+    &-bookingSettings
+      &_row
+        max-width: 100%
+        justify-content: flex-start
+        &-subtitle
+          width: 15rem
+          margin-right: 1.5rem
+      &_showDays
+        input
+          width: calc(100% - 175px)
+      &_duration
+        &-listBlock
+          margin-left: 0
+          width: calc(100% - 175px)
+      &_onDate
+        input
+          width: calc(100% - 175px)
+      &_ontime
+        // &-dash
+          // display: block
+          // width: 1rem !important
+        &-listBlock
+          // width: 9.8rem
+      &_listBlock
+        margin-left: 0
+        
+
 
 

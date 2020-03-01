@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style-booking.css?v=023"/>
+    <link rel="stylesheet" href="assets/css/style-booking.css?v=028"/>
     <title>Booking</title>
   </head>
   <body>
@@ -40,9 +40,7 @@
           </div>
           <div class="block-map booking_block-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14268.274546089124!2d-81.88672024389766!3d26.614246625837634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88db41b541a87ca1%3A0xb25b25fe95027f76!2zMTIzNCBGbG9yaWRhIEF2ZSwgRm9ydCBNeWVycywgRkwgMzM5MDEsINCh0KjQkA!5e0!3m2!1sru!2sru!4v1581884786460!5m2!1sru!2sru" allowfullscreen=""></iframe></div>
           <div class="house-info booking_house-info">
-            <div class="house-img booking_house-img"><img src="assets/images/house-sample.jpg" alt="img"/>
-              <p>© Zillow, Inc 2006-2020</p>
-            </div>
+            <div class="house-img booking_house-img"><img src="assets/images/house-sample.jpg" alt="img"/></div>
             <div class="house-data">
               <div class="house-table">
                 <table>
@@ -66,6 +64,7 @@
                   </tr>
                 </table>
               </div>
+              <p class="copyright">© Zillow, Inc 2006-2020</p>
             </div>
           </div>
         </div>
@@ -325,7 +324,7 @@
                   </div>
                 </div>
                 <div class="call-contact_new-company">
-                  <label><span>and/or </span>Company Name:</label>
+                  <label><span>and/or&nbsp;</span>Company&nbsp;Name:</label>
                   <input class="data-border call-contact_new-input" type="text"/>
                 </div>
               </div>
@@ -553,7 +552,7 @@
                       </div>
                     </div>
                     <div class="call-contact_new-addresses_add-btn">
-                      <button class="btn btn-add">Add               </button>
+                      <button class="btn btn-add">Add</button>
                     </div>
                   </div>
                 </div>
@@ -747,11 +746,11 @@
               <div class="block-title">Booking Settings</div>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_showDays">
-              <label>Show (days):</label>
+              <label class="call-bookingSettings_row-subtitle">Show (days):</label>
               <input class="data-border call-bookingSettings_input" type="number" min="0" max="10" value="3"/>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_showServRes">
-              <p>Show Service Resource:</p>
+              <p class="call-bookingSettings_row-subtitle">Show Service Resource:</p>
               <div class="check">
                 <input class="input-checkbox" type="checkbox" name="checkbox-showServiceSource-01" id="checkbox-showServiceSource-01"/>
                 <label class="checkbox" for="checkbox-showServiceSource-01"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -761,7 +760,7 @@
               </div>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_checkAvail">
-              <p>Check Availability:</p>
+              <p class="call-bookingSettings_row-subtitle">Check Availability:</p>
               <div class="check">
                 <input class="input-checkbox" type="checkbox" name="checkbox-checkAvailability-01" id="checkbox-checkAvailability-01" checked="checked"/>
                 <label class="checkbox" for="checkbox-checkAvailability-01"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -771,7 +770,7 @@
               </div>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_checkArea">
-              <p>Check Area:</p>
+              <p class="call-bookingSettings_row-subtitle">Check Area:</p>
               <div class="check">
                 <input class="input-checkbox" type="checkbox" name="checkbox-checkArea-01" id="checkbox-checkArea-01" checked="checked"/>
                 <label class="checkbox" for="checkbox-checkArea-01"><svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -781,7 +780,7 @@
               </div>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_duration">
-              <p>Duration:</p>
+              <p class="call-bookingSettings_row-subtitle">Duration:</p>
               <div class="call-bookingSettings_duration-listBlock call-bookingSettings_listBlock">
                 <div class="data-border call-bookingSettings_listBlock-text call-bookingSettings_duration-listText">
                   <p>2:00 hours</p>
@@ -839,11 +838,11 @@
               </div>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_onDate">
-              <p>On Date:</p>
+              <p class="call-bookingSettings_row-subtitle">On Date:</p>
               <input class="data-border call-bookingSettings_input" type="date" value=""/>
             </div>
             <div class="call-bookingSettings_row call-bookingSettings_ontime">
-              <p>On Time:</p>
+              <p class="call-bookingSettings_row-subtitle">On Time:</p>
               <div class="call-bookingSettings_ontime-from-listBlock call-bookingSettings_ontime-listBlock call-bookingSettings_listBlock">
                 <div class="data-border call-bookingSettings_listBlock-text call-bookingSettings_ontime-from-listText">
                   <p>&nbsp;</p>
@@ -1256,6 +1255,6 @@
       </div>
     </div>
     <!-- Scripts-->
-    <script src="assets/js/booking.js?v=023"></script>
+    <script src="assets/js/booking.js?v=028"></script>
   </body>
 </html>
