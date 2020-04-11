@@ -1,0 +1,29 @@
+.primitive-main-menu
+  background-color: $color-bg-main
+  width: 100%
+  height: calc(100vh - 60px)
+  overflow: hidden
+  box-sizing: border-box
+  position: relative
+  &__links
+    position: absolute
+    background-color: $color-white
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    border-radius: 0.5rem
+    padding: 2rem 3rem
+    height: 90%
+    box-sizing: border-box
+    overflow-x: hidden
+    overflow-y: scroll
+    @include custom-scroll
+  &__link
+    font-size: 2rem
+    display: block
+    text-decoration: none
+    &:not(:last-child)
+      margin-bottom: 1.4rem
+    &:active
+      color: $color-red
+

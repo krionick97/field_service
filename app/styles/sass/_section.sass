@@ -134,11 +134,20 @@
         border-radius: 0.4rem
         background-color: rgba($color-grey, 0.7)
     &-item
-      padding: 1.8rem 0 1.8rem 4rem
+      // padding: 1.8rem 0 1.8rem 4rem
+      padding: 1.8rem 3rem
+      position: relative
       &:not(:last-child)
         border-bottom: 0.1rem solid rgba($color-black, 0.1)
       &:hover
         background-color: rgba($color-black, 0.1)
+      // &.blocked
+      //   &:hover
+      //     background-color: rgba($color-black, 0)
+      //     a
+      //       cursor: default
+      //       &:active
+      //         transform: translateY(0)
     &-link
       display: flex
       align-items: center
@@ -164,6 +173,66 @@
         width: 100%
       &_icon
         width: 68%
+      &_title
+        width: 69%
+        padding: 0.1rem 0
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+    &-indicators
+      display: none
+      position: absolute
+      top: 2rem
+      right: 3rem
+      &.active
+        display: flex
+    &-indicator
+      height: 1.8rem
+      position: relative
+      display: block
+      svg
+        width: auto
+        height: 100%
+      &_question
+        margin-left: 1.6rem
+      &_attention
+        position: absolute
+        top: -0.2rem
+        right: -0.6rem
+        display: none
+        width: 1.2rem
+        height: 1.2rem
+        box-sizing: border-box
+        padding: 0.08rem 0 0
+        background-color: $color-red
+        border-radius: 50%
+        color: $color-white
+        text-align: center
+        +roboto_medium
+        font-size: 1rem
+        &.active
+          display: block
+      // &.active
+      //   display: block
+      &_bell
+        // width: 2.1rem
+      &_question
+        // width: 1.8rem
+    &-blocked
+      display: none
+      position: absolute
+      right: 3rem
+      bottom: 1.5rem
+      border:
+        top: 0.1rem solid $color-red
+        bottom: 0.1rem solid $color-red
+      p
+        +roboto_medium
+        font-size: 1.3rem
+        color: $color-red
+        padding: 0.3rem 0 0.2rem
+      &.active
+        display: block
 
   /* Account Page */
   &__account
@@ -208,6 +277,10 @@
         visibility: visible
         pointer-events: auto
         position: relative
+      &.active-label
+        width: 28rem
+        visibility: visible
+        pointer-events: auto
       &:after
         position: absolute
         content: ''
@@ -458,7 +531,7 @@
       &-block
         padding: 0
         box-shadow: none
-        position: static
+        // position: static
         width: 100%
         top: 0
         left: 0
@@ -467,6 +540,7 @@
       &-page
         height: 32rem !important
         transform: translateY(-16rem) !important
+        position: absolute
       &-block
         padding: 3rem 0
         max-height: 30rem

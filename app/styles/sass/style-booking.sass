@@ -442,6 +442,8 @@ input, textarea
         padding: 0
       &-phones
         margin-bottom: 1.5rem
+        .call-contact_new-block:last-child
+          padding: 0.6rem 2.3rem 0.8rem
       &-title
         display: flex
         margin-bottom: 1.8rem
@@ -529,10 +531,10 @@ input, textarea
         &_add
           display: flex
           justify-content: space-between
-          align-items: center
+          align-items: flex-end
           width: 100%
           button
-            margin-right: 6rem
+            margin: 0 0 0.1rem
             height: 2rem
         &_data
           display: flex
@@ -589,7 +591,7 @@ input, textarea
             display: flex
             justify-content: flex-end
             align-self: flex-end
-            margin: 0.1rem 0 0
+            margin: 0.1rem 0 0.55rem
             flex-grow: 1
             button
               display: block
@@ -615,6 +617,7 @@ input, textarea
                 &:hover p
                   text-decoration: underline
         &_data
+          flex-grow: 1
           margin-top: 0.5rem
           &-text
             margin-bottom: 0.3rem
@@ -645,6 +648,7 @@ input, textarea
                 font-size: 1.3rem
                 +roboto_regular
           &-note
+            width: 80%
             box-sizing: border-box
             outline: none
             border: none
@@ -758,8 +762,10 @@ input, textarea
     padding-top: 2.1rem
     margin-bottom: 3rem
     &_row
+      // max-width: 19rem
       display: flex
       align-items: center
+      justify-content: space-between
       &:not(:last-child)
         margin-bottom: 1.4rem
       label, p
@@ -768,8 +774,7 @@ input, textarea
       input
         outline: none
     &_showDays, &_showServRes, &_checkAvail, &_checkArea, &_onDate
-      max-width: 19rem
-      justify-content: space-between
+      // justify-content: space-between
     &_showDays
       input
         width: 5rem
@@ -782,7 +787,8 @@ input, textarea
       &:hover
         cursor: pointer
       &-list
-        width: calc(100% + 5px)
+        // width: calc(100% + 5px)
+        width: 7.4rem
         overflow: hidden
         overflow-y: scroll
         max-height: 18rem
@@ -815,7 +821,8 @@ input, textarea
       &-from, &-till
         &-listBlock
           position: relative
-          width: 5.3rem
+          width: 6.3rem
+          // width: calc(100% - 18px)
           
 
     .btn-apply
@@ -882,16 +889,21 @@ input, textarea
         text-align: center
         outline: none
         background: transparent
-        span
-          display: inline
-          white-space: nowrap
-          border: none
+        // span
+        //   display: inline
+        //   white-space: nowrap
+        //   border: none
+        max-width: 20rem
+        margin: 0 auto
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
       &:hover
         cursor: pointer
         background-color: $color-bg-main
-      &.from, &.till
-        &:hover
-          background: transparent
+      // &.from, &.till
+      //   &:hover
+      //     background: transparent
       &.selected
         background-color: $color-blue-light
         color: $color-white
@@ -1066,7 +1078,7 @@ input, textarea
             &-btn
               display: flex
               // justify-content: center
-              margin: 1.5rem 0 1.3rem
+              // margin: 1.5rem 0 1.3rem
               button
                 margin-right: 0
                 display: block
@@ -1074,7 +1086,6 @@ input, textarea
       &_content
         &-add
           justify-content: flex-end
-
 
 
 @media (max-width: 1120px)
@@ -1117,9 +1128,9 @@ input, textarea
     &-contact
       &_number
         &-subtitle
-          // display: none
           font-size: 1.2rem
           letter-spacing: -0.06rem
+          width: 12rem
       &_new
         input
           width: calc(100% - 160px)
@@ -1174,16 +1185,18 @@ input, textarea
         .btn-marking-mini
           margin-left: 0
 
-@media (max-width: 989px)
+@media (max-width: 1030px)
   .call
-    &-contact
-      &_new
-        &-addresses
-          &_add
-            &-propertyType
-              margin-bottom: 0.8rem
+    &-bookingSettings
+      &_ontime
+        flex-direction: column
+        align-items: flex-start
+        &-listBlock
+          margin-left: 0
+          margin-top: 0.5rem
 
-@media (max-width: 945px)
+
+@media (max-width: 989px)
   .call
     &-units
       &_add
@@ -1198,6 +1211,8 @@ input, textarea
       &_new
         &-addresses
           &_add
+            &-propertyType
+              margin-bottom: 0.8rem
             &-input
               &.street
                 width: 57.5%
@@ -1225,14 +1240,28 @@ input, textarea
         input
           width: calc(100% - 175px)
       &_ontime
+        flex-direction: row
+        align-items: center
         &-listBlock
           margin-left: 0
           width: calc(100% - 175px)
         &-from, &-till
           &-listBlock
             width: calc(100% - 18px)
+
         
-        
+@media (max-width: 380px)
+  .call
+    &-bookingSettings
+      &_ontime
+        &-from, &-till
+          &-listBlock
+            width: 7.2rem !important
+      &_listBlock
+        &-text
+          p
+            font-size: 1.2rem
+            +roboto_light
 
 
 
