@@ -44,8 +44,8 @@ gulp.task('pug', function() {
 /* CSS task */
 gulp.task('css', function() {
   return gulp.src('app/styles/*.css')
-        .pipe(gulpPlugin.sourcemaps.init())
-        .pipe(gulpPlugin.sourcemaps.write())
+        // .pipe(gulpPlugin.sourcemaps.init())
+        // .pipe(gulpPlugin.sourcemaps.write())
         .pipe(gulp.dest('public/assets/css/'))
         .pipe(browserSync.reload({
           stream: true
@@ -55,14 +55,14 @@ gulp.task('css', function() {
 /* SASS preprocessor */
 gulp.task('sass', function() {
   return gulp.src('app/styles/sass/style.sass')
-        .pipe(gulpPlugin.sourcemaps.init())
+        // .pipe(gulpPlugin.sourcemaps.init())
         .pipe(gulpPlugin.sass({}))
         .pipe(gulpPlugin.autoprefixer({}))
         .on("error", gulpPlugin.notify.onError({
           message: "Error: <%= error.message %>",
           title: "Error in style"
         }))
-        .pipe(gulpPlugin.sourcemaps.write())
+        // .pipe(gulpPlugin.sourcemaps.write())
         .pipe(gulp.dest('public/assets/css/'))
         .pipe(browserSync.reload({
           stream: true
@@ -70,14 +70,59 @@ gulp.task('sass', function() {
 });
 gulp.task('sass-iframe', function() {
   return gulp.src('app/styles/sass/style-iframe.sass')
-        .pipe(gulpPlugin.sourcemaps.init())
+        // .pipe(gulpPlugin.sourcemaps.init())
         .pipe(gulpPlugin.sass({}))
         .pipe(gulpPlugin.autoprefixer({}))
         .on("error", gulpPlugin.notify.onError({
           message: "Error: <%= error.message %>",
           title: "Error in style"
         }))
-        .pipe(gulpPlugin.sourcemaps.write())
+        // .pipe(gulpPlugin.sourcemaps.write())
+        .pipe(gulp.dest('public/assets/css/'))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
+});
+gulp.task('sass-accounts-list', function() {
+  return gulp.src('app/styles/sass/accounts-list-style.sass')
+        // .pipe(gulpPlugin.sourcemaps.init())
+        .pipe(gulpPlugin.sass({}))
+        .pipe(gulpPlugin.autoprefixer({}))
+        .on("error", gulpPlugin.notify.onError({
+          message: "Error: <%= error.message %>",
+          title: "Error in style"
+        }))
+        // .pipe(gulpPlugin.sourcemaps.write())
+        .pipe(gulp.dest('public/assets/css/'))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
+});
+gulp.task('sass-recovery-page', function() {
+  return gulp.src('app/styles/sass/recovery-page.sass')
+        // .pipe(gulpPlugin.sourcemaps.init())
+        .pipe(gulpPlugin.sass({}))
+        .pipe(gulpPlugin.autoprefixer({}))
+        .on("error", gulpPlugin.notify.onError({
+          message: "Error: <%= error.message %>",
+          title: "Error in style"
+        }))
+        // .pipe(gulpPlugin.sourcemaps.write())
+        .pipe(gulp.dest('public/assets/css/'))
+        .pipe(browserSync.reload({
+          stream: true
+        }));
+});
+gulp.task('sass-login-page', function() {
+  return gulp.src('app/styles/sass/login-page.sass')
+        // .pipe(gulpPlugin.sourcemaps.init())
+        .pipe(gulpPlugin.sass({}))
+        .pipe(gulpPlugin.autoprefixer({}))
+        .on("error", gulpPlugin.notify.onError({
+          message: "Error: <%= error.message %>",
+          title: "Error in style"
+        }))
+        // .pipe(gulpPlugin.sourcemaps.write())
         .pipe(gulp.dest('public/assets/css/'))
         .pipe(browserSync.reload({
           stream: true
@@ -85,14 +130,14 @@ gulp.task('sass-iframe', function() {
 });
 gulp.task('sass-booking', function() {
   return gulp.src('app/styles/sass/style-booking.sass')
-        .pipe(gulpPlugin.sourcemaps.init())
+        // .pipe(gulpPlugin.sourcemaps.init())
         .pipe(gulpPlugin.sass({}))
         .pipe(gulpPlugin.autoprefixer({}))
         .on("error", gulpPlugin.notify.onError({
           message: "Error: <%= error.message %>",
           title: "Error in style"
         }))
-        .pipe(gulpPlugin.sourcemaps.write())
+        // .pipe(gulpPlugin.sourcemaps.write())
         .pipe(gulp.dest('public/assets/css/'))
         .pipe(browserSync.reload({
           stream: true
@@ -143,6 +188,9 @@ gulp.task('watch', function() {
   gulp.watch('app/styles/sass/*.sass', gulp.series('sass'));
   gulp.watch('app/styles/sass/*.sass', gulp.series('sass-iframe'));
   gulp.watch('app/styles/sass/*.sass', gulp.series('sass-booking'));
+  gulp.watch('app/styles/sass/*.sass', gulp.series('sass-accounts-list'));
+  gulp.watch('app/styles/sass/*.sass', gulp.series('sass-recovery-page'));
+  gulp.watch('app/styles/sass/*.sass', gulp.series('sass-login-page'));
   gulp.watch('app/js/*.js', gulp.series('script'));
   // gulp.watch('public/*.html', gulp.series('HTMLValidator'));
   // gulp.watch('app/data/*.json', gulp.series('json'));
@@ -150,6 +198,6 @@ gulp.task('watch', function() {
 
 /* Default task */
 gulp.task('default', gulp.series(
-  gulp.parallel('pug', 'fonts', 'sass', 'sass-iframe', 'sass-booking', 'img', 'css', 'script'),
+  gulp.parallel('pug', 'fonts', 'sass', 'sass-iframe', 'sass-booking', 'sass-accounts-list', 'sass-recovery-page', 'sass-login-page', 'img', 'css', 'script'),
   gulp.parallel('watch', 'serve')
 ));

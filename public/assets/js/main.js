@@ -89,7 +89,7 @@ const callingFlag = document.querySelector('.section__account_callingFlag');
 /* Menu Label hover */
 if (menuLabel) {
   menuLabel.addEventListener('mouseover', function() {
-    accountMenu.classList.add('active-label');
+    accountMenu.classList.add('active');
     for (let menuItem of menuItems) {
       menuItem.classList.add('visible');
     }
@@ -97,7 +97,7 @@ if (menuLabel) {
 
   accountMenu.addEventListener('mouseleave', function() {
     if (!burgerButton.classList.contains('active') && menuLabel.classList.contains('active')) {
-      accountMenu.classList.remove('active-label');
+      accountMenu.classList.remove('active');
       for (let menuItem of menuItems) {
         menuItem.classList.remove('visible');
       }

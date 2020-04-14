@@ -1,238 +1,4 @@
 .section
-  /* SignIn Page */
-  // overflow: hidden
-  &__login
-    &-page
-      display: block
-      width: 100%
-      height: 100%
-      position: relative
-      &:before
-        display: block
-        content: ''
-        position: absolute
-        width: 100%
-        height: 100%
-        top: 0
-        left: 0
-        background-image: url('../../assets/images/login-page-background.jpg')
-        background-size: cover
-        opacity: 0.5
-        pointer-events: none
-        z-index: -1
-    &-block
-      padding: 3.5rem 0 4rem
-      display: block
-      background-color: $color-bg-main
-      width: 40rem
-      border-radius: 1.5rem
-      box-shadow: 0.6rem 0.4rem 0.6rem rgba($color-black, 0.28)
-      position: absolute
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%)
-
-    &-form
-      &_type
-        display: flex
-        align-items: center
-        justify-content: center
-        margin-left: auto
-        margin-right: auto
-        margin-bottom: 1.2rem
-      &_label
-        display: block
-        +roboto_regular
-        font-size: 1.6rem
-        text-align: right
-        width: 7.5rem
-        margin-right: 1.2rem
-      &_input
-        display: block
-        box-sizing: border-box
-        +roboto_light
-        width: 15rem
-        height: 2.4rem
-        left: 11.4rem
-        top: 0
-        background: #FFFFFF
-        border: 0.05rem solid rgba($color-black, 0.4)
-        box-sizing: border-box
-        border-radius: 1.2rem
-        padding: 0 0 0 0.7rem
-        &:focus
-          outline: none
-      &_error
-        // display: none
-        text-align: center
-        font-size: 1.3rem
-        margin-bottom: 1rem
-        +roboto_light
-        color: red
-      &_link
-        margin: 0 auto 3.5rem
-        display: block
-        width: 9.5rem
-        +roboto_light
-        font-size: 1.2rem
-        a
-          color: $color-blue-dark
-          &:active
-            color: red
-          &:focus
-            outline: none
-      &_title
-        +roboto_medium
-        font-size: 2.4rem
-        color: $color-blue-light
-        margin: 0 0 3rem
-        text-align: center
-      &_submit
-        font-size: 1.8rem
-        height: 4rem
-        border-radius: 2rem
-        width: 13.5rem
-        display: block
-        margin: 0 auto
-        transition: 0.1s
-        &:hover
-          cursor: pointer
-          transform: scale(1.1)
-        &:active
-          transform: scale(1)
-
-  /* Recovery page */
-  &__recovery
-    &-form
-      &_type
-        flex-direction: column
-        align-items: center
-        padding: 0 2rem
-        margin-bottom: 3rem
-      &_label
-        text-align: center
-        width: auto
-        margin: 0 0 1rem
-      &_input
-        width: 85%
-
-  /* Selecting of Account Page */
-  &__accounts
-    &-block
-      background-color: $color-white
-      padding: 4rem 0
-    &-content
-      background-color: $color-bg-main
-      max-height: 30rem
-      border-top: 0.1rem solid rgba($color-black, 0.1)
-      border-bottom: 0.1rem solid rgba($color-black, 0.1)
-      overflow-x: hidden
-      overflow-y: scroll
-      &::-webkit-scrollbar
-        width: 0.8rem
-      &::-webkit-scrollbar-thumb
-        border-radius: 0.4rem
-        background-color: rgba($color-grey, 0.7)
-    &-item
-      // padding: 1.8rem 0 1.8rem 4rem
-      padding: 1.8rem 3rem
-      position: relative
-      &:not(:last-child)
-        border-bottom: 0.1rem solid rgba($color-black, 0.1)
-      &:hover
-        background-color: rgba($color-black, 0.1)
-      // &.blocked
-      //   &:hover
-      //     background-color: rgba($color-black, 0)
-      //     a
-      //       cursor: default
-      //       &:active
-      //         transform: translateY(0)
-    &-link
-      display: flex
-      align-items: center
-      +roboto_regular
-      font-size: 1.8rem
-      color: $color-black
-      text-decoration: none
-      &:focus
-        outline: none
-      &:active
-        transform: translateY(0.05rem)
-      &_image
-        background-color: $color-grey
-        display: flex
-        justify-content: center
-        align-items: center
-        width: 6.6rem
-        height: 6.6rem
-        border-radius: 3.3rem
-        overflow: hidden
-        margin-right: 1.6rem
-      &_img
-        width: 100%
-      &_icon
-        width: 68%
-      &_title
-        width: 69%
-        padding: 0.1rem 0
-        white-space: nowrap
-        overflow: hidden
-        text-overflow: ellipsis
-    &-indicators
-      display: none
-      position: absolute
-      top: 2rem
-      right: 3rem
-      &.active
-        display: flex
-    &-indicator
-      height: 1.8rem
-      position: relative
-      display: block
-      svg
-        width: auto
-        height: 100%
-      &_question
-        margin-left: 1.6rem
-      &_attention
-        position: absolute
-        top: -0.2rem
-        right: -0.6rem
-        display: none
-        width: 1.2rem
-        height: 1.2rem
-        box-sizing: border-box
-        padding: 0.08rem 0 0
-        background-color: $color-red
-        border-radius: 50%
-        color: $color-white
-        text-align: center
-        +roboto_medium
-        font-size: 1rem
-        &.active
-          display: block
-      // &.active
-      //   display: block
-      &_bell
-        // width: 2.1rem
-      &_question
-        // width: 1.8rem
-    &-blocked
-      display: none
-      position: absolute
-      right: 3rem
-      bottom: 1.5rem
-      border:
-        top: 0.1rem solid $color-red
-        bottom: 0.1rem solid $color-red
-      p
-        +roboto_medium
-        font-size: 1.3rem
-        color: $color-red
-        padding: 0.3rem 0 0.2rem
-      &.active
-        display: block
 
   /* Account Page */
   &__account
@@ -403,18 +169,18 @@
   to
     background-color: $color-green
 
-// @media (max-height: 840px)
-//   .section
-//     &__account
-//       &-menu_list
-//         height: 46rem
-//         overflow-y: scroll
-//         &::-webkit-scrollbar
-//           width: 0.8rem
-//           opacity: 0
-//         &::-webkit-scrollbar-thumb
-//           border-radius: 0.4rem
-//           background-color: rgba($color-blue-light, 0.3)
+@media (max-height: 840px)
+  .section
+    &__account
+      &-menu_list
+        height: 46rem
+        overflow-y: scroll
+        &::-webkit-scrollbar
+          width: 0.8rem
+          opacity: 0
+        &::-webkit-scrollbar-thumb
+          border-radius: 0.4rem
+          background-color: rgba($color-blue-light, 0.3)
 
 @media (max-width: 720px)
   .section
@@ -432,26 +198,23 @@
           animation: 0.5s infinite callingFlagCcalling
 
 
+@media (max-height: 630px)
+  .section
+    &__account
+      &-menu_list
+        height: 38rem
 
+@media (max-height: 452px)
+  .section
+    &__account
+      &-menu_list
+        height: 32rem
 
-
-// @media (max-height: 630px)
-//   .section
-//     &__account
-//       &-menu_list
-//         height: 38rem
-
-// @media (max-height: 452px)
-//   .section
-//     &__account
-//       &-menu_list
-//         height: 32rem
-
-// @media (max-height: 400px)
-//   .section
-//     &__account
-//       &-menu_list
-//         height: 20rem
+@media (max-height: 400px)
+  .section
+    &__account
+      &-menu_list
+        height: 20rem
 
 @media (max-width: 1420px)
   .section
@@ -483,17 +246,6 @@
         &-title
           font-size: 1.6rem
 
-@media (max-width: 990px)
-  .section
-    &__login
-      &-form
-        &_submit
-          &:hover
-            transform: scale(1)
-    &__accounts
-      &-item
-        &:hover
-          background-color: none
 
 @media (max-width: 1120px)
   .section
@@ -517,33 +269,6 @@
           flex-grow: 0
           width: 0
           height: 0
-
-@media (max-width: 420px)
-  .section
-    &__login
-      &-page
-        position: fixed
-        height: 21.4rem
-        top: 50%
-        transform: translateY(-107px)
-        &:before
-          display: none
-      &-block
-        padding: 0
-        box-shadow: none
-        // position: static
-        width: 100%
-        top: 0
-        left: 0
-        transform: translate(0)
-    &__accounts
-      &-page
-        height: 32rem !important
-        transform: translateY(-16rem) !important
-        position: absolute
-      &-block
-        padding: 3rem 0
-        max-height: 30rem
 
 
 

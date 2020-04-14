@@ -497,14 +497,14 @@
 
 @media (max-width: 1120px)
   .header
-    padding: 0
     &__account
       height: auto
       width: 100%
       flex-direction: column
+      padding: 0
       &-login
+        width: fit-content
         margin: 1.1rem 0
-        width: 17.4rem
       &-navigate
         padding: 0
         height: 6rem
@@ -570,13 +570,24 @@
 
 @media (max-width: 720px)
   .header
+    // align-items: flex-start
     &.height
       height: 100% !important
     &__account
       height: 6rem
+      &-login
+        margin: 0
+        position: absolute
+        // border: 0.1rem solid $color-white
+        height: 6rem
+        // position: absolute
+        // transform: translateY(2rem)
       &.mobile-visible
         transition: 0.1s
         height: 11rem
+        .header__account-login
+          transition: 0
+          position: static
       &-navigate
         background: none
         &.mobile-visible

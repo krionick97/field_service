@@ -1,0 +1,82 @@
+html
+  font-size: 10px
+html, body
+  height: 100%
+  overflow: hidden
+
+body
+  +roboto_regular
+  background-color: $color-bg-main
+  // height: 100%
+  // overflow: hidden
+
+
+.login
+  display: flex
+  align-items: center
+  color: $color-white
+  text-decoration: none
+  // border: 0.1rem solid $color-white
+  box-sizing: border-box
+  // margin: 0.5rem 0
+  // height: 5rem
+  &:active
+    .login
+      &__image, &__text
+        transform: translateY(0.06rem)
+  &:focus
+    outline: none
+  &__image
+    width: 3.2rem
+    height: 3.6rem
+    margin: 0.1rem 0.8rem 0.1rem 0
+    svg
+      width: 100%
+      height: 100%
+  &__title
+    +roboto_medium
+    font-size: 2.4rem
+    padding: 0 0 0.1rem
+  &__subtitle
+    +roboto_light
+    font-size: 1.3rem
+
+.frameContent
+  width: 100%
+  height: 100%
+
+.dark-button
+  background-color: $color-blue-dark
+  color: $color-white
+  border: none
+  &:hover
+    cursor: pointer
+  &:focus
+    outline: none
+
+.controls-arrow
+  width: 1.5rem
+  svg
+    stroke: $color-black
+    width: 100%
+    height: auto
+
+#absences-icon
+  height: 2.5rem
+  img
+    height: 100%
+
+.button
+  transition: 0.1s
+  img, svg
+    transition: 0.1s
+  &:hover
+    cursor: pointer
+    img, svg
+      transform: scale(1.04)
+  &:focus
+    outline: none
+  &:active
+    img, svg
+      transform: scale(1)
+

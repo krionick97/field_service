@@ -1,0 +1,131 @@
+.section
+  /* SignIn Page */
+  // overflow: hidden
+  &__login
+    &-page
+      display: block
+      width: 100%
+      height: 100%
+      position: relative
+      &:before
+        display: block
+        content: ''
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-image: url('../../assets/images/login-page-background.jpg')
+        background-size: cover
+        opacity: 0.5
+        pointer-events: none
+        z-index: -1
+    &-block
+      padding: 3.5rem 0 4rem
+      display: block
+      background-color: $color-bg-main
+      width: 40rem
+      border-radius: 1.5rem
+      box-shadow: 0.6rem 0.4rem 0.6rem rgba($color-black, 0.28)
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+    &-form
+      &_type
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-left: auto
+        margin-right: auto
+        margin-bottom: 1.2rem
+      &_label
+        display: block
+        +roboto_regular
+        font-size: 1.6rem
+        text-align: right
+        width: 7.5rem
+        margin-right: 1.2rem
+      &_input
+        display: block
+        box-sizing: border-box
+        +roboto_light
+        width: 15rem
+        height: 2.4rem
+        left: 11.4rem
+        top: 0
+        background: #FFFFFF
+        border: 0.05rem solid rgba($color-black, 0.4)
+        box-sizing: border-box
+        border-radius: 1.2rem
+        padding: 0 0 0 0.7rem
+        &:focus
+          outline: none
+      &_error
+        // display: none
+        text-align: center
+        font-size: 1.3rem
+        margin-bottom: 1rem
+        +roboto_light
+        color: red
+      &_link
+        margin: 0 auto 3.5rem
+        display: block
+        width: 9.5rem
+        +roboto_light
+        font-size: 1.2rem
+        a
+          color: $color-blue-dark
+          &:active
+            color: red
+          &:focus
+            outline: none
+      &_title
+        +roboto_medium
+        font-size: 2.4rem
+        color: $color-blue-light
+        margin: 0 0 3rem
+        text-align: center
+      &_submit
+        font-size: 1.8rem
+        height: 4rem
+        border-radius: 2rem
+        width: 13.5rem
+        display: block
+        margin: 0 auto
+        transition: 0.1s
+        &:hover
+          cursor: pointer
+          transform: scale(1.1)
+        &:active
+          transform: scale(1)
+
+@media (max-width: 990px)
+  .section
+    &__login
+      &-form
+        &_submit
+          &:hover
+            transform: scale(1)
+
+
+@media (max-width: 420px)
+  .section
+    &__login
+      &-page
+        position: fixed
+        height: 21.4rem
+        top: 50%
+        transform: translateY(-107px)
+        &:before
+          display: none
+      &-block
+        padding: 0
+        box-shadow: none
+        // position: static
+        width: 100%
+        top: 0
+        left: 0
+        transform: translate(0)
+

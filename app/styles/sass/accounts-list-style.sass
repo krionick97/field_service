@@ -1,0 +1,161 @@
+@import 'variables'
+@import 'fonts'
+@import 'mixins'
+
+@import 'base'
+
+@import 'header'
+
+@import 'section-login-page'
+
+.section
+  /* Selecting of Account Page */
+  &__accounts
+    &-block
+      background-color: $color-white
+      padding: 4rem 0
+    &-content
+      background-color: $color-bg-main
+      max-height: 30rem
+      border-top: 0.1rem solid rgba($color-black, 0.1)
+      border-bottom: 0.1rem solid rgba($color-black, 0.1)
+      overflow-x: hidden
+      overflow-y: scroll
+      &::-webkit-scrollbar
+        width: 0.8rem
+      &::-webkit-scrollbar-thumb
+        border-radius: 0.4rem
+        background-color: rgba($color-grey, 0.7)
+    &-item
+      // padding: 1.8rem 0 1.8rem 4rem
+      padding: 1.8rem 3rem
+      position: relative
+      &:not(:last-child)
+        border-bottom: 0.1rem solid rgba($color-black, 0.1)
+      &:hover
+        background-color: rgba($color-black, 0.1)
+        cursor: pointer
+      &:active
+        transform: translateY(0.05rem)
+      // &.blocked
+      //   &:hover
+      //     background-color: rgba($color-black, 0)
+      //     a
+      //       cursor: default
+      //       &:active
+      //         transform: translateY(0)
+    &-link
+      display: flex
+      align-items: center
+      +roboto_regular
+      font-size: 1.8rem
+      color: $color-black
+      text-decoration: none
+      &:focus
+        outline: none
+      &_image
+        background-color: $color-grey
+        background-image: url('../../assets/images/business-account_icon.svg')
+        background-repeat: no-repeat
+        background-size: 4rem
+        background-position: 1.35rem
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 6.6rem
+        height: 6.6rem
+        border-radius: 3.3rem
+        overflow: hidden
+        margin-right: 1.6rem
+      &_img
+        height: 100%
+      &_title
+        width: 69%
+        padding: 0.1rem 0
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+    &-indicators
+      display: none
+      position: absolute
+      top: 2rem
+      right: 3rem
+      &.active
+        display: flex
+    &-indicator
+      height: 1.8rem
+      position: relative
+      display: block
+      svg
+        width: auto
+        height: 100%
+      &_question
+        margin-left: 1.6rem
+      &_attention
+        position: absolute
+        top: -0.2rem
+        right: -0.6rem
+        display: none
+        width: 1.2rem
+        height: 1.2rem
+        box-sizing: border-box
+        padding: 0.08rem 0 0
+        background-color: $color-red
+        border-radius: 50%
+        color: $color-white
+        text-align: center
+        +roboto_medium
+        font-size: 1rem
+        &.active
+          display: block
+      // &.active
+      //   display: block
+      &_bell
+        // width: 2.1rem
+      &_question
+        // width: 1.8rem
+    &-blocked
+      display: none
+      position: absolute
+      right: 3rem
+      bottom: 1.5rem
+      user-select: none
+      border:
+        top: 0.1rem solid $color-red
+        bottom: 0.1rem solid $color-red
+      p
+        +roboto_medium
+        font-size: 1.3rem
+        color: $color-red
+        padding: 0.3rem 0 0.2rem
+      // &:hover
+      //   cursor: pointer
+      &.active
+        display: block
+
+@media (max-width: 1200px)
+  .section
+    &__accounts
+      &-item
+        &:hover
+          background: none
+          cursor: default
+
+@media (max-width: 990px)
+  .section
+    &__accounts
+      &-item
+        &:hover
+          background-color: none
+
+@media (max-width: 420px)
+  .section
+    &__accounts
+      &-page
+        height: 32rem !important
+        transform: translateY(-16rem) !important
+        position: absolute
+      &-block
+        padding: 3rem 0
+        max-height: 30rem
+
