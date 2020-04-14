@@ -1078,16 +1078,12 @@ body {
       position: absolute;
       height: 6rem; }
     .header__account.mobile-visible {
-      -webkit-transition: 0.1s;
-      -o-transition: 0.1s;
-      -moz-transition: 0.1s;
-      transition: 0.1s;
+      -webkit-transition: 0;
+      -o-transition: 0;
+      -moz-transition: 0;
+      transition: 0;
       height: 11rem; }
       .header__account.mobile-visible .header__account-login {
-        -webkit-transition: 0;
-        -o-transition: 0;
-        -moz-transition: 0;
-        transition: 0;
         position: static; }
     .header__account-navigate {
       background: none; }
