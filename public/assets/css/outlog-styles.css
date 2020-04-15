@@ -82,8 +82,7 @@ body {
       height: 100%; }
   .login__title {
     font-family: 'Roboto-Medium', sans-serif;
-    font-size: 2.4rem;
-    padding: 0 0 0.1rem; }
+    font-size: 2.4rem; }
   .login__subtitle {
     font-family: 'Roboto-Light', sans-serif;
     font-size: 1.3rem; }
@@ -1374,6 +1373,176 @@ body {
             transform: translate(0); } }
 
 .section {
+  /* Selecting of Account Page */ }
+  .section__accounts-block {
+    background-color: #ffffff;
+    padding: 4rem 0; }
+  .section__accounts-content {
+    background-color: #F6F7FB;
+    max-height: 30rem;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    overflow-y: scroll; }
+    .section__accounts-content::-webkit-scrollbar {
+      width: 0.8rem; }
+    .section__accounts-content::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 0.4rem;
+              border-radius: 0.4rem;
+      background-color: rgba(142, 142, 147, 0.7); }
+  .section__accounts-item {
+    padding: 1.8rem 3rem;
+    position: relative; }
+    .section__accounts-item:not(:last-child) {
+      border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1); }
+    .section__accounts-item:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+      cursor: pointer; }
+    .section__accounts-item:active {
+      -webkit-transform: translateY(0.05rem);
+         -moz-transform: translateY(0.05rem);
+          -ms-transform: translateY(0.05rem);
+           -o-transform: translateY(0.05rem);
+              transform: translateY(0.05rem); }
+  .section__accounts-link {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-family: 'Roboto-Regular', sans-serif;
+    font-size: 1.8rem;
+    color: #000000;
+    text-decoration: none; }
+    .section__accounts-link:focus {
+      outline: none; }
+    .section__accounts-link_image {
+      background-color: #8E8E93;
+      background-image: url("../../assets/images/business-account_icon.svg");
+      background-repeat: no-repeat;
+      -webkit-background-size: 4rem 4rem;
+         -moz-background-size: 4rem;
+              background-size: 4rem;
+      background-position: 1.35rem;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+         -moz-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      width: 6.6rem;
+      height: 6.6rem;
+      -webkit-border-radius: 3.3rem;
+         -moz-border-radius: 3.3rem;
+              border-radius: 3.3rem;
+      overflow: hidden;
+      margin-right: 1.6rem; }
+    .section__accounts-link_img {
+      height: 100%; }
+    .section__accounts-link_title {
+      width: 69%;
+      padding: 0.1rem 0;
+      white-space: nowrap;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+         text-overflow: ellipsis; }
+  .section__accounts-indicators {
+    display: none;
+    position: absolute;
+    top: 2rem;
+    right: 3rem; }
+    .section__accounts-indicators.active {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex; }
+  .section__accounts-indicator {
+    height: 1.8rem;
+    position: relative;
+    display: block; }
+    .section__accounts-indicator svg {
+      width: auto;
+      height: 100%; }
+    .section__accounts-indicator_question {
+      margin-left: 1.6rem; }
+    .section__accounts-indicator_attention {
+      position: absolute;
+      top: -0.2rem;
+      right: -0.6rem;
+      display: none;
+      width: 1.2rem;
+      height: 1.2rem;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+      padding: 0.08rem 0 0;
+      background-color: #FF0000;
+      -webkit-border-radius: 50%;
+         -moz-border-radius: 50%;
+              border-radius: 50%;
+      color: #ffffff;
+      text-align: center;
+      font-family: 'Roboto-Medium', sans-serif;
+      font-size: 1rem; }
+      .section__accounts-indicator_attention.active {
+        display: block; }
+  .section__accounts-blocked {
+    display: none;
+    position: absolute;
+    right: 3rem;
+    bottom: 1.5rem;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border-top: 0.1rem solid #FF0000;
+    border-bottom: 0.1rem solid #FF0000; }
+    .section__accounts-blocked p {
+      font-family: 'Roboto-Medium', sans-serif;
+      font-size: 1.3rem;
+      color: #FF0000;
+      padding: 0.3rem 0 0.2rem; }
+    .section__accounts-blocked.active {
+      display: block; }
+
+@media (max-width: 1200px) {
+  .section__accounts-item:hover {
+    background: none;
+    cursor: default; } }
+
+@media (max-width: 990px) {
+  .section__accounts-item:hover {
+    background-color: none; } }
+
+@media (max-width: 420px) {
+  .section__accounts-page {
+    height: 32rem !important;
+    -webkit-transform: translateY(-16rem) !important;
+       -moz-transform: translateY(-16rem) !important;
+        -ms-transform: translateY(-16rem) !important;
+         -o-transform: translateY(-16rem) !important;
+            transform: translateY(-16rem) !important;
+    position: absolute; }
+  .section__accounts-block {
+    padding: 3rem 0;
+    max-height: 30rem; } }
+
+.section {
   /* Recovery page */ }
   .section__recovery-form_type {
     -webkit-box-orient: vertical;
@@ -1396,3 +1565,14 @@ body {
     margin: 0 0 1rem; }
   .section__recovery-form_input {
     width: 85%; }
+
+.section__email-sent_text {
+  font-size: 1.8rem;
+  max-width: 34.4rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1.2; }
+
+@media (max-width: 420px) {
+  .section__email-sent_title {
+    margin: 2rem 0 3rem; } }
