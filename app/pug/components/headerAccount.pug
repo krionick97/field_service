@@ -47,7 +47,7 @@ header.header.header__account
               <path class="cls-1" d="M41.6,41.9h0A13.45,13.45,0,0,1,37.26,32V21.82A16,16,0,0,0,27.14,6.93V6a6,6,0,0,0-5.78-6,5.89,5.89,0,0,0-6,5.89v1A16,16,0,0,0,5.26,21.82V32A13.45,13.45,0,0,1,.92,41.89h0a2.46,2.46,0,0,0,1.54,4.37h37.6A2.46,2.46,0,0,0,41.6,41.9Z"/></g></g>
           </svg>
         div.button.header__account-navigate_indicator.header__account-navigate_profile
-          div.attention-profile.header__account-navigate_profile-attention.active
+          img(src="assets/images/profile-sample.jpg", alt="")
         div.button.header__account-navigate_indicator.header__account-navigate_phonecall
           //- img(src="assets/images/phonecall-1_icon.svg", alt="Phonecall")
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.97 67.77">
@@ -62,6 +62,11 @@ header.header.header__account
         div.header__account-navigate_popup
           div.header__account-navigate_popup-beeper
             div.header__account-navigate_popup-beeper_fill
+          div.header__account-navigate_popup-name
+            p
+              span FirstName
+              |&nbsp;
+              span LastName
           div.header__account-navigate_popup-item.header__account-navigate_popup-accounts
             div.header__account-navigate_popup-icon
               img(src="assets/images/accounts_icon.svg", alt="Accounts")
@@ -87,15 +92,15 @@ header.header.header__account
           div.header__account-navigate_popup-list
             div.header__account-navigate_popup-subitem
               div.section__accounts-link_image.header__account-navigate_popup-icon
-                img(src="assets/images/business-account_icon.svg", alt="Account").section__accounts-link_img.section__accounts-link_icon
+                img(src="assets/images/house-sample.jpg", alt="")
               span Texas Appliance Repair
             div.header__account-navigate_popup-subitem
               div.section__accounts-link_image.header__account-navigate_popup-icon
-                img(src="assets/images/business-account_icon.svg", alt="Account").section__accounts-link_img.section__accounts-link_icon
+                img(src="#", alt="").section__accounts-link_img.section__accounts-link_icon
               span Account_2
             div.header__account-navigate_popup-subitem
               div.section__accounts-link_image.header__account-navigate_popup-icon
-                img(src="assets/images/business-account_icon.svg", alt="Account").section__accounts-link_img.section__accounts-link_icon
+                img(src="#", alt="").section__accounts-link_img.section__accounts-link_icon
               span Account_3
 
         // Notification popup

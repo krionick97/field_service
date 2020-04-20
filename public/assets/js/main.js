@@ -15,7 +15,7 @@ const accountHeader = document.querySelector('.header__account');
 const accountPage = document.querySelector('.section__account-page');
 
 const popup = document.querySelector('.header__account-navigate_popup');
-const popupItems = document.querySelectorAll('.header__account-navigate_popup-item:not(:nth-child(1)):not(:nth-child(2))');
+const popupItems = document.querySelectorAll('.header__account-navigate_popup-item:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))');
 const popupAccounts = document.querySelector('.header__account-navigate_popup-accounts');
 const navigateIndicators = document.querySelectorAll('.header__account-navigate_indicator');
 const popupIndicators = document.querySelectorAll('.header__account-navigate_indicator-mobile');
@@ -429,6 +429,7 @@ if (popup && popupAccounts) {
   /* Accounts-clicking and listing of account-list */
   popupAccounts.addEventListener('click', function() {
     if (!popupAccountsList.classList.contains('visible')) { popupAccountsList.classList.add('visible'); }
+    else { popupAccountsList.classList.remove('visible'); }
     for (let popupIndicator of popupIndicators) {
       if (popupIndicator.classList.contains('selected')) popupIndicator.classList.remove('selected');
     }  

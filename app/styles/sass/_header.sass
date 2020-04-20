@@ -150,7 +150,7 @@
         position: absolute
         opacity: 0
         pointer-events: none
-        bottom: -180%
+        bottom: -246%
         right: 4rem
         font-size: 1.6rem
         z-index: 10
@@ -163,6 +163,23 @@
           transition: 0.1s
           opacity: 1
           pointer-events: auto
+        &-name
+          display: flex
+          padding: 0.6rem 0.8rem
+          border-bottom: 0.1rem solid $color-blue-light
+          margin-bottom: 0.8rem
+          p
+            display: block
+            font-size: 1.8rem
+            +roboto_medium
+            display: flex
+            padding: 0.1rem
+            span
+              display: block
+              max-width: 14.2rem
+              white-space: nowrap
+              overflow: hidden
+              text-overflow: ellipsis
         &-item, &-subitem
           padding: 1rem 1.2rem
           display: flex
@@ -472,6 +489,13 @@
         background-image: url('../../assets/images/profile_icon.svg')
         background-repeat: no-repeat
         background-size: cover
+        overflow: hidden
+        outline: none
+        user-select: none
+        img
+          height: 100%
+          user-select: none
+          outline: none
       &_phonecall
         width: 3rem
         margin-bottom: 0.5rem
@@ -531,7 +555,7 @@
               @include attention-icon(block, auto, 0.2rem, 2rem, auto)
 
         &_popup
-          bottom: -440%
+          bottom: -505%
           right: 0.5rem
           &-item, &-subitem
             &:hover
@@ -543,17 +567,17 @@
             transition: 0
         &_notices
           z-index: 11
-          right: 17rem
+          right: 19.6rem
           &-beeper 
             &_fill
-              top: 17.8rem
+              top: 21.7rem
               right: -0.7rem
               transform: rotate(135deg)
         &_support
           width: 20rem
           z-index: 11
-          top: 8rem
-          right: 17rem
+          top: 12rem
+          right: 19.6rem
           &-beeper 
             &_fill
               top: 10.5rem
@@ -692,6 +716,18 @@
           &-subitem
             span
               max-width: 7.5rem
+
+@media (max-width: 346px)
+  .header
+    &__account
+      &-navigate
+        &_popup
+          &-subitem
+            .section__accounts-link_image
+              margin-right: 1rem
+            span
+              font-size: 1.4rem
+              max-width: 5.6rem
 
 
 
