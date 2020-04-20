@@ -679,10 +679,12 @@ function softPhoneActive() {
     if (noticesControl.classList.contains('active')) { noticesControl.classList.remove('active'); }
     if (popupSupport.classList.contains('visible')) { popupSupport.classList.remove('visible'); }
     if (supportControl.classList.contains('active')) { supportControl.classList.remove('active'); }
-    dialAccountBlock.scrollTo(0, 0);
-    callItemsList.scrollTo(0, 0);
-    homeBlock.scrollTo(0, 0);
-    contactsItemsList.scrollTo(0, 0);
+    if (dialAccountBlock && callItemsList && homeBlock && contactsItemsList) {
+      dialAccountBlock.scrollTo(0, 0);
+      callItemsList.scrollTo(0, 0);
+      homeBlock.scrollTo(0, 0);
+      contactsItemsList.scrollTo(0, 0);
+    }
     // if (!frameBlock.classList.contains('menu-visible')) { frameBlock.classList.add('menu-visible'); }
     // if (burgerButtonMobile.classList.contains('active')) { burgerButtonMobile.classList.remove('active'); }
     // if (searchButton.classList.contains('mobile-visible')
@@ -836,27 +838,29 @@ if (phonecall) {
 if (softphoneMenu) {
   for (let i = 0; i < softphoneTapItems.length; i++) {
     if (!softphoneTapItems[i].classList.contains('selected')) { softphoneTapItems[0].classList.add('selected'); }
-    if (!softphoneContentItems[i].classList.contains('active')) { softphoneContentItems[0].classList.add('active'); }
-    softphoneTapItems[i].addEventListener('click', function() {
-       /* Selected tap */
-      if (!softphoneTapItems[i].classList.contains('selected')) {
-        softphoneTapItems[i].classList.add('selected');
-        dialAccountBlock.scrollTo(0, 0);
-        callItemsList.scrollTo(0, 0);
-        homeBlock.scrollTo(0, 0);
-        contactsItemsList.scrollTo(0, 0);    
-        if (!softphoneContentItems[i].classList.contains('active')) { softphoneContentItems[i].classList.add('active'); }
-      }
-      for (let j = i - 1; j >= 0; j--) {
-        if (softphoneTapItems[j].classList.contains('selected')) { softphoneTapItems[j].classList.remove('selected'); }
-        if (softphoneContentItems[j].classList.contains('active')) { softphoneContentItems[j].classList.remove('active'); }
-      }
-      for (let k = i + 1; k < softphoneTapItems.length; k++) {
-        if (softphoneTapItems[k].classList.contains('selected')) { softphoneTapItems[k].classList.remove('selected'); }
-        if (softphoneContentItems[k].classList.contains('active')) { softphoneContentItems[k].classList.remove('active'); }
-      }
-      /* ----------- */
-    });
+    if (softphoneContentItems[i] !== undefined) {
+      if (!softphoneContentItems[i].classList.contains('active')) { softphoneContentItems[0].classList.add('active'); }
+      softphoneTapItems[i].addEventListener('click', function() {
+         /* Selected tap */
+        if (!softphoneTapItems[i].classList.contains('selected')) {
+          softphoneTapItems[i].classList.add('selected');
+          dialAccountBlock.scrollTo(0, 0);
+          callItemsList.scrollTo(0, 0);
+          homeBlock.scrollTo(0, 0);
+          contactsItemsList.scrollTo(0, 0);    
+          if (!softphoneContentItems[i].classList.contains('active')) { softphoneContentItems[i].classList.add('active'); }
+        }
+        for (let j = i - 1; j >= 0; j--) {
+          if (softphoneTapItems[j].classList.contains('selected')) { softphoneTapItems[j].classList.remove('selected'); }
+          if (softphoneContentItems[j].classList.contains('active')) { softphoneContentItems[j].classList.remove('active'); }
+        }
+        for (let k = i + 1; k < softphoneTapItems.length; k++) {
+          if (softphoneTapItems[k].classList.contains('selected')) { softphoneTapItems[k].classList.remove('selected'); }
+          if (softphoneContentItems[k].classList.contains('active')) { softphoneContentItems[k].classList.remove('active'); }
+        }
+        /* ----------- */
+      });
+    }
   }
 }
 /* ---------------------------------------------------- */
@@ -996,24 +1000,30 @@ window.addEventListener('click', function(event) {
 
   if (statusControlClosest) { return; }
   else {
-    if (statusPopup.classList.contains('visible')) { statusPopup.classList.remove('visible'); }
-    if (statusArrow.classList.contains('rotate')) { statusArrow.classList.remove('rotate'); }
+    if (statusControlClosest) {
+      if (statusPopup.classList.contains('visible')) { statusPopup.classList.remove('visible'); }
+      if (statusArrow.classList.contains('rotate')) { statusArrow.classList.remove('rotate'); }
+    }
   }
 
   if (dialAccountsClosest) { return; }
   else {
-    if (dialAccountSelect.classList.contains('open')) { dialAccountSelect.classList.remove('open'); }
-    if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
-    if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
+    if (dialAccountsClosest) {
+      if (dialAccountSelect.classList.contains('open')) { dialAccountSelect.classList.remove('open'); }
+      if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
+      if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
+    }
   }
 });
 /* -------------------------------------------------------- */
 
 /* Filling color when we pulling the thumb in Slider-bar-volume */
 function setBarVolume() {
-  volumeFill.style.width = `${volumeSlider.value}%`;
-  volumeSlider.oninput = function() {
-    volumeFill.style.width = `${this.value}%`;
+  if (volumeFill) {
+    volumeFill.style.width = `${volumeSlider.value}%`;
+    volumeSlider.oninput = function() {
+      volumeFill.style.width = `${this.value}%`;
+    }
   }
 }
 setBarVolume();
@@ -1021,60 +1031,66 @@ setBarVolume();
 
 
 /* Home-tap Active-call Microphone clicing on-off */
-homeActiveMicrophone.addEventListener('click', function() {
-  homeActiveMicrophone.classList.toggle('off');
-  const iconON = homeActiveMicrophone.querySelector('svg:first-child');
-  const iconOFF = homeActiveMicrophone.querySelector('svg:last-child');
-  if (homeActiveMicrophone.classList.contains('off')) {
-    if (!iconON.classList.contains('inactive')) { iconON.classList.add('inactive'); }
-    if (iconOFF.classList.contains('inactive')) { iconOFF.classList.remove('inactive'); }
-  } else {
-    if (iconON.classList.contains('inactive')) { iconON.classList.remove('inactive'); }
-    if (!iconOFF.classList.contains('inactive')) { iconOFF.classList.add('inactive'); }
-  }
-});
+if (homeActiveMicrophone) {
+  homeActiveMicrophone.addEventListener('click', function() {
+    homeActiveMicrophone.classList.toggle('off');
+    const iconON = homeActiveMicrophone.querySelector('svg:first-child');
+    const iconOFF = homeActiveMicrophone.querySelector('svg:last-child');
+    if (homeActiveMicrophone.classList.contains('off')) {
+      if (!iconON.classList.contains('inactive')) { iconON.classList.add('inactive'); }
+      if (iconOFF.classList.contains('inactive')) { iconOFF.classList.remove('inactive'); }
+    } else {
+      if (iconON.classList.contains('inactive')) { iconON.classList.remove('inactive'); }
+      if (!iconOFF.classList.contains('inactive')) { iconOFF.classList.add('inactive'); }
+    }
+  });
+}
 /* ------------------------------------------------------- */
 
 /* Mark Blacklist in Acitons-menu */
 // homeActionsBlacklist, actionButton, actionMenu, actionCommentForm, actionCommentAdd, actionComment
 function actionFunctional(var_1, var_2, var_3, var_4, var_5, var_6) {
 
-  var_1.addEventListener('click', function() {
-    var_1.classList.toggle('marked');
-    const mark = var_1.querySelector('svg');
-    if (var_1.classList.contains('marked')) {
-      if (mark.classList.contains('inactive')) { mark.classList.remove('inactive'); }
-    } else {
-      if (!mark.classList.contains('inactive')) { mark.classList.add('inactive'); }
-    }
-  });
-  /* ------------------------------------------------------ */
+  if (var_1 && var_2 && var_3 && var_4 && var_5 && var_6) {
+    var_1.addEventListener('click', function() {
+      var_1.classList.toggle('marked');
+      const mark = var_1.querySelector('svg');
+      if (var_1.classList.contains('marked')) {
+        if (mark.classList.contains('inactive')) { mark.classList.remove('inactive'); }
+      } else {
+        if (!mark.classList.contains('inactive')) { mark.classList.add('inactive'); }
+      }
+    });
+    /* ------------------------------------------------------ */
+    
+    /* Action-button to open action-menu */
   
-  /* Action-button to open action-menu */
-  var_2.addEventListener('click', function() {
-    var_2.classList.toggle('open');
-    if (var_2.classList.contains('open')) {
-      if (var_3.classList.contains('inactive')) { var_3.classList.remove('inactive'); }
-    } else {
-      if (!var_3.classList.contains('inactive')) { var_3.classList.add('inactive'); }
-    }
-  });
-  /* ------------------------------------------------------ */
+    var_2.addEventListener('click', function() {
+      var_2.classList.toggle('open');
+      if (var_2.classList.contains('open')) {
+        if (var_3.classList.contains('inactive')) { var_3.classList.remove('inactive'); }
+      } else {
+        if (!var_3.classList.contains('inactive')) { var_3.classList.add('inactive'); }
+      }
+    });
+    /* ------------------------------------------------------ */
+    
+    /* Add Comment */
   
-  /* Add Comment */
-  var_4.addEventListener('click', function(event) {
-    event.preventDefault();
-  });
-  
-  
-  var_5.addEventListener('click', function() {
-    var_6.classList.toggle('open');
-    if (var_6.classList.contains('open')) {
-      if (var_4.classList.contains('inactive')) { var_4.classList.remove('inactive'); }
-    } else {
-      if (!var_4.classList.contains('inactive')) { var_4.classList.add('inactive'); }
-    }
-  });
+    var_4.addEventListener('click', function(event) {
+      event.preventDefault();
+    });
+    
+     
+    var_5.addEventListener('click', function() {
+      var_6.classList.toggle('open');
+      if (var_6.classList.contains('open')) {
+        if (var_4.classList.contains('inactive')) { var_4.classList.remove('inactive'); }
+      } else {
+        if (!var_4.classList.contains('inactive')) { var_4.classList.add('inactive'); }
+      }
+    });
+  }
 }
 actionFunctional(homeActionsBlacklist, actionButton, actionMenu, actionCommentForm, actionCommentAdd, actionComment);
 actionFunctional(homeActionsBlacklistComplet, actionButtonComplet, actionMenuComplet, actionCommentFormComplet, actionCommentAddComplet, actionCommentComplet);
@@ -1118,68 +1134,80 @@ actionFunctional(homeActionsBlacklistComplet, actionButtonComplet, actionMenuCom
 /* ------------------------------------------------------ */
 
 /* Dial Account list clicking */
-dialAccountSelect.addEventListener('click', function() {
-  dialAccountSelect.classList.toggle('open');
-  if (dialAccountSelect.classList.contains('open')) {
-    if (!dialAccountsList.classList.contains('active')) { dialAccountsList.classList.add('active'); }
-    if (!dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.add('rotate'); }
-  } else {
-    if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
-    if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
-  }
-});
-
-dialAccountsItems.forEach(dialAccountItem => {
-  dialAccountItem.addEventListener('click', function() {
-    let accountName = dialAccountSelect.querySelector('p:first-child');
-    let accountNumber = dialAccountSelect.querySelector('p:nth-child(2)');
-    let itemName = dialAccountItem.querySelector('p:first-child');
-    let itemNumber = dialAccountItem.querySelector('p:last-child');
-    accountName.textContent = itemName.textContent;
-    accountNumber.textContent = itemNumber.textContent;
-    if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
-    if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
-    if (dialAccountSelect.classList.contains('open')) { dialAccountSelect.classList.remove('open'); }
+if (dialAccountSelect) {
+  dialAccountSelect.addEventListener('click', function() {
+    dialAccountSelect.classList.toggle('open');
+    if (dialAccountSelect.classList.contains('open')) {
+      if (!dialAccountsList.classList.contains('active')) { dialAccountsList.classList.add('active'); }
+      if (!dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.add('rotate'); }
+    } else {
+      if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
+      if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
+    }
   });
-});
+}
+
+if (dialAccountsItems) {
+  dialAccountsItems.forEach(dialAccountItem => {
+    dialAccountItem.addEventListener('click', function() {
+      let accountName = dialAccountSelect.querySelector('p:first-child');
+      let accountNumber = dialAccountSelect.querySelector('p:nth-child(2)');
+      let itemName = dialAccountItem.querySelector('p:first-child');
+      let itemNumber = dialAccountItem.querySelector('p:last-child');
+      accountName.textContent = itemName.textContent;
+      accountNumber.textContent = itemNumber.textContent;
+      if (dialAccountsList.classList.contains('active')) { dialAccountsList.classList.remove('active'); }
+      if (dialAccountArrow.classList.contains('rotate')) { dialAccountArrow.classList.remove('rotate'); }
+      if (dialAccountSelect.classList.contains('open')) { dialAccountSelect.classList.remove('open'); }
+    });
+  });
+}
 /* ------------------------------------------------------ */
 
 /* Dial typing */
 function correctPhoneNumber() {
-  let value = dialInput.value;
-    value = value.replace(/\D+/g, '');
-    if (value.substring(0,1) != '1') {
-        value = '1' + value;
-    }
-    let new_value = '+';
-    for (let i = 0; i < value.length; i++) {
-        if (new_value.length === 2) { new_value += ' (' + value.substring(i,i+1);}
-        else if (new_value.length === 7) { new_value += ') ' + value.substring(i,i+1);}
-        else if (new_value.length === 12) { new_value += '-' + value.substring(i,i+1);}
-        else if (new_value.length === 17) {}
-        else {new_value += value.substring(i,i+1);}
-    }
-    dialInput.value = new_value;
+  if (dialInput) {
+    let value = dialInput.value;
+      value = value.replace(/\D+/g, '');
+      if (value.substring(0,1) != '1') {
+          value = '1' + value;
+      }
+      let new_value = '+';
+      for (let i = 0; i < value.length; i++) {
+          if (new_value.length === 2) { new_value += ' (' + value.substring(i,i+1);}
+          else if (new_value.length === 7) { new_value += ') ' + value.substring(i,i+1);}
+          else if (new_value.length === 12) { new_value += '-' + value.substring(i,i+1);}
+          else if (new_value.length === 17) {}
+          else {new_value += value.substring(i,i+1);}
+      }
+      dialInput.value = new_value;
+  }
 }
 correctPhoneNumber();
-dialInput.addEventListener('input', function() {
-    correctPhoneNumber();
-});
-dialKeys.forEach(dialKey => {
-    let number = dialKey.querySelector('p:first-child');
-    // let letter = dialKey.querySelector('p:last-child');
-    dialKey.addEventListener('click', function(event) {
-        if (number.textContent != '') {
-            dialInput.value += number.textContent;
-            correctPhoneNumber();
-        }
-    });
-});
-dialInputBackspace.addEventListener('click', function() {
-    let value = dialInput.value;
-    dialInput.value = value.substring(0, value.length - 1);
-});
-/* ------------------------------------------------------ */
+if (dialInput) {
+  dialInput.addEventListener('input', function() {
+      correctPhoneNumber();
+  });
+}
+if (dialKeys) {
+  dialKeys.forEach(dialKey => {
+      let number = dialKey.querySelector('p:first-child');
+      // let letter = dialKey.querySelector('p:last-child');
+      dialKey.addEventListener('click', function(event) {
+          if (number.textContent != '') {
+              dialInput.value += number.textContent;
+              correctPhoneNumber();
+          }
+      });
+  });
+}
+if (dialInputBackspace) {
+  dialInputBackspace.addEventListener('click', function() {
+      let value = dialInput.value;
+      dialInput.value = value.substring(0, value.length - 1);
+  });
+  /* ------------------------------------------------------ */
+}
 
 /* active-clicking background*/
 function activeClicking(items) {
@@ -1204,53 +1232,57 @@ activeClicking(homeActionMenuItems);
 /* --------------------------------------------------- */
 
 /* Play-record button in complete-item */
-completePlayRecordButton.addEventListener('click', function() {
-  if (!completePlayRecordButton.classList.contains('play')) {
-    completePlayRecordButton.classList.add('play');
-    if (completePlayRecordButton.classList.contains('pause')) { completePlayRecordButton.classList.remove('pause'); }
-  }
-  else {
-    completePlayRecordButton.classList.remove('play');
-    completePlayRecordButton.classList.add('pause');
-  }
-
-  let playButton = completePlayRecordButton.querySelector('div > svg:first-child');
-  let pauseButton = completePlayRecordButton.querySelector('div > svg:last-child');
-  if (completePlayRecordButton.classList.contains('pause')) {
-    if (!pauseButton.classList.contains('inactive')) { pauseButton.classList.add('inactive'); }
-    if (playButton.classList.contains('inactive')) { playButton.classList.remove('inactive'); }
-  } else {
-    if (pauseButton.classList.contains('inactive')) { pauseButton.classList.remove('inactive'); }
-    if (!playButton.classList.contains('inactive')) { playButton.classList.add('inactive'); }
-  }
-});
+if (completePlayRecordButton) {
+  completePlayRecordButton.addEventListener('click', function() {
+    if (!completePlayRecordButton.classList.contains('play')) {
+      completePlayRecordButton.classList.add('play');
+      if (completePlayRecordButton.classList.contains('pause')) { completePlayRecordButton.classList.remove('pause'); }
+    }
+    else {
+      completePlayRecordButton.classList.remove('play');
+      completePlayRecordButton.classList.add('pause');
+    }
+  
+    let playButton = completePlayRecordButton.querySelector('div > svg:first-child');
+    let pauseButton = completePlayRecordButton.querySelector('div > svg:last-child');
+    if (completePlayRecordButton.classList.contains('pause')) {
+      if (!pauseButton.classList.contains('inactive')) { pauseButton.classList.add('inactive'); }
+      if (playButton.classList.contains('inactive')) { playButton.classList.remove('inactive'); }
+    } else {
+      if (pauseButton.classList.contains('inactive')) { pauseButton.classList.remove('inactive'); }
+      if (!playButton.classList.contains('inactive')) { playButton.classList.add('inactive'); }
+    }
+  });  
+}
 
 let recordDuration = 300; // seconds, duration of audio-file
 function setRecordAudioBar() {
-  recordFill.style.width = `${recordInputRange.value}%`;
-  recordInputRange.oninput = function() {
-    recordFill.style.width = `${this.value}%`;
-    this.dataset.value = this.value;
-    let timeNow = recordDuration * this.value * 0.01;
-    let timeRest = recordDuration - timeNow;
-    let hoursNow = Math.floor(timeNow / 3600);
-    timeNow %= 3600;
-    let minutesNow = Math.floor(timeNow / 60);
-    let secondsNow = timeNow % 60;
-    hoursNow = String(hoursNow).padStart(2, '0');
-    minutesNow = String(minutesNow).padStart(2, '0');
-    secondsNow = String(secondsNow).padStart(2, '0');
-
-    let hoursRest = Math.floor(timeRest / 3600);
-    timeRest %= 3600;
-    let minutesRest = Math.floor(timeRest / 60);
-    let secondsRest = timeRest % 60;
-    hoursRest = String(hoursRest).padStart(2, '0');
-    minutesRest = String(minutesRest).padStart(2, '0');
-    secondsRest = String(secondsRest).padStart(2, '0');
-
-    recordTimeNow.textContent = `${hoursNow}:${minutesNow}:${secondsNow}`;
-    recordTimeRest.textContent = `-${hoursRest}:${minutesRest}:${secondsRest}`;
+  if (recordFill) {
+    recordFill.style.width = `${recordInputRange.value}%`;
+    recordInputRange.oninput = function() {
+      recordFill.style.width = `${this.value}%`;
+      this.dataset.value = this.value;
+      let timeNow = recordDuration * this.value * 0.01;
+      let timeRest = recordDuration - timeNow;
+      let hoursNow = Math.floor(timeNow / 3600);
+      timeNow %= 3600;
+      let minutesNow = Math.floor(timeNow / 60);
+      let secondsNow = timeNow % 60;
+      hoursNow = String(hoursNow).padStart(2, '0');
+      minutesNow = String(minutesNow).padStart(2, '0');
+      secondsNow = String(secondsNow).padStart(2, '0');
+  
+      let hoursRest = Math.floor(timeRest / 3600);
+      timeRest %= 3600;
+      let minutesRest = Math.floor(timeRest / 60);
+      let secondsRest = timeRest % 60;
+      hoursRest = String(hoursRest).padStart(2, '0');
+      minutesRest = String(minutesRest).padStart(2, '0');
+      secondsRest = String(secondsRest).padStart(2, '0');
+  
+      recordTimeNow.textContent = `${hoursNow}:${minutesNow}:${secondsNow}`;
+      recordTimeRest.textContent = `-${hoursRest}:${minutesRest}:${secondsRest}`;
+    }
   }
 }
 setRecordAudioBar();
@@ -1262,9 +1294,11 @@ function getOpenDialTap() {
   if (document.body.clientWidth < 721) { softPhoneActiveMobile(); }
   else { softPhoneActive(); }
   if (softphoneTapItems[0].classList.contains('selected')) { softphoneTapItems[0].classList.remove('selected'); }
-  if (softphoneContentItems[0].classList.contains('active')) { softphoneContentItems[0].classList.remove('active'); }
-  if (!softphoneTapItems[1].classList.contains('selected')) { softphoneTapItems[1].classList.add('selected'); }
-  if (!softphoneContentItems[1].classList.contains('active')) { softphoneContentItems[1].classList.add('active'); }
+  if (softphoneContentItems) {
+    if (softphoneContentItems[0].classList.contains('active')) { softphoneContentItems[0].classList.remove('active'); }
+    if (!softphoneTapItems[1].classList.contains('selected')) { softphoneTapItems[1].classList.add('selected'); }
+    if (!softphoneContentItems[1].classList.contains('active')) { softphoneContentItems[1].classList.add('active'); }
+  }
 }
 /* ----- */
 
