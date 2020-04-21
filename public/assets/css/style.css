@@ -588,7 +588,7 @@ body {
         position: absolute;
         opacity: 0;
         pointer-events: none;
-        bottom: -255%;
+        bottom: -245%;
         right: 4rem;
         font-size: 1.6rem;
         z-index: 10;
@@ -642,8 +642,7 @@ body {
           display: -ms-flexbox;
           display: flex;
           padding: 1.2rem 0.8rem 0.75rem;
-          border-bottom: 0.1rem solid #8E8E93;
-          margin-bottom: 0.8rem; }
+          border-bottom: 0.1rem solid #8E8E93; }
           .header__account-navigate_popup-name p {
             display: block;
             font-size: 1.8rem;
