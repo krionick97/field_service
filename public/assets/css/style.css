@@ -2005,8 +2005,6 @@ body {
       background-color: rgba(142, 142, 147, 0); }
       .section__account_softphone-tap.inactive.selected:after {
         display: none; }
-    .section__account_softphone-tap.inactive .section__account_softphone-tap_icon svg path {
-      fill: #8E8E93; }
     .section__account_softphone-tap.inactive .section__account_softphone-tap_title {
       color: #8E8E93; }
     .section__account_softphone-tap_icon {
@@ -2031,8 +2029,12 @@ body {
       font-family: 'Roboto-Medium', sans-serif; }
   .section__account_softphone-home .section__account_softphone-tap_icon svg path, .section__account_softphone-dial .section__account_softphone-tap_icon svg path, .section__account_softphone-calls .section__account_softphone-tap_icon svg path {
     fill: #6093DE; }
+  .section__account_softphone-home.inactive .section__account_softphone-tap_icon svg path, .section__account_softphone-dial.inactive .section__account_softphone-tap_icon svg path, .section__account_softphone-calls.inactive .section__account_softphone-tap_icon svg path {
+    fill: #8E8E93; }
   .section__account_softphone-contacts .section__account_softphone-tap_icon svg path {
     stroke: #6093DE; }
+  .section__account_softphone-contacts.inactive .section__account_softphone-tap_icon svg path {
+    stroke: #8E8E93; }
   .section__account_softphone-control {
     padding: 0 0.8rem;
     margin-bottom: 3rem;

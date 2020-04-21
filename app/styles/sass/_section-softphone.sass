@@ -78,9 +78,6 @@
             background-color: rgba($color-grey, 0)
             &:after
               display: none
-          .section__account_softphone-tap_icon
-            svg path
-              fill: $color-grey
           .section__account_softphone-tap_title
             color: $color-grey
         &_icon
@@ -98,9 +95,15 @@
       &-home, &-dial, &-calls
         .section__account_softphone-tap_icon svg path
           fill: $color-blue-light
+        &.inactive
+          .section__account_softphone-tap_icon svg path
+            fill: $color-grey
       &-contacts
         .section__account_softphone-tap_icon svg path
           stroke: $color-blue-light
+        &.inactive
+          .section__account_softphone-tap_icon svg path
+            stroke: $color-grey
 
       /* Control */
       &-control
